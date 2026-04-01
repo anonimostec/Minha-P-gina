@@ -4,21 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Optimus Tech | Assistência & Loja Premium</title>
-   
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
         :root { --primary: #00ff88; --bg: #050505; --card-bg: #0f0f0f; --text: #fff; }
-       
+        
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
         
+        /* INTRO ANIMADA */
         #intro { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; transition: 1s; }
         .fire-text { font-size: clamp(2rem, 10vw, 5rem); font-weight: 900; color: #fff; text-shadow: 0 0 20px #f00, 0 0 40px #f00; animation: burn 0.2s infinite alternate; }
         @keyframes burn { from { transform: scale(1); } to { transform: scale(1.02); text-shadow: 0 0 30px #ff4500, 0 0 50px #ff8c00; } }
         .falling-letter { display: inline-block; transition: 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045); }
         .fall { transform: translateY(100vh) rotate(45deg); opacity: 0; }
         
+        /* HEADER */
         header { 
             position: fixed; 
             width: 100%; 
@@ -65,6 +67,7 @@
             border-radius: 5px; 
         }
 
+        /* QUEM SOMOS */
         #quem-somos { 
             max-height: 0; 
             overflow: hidden; 
@@ -74,57 +77,58 @@
             margin-top: 75px; 
         }
         #quem-somos.active { 
-            max-height: 2200px; 
+            max-height: 2500px; 
             padding: 80px 20px; 
         }
+        .about-content { max-width: 850px; margin: 0 auto; text-align: center; line-height: 1.8; }
+        .about-content h2 { color: var(--primary); font-size: 2rem; margin-bottom: 30px; letter-spacing: 2px; }
+        .about-content p { color: #ccc; margin-bottom: 25px; font-size: 1.05rem; text-align: justify; }
         
-        .about-content { 
-            max-width: 850px; 
-            margin: 0 auto; 
-            text-align: center; 
-            line-height: 1.8; 
-        }
-        .about-content h2 { 
-            color: var(--primary); 
-            font-size: 2rem; 
-            margin-bottom: 30px; 
-            letter-spacing: 2px; 
-        }
-        .about-content p { 
-            color: #ccc; 
-            margin-bottom: 25px; 
-            font-size: 1.05rem; 
-            text-align: justify; 
-        }
-        .about-content .highlight { 
-            color: var(--primary); 
-            font-weight: 700; 
-            font-size: 1.3rem; 
-            margin: 40px 0 20px 0; 
-            display: block; 
-        }
-        .about-content .bolt { 
-            color: var(--primary); 
-            font-size: 1.4rem; 
-        }
-        
+        /* HERO */
         .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, #0a1f14 0%, #000 100%); padding: 20px; }
         .hero h1 { font-size: clamp(3.5rem, 12vw, 7rem); color: var(--primary); margin-bottom: 15px; }
         .hero p { color: #666; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; }
+        
+        /* CONTEÚDO */
         .container { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
         .section-title { font-size: 1.8rem; color: var(--primary); margin: 60px 0 30px 0; text-align: left; border-left: 4px solid var(--primary); padding-left: 15px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .card { background: var(--card-bg); padding: 45px 30px; border-radius: 20px; position: relative; overflow: hidden; border: 1px solid #1a1a1a; transition: 0.4s; height: 100%; }
         .card:hover { transform: translateY(-8px); border-color: var(--primary); }
-        .content { position: relative; z-index: 2; text-align: center; }
-        .content i { font-size: 2.8rem; color: var(--primary); margin-bottom: 25px; display: block; }
-        .price { color: var(--primary); font-size: 1.4rem; font-weight: 900; margin: 20px 0; display: block; }
+        .content i { font-size: 2.8rem; color: var(--primary); margin-bottom: 25px; display: block; text-align: center;}
+        .content h3 { text-align: center; margin-bottom: 15px;}
+        .price { color: var(--primary); font-size: 1.4rem; font-weight: 900; margin: 20px 0; display: block; text-align: center;}
         .old-price { text-decoration: line-through; color: #444; font-size: 0.9rem; margin-right: 10px; }
-        .saber-mais { color: #00aaff; cursor: pointer; display: block; margin-top: 15px; font-weight: bold; text-decoration: underline; font-size: 0.9rem; }
-        .desc-escondida { display: none; margin-top: 10px; color: #bbb; font-size: 0.85rem; line-height: 1.4; }
+        .saber-mais { color: #00aaff; cursor: pointer; display: block; margin-top: 15px; font-weight: bold; text-decoration: underline; font-size: 0.9rem; text-align: center;}
+        .desc-escondida { display: none; margin-top: 10px; color: #bbb; font-size: 0.85rem; line-height: 1.4; text-align: center;}
+        
         .btn { background: var(--primary); color: #000; border: none; padding: 16px 32px; border-radius: 10px; font-weight: 900; cursor: pointer; transition: 0.3s; text-transform: uppercase; width: 100%; margin-top: 15px; }
         .btn:hover { background: #fff; transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0, 255, 136, 0.3); }
+
+        /* SETA VOLTAR AO TOPO (Z-INDEX MÁXIMO) */
+        #btnTopo {
+            display: none; 
+            position: fixed; 
+            bottom: 30px; 
+            left: 25px; 
+            z-index: 99999; 
+            border: 2px solid var(--primary); 
+            background: rgba(0,0,0,0.9); 
+            color: var(--primary);
+            cursor: pointer; 
+            width: 55px; 
+            height: 55px; 
+            border-radius: 50%; 
+            font-size: 22px;
+            transition: 0.3s; 
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        #btnTopo:hover { background: var(--primary); color: #000; }
         
+        /* CHATBOT */
         .ia-float {
             position: fixed; bottom: 35px; right: 35px;
             background: linear-gradient(135deg, #00ff88, #00cc6e);
@@ -133,8 +137,6 @@
             z-index: 1000; box-shadow: 0 15px 40px rgba(0, 255, 136, 0.6);
             cursor: pointer; transition: 0.3s; font-size: 32px;
         }
-        .ia-float:hover { transform: scale(1.1); }
-        
         #chatbot-container {
             position: fixed; bottom: 120px; right: 30px; width: 380px; height: 560px;
             background: #0a0a0a; border: 2px solid var(--primary); border-radius: 20px;
@@ -149,15 +151,36 @@
         .user-message { margin-left: auto; background: var(--primary); color: #000; padding: 14px 18px; border-radius: 18px 18px 6px 18px; font-weight: 600; }
         .quick-options { display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0; }
         .quick-btn { background: #1f1f1f; color: #00ff88; border: 1px solid #00ff88; padding: 9px 14px; border-radius: 20px; font-size: 0.85rem; cursor: pointer; }
-        .quick-btn:hover { background: #00ff88; color: #000; }
         #chat-input-area { padding: 15px; background: #000; border-top: 1px solid #222; display: flex; gap: 10px; }
         #chat-input { flex: 1; background: #111; border: 1px solid #333; color: #fff; padding: 12px 16px; border-radius: 12px; }
         #chat-send { background: var(--primary); color: #000; border: none; width: 48px; border-radius: 12px; cursor: pointer; }
+
+        footer { text-align: center; padding: 40px; color: #444; font-size: 0.8rem; border-top: 1px solid #111; }
+
+        /* AJUSTES MOBILE */
+        @media (max-width: 768px) {
+            header { position: absolute; padding: 10px 0; }
+            nav { flex-direction: column; gap: 15px; }
+            .logo { font-size: 1.2rem; }
+            .nav-links { flex-wrap: wrap; justify-content: center; gap: 12px; padding: 0 10px; }
+            .nav-links a { font-size: 0.75rem; }
+            .nav-contact { margin: 5px; padding: 8px 15px !important; }
+            .hero { height: auto; padding: 180px 20px 80px 20px; min-height: 80vh; }
+            .container { padding: 20px; }
+            .section-title { margin: 80px 0 40px 0; font-size: 1.5rem; }
+            .grid { gap: 40px; }
+            .card { padding: 40px 25px; }
+            #chatbot-container { width: 92vw; height: 70vh; right: 4vw; bottom: 100px; }
+            .ia-float { bottom: 20px; right: 20px; width: 60px; height: 60px; }
+            #btnTopo { bottom: 20px; left: 20px; display: none; }
+            #quem-somos.active { max-height: 4500px; padding-top: 180px; }
+        }
     </style>
 </head>
 <body>
 
-<!-- INTRO -->
+<button onclick="topo()" id="btnTopo" title="Voltar ao Topo"><i class="fas fa-arrow-up"></i></button>
+
 <div id="intro">
     <div class="fire-text" id="fireText">
         <span class="falling-letter">O</span><span class="falling-letter">P</span><span class="falling-letter">T</span><span class="falling-letter">I</span><span class="falling-letter">M</span><span class="falling-letter">U</span><span class="falling-letter">S</span>
@@ -166,7 +189,6 @@
     </div>
 </div>
 
-<!-- HEADER -->
 <header>
     <nav>
         <div class="logo">OPTIMUS TECH</div>
@@ -183,132 +205,101 @@
     </nav>
 </header>
 
-<!-- QUEM SOMOS - EXATAMENTE COMO NA IMAGEM -->
 <section id="quem-somos">
     <div class="about-content">
         <h2>A Optimus Tech</h2>
-        
         <p>A Optimus Tech nasceu com o objetivo de ir além da manutenção tradicional, oferecendo soluções completas em tecnologia com foco em desempenho, eficiência e confiabilidade.</p>
-        
         <p>Trabalhamos com otimização de computadores, upgrades de hardware, manutenção preventiva e corretiva, além de soluções mobile como formatação, recuperação de sistemas e desbloqueios.</p>
-        
         <p>Nosso diferencial está na atenção aos detalhes e na busca por performance real, garantindo que cada equipamento funcione no seu máximo potencial.</p>
-        
         <hr style="border: none; border-top: 1px solid #222; margin: 50px 0;">
-        
         <h2 style="color: var(--primary); font-size: 1.8rem; margin-bottom: 30px;">SOBRE O CRIADOR</h2>
-        
         <p>Meu nome é <strong>Daniel Gonçalves</strong>, tenho 20 anos e sou o fundador da Optimus Tech.</p>
-        
         <p>Sempre fui apaixonado por tecnologia e, ao longo do tempo, fui aprofundando meu conhecimento na prática, trabalhando com manutenção, otimização e melhoria de desempenho de computadores e dispositivos móveis.</p>
-        
         <p>Hoje, tenho experiência com hardware, software, sistemas operacionais, redes e também com segurança da informação, incluindo testes em ambientes controlados (ethical hacking), o que me permite ter uma visão mais completa de como os sistemas realmente funcionam.</p>
-        
         <p>Meu foco não é apenas consertar, mas melhorar de verdade — deixar cada máquina mais rápida, estável e eficiente.</p>
-        
-        <p class="bolt" style="margin-top: 50px; font-size: 1.35rem;">
-            ⚡ Tecnologia sem limites, desempenho de verdade.
-        </p>
-        
+        <p style="color: var(--primary); margin-top: 50px; font-weight: bold; font-size: 1.35rem;">⚡ Tecnologia sem limites, desempenho de verdade.</p>
         <br><br>
         <button class="btn" onclick="toggleAbout()">FECHAR</button>
     </div>
 </section>
 
-<!-- HERO -->
 <section class="hero">
     <h1>OPTIMUS TECH</h1>
     <p>Performance Extrema | Segurança Hacker</p>
 </section>
 
 <div class="container">
-    <!-- MOBILE -->
     <h2 class="section-title" id="mobile">Celular travou? 📱</h2>
     <div class="grid">
-        <div class="card"><div class="content"><i class="fas fa-mobile-alt"></i><h3>Formatação e Recuperação</h3><span class="price"><span class="old-price">R$ 60,00</span>R$ 50,00</span><button class="btn" onclick="selecionar('Mobile - Formatação')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">Reset, atualização de sistema e otimização de desempenho.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-tools"></i><h3>Troca de Peças Mobile</h3><span class="price">R$ 50,00 (Mão de Obra) + Peça</span><button class="btn" onclick="selecionar('Mobile - Peças')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">Substituição técnica de telas, baterias e conectores de carga.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-shield-virus"></i><h3>Remoção de Vírus</h3><span class="price"><span class="old-price">R$ 50,00</span>R$ 40,00</span><button class="btn" onclick="selecionar('Mobile - Vírus')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">Eliminação de malwares, adwares e travas do sistema.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-mobile-alt"></i><h3>Formatação e Recuperação</h3><span class="price"><span class="old-price">R$ 60,00</span>R$ 50,00</span><button class="btn" onclick="selecionar('Mobile - Formatação')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">Reset e otimização de sistema.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-tools"></i><h3>Troca de Peças Mobile</h3><span class="price">R$ 50,00 (Mão de Obra) + Peça</span><button class="btn" onclick="selecionar('Mobile - Peças')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">Telas, baterias e conectores.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-shield-virus"></i><h3>Remoção de Vírus</h3><span class="price"><span class="old-price">R$ 50,00</span>R$ 40,00</span><button class="btn" onclick="selecionar('Mobile - Vírus')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">Limpeza de malwares e adwares.</p></div></div>
     </div>
 
-    <!-- PC -->
     <h2 class="section-title" id="pc">PC voando baixo... 🚀</h2>
     <div class="grid">
-        <div class="card"><div class="content"><i class="fas fa-snowflake"></i><h3>Limpeza e Pasta Térmica</h3><span class="price"><span class="old-price">R$ 65,00</span>R$ 50,00</span><button class="btn" onclick="selecionar('PC - Limpeza')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">Limpeza interna completa e troca de pasta térmica de alta performance.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-microchip"></i><h3>Upgrade Peças (SSD/RAM)</h3><span class="price"><span class="old-price">R$ 65,00</span>R$ 50,00</span><button class="btn" onclick="selecionar('PC - Upgrade')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">Instalação e configuração de SSDs e Memórias RAM.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-bolt"></i><h3>Otimização Completa</h3><span class="price"><span class="old-price">R$ 100,00</span>R$ 80,00</span><button class="btn" onclick="selecionar('PC - Otimização')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">Ajustes finos de software para ganho máximo de FPS e fluidez.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-snowflake"></i><h3>Limpeza e Pasta Térmica</h3><span class="price"><span class="old-price">R$ 65,00</span>R$ 50,00</span><button class="btn" onclick="selecionar('PC - Limpeza')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">Limpeza interna e pasta térmica premium.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-microchip"></i><h3>Upgrade Peças (SSD/RAM)</h3><span class="price"><span class="old-price">R$ 65,00</span>R$ 50,00</span><button class="btn" onclick="selecionar('PC - Upgrade')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">Instalação de SSD e memórias.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-bolt"></i><h3>Otimização FPS</h3><span class="price"><span class="old-price">R$ 100,00</span>R$ 80,00</span><button class="btn" onclick="selecionar('PC - Otimização')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">Configurações para ganho real de FPS.</p></div></div>
     </div>
 
-    <!-- AULAS -->
     <h2 class="section-title" id="aulas">Aulas práticas 📚</h2>
     <div class="grid">
-        <div class="card"><div class="content"><i class="fas fa-user-secret"></i><h3>Boas Práticas Hacker</h3><span class="price">R$ 100,00</span><button class="btn" onclick="selecionar('Aula Hacker')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">Privacidade, proteção de dados e segurança nas redes sociais.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-file-word"></i><h3>Aulas de Pacote Office</h3><span class="price">R$ 200,00</span><button class="btn" onclick="selecionar('Aula Office')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">Word, Excel e PowerPoint do básico ao profissional.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-graduation-cap"></i><h3>Informática Particular</h3><span class="price">R$ 30,00 a hora</span><button class="btn" onclick="selecionar('Aula Informática')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">Aulas do básico ao avançado com foco na sua autonomia tecnológica.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-user-secret"></i><h3>Boas Práticas Hacker</h3><span class="price">R$ 100,00</span><button class="btn" onclick="selecionar('Aula Hacker')">CONTRATAR</button></div></div>
+        <div class="card"><div class="content"><i class="fas fa-file-word"></i><h3>Pacote Office</h3><span class="price">R$ 200,00</span><button class="btn" onclick="selecionar('Aula Office')">CONTRATAR</button></div></div>
+        <div class="card"><div class="content"><i class="fas fa-graduation-cap"></i><h3>Informática Particular</h3><span class="price">R$ 30,00 /h</span><button class="btn" onclick="selecionar('Aula Informática')">CONTRATAR</button></div></div>
     </div>
 
-    <!-- LOJA -->
-    <section id="loja" style="margin-top: 100px; text-align: center;">
-        <h2>🛒 Loja Optimus</h2>
-        <div class="grid">
-            <div class="card"><div class="content"><i class="fas fa-hdd"></i><h3>SSD 480GB</h3><span class="price">R$ 249,00</span><button class="btn" onclick="comprar('SSD 480GB')">COMPRAR</button></div></div>
-        </div>
-    </section>
+    <h2 class="section-title" id="loja">🛒 Loja Optimus</h2>
+    <div class="grid">
+        <div class="card"><div class="content"><i class="fas fa-hdd"></i><h3>SSD 480GB</h3><span class="price">R$ 249,00</span><button class="btn" onclick="comprar('SSD 480GB')">COMPRAR</button></div></div>
+    </div>
 
-    <!-- AGENDAMENTO -->
-    <section id="agendar" class="booking-section" style="background:#080808;border:1px solid #151515;border-radius:30px;padding:70px 20px;text-align:center;margin-bottom:80px;">
+    <section id="agendar" style="background:#080808; border-radius:30px; padding:60px 20px; text-align:center; margin-top:80px; border: 1px solid #111;">
         <h2>📅 Agendar Horário</h2>
-        <input type="text" id="cliNome" placeholder="Seu Nome" style="background:#000;border:1px solid #222;color:#fff;padding:18px;border-radius:10px;margin:12px;width:100%;max-width:350px;">
-        <select id="cliServico" style="background:#000;border:1px solid #222;color:#fff;padding:18px;border-radius:10px;margin:12px;width:100%;max-width:350px;">
-            <option value="">Selecione o Serviço...</option>
+        <input type="text" id="cliNome" placeholder="Seu Nome" style="background:#000; border:1px solid #222; color:#fff; padding:15px; border-radius:10px; margin:10px; width:100%; max-width:350px;">
+        <select id="cliServico" style="background:#000; border:1px solid #222; color:#fff; padding:15px; border-radius:10px; margin:10px; width:100%; max-width:350px;">
+            <option value="">Selecione...</option>
             <option value="Mobile">Mobile</option>
             <option value="PC">Computador</option>
-            <option value="Aula">Aula Particular</option>
+            <option value="Aula">Aula</option>
         </select>
-        <input type="datetime-local" id="cliData" style="background:#000;border:1px solid #222;color:#fff;padding:18px;border-radius:10px;margin:12px;width:100%;max-width:350px;">
-        <br><br>
-        <button class="btn" onclick="enviarAgendamento()">Confirmar via WhatsApp</button>
+        <input type="datetime-local" id="cliData" style="background:#000; border:1px solid #222; color:#fff; padding:15px; border-radius:10px; margin:10px; width:100%; max-width:350px;">
+        <br>
+        <button class="btn" style="max-width:350px;" onclick="enviarAgendamento()">Confirmar via WhatsApp</button>
     </section>
 </div>
 
-<!-- CHATBOT -->
-<div class="ia-float" onclick="toggleChat()">
-    <i class="fas fa-robot"></i>
-</div>
+<div class="ia-float" onclick="toggleChat()"><i class="fas fa-robot"></i></div>
 <div id="chatbot-container">
-    <div id="chat-header">
-        <i class="fas fa-robot" style="font-size:1.8rem;color:#00ff88;"></i>
-        <h3>Optimus IA</h3>
-        <button onclick="toggleChat()" style="margin-left:auto;background:none;border:none;color:#888;font-size:1.6rem;cursor:pointer;">✕</button>
-    </div>
-   
+    <div id="chat-header"><h3>Optimus IA</h3><button onclick="toggleChat()" style="margin-left:auto; background:none; border:none; color:#888; font-size:1.5rem; cursor:pointer;">✕</button></div>
     <div id="chat-body">
-        <div class="chat-message bot-message">
-            Olá! Sou a <strong>Optimus IA</strong>.<br>
-            Posso te ajudar com dúvidas técnicas sobre nossos serviços.<br><br>
-            Escolha uma opção abaixo ou digite sua pergunta:
-        </div>
-       
-        <div class="quick-options" id="quick-options">
-            <div class="quick-btn" onclick="quickReply(this)">Por que trocar a pasta térmica?</div>
-            <div class="quick-btn" onclick="quickReply(this)">Por que meu celular trava?</div>
-            <div class="quick-btn" onclick="quickReply(this)">Vale a pena aumentar a RAM?</div>
-            <div class="quick-btn" onclick="quickReply(this)">O que inclui a limpeza do PC?</div>
-            <div class="quick-btn" onclick="quickReply(this)">Como funciona a formatação?</div>
+        <div class="chat-message bot-message">Olá! Escolha uma dúvida ou digite abaixo:</div>
+        <div class="quick-options">
+            <div class="quick-btn" onclick="sendMessage('Pasta térmica?')">Pasta térmica?</div>
+            <div class="quick-btn" onclick="sendMessage('Celular travando?')">Celular travando?</div>
         </div>
     </div>
-   
     <div id="chat-input-area">
-        <input type="text" id="chat-input" placeholder="Digite sua dúvida..." onkeypress="if(event.key==='Enter') sendMessage()">
+        <input type="text" id="chat-input" placeholder="Dúvida...">
         <button id="chat-send" onclick="sendMessage()">→</button>
     </div>
 </div>
 
-<!-- FOOTER -->
-<footer>
-    <div class="footer-rights">© 2026 OPTIMUS TECH - TODOS OS DIREITOS RESERVADOS</div>
-</footer>
+<footer>© 2026 OPTIMUS TECH - TODOS OS DIREITOS RESERVADOS</footer>
 
 <script>
+    // LÓGICA SETA VOLTAR AO TOPO (Z-INDEX E DISPLAY FLEX)
+    const btnTopo = document.getElementById("btnTopo");
+    window.onscroll = function() {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            btnTopo.style.display = "flex";
+        } else {
+            btnTopo.style.display = "none";
+        }
+    };
+    function topo() { window.scrollTo({top: 0, behavior: 'smooth'}); }
+
     function toggleAbout() {
         const p = document.getElementById("quem-somos");
         p.classList.toggle("active");
@@ -328,60 +319,30 @@
             }, 1800);
         }, 800);
     };
-    function selecionar(s) {
-        document.getElementById('cliServico').value = s;
-        window.location.href = "#agendar";
-    }
-    function comprar(p) {
-        window.open(`https://wa.me/5542999112756?text=Oi Daniel! Quero comprar: ${p}`);
-    }
+    function selecionar(s) { document.getElementById('cliServico').value = s.includes("Mobile") ? "Mobile" : "PC"; window.location.href = "#agendar"; }
+    function comprar(p) { window.open(`https://wa.me/5542999112756?text=Oi Daniel! Quero comprar: ${p}`); }
     function enviarAgendamento() {
         const n = document.getElementById('cliNome').value;
-        const s = document.getElementById('cliServico').value;
         const d = document.getElementById('cliData').value;
-        if(!n || !s || !d) return alert("Preencha tudo!");
-        window.open(`https://wa.me/5542999112756?text=Olá Daniel! Sou ${n}, agendando ${s} para ${d}`);
+        if(!n || !d) return alert("Preencha o nome e a data!");
+        window.open(`https://wa.me/5542999112756?text=Olá Daniel! Sou ${n}, agendando para ${d}`);
     }
     function toggleChat() {
         const chat = document.getElementById('chatbot-container');
         chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
     }
-    function addMessage(text, isUser = false) {
-        const body = document.getElementById('chat-body');
-        const div = document.createElement('div');
-        div.className = `chat-message ${isUser ? 'user-message' : 'bot-message'}`;
-        div.innerHTML = text;
-        body.appendChild(div);
-        body.scrollTop = body.scrollHeight;
-    }
-    function getBotResponse(q) {
-        const question = q.toLowerCase();
-        if (question.includes("pasta térmica") || question.includes("pasta termica")) return "A pasta térmica conduz o calor do processador para o cooler. Quando seca, o PC esquenta mais, perde desempenho e pode até desligar. Recomendo trocar a cada 2 anos.";
-        if (question.includes("celular trava") || question.includes("trava")) return "Celular travando geralmente é por memória cheia, muitos apps abertos, cache acumulado ou sistema antigo. Podemos resolver com otimização ou formatação.";
-        if (question.includes("ram") || question.includes("memória")) return "Sim, aumentar a RAM melhora muito a multitarefa, velocidade e fluidez do computador.";
-        if (question.includes("limpeza")) return "A limpeza inclui remoção de poeira, troca da pasta térmica, limpeza de coolers e fans. Reduz temperatura, ruído e aumenta a vida útil do equipamento.";
-        if (question.includes("formatação")) return "A formatação limpa completamente o sistema, remove arquivos inúteis e vírus. Faço backup dos seus arquivos importantes antes.";
-        return "Boa pergunta! Pode me dar mais detalhes para eu te explicar melhor?";
-    }
-    function sendMessage() {
+    function sendMessage(texto = null) {
         const input = document.getElementById('chat-input');
-        const text = input.value.trim();
-        if (!text) return;
-        addMessage(text, true);
+        const t = texto || input.value;
+        if(!t) return;
+        const body = document.getElementById('chat-body');
+        body.innerHTML += `<div class="chat-message user-message">${t}</div>`;
         input.value = '';
-        setTimeout(() => addMessage(getBotResponse(text)), 600);
+        setTimeout(() => {
+            body.innerHTML += `<div class="chat-message bot-message">Vou te passar para o suporte humano no WhatsApp para detalhes técnicos!</div>`;
+            body.scrollTop = body.scrollHeight;
+        }, 800);
     }
-    function quickReply(el) {
-        const question = el.textContent;
-        addMessage(question, true);
-        setTimeout(() => addMessage(getBotResponse(question)), 500);
-    }
-    document.addEventListener('click', (e) => {
-        const chat = document.getElementById('chatbot-container');
-        if (!chat.contains(e.target) && !e.target.closest('.ia-float')) {
-            chat.style.display = 'none';
-        }
-    });
 </script>
 </body>
 </html>
