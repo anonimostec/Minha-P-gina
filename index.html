@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Optimus Tech | Assistência & Loja Premium</title>
+    <title>Optimus Tech | Assistência & Consultoria</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -26,7 +26,9 @@
         .nav-links { display: flex; align-items: center; gap: clamp(8px, 2vw, 20px); flex-wrap: wrap; justify-content: center; }
         .nav-links a { color: #888; text-decoration: none; font-size: clamp(0.65rem, 2vw, 0.8rem); font-weight: bold; transition: 0.3s; cursor: pointer; text-transform: uppercase; white-space: nowrap; }
         .nav-links a:hover, .nav-links a:active { color: var(--primary); }
-        .nav-contact { color: var(--primary) !important; border: 1px solid rgba(0,255,136,0.2); padding: clamp(4px, 1vw, 10px); border-radius: 5px; display: inline-flex; align-items: center; gap: 4px; font-size: clamp(0.6rem, 2vw, 0.8rem) !important; }
+        .nav-contact { color: #888 !important; border: 1px solid rgba(128,128,128,0.3); padding: clamp(4px, 1vw, 10px); border-radius: 5px; display: inline-flex; align-items: center; gap: 4px; font-size: 0 !important; }
+        .nav-contact:hover, .nav-contact:active { color: var(--primary) !important; border-color: rgba(0,255,136,0.2) !important; }
+        .nav-contact i { font-size: clamp(0.8rem, 2vw, 1rem) !important; }
 
         #quem-somos { max-height: 0; overflow: hidden; background: #0a0a0a; transition: max-height 0.7s ease-in-out; border-bottom: 1px solid #1f1f1f; margin-top: clamp(60px, 10vw, 75px); }
         #quem-somos.active { max-height: 3000px; padding: clamp(40px, 8vw, 80px) clamp(15px, 4vw, 20px); }
@@ -49,6 +51,7 @@
         .content h3 { text-align: center; margin-bottom: clamp(10px, 2vw, 15px); font-size: clamp(1rem, 3vw, 1.2rem); }
         .price { color: var(--primary); font-size: clamp(1.1rem, 3vw, 1.4rem); font-weight: 900; margin: clamp(15px, 3vw, 20px) 0; display: block; text-align: center; }
         .old-price { text-decoration: line-through; color: #444; font-size: clamp(0.75rem, 2vw, 0.9rem); margin-right: 10px; }
+        .service-location { color: #888; font-size: clamp(0.75rem, 2vw, 0.85rem); text-align: center; margin: clamp(5px, 2vw, 10px) 0; font-style: italic; }
         .saber-mais { color: #00aaff; cursor: pointer; display: block; margin-top: clamp(10px, 2vw, 15px); font-weight: bold; text-decoration: underline; font-size: clamp(0.8rem, 2vw, 0.9rem); text-align: center; transition: 0.3s; padding: 8px; }
         .saber-mais:active { color: var(--primary); }
         .desc-escondida { display: none; margin-top: clamp(10px, 2vw, 15px); color: #aaa; font-size: clamp(0.8rem, 2vw, 0.9rem); line-height: 1.6; text-align: center; padding: clamp(10px, 2vw, 15px); background: rgba(0,255,136,0.05); border-left: 3px solid var(--primary); border-radius: 5px; animation: slideDown 0.3s ease-out; }
@@ -57,10 +60,7 @@
         .btn { background: var(--primary); color: #000; border: none; padding: clamp(12px, 3vw, 16px) clamp(20px, 4vw, 32px); border-radius: clamp(8px, 2vw, 10px); font-weight: 900; cursor: pointer; transition: 0.3s; text-transform: uppercase; width: 100%; margin-top: clamp(10px, 2vw, 15px); font-size: clamp(0.8rem, 2vw, 0.9rem); touch-action: manipulation; }
         .btn:hover, .btn:active { background: #fff; transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0, 255, 136, 0.3); }
 
-        .btn-loja { background: linear-gradient(135deg, #ff6b00, #ff8c00); color: #fff; border: none; padding: clamp(12px, 3vw, 16px) clamp(20px, 4vw, 32px); border-radius: clamp(8px, 2vw, 10px); font-weight: 900; cursor: pointer; transition: 0.3s; text-transform: uppercase; width: 100%; margin-top: clamp(10px, 2vw, 15px); text-decoration: none; display: block; text-align: center; font-size: clamp(0.8rem, 2vw, 0.9rem); }
-        .btn-loja:hover, .btn-loja:active { background: linear-gradient(135deg, #ff8c00, #ffa500); transform: translateY(-4px); box-shadow: 0 15px 30px rgba(255, 107, 0, 0.5); }
-
-        #btnTopo { display: none; position: fixed; bottom: clamp(20px, 4vw, 30px); left: clamp(15px, 3vw, 25px); z-index: 99999; border: 2px solid var(--primary); background: rgba(0,0,0,0.9); color: var(--primary); cursor: pointer; width: clamp(40px, 10vw, 55px); height: clamp(40px, 10vw, 55px); border-radius: 50%; font-size: clamp(16px, 4vw, 22px); transition: 0.3s; backdrop-filter: blur(10px); align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(0,0,0,0.5); touch-action: manipulation; }
+        #btnTopo { display: none; position: fixed; bottom: clamp(30px, 6vw, 40px); left: clamp(30px, 6vw, 40px); z-index: 99998; border: 2px solid var(--primary); background: rgba(0,0,0,0.9); color: var(--primary); cursor: pointer; width: clamp(40px, 10vw, 55px); height: clamp(40px, 10vw, 55px); border-radius: 50%; font-size: clamp(16px, 4vw, 22px); transition: 0.3s; backdrop-filter: blur(10px); align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(0,0,0,0.5); touch-action: manipulation; }
         #btnTopo:hover, #btnTopo:active { background: var(--primary); color: #000; }
 
         #faq { background: #0a0a0a; padding: clamp(40px, 8vw, 80px) clamp(15px, 4vw, 20px); margin-top: clamp(40px, 8vw, 60px); border-top: 1px solid #1f1f1f; }
@@ -144,7 +144,7 @@
             .content i { font-size: 1.8rem; }
             .content h3 { font-size: 0.95rem; }
             .price { font-size: 1rem; }
-            .btn, .btn-loja { padding: 10px 15px; font-size: 0.75rem; margin-top: 8px; }
+            .btn { padding: 10px 15px; font-size: 0.75rem; margin-top: 8px; }
             #chatbot-container { width: calc(100vw - 10px); height: calc(100vh - 100px); right: 5px; bottom: 60px; }
             #agendar { margin-top: 40px; padding: 25px 12px; border-radius: 15px; }
             #agendar input, #agendar select { max-width: 100%; padding: 10px; }
@@ -156,7 +156,6 @@
     </style>
 </head>
 <body>
-
 <button onclick="topo()" id="btnTopo"><i class="fas fa-arrow-up"></i></button>
 
 <div id="intro">
@@ -173,10 +172,10 @@
             <a href="#mobile">MOBILE</a>
             <a href="#pc">PC</a>
             <a href="#aulas">AULAS</a>
-            <a href="loja.html" style="color: var(--primary);">🛒 LOJA</a>
+            <a href="loja.html">LOJA</a>
             <a href="#agendar">AGENDAR</a>
-            <a href="mailto:optimustech.support@gmail.com" class="nav-contact"><i class="far fa-envelope"></i> E-MAIL</a>
-            <a href="https://wa.me/5542999112756" class="nav-contact" target="_blank"><i class="fab fa-whatsapp"></i> WPP</a>
+            <a href="mailto:optimustech.support@gmail.com" class="nav-contact"><i class="far fa-envelope"></i></a>
+            <a href="https://wa.me/5542999112756" class="nav-contact" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
     </nav>
 </header>
@@ -206,25 +205,27 @@
 <div class="container">
     <h2 class="section-title" id="mobile">Celular travou? 📱</h2>
     <div class="grid">
-        <div class="card"><div class="content"><i class="fas fa-mobile-alt"></i><h3>Formatação e Recuperação</h3><span class="price"><span class="old-price">R$ 60,00</span>R$ 50,00</span><button class="btn" onclick="selecionar('Formatação Mobile')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🔧 Realizamos limpeza completa do sistema operacional, removendo arquivos temporários, cache acumulado e dados desnecessários. ✨ Atualizamos o SO para a versão mais recente, otimizamos permissões de aplicativos e configurações de desempenho.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-tools"></i><h3>Troca de Peças Mobile</h3><span class="price">R$ 80,00 + Peça</span><button class="btn" onclick="selecionar('Troca de Peças Mobile')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🖥️ Trocamos telas quebradas, baterias desgastadas, conectores de carga danificados e componentes internos. 🛠️ Usamos peças de qualidade com garantia, realizamos diagnóstico prévio e teste completo após a manutenção.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-shield-virus"></i><h3>Remoção de Vírus</h3><span class="price"><span class="old-price">R$ 50,00</span>R$ 40,00</span><button class="btn" onclick="selecionar('Remoção de Vírus Mobile')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🛡️ Escaneamos profundamente o celular com ferramentas avançadas de detecção, removemos malwares, adwares, trojans e aplicativos maliciosos. 🔒 Reforçamos a segurança e limpamos registros do sistema.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-mobile-alt"></i><h3>Formatação e Recuperação</h3><span class="price"><span class="old-price">R$ 60,00</span>R$ 50,00</span><div class="service-location">📍 Guarapuava - Presencial</div><button class="btn" onclick="selecionar('Formatação Mobile')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🔧 Realizamos limpeza completa do sistema operacional, removendo arquivos temporários, cache acumulado e dados desnecessários. ✨ Atualizamos o SO para a versão mais recente, otimizamos permissões de aplicativos e configurações de desempenho.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-tools"></i><h3>Troca de Peças Mobile</h3><span class="price">R$ 80,00 + Peça</span><div class="service-location">📍 Guarapuava - Presencial</div><button class="btn" onclick="selecionar('Troca de Peças Mobile')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🖥️ Trocamos telas quebradas, baterias desgastadas, conectores de carga danificados e componentes internos. 🛠️ Usamos peças de qualidade com garantia, realizamos diagnóstico prévio e teste completo após a manutenção.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-shield-virus"></i><h3>Remoção de Vírus</h3><span class="price"><span class="old-price">R$ 50,00</span>R$ 40,00</span><div class="service-location">📍 Guarapuava - Presencial</div><button class="btn" onclick="selecionar('Remoção de Vírus Mobile')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🛡️ Escaneamos profundamente o celular com ferramentas avançadas de detecção, removemos malwares, adwares, trojans e aplicativos maliciosos. 🔒 Reforçamos a segurança e limpamos registros do sistema.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-wifi"></i><h3>Suporte Online</h3><span class="price">R$ 20,00</span><div class="service-location">💻 Remoto - Via WhatsApp/TeamViewer</div><button class="btn" onclick="selecionar('Suporte Online Mobile')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🌐 Suporte remoto via acesso ao seu dispositivo. Resolvemos problemas de software, otimização e dúvidas técnicas. ⚡ Rápido e prático, sem sair de casa!</p></div></div>
     </div>
 
     <h2 class="section-title" id="pc">PC voando baixo... 🚀</h2>
     <div class="grid">
-        <div class="card"><div class="content"><i class="fas fa-snowflake"></i><h3>Limpeza e Pasta Térmica</h3><span class="price"><span class="old-price">R$ 65,00</span>R$ 50,00</span><button class="btn" onclick="selecionar('Limpeza e Pasta Térmica PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🌬️ Limpeza interna completa: removemos toda a poeira dos ventiladores, dissipador e componentes internos. 🧴 Aplicamos pasta térmica de alta performance, garantindo melhor condução de calor.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-microchip"></i><h3>Upgrade Peças (SSD/RAM)</h3><span class="price"><span class="old-price">R$ 65,00</span>R$ 50,00</span><button class="btn" onclick="selecionar('Upgrade Peças PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">⚡ Instalação de SSDs (até 5x mais rápido que HD), compatibilização e clonagem de dados. 💾 Aumento de memória RAM para multitarefa suave e programas pesados.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-bolt"></i><h3>Otimização FPS</h3><span class="price"><span class="old-price">R$ 100,00</span>R$ 80,00</span><button class="btn" onclick="selecionar('Otimização FPS PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🎮 Ajustes finos de configurações de jogo para ganho real de FPS. 📊 Otimizamos drivers de vídeo, desativamos programas em background, ajustamos Power Plan.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-hammer"></i><h3>Ajuda na Montagem do PC</h3><span class="price">Consulte</span><button class="btn" onclick="selecionar('Ajuda Montagem PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🖥️ Fazemos o orçamento das peças conforme seus desejos e necessidades. 💡 Consultoria técnica personalizada para montar um PC de acordo com seu orçamento. 🎯 Selecionamos as melhores relações custo-benefício para cada tipo de uso.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-snowflake"></i><h3>Limpeza e Pasta Térmica</h3><span class="price"><span class="old-price">R$ 65,00</span>R$ 50,00</span><div class="service-location">📍 Guarapuava - Presencial</div><button class="btn" onclick="selecionar('Limpeza e Pasta Térmica PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🌬️ Limpeza interna completa: removemos toda a poeira dos ventiladores, dissipador e componentes internos. 🧴 Aplicamos pasta térmica de alta performance, garantindo melhor condução de calor.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-microchip"></i><h3>Upgrade Peças (SSD/RAM)</h3><span class="price"><span class="old-price">R$ 65,00</span>R$ 50,00</span><div class="service-location">📍 Guarapuava - Presencial</div><button class="btn" onclick="selecionar('Upgrade Peças PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">⚡ Instalação de SSDs (até 5x mais rápido que HD), compatibilização e clonagem de dados. 💾 Aumento de memória RAM para multitarefa suave e programas pesados.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-bolt"></i><h3>Otimização FPS</h3><span class="price"><span class="old-price">R$ 100,00</span>R$ 80,00</span><div class="service-location">📍 Guarapuava - Presencial</div><button class="btn" onclick="selecionar('Otimização FPS PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🎮 Ajustes finos de configurações de jogo para ganho real de FPS. 📊 Otimizamos drivers de vídeo, desativamos programas em background, ajustamos Power Plan.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-hammer"></i><h3>Ajuda na Montagem do PC</h3><span class="price">Consulte</span><div class="service-location">📍 Guarapuava - Presencial</div><button class="btn" onclick="selecionar('Ajuda Montagem PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🖥️ Fazemos o orçamento das peças conforme seus desejos e necessidades. 💡 Consultoria técnica personalizada para montar um PC de acordo com seu orçamento. 🎯 Selecionamos as melhores relações custo-benefício para cada tipo de uso.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-headset"></i><h3>Suporte Remoto</h3><span class="price">R$ 70,00</span><div class="service-location">💻 Remoto - Acesso ao PC</div><button class="btn" onclick="selecionar('Suporte Remoto PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🌐 Acesso remoto ao seu PC para resolver problemas, otimizações e diagnósticos. ⚡ Prático e rápido, resolve problemas sem você sair de casa!</p></div></div>
     </div>
 
     <h2 class="section-title" id="aulas">Aulas práticas 📚</h2>
     <div class="grid">
-        <div class="card"><div class="content"><i class="fas fa-user-secret"></i><h3>Boas Práticas Hacker</h3><span class="price">R$ 100,00</span><button class="btn" onclick="selecionar('Aula Boas Práticas Hacker')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🔐 Aprenda sobre segurança da informação, proteção de dados e como os hackers agem. 🛡️ Tópicos: senhas seguras, autenticação 2FA, phishing, malware, Wi-Fi seguro.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-file-word"></i><h3>Pacote Office</h3><span class="price">R$ 200,00</span><button class="btn" onclick="selecionar('Aula Pacote Office')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">📝 Word: formatação profissional, tabelas, estilos e referências. 📊 Excel: fórmulas avançadas, gráficos, análise de dados. 📈 PowerPoint: apresentações impactantes.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-graduation-cap"></i><h3>Informática Particular</h3><span class="price">R$ 30,00 /h</span><button class="btn" onclick="selecionar('Aula Informática Particular')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">💡 Aulas personalizadas conforme seu nível: Windows, programas, internet, redes sociais. 🎯 Foco na sua autonomia digital, resolvemos suas dúvidas específicas.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-video"></i><h3>Edição de Vídeos</h3><span class="price">R$ 150,00</span><button class="btn" onclick="selecionar('Aula Edição de Vídeos')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🎬 Aprenda edição com softwares profissionais: cortes, efeitos e transições. 🎥 Composição visual, sincronização de áudio, correção de cores. ✨ Crie conteúdos incríveis para YouTube, TikTok e redes sociais!</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-user-secret"></i><h3>Boas Práticas Hacker</h3><span class="price">R$ 100,00</span><div class="service-location">💻 Online | 📍 Guarapuava Presencial</div><button class="btn" onclick="selecionar('Aula Boas Práticas Hacker')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🔐 Aprenda sobre segurança da informação, proteção de dados e como os hackers agem. 🛡️ Tópicos: senhas seguras, autenticação 2FA, phishing, malware, Wi-Fi seguro.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-file-word"></i><h3>Pacote Office</h3><span class="price">R$ 200,00</span><div class="service-location">💻 Online | 📍 Guarapuava Presencial</div><button class="btn" onclick="selecionar('Aula Pacote Office')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">📝 Word: formatação profissional, tabelas, estilos e referências. 📊 Excel: fórmulas avançadas, gráficos, análise de dados. 📈 PowerPoint: apresentações impactantes.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-graduation-cap"></i><h3>Informática Particular</h3><span class="price">R$ 30,00 /h</span><div class="service-location">💻 Online | 📍 Guarapuava Presencial</div><button class="btn" onclick="selecionar('Aula Informática Particular')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">💡 Aulas personalizadas conforme seu nível: Windows, programas, internet, redes sociais. 🎯 Foco na sua autonomia digital, resolvemos suas dúvidas específicas.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-video"></i><h3>Edição de Vídeos</h3><span class="price">R$ 150,00</span><div class="service-location">💻 Online | 📍 Guarapuava Presencial</div><button class="btn" onclick="selecionar('Aula Edição de Vídeos')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🎬 Aprenda edição com softwares profissionais: cortes, efeitos e transições. 🎥 Composição visual, sincronização de áudio, correção de cores. ✨ Crie conteúdos incríveis para YouTube, TikTok e redes sociais!</p></div></div>
     </div>
 </div>
 
@@ -236,10 +237,12 @@
         <option value="Formatação Mobile">Formatação Mobile</option>
         <option value="Troca de Peças Mobile">Troca de Peças Mobile</option>
         <option value="Remoção de Vírus Mobile">Remoção de Vírus Mobile</option>
+        <option value="Suporte Online Mobile">Suporte Online Mobile - R$ 20</option>
         <option value="Limpeza e Pasta Térmica PC">Limpeza e Pasta Térmica PC</option>
         <option value="Upgrade Peças PC">Upgrade Peças PC</option>
         <option value="Otimização FPS PC">Otimização FPS PC</option>
         <option value="Ajuda Montagem PC">Ajuda Montagem PC</option>
+        <option value="Suporte Remoto PC">Suporte Remoto PC - R$ 70</option>
         <option value="Aula Boas Práticas Hacker">Aula Boas Práticas Hacker</option>
         <option value="Aula Pacote Office">Aula Pacote Office</option>
         <option value="Aula Informática Particular">Aula Informática Particular</option>
@@ -470,7 +473,7 @@ Vale MUITO!</div>
         <i class="fas fa-robot" style="font-size: clamp(1.4rem, 4vw, 1.8rem); color:#00ff88;"></i>
         <h3>Optimus IA</h3>
         <div class="status"></div>
-        <button onclick="toggleChat()" style="background:none;border:none;color:#888;font-size:clamp(1.2rem, 4vw, 1.6rem);cursor:pointer;padding:4px;">✕</button>
+        <button onclick="toggleChat()">✕</button>
     </div>
     <div id="chat-body">
         <div class="chat-message bot-message" id="greeting-msg">👋 Olá! Sou a <strong>Optimus IA</strong>
@@ -484,7 +487,7 @@ Estou aqui para ajudar com dúvidas sobre nossos serviços!
             <div class="quick-btn" onclick="quickReply(this)">📱 Lento</div>
             <div class="quick-btn" onclick="quickReply(this)">🛡️ Vírus!</div>
             <div class="quick-btn" onclick="quickReply(this)">📞 Agendar</div>
-            <div class="quick-btn" onclick="quickReply(this)">💬 Daniel</div>
+            <div class="quick-btn" onclick="quickReply(this)">💬 Suporte</div>
         </div>
     </div>
     <div id="chat-input-area">
@@ -494,7 +497,6 @@ Estou aqui para ajudar com dúvidas sobre nossos serviços!
 </div>
 
 <footer>© 2026 OPTIMUS TECH - TODOS OS DIREITOS RESERVADOS</footer>
-
 <script>
     const respostasIA = {
         "custo": "💰 MELHOR CUSTO-BENEFÍCIO:\n\n🥇 TOP 3:\n1️⃣ Formatação Mobile - R$ 50\n2️⃣ Limpeza + Pasta - R$ 50\n3️⃣ Upgrade RAM/SSD - R$ 50",
@@ -502,7 +504,7 @@ Estou aqui para ajudar com dúvidas sobre nossos serviços!
         "lento": "📱 CELULAR LENTO?\n\n❌ Causas:\n• Memória cheia\n• Muitos apps\n• Cache grande\n\n✅ Solução: Formatação\nR$ 50,00 | Fica novo!",
         "virus": "🛡️ TEM VÍRUS?\n\n✅ Remove 100%\n📱 Celular: R$ 40 (1-2h)\n💻 PC: Consulte\n\nRemove malware completamente!",
         "agendar": "📅 COMO AGENDAR:\n\n1️⃣ Seu nome\n2️⃣ Serviço\n3️⃣ Data/hora\n\nOu WhatsApp:\n(42) 99911-2756",
-        "daniel": "👨‍💻 QUER FALAR COM DANIEL?\n\nClique no botão abaixo!"
+        "suporte": "👨‍💻 QUER FALAR COM SUPORTE?\n\nClique no botão abaixo!"
     };
 
     function showTyping() {
@@ -548,7 +550,7 @@ Estou aqui para ajudar com dúvidas sobre nossos serviços!
             if (q.includes(chave)) {
                 setTimeout(() => {
                     addMessage(respostasIA[chave], false);
-                    if (chave === "daniel") {
+                    if (chave === "suporte") {
                         setTimeout(() => addWhatsAppButton(), 500);
                     }
                 }, 700);
@@ -557,7 +559,7 @@ Estou aqui para ajudar com dúvidas sobre nossos serviços!
         }
 
         setTimeout(() => {
-            addMessage("Ótima pergunta! 🤔\n\nMe diga mais:\n• É sobre PC ou Mobile?\n• Qual é o problema?\n\nOu fale com Daniel! 📞", false);
+            addMessage("Ótima pergunta! 🤔\n\nMe diga mais:\n• É sobre PC ou Mobile?\n• Qual é o problema?\n\nOu fale com Suporte! 📞", false);
             setTimeout(() => addWhatsAppButton(), 500);
         }, 700);
     }
@@ -607,7 +609,8 @@ Estou aqui para ajudar com dúvidas sobre nossos serviços!
         desc.style.display = (desc.style.display === "block") ? "none" : "block";
     }
 
-    window.onload = () => {
+    window.onload
+    = () => {
         setTimeout(() => {
             const letters = document.querySelectorAll('.falling-letter');
             letters.forEach((l, i) => setTimeout(() => l.classList.add('fall'), i * 80));
@@ -628,7 +631,7 @@ Estou aqui para ajudar com dúvidas sobre nossos serviços!
         const s = document.getElementById('cliServico').value;
         const d = document.getElementById('cliData').value;
         if(!n || !s || !d) return alert("Preencha tudo!");
-        window.open(`https://wa.me/5542999112756?text=Olá Daniel! Sou ${n}, gostaria de agendar: ${s}, para ${d}`);
+        window.open(`https://wa.me/5542999112756?text=Olá! Sou ${n}, gostaria de agendar: ${s}, para ${d}`);
     }
 
     document.addEventListener('click', (e) => {
