@@ -19,7 +19,9 @@
         .nav-links { display: flex; align-items: center; gap: clamp(8px, 2vw, 15px); flex-wrap: wrap; justify-content: center; }
         .nav-links a { color: #888; text-decoration: none; font-size: clamp(0.65rem, 2vw, 0.75rem); font-weight: bold; transition: 0.3s; cursor: pointer; text-transform: uppercase; white-space: nowrap; }
         .nav-links a:hover, .nav-links a:active { color: var(--primary); }
-        .nav-contact { color: var(--primary) !important; border: 1px solid rgba(0,255,136,0.2); padding: clamp(4px, 1vw, 8px); border-radius: 5px; font-size: clamp(0.6rem, 1.5vw, 0.7rem) !important; display: inline-flex; align-items: center; }
+        .nav-contact { color: #888 !important; border: 1px solid rgba(128,128,128,0.3); padding: clamp(4px, 1vw, 8px); border-radius: 5px; font-size: 0 !important; display: inline-flex; align-items: center; gap: 4px; }
+        .nav-contact:hover, .nav-contact:active { color: var(--primary) !important; border-color: rgba(0,255,136,0.2) !important; }
+        .nav-contact i { font-size: clamp(0.8rem, 2vw, 1rem) !important; }
 
         .hero-loja { height: clamp(30vh, 50vh, 45vh); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, #0a1f14 0%, #000 100%); padding: clamp(20px, 4vw, 30px); margin-top: clamp(60px, 10vw, 75px); }
         .hero-loja h1 { font-size: clamp(1.8rem, 8vw, 4rem); color: var(--primary); margin-bottom: clamp(8px, 2vw, 10px); letter-spacing: clamp(1px, 1vw, 2px); }
@@ -27,8 +29,8 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: clamp(25px, 5vw, 40px) clamp(15px, 4vw, 15px); }
         .produtos-header { display: flex; justify-content: center; align-items: center; margin-bottom: clamp(20px, 4vw, 30px); flex-wrap: wrap; gap: clamp(15px, 3vw, 25px); position: relative; }
-        .section-title { font-size: clamp(1.3rem, 5vw, 1.8rem); color: var(--primary); margin: 0; text-align: center; flex: 0 0 auto; }
-        .btn-voltar-container { position: absolute; right: 0; top: 0; }
+        .section-title { font-size: clamp(1.3rem, 5vw, 1.8rem); color: var(--primary); margin: 0; text-align: center; flex: 0 0 auto; animation: colorFlow 6s ease-in-out infinite; }
+        @keyframes colorFlow { 0%, 100% { color: #00ff88; } 25% { color: #00dd77; } 50% { color: #00cc88; } 75% { color: #00dd77; } }
         
         .filtros { display: flex; justify-content: center; gap: clamp(8px, 2vw, 10px); margin-bottom: clamp(25px, 5vw, 35px); flex-wrap: wrap; padding: 0 clamp(10px, 2vw, 10px); }
         .filtro-btn { background: #1a1a1a; color: #888; border: 1px solid #333; padding: clamp(8px, 2vw, 10px) clamp(14px, 3vw, 18px); border-radius: 25px; cursor: pointer; transition: 0.3s; font-weight: bold; font-size: clamp(0.75rem, 2.5vw, 0.85rem); touch-action: manipulation; white-space: nowrap; }
@@ -53,7 +55,10 @@
         .btn-comprar { background: linear-gradient(135deg, #ff6b00, #ff8c00); color: #fff; border: none; padding: clamp(8px, 2vw, 10px) clamp(12px, 2vw, 15px); border-radius: clamp(6px, 2vw, 8px); font-weight: 900; cursor: pointer; transition: 0.3s; text-transform: uppercase; width: 100%; margin-bottom: 0; font-size: clamp(0.65rem, 2vw, 0.75rem); touch-action: manipulation; }
         .btn-comprar:hover, .btn-comprar:active { background: linear-gradient(135deg, #ff8c00, #ffa500); transform: scale(1.02); }
 
-        #carrinho-flutuante { position: fixed; bottom: clamp(25px, 5vw, 30px); right: clamp(25px, 5vw, 30px); background: linear-gradient(135deg, #ff6b00, #ff8c00); width: clamp(55px, 12vw, 60px); height: clamp(55px, 12vw, 60px); border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 15px 40px rgba(255, 107, 0, 0.6); cursor: pointer; transition: 0.3s; font-size: clamp(24px, 6vw, 28px); color: #fff; touch-action: manipulation; }
+        #btnTopo { display: none; position: fixed; bottom: clamp(30px, 6vw, 40px); left: clamp(30px, 6vw, 40px); z-index: 99998; border: 2px solid var(--primary); background: rgba(0,0,0,0.9); color: var(--primary); cursor: pointer; width: clamp(40px, 10vw, 55px); height: clamp(40px, 10vw, 55px); border-radius: 50%; font-size: clamp(16px, 4vw, 22px); transition: 0.3s; backdrop-filter: blur(10px); align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(0,0,0,0.5); touch-action: manipulation; }
+        #btnTopo:hover, #btnTopo:active { background: var(--primary); color: #000; }
+
+        #carrinho-flutuante { position: fixed; bottom: clamp(30px, 6vw, 40px); right: clamp(30px, 6vw, 40px); background: linear-gradient(135deg, #ff6b00, #ff8c00); width: clamp(40px, 10vw, 55px); height: clamp(40px, 10vw, 55px); border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 15px 40px rgba(255, 107, 0, 0.6); cursor: pointer; transition: 0.3s; font-size: clamp(20px, 5vw, 28px); color: #fff; touch-action: manipulation; border: none; }
         #carrinho-flutuante:hover, #carrinho-flutuante:active { transform: scale(1.1); }
         .carrinho-badge { position: absolute; top: -5px; right: -5px; background: #ff0000; color: #fff; border-radius: 50%; width: clamp(20px, 5vw, 22px); height: clamp(20px, 5vw, 22px); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: clamp(0.65rem, 2vw, 0.75rem); }
 
@@ -74,12 +79,6 @@
         .carrinho-vazio { text-align: center; padding: clamp(20px, 4vw, 30px) clamp(12px, 3vw, 15px); color: #666; }
         .carrinho-vazio i { font-size: clamp(2rem, 8vw, 2.5rem); margin-bottom: clamp(12px, 2vw, 15px); display: block; }
 
-        .btn-voltar { background: var(--primary); color: #000; border: none; padding: clamp(8px, 2vw, 10px) clamp(15px, 3vw, 20px); border-radius: clamp(6px, 2vw, 8px); font-weight: 900; cursor: pointer; text-transform: uppercase; font-size: clamp(0.7rem, 2vw, 0.8rem); transition: 0.3s; white-space: nowrap; touch-action: manipulation; }
-        .btn-voltar:hover, .btn-voltar:active { background: #fff; }
-
-        #btnTopo { display: none; position: fixed; bottom: clamp(80px, 15vw, 100px); left: clamp(15px, 3vw, 20px); z-index: 99999; border: 2px solid var(--primary); background: rgba(0,0,0,0.9); color: var(--primary); cursor: pointer; width: clamp(40px, 10vw, 45px); height: clamp(40px, 10vw, 45px); border-radius: 50%; font-size: clamp(16px, 4vw, 18px); transition: 0.3s; backdrop-filter: blur(10px); align-items: center; justify-content: center; touch-action: manipulation; }
-        #btnTopo:hover, #btnTopo:active { background: var(--primary); color: #000; }
-
         footer { text-align: center; padding: clamp(20px, 4vw, 30px) clamp(15px, 4vw, 15px); color: #444; font-size: clamp(0.65rem, 2vw, 0.75rem); border-top: 1px solid #111; }
 
         @media (max-width: 768px) {
@@ -88,12 +87,10 @@
             .container { padding: 25px 12px; }
             .grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
             .produtos-header { flex-direction: column; gap: 15px; }
-            .btn-voltar-container { position: static; width: 100%; }
-            .btn-voltar { width: 100%; }
             #modal-carrinho { justify-content: center; }
             .carrinho-modal { width: 95%; max-width: 100%; max-height: 85vh; border-left: none; border-top: 2px solid var(--primary); }
-            #btnTopo { bottom: 70px; left: 12px; }
-            #carrinho-flutuante { width: 50px; height: 50px; font-size: 22px; }
+            #btnTopo { bottom: 30px; left: 30px; }
+            #carrinho-flutuante { bottom: 30px; right: 30px; }
         }
 
         @media (max-width: 480px) {
@@ -115,14 +112,18 @@
             .filtros { gap: 6px; }
             .filtro-btn { padding: 6px 10px; font-size: 0.65rem; }
             .carrinho-modal { width: 98%; max-height: 80vh; border-top: 2px solid var(--primary); border-left: none; }
-            #btnTopo { bottom: 60px; left: 10px; width: 38px; height: 38px; font-size: 14px; }
-            #carrinho-flutuante { bottom: 20px; right: 15px; width: 48px; height: 48px; font-size: 20px; }
+            #btnTopo { bottom: 20px; left: 20px; width: 40px; height: 40px; font-size: 16px; }
+            #carrinho-flutuante { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 18px; }
         }
     </style>
 </head>
 <body>
 
 <button onclick="topo()" id="btnTopo"><i class="fas fa-arrow-up"></i></button>
+<button onclick="abrirCarrinho()" id="carrinho-flutuante">
+    <i class="fas fa-shopping-cart"></i>
+    <div class="carrinho-badge" id="carrinho-count">0</div>
+</button>
 
 <header>
     <nav>
@@ -131,6 +132,7 @@
             <a href="index.html">HOME</a>
             <a href="index.html#mobile">SERVIÇOS</a>
             <a href="index.html#agendar">AGENDAR</a>
+            <a href="index.html#agendar">SUPORTE</a>
             <a href="mailto:optimustech.support@gmail.com" class="nav-contact"><i class="far fa-envelope"></i></a>
             <a href="https://wa.me/5542999112756" class="nav-contact" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
@@ -139,33 +141,27 @@
 
 <section class="hero-loja">
     <h1>🛒 LOJA OPTIMUS</h1>
-    <p>Produtos Premium para sua Performance</p>
+    <p>Os melhores produtos para seu computador e celular</p>
 </section>
 
 <div class="container">
     <div class="produtos-header">
         <h2 class="section-title">Produtos</h2>
-        <div class="btn-voltar-container">
-            <a href="index.html" class="btn-voltar">← Voltar</a>
-        </div>
     </div>
     
     <div class="filtros">
         <button class="filtro-btn active" onclick="filtrar('todos')">Todos</button>
+        <button class="filtro-btn" onclick="filtrar('celulares')">Celulares</button>
+        <button class="filtro-btn" onclick="filtrar('acessorios-celular')">Acessórios Celular</button>
         <button class="filtro-btn" onclick="filtrar('ssd')">SSD</button>
         <button class="filtro-btn" onclick="filtrar('ram')">Memória RAM</button>
         <button class="filtro-btn" onclick="filtrar('perifericos')">Periféricos</button>
         <button class="filtro-btn" onclick="filtrar('monitores')">Monitores</button>
         <button class="filtro-btn" onclick="filtrar('notebooks')">Notebooks</button>
-        <button class="filtro-btn" onclick="filtrar('acessorios')">Acessórios</button>
+        <button class="filtro-btn" onclick="filtrar('acessorios')">Acessórios PC</button>
     </div>
 
     <div class="grid" id="produtos-grid"></div>
-</div>
-
-<div id="carrinho-flutuante" onclick="abrirCarrinho()">
-    <i class="fas fa-shopping-cart"></i>
-    <div class="carrinho-badge" id="carrinho-count">0</div>
 </div>
 
 <div id="modal-carrinho" onclick="fecharCarrinho(event)">
@@ -194,86 +190,65 @@
 
 <script>
 const produtos = [
-    {id: 1, nome: 'Memória RAM 8GB DDR5 5600MHz', categoria: 'ram', preco: 189.00, precoAntigo: 249.00, descricao: 'DDR5 8GB 5600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.9, reviews: 187},
-    {id: 2, nome: 'Memória RAM 16GB DDR5 5600MHz', categoria: 'ram', preco: 349.00, precoAntigo: 449.00, descricao: 'DDR5 16GB 5600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.9, reviews: 156},
-    {id: 3, nome: 'Memória RAM 32GB DDR5 5600MHz', categoria: 'ram', preco: 689.00, precoAntigo: 899.00, descricao: 'DDR5 32GB 5600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.8, reviews: 89},
-    {id: 4, nome: 'Memória RAM 2GB DDR4 2133MHz', categoria: 'ram', preco: 39.00, precoAntigo: 59.00, descricao: 'DDR4 2GB 2133MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.3, reviews: 45},
-    {id: 5, nome: 'Memória RAM 4GB DDR4 2400MHz', categoria: 'ram', preco: 69.00, precoAntigo: 99.00, descricao: 'DDR4 4GB 2400MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.5, reviews: 78},
-    {id: 6, nome: 'Memória RAM 8GB DDR4 2666MHz', categoria: 'ram', preco: 129.00, precoAntigo: 179.00, descricao: 'DDR4 8GB 2666MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.7, reviews: 234},
-    {id: 7, nome: 'Memória RAM 8GB DDR4 3200MHz', categoria: 'ram', preco: 149.00, precoAntigo: 199.00, descricao: 'DDR4 8GB 3200MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.8, reviews: 312},
-    {id: 8, nome: 'Memória RAM 16GB DDR4 2666MHz', categoria: 'ram', preco: 229.00, precoAntigo: 329.00, descricao: 'DDR4 16GB 2666MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.7, reviews: 198},
-    {id: 9, nome: 'Memória RAM 16GB DDR4 3200MHz', categoria: 'ram', preco: 269.00, precoAntigo: 369.00, descricao: 'DDR4 16GB 3200MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.8, reviews: 267},
-    {id: 10, nome: 'Memória RAM 16GB DDR4 3600MHz', categoria: 'ram', preco: 299.00, precoAntigo: 399.00, descricao: 'DDR4 16GB 3600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.9, reviews: 145},
-    {id: 11, nome: 'Memória RAM 32GB DDR4 3200MHz', categoria: 'ram', preco: 499.00, precoAntigo: 699.00, descricao: 'DDR4 32GB 3200MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.8, reviews: 128},
-    {id: 12, nome: 'Memória RAM 32GB DDR4 3600MHz', categoria: 'ram', preco: 549.00, precoAntigo: 749.00, descricao: 'DDR4 32GB 3600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.9, reviews: 98},
-    {id: 13, nome: 'Memória RAM 2GB DDR3 1333MHz', categoria: 'ram', preco: 29.00, precoAntigo: 49.00, descricao: 'DDR3 2GB 1333MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.2, reviews: 34},
-    {id: 14, nome: 'Memória RAM 4GB DDR3 1600MHz', categoria: 'ram', preco: 49.00, precoAntigo: 79.00, descricao: 'DDR3 4GB 1600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.4, reviews: 56},
-    {id: 15, nome: 'Memória RAM 8GB DDR3 1600MHz', categoria: 'ram', preco: 89.00, precoAntigo: 139.00, descricao: 'DDR3 8GB 1600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.5, reviews: 92},
-    {id: 16, nome: 'Memória RAM 8GB DDR3 1866MHz', categoria: 'ram', preco: 99.00, precoAntigo: 149.00, descricao: 'DDR3 8GB 1866MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.6, reviews: 76},
-    {id: 17, nome: 'Unidade SSD 240GB 2.5 polegadas SATA III', categoria: 'ssd', preco: 149.00, precoAntigo: 199.00, descricao: 'SSD 240GB SATA 3.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.7, reviews: 234},
-    {id: 18, nome: 'Unidade SSD 480GB 2.5 polegadas SATA III', categoria: 'ssd', preco: 249.00, precoAntigo: 329.00, descricao: 'SSD 480GB SATA 3.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.8, reviews: 312},
-    {id: 19, nome: 'Unidade SSD 960GB 2.5 polegadas SATA III', categoria: 'ssd', preco: 449.00, precoAntigo: 599.00, descricao: 'SSD 960GB SATA 3.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.8, reviews: 189},
-    {id: 20, nome: 'Unidade SSD 1TB 2.5 polegadas SATA III', categoria: 'ssd', preco: 499.00, precoAntigo: 699.00, descricao: 'SSD 1TB SATA 3.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 267},
-    {id: 21, nome: 'Unidade SSD 250GB NVMe M.2 PCIe 3.0', categoria: 'ssd', preco: 179.00, precoAntigo: 249.00, descricao: 'NVMe 250GB PCIe 3.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.8, reviews: 156},
-    {id: 22, nome: 'Unidade SSD 500GB NVMe M.2 PCIe 3.0', categoria: 'ssd', preco: 299.00, precoAntigo: 399.00, descricao: 'NVMe 500GB PCIe 3.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 234},
-    {id: 23, nome: 'Unidade SSD 1TB NVMe M.2 PCIe 3.0', categoria: 'ssd', preco: 549.00, precoAntigo: 749.00, descricao: 'NVMe 1TB PCIe 3.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 312},
-    {id: 24, nome: 'Unidade SSD 500GB NVMe M.2 PCIe 4.0', categoria: 'ssd', preco: 399.00, precoAntigo: 549.00, descricao: 'NVMe 500GB PCIe 4.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 198},
-    {id: 25, nome: 'Unidade SSD 1TB NVMe M.2 PCIe 4.0', categoria: 'ssd', preco: 699.00, precoAntigo: 949.00, descricao: 'NVMe 1TB PCIe 4.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 267},
-    {id: 26, nome: 'Unidade SSD 2TB NVMe M.2 PCIe 4.0', categoria: 'ssd', preco: 1299.00, precoAntigo: 1799.00, descricao: 'NVMe 2TB PCIe 4.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 145},
-    {id: 27, nome: 'Unidade SSD 1TB NVMe M.2 PCIe 5.0', categoria: 'ssd', preco: 899.00, precoAntigo: 1299.00, descricao: 'NVMe 1TB PCIe 5.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 89},
-    {id: 28, nome: 'Unidade SSD 2TB NVMe M.2 PCIe 5.0', categoria: 'ssd', preco: 1599.00, precoAntigo: 2199.00, descricao: 'NVMe 2TB PCIe 5.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 67},
-    {id: 29, nome: 'Teclado Mecânico RGB Switches Azuis', categoria: 'perifericos', preco: 199.00, precoAntigo: 299.00, descricao: 'Teclado Mecânico RGB', icon: '<i class="fas fa-keyboard"></i>', avaliacao: 4.8, reviews: 267},
-    {id: 30, nome: 'Teclado Mecânico RGB Switches Vermelhos', categoria: 'perifericos', preco: 209.00, precoAntigo: 309.00, descricao: 'Teclado Mecânico Red', icon: '<i class="fas fa-keyboard"></i>', avaliacao: 4.9, reviews: 234},
-    {id: 31, nome: 'Teclado Mecânico RGB Switches Marrons', categoria: 'perifericos', preco: 219.00, precoAntigo: 319.00, descricao: 'Teclado Mecânico Brown', icon: '<i class="fas fa-keyboard"></i>', avaliacao: 4.8, reviews: 189},
-    {id: 32, nome: 'Teclado Sem Fio Wireless 2.4GHz', categoria: 'perifericos', preco: 89.00, precoAntigo: 139.00, descricao: 'Teclado Wireless', icon: '<i class="fas fa-keyboard"></i>', avaliacao: 4.6, reviews: 156},
-    {id: 33, nome: 'Teclado Bluetooth com Bateria Recarregável', categoria: 'perifericos', preco: 129.00, precoAntigo: 189.00, descricao: 'Teclado Bluetooth', icon: '<i class="fas fa-keyboard"></i>', avaliacao: 4.7, reviews: 145},
-    {id: 34, nome: 'Mouse Gamer RGB 12000 DPI Sensor óptico', categoria: 'perifericos', preco: 149.00, precoAntigo: 229.00, descricao: 'Mouse Gamer 12000 DPI', icon: '<i class="fas fa-mouse"></i>', avaliacao: 4.9, reviews: 312},
-    {id: 35, nome: 'Mouse Gamer RGB 16000 DPI Sensor laser', categoria: 'perifericos', preco: 189.00, precoAntigo: 289.00, descricao: 'Mouse Gamer 16000 DPI', icon: '<i class="fas fa-mouse"></i>', avaliacao: 4.9, reviews: 267},
-    {id: 36, nome: 'Mouse Sem Fio Wireless 2.4GHz Silencioso', categoria: 'perifericos', preco: 69.00, precoAntigo: 119.00, descricao: 'Mouse Wireless', icon: '<i class="fas fa-mouse"></i>', avaliacao: 4.7, reviews: 234},
-    {id: 37, nome: 'Mouse Bluetooth com Bateria Recarregável', categoria: 'perifericos', preco: 89.00, precoAntigo: 149.00, descricao: 'Mouse Bluetooth', icon: '<i class="fas fa-mouse"></i>', avaliacao: 4.6, reviews: 178},
-    {id: 38, nome: 'Mouse Trackball Ergonômico Sem Fio', categoria: 'perifericos', preco: 99.00, precoAntigo: 159.00, descricao: 'Mouse Trackball', icon: '<i class="fas fa-mouse"></i>', avaliacao: 4.5, reviews: 98},
-    {id: 39, nome: 'Monitor LED 24 polegadas Full HD 1920x1080', categoria: 'monitores', preco: 599.00, precoAntigo: 799.00, descricao: 'Monitor 24\" Full HD', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.7, reviews: 289},
-    {id: 40, nome: 'Monitor LED 27 polegadas Full HD 1920x1080', categoria: 'monitores', preco: 699.00, precoAntigo: 899.00, descricao: 'Monitor 27\" Full HD', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.8, reviews: 234},
-    {id: 41, nome: 'Monitor LED 27 polegadas 2K 2560x1440', categoria: 'monitores', preco: 899.00, precoAntigo: 1199.00, descricao: 'Monitor 27\" 2K', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.8, reviews: 178},
-    {id: 42, nome: 'Monitor LED 32 polegadas 4K 3840x2160', categoria: 'monitores', preco: 1499.00, precoAntigo: 1999.00, descricao: 'Monitor 32\" 4K', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.9, reviews: 145},
-    {id: 43, nome: 'Monitor Gamer Curvo 27 polegadas 165Hz', categoria: 'monitores', preco: 1199.00, precoAntigo: 1599.00, descricao: 'Monitor Gaming Curvo', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.9, reviews: 189},
-    {id: 44, nome: 'Monitor Gamer 24 polegadas 240Hz', categoria: 'monitores', preco: 899.00, precoAntigo: 1199.00, descricao: 'Monitor 24\" 240Hz', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.9, reviews: 156},
-    {id: 45, nome: 'Notebook Intel Celeron 4GB RAM 64GB SSD 14 polegadas', categoria: 'notebooks', preco: 1299.00, precoAntigo: 1699.00, descricao: 'Notebook Celeron', icon: '<i class="fas fa-laptop"></i>', avaliacao: 4.3, reviews: 87},
-    {id: 46, nome: 'Notebook Intel Core i5 8GB RAM 256GB SSD 14 polegadas', categoria: 'notebooks', preco: 2499.00, precoAntigo: 3299.00, descricao: 'Notebook Core i5', icon: '<i class="fas fa-laptop"></i>', avaliacao: 4.7, reviews: 178},
-    {id: 47, nome: 'Notebook Intel Core i7 16GB RAM 512GB SSD 15 polegadas', categoria: 'notebooks', preco: 3799.00, precoAntigo: 4999.00, descricao: 'Notebook Core i7', icon: '<i class="fas fa-laptop"></i>', avaliacao: 4.8, reviews: 145},
-    {id: 48, nome: 'Notebook AMD Ryzen 5 8GB RAM 256GB SSD 15 polegadas', categoria: 'notebooks', preco: 2699.00, precoAntigo: 3599.00, descricao: 'Notebook Ryzen 5', icon: '<i class="fas fa-laptop"></i>', avaliacao: 4.7, reviews: 134},
-    {id: 49, nome: 'Notebook AMD Ryzen 7 16GB RAM 512GB SSD 15 polegadas', categoria: 'notebooks', preco: 3999.00, precoAntigo: 5299.00, descricao: 'Notebook Ryzen 7', icon: '<i class="fas fa-laptop"></i>', avaliacao: 4.8, reviews: 167},
-    {id: 50, nome: 'Notebook Gamer RTX 3050 Intel i5 16GB 512GB SSD', categoria: 'notebooks', preco: 4999.00, precoAntigo: 6499.00, descricao: 'Notebook Gamer RTX', icon: '<i class="fas fa-laptop"></i>', avaliacao: 4.9, reviews: 198},
-    {id: 51, nome: 'Pasta Térmica Arctic MX-6 2 Gramas', categoria: 'acessorios', preco: 49.00, precoAntigo: 69.00, descricao: 'Pasta Arctic MX-6 2g', icon: '<i class="fas fa-droplet"></i>', avaliacao: 4.8, reviews: 345},
-    {id: 52, nome: 'Pasta Térmica Arctic MX-6 4 Gramas', categoria: 'acessorios', preco: 79.00, precoAntigo: 109.00, descricao: 'Pasta Arctic MX-6 4g', icon: '<i class="fas fa-droplet"></i>', avaliacao: 4.9, reviews: 312},
-    {id: 53, nome: 'Pasta Térmica Thermal Grizzly Conductonaut', categoria: 'acessorios', preco: 129.00, precoAntigo: 169.00, descricao: 'Thermal Grizzly', icon: '<i class="fas fa-droplet"></i>', avaliacao: 4.9, reviews: 178},
-    {id: 54, nome: 'Pasta Térmica Cooler Master MasterGel Maker', categoria: 'acessorios', preco: 59.00, precoAntigo: 79.00, descricao: 'Cooler Master', icon: '<i class="fas fa-droplet"></i>', avaliacao: 4.7, reviews: 156},
-    {id: 55, nome: 'Cooler Processador Soquete 1155 2200RPM LED Azul', categoria: 'acessorios', preco: 89.00, precoAntigo: 129.00, descricao: 'Cooler Socket 1155', icon: '<i class="fas fa-fan"></i>', avaliacao: 4.6, reviews: 123},
-    {id: 56, nome: 'Cooler Processador Soquete AM4 2200RPM LED RGB', categoria: 'acessorios', preco: 99.00, precoAntigo: 149.00, descricao: 'Cooler Socket AM4', icon: '<i class="fas fa-fan"></i>', avaliacao: 4.7, reviews: 145},
-    {id: 57, nome: 'Cooler Processador Soquete LGA1700 2200RPM LED RGB', categoria: 'acessorios', preco: 109.00, precoAntigo: 159.00, descricao: 'Cooler Socket LGA1700', icon: '<i class="fas fa-fan"></i>', avaliacao: 4.7, reviews: 167},
-    {id: 58, nome: 'Cooler Processador Soquete 1366 2200RPM LED Vermelho', categoria: 'acessorios', preco: 119.00, precoAntigo: 169.00, descricao: 'Cooler Socket 1366', icon: '<i class="fas fa-fan"></i>', avaliacao: 4.6, reviews: 98},
-    {id: 59, nome: 'Cooler Processador Soquete 775 2200RPM LED Verde', categoria: 'acessorios', preco: 79.00, precoAntigo: 119.00, descricao: 'Cooler Socket 775', icon: '<i class="fas fa-fan"></i>', avaliacao: 4.5, reviews: 87},
-    {id: 60, nome: 'Cabo SATA III 50 centímetros', categoria: 'acessorios', preco: 29.00, precoAntigo: 49.00, descricao: 'Cabo SATA 50cm', icon: '<i class="fas fa-ethernet"></i>', avaliacao: 4.5, reviews: 234},
-    {id: 61, nome: 'Cabo SATA III 90 centímetros', categoria: 'acessorios', preco: 34.00, precoAntigo: 54.00, descricao: 'Cabo SATA 90cm', icon: '<i class="fas fa-code-branch"></i>', avaliacao: 4.6, reviews: 178},
-    {id: 62, nome: 'Cabo Alimentação Duplo Conector Molex', categoria: 'acessorios', preco: 39.00, precoAntigo: 59.00, descricao: 'Cabo Molex', icon: '<i class="fas fa-plug"></i>', avaliacao: 4.5, reviews: 145},
-    {id: 63, nome: 'Cabo Alimentação Serial ATA Power', categoria: 'acessorios', preco: 44.00, precoAntigo: 64.00, descricao: 'Cabo SATA Power', icon: '<i class="fas fa-bolt"></i>', avaliacao: 4.6, reviews: 167},
-    {id: 64, nome: 'Cabo HDMI 2.0 4K Premium 2 metros', categoria: 'acessorios', preco: 49.00, precoAntigo: 79.00, descricao: 'Cabo HDMI 2m', icon: '<i class="fas fa-arrow-right"></i>', avaliacao: 4.7, reviews: 189},
-    {id: 65, nome: 'Cabo DisplayPort 1.4 8K 3 metros', categoria: 'acessorios', preco: 69.00, precoAntigo: 109.00, descricao: 'Cabo DisplayPort', icon: '<i class="fas fa-arrows-alt-h"></i>', avaliacao: 4.8, reviews: 156},
-    {id: 66, nome: 'Kit Limpeza Profissional Completo', categoria: 'acessorios', preco: 89.00, precoAntigo: 139.00, descricao: 'Kit Limpeza', icon: '<i class="fas fa-broom"></i>', avaliacao: 4.7, reviews: 289},
-    {id: 67, nome: 'Kit Limpeza com Compressor 110V', categoria: 'acessorios', preco: 249.00, precoAntigo: 349.00, descricao: 'Kit Compressor 110V', icon: '<i class="fas fa-broom"></i>', avaliacao: 4.8, reviews: 156},
-    {id: 68, nome: 'Kit Limpeza com Compressor 220V', categoria: 'acessorios', preco: 279.00, precoAntigo: 379.00, descricao: 'Kit Compressor 220V', icon: '<i class="fas fa-broom"></i>', avaliacao: 4.8, reviews: 134},
-    {id: 69, nome: 'Pulseira Antiestática com Cabo de Aterramento', categoria: 'acessorios', preco: 49.00, precoAntigo: 79.00, descricao: 'Pulseira Antiestática', icon: '<i class="fas fa-ring"></i>', avaliacao: 4.8, reviews: 198},
-    {id: 70, nome: 'Suporte de Cooler Universal para Refrigerador', categoria: 'acessorios', preco: 59.00, precoAntigo: 89.00, descricao: 'Suporte Cooler', icon: '<i class="fas fa-wrench"></i>', avaliacao: 4.7, reviews: 123},
-    {id: 71, nome: 'Dissipador Alumínio com Ventilador 80mm LED', categoria: 'acessorios', preco: 119.00, precoAntigo: 169.00, descricao: 'Dissipador LED', icon: '<i class="fas fa-snowflake"></i>', avaliacao: 4.7, reviews: 145},
-    {id: 72, nome: 'Parafusos Sextavados M.3 Aço Inoxidável Kit 50 peças', categoria: 'acessorios', preco: 29.00, precoAntigo: 49.00, descricao: 'Kit Parafusos', icon: '<i class="fas fa-bolt"></i>', avaliacao: 4.6, reviews: 89},
-    {id: 73, nome: 'Espaçador Plástico para Placa Mãe Kit 10 peças', categoria: 'acessorios', preco: 34.00, precoAntigo: 54.00, descricao: 'Kit Espaçadores', icon: '<i class="fas fa-cube"></i>', avaliacao: 4.5, reviews: 76},
-    {id: 74, nome: 'Arandela de Feltro Protetor para Parafusos Kit 20 peças', categoria: 'acessorios', preco: 24.00, precoAntigo: 44.00, descricao: 'Kit Arandelas', icon: '<i class="fas fa-ring"></i>', avaliacao: 4.4, reviews: 62},
-    {id: 75, nome: 'Adaptador Serial ATA para IDE Parallel', categoria: 'acessorios', preco: 44.00, precoAntigo: 74.00, descricao: 'Adaptador SATA IDE', icon: '<i class="fas fa-plug"></i>', avaliacao: 4.5, reviews: 98},
-    {id: 76, nome: 'Mousepad Grande com RGB 80cm x 30cm', categoria: 'acessorios', preco: 149.00, precoAntigo: 229.00, descricao: 'Mousepad RGB', icon: '<i class="fas fa-square"></i>', avaliacao: 4.8, reviews: 267},
-    {id: 77, nome: 'Hub USB 3.0 com 7 Portas Powered', categoria: 'acessorios', preco: 99.00, precoAntigo: 159.00, descricao: 'Hub USB 7 Portas', icon: '<i class="fas fa-plug"></i>', avaliacao: 4.7, reviews: 178},
-    {id: 78, nome: 'Docking Station USB Type-C Multifuncional', categoria: 'acessorios', preco: 199.00, precoAntigo: 299.00, descricao: 'Docking Station USB-C', icon: '<i class="fas fa-link"></i>', avaliacao: 4.8, reviews: 134},
-    {id: 79, nome: 'Webcam Full HD 1080p com Microfone', categoria: 'acessorios', preco: 129.00, precoAntigo: 199.00, descricao: 'Webcam Full HD', icon: '<i class="fas fa-video"></i>', avaliacao: 4.7, reviews: 156},
-    {id: 80, nome: 'Headset Gamer com Microfone e RGB', categoria: 'acessorios', preco: 179.00, precoAntigo: 279.00, descricao: 'Headset Gamer RGB', icon: '<i class="fas fa-headphones"></i>', avaliacao: 4.8, reviews: 189}
+    // CELULARES
+    {id: 1, nome: 'Samsung Galaxy A13 64GB Azul', categoria: 'celulares', preco: 799.00, precoAntigo: 999.00, descricao: 'Galaxy A13 64GB', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.6, reviews: 156},
+    {id: 2, nome: 'Samsung Galaxy A23 128GB Preto', categoria: 'celulares', preco: 1099.00, precoAntigo: 1399.00, descricao: 'Galaxy A23 128GB', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.7, reviews: 189},
+    {id: 3, nome: 'Samsung Galaxy A53 128GB Azul', categoria: 'celulares', preco: 1799.00, precoAntigo: 2199.00, descricao: 'Galaxy A53 128GB', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.8, reviews: 234},
+    {id: 4, nome: 'iPhone 13 128GB Branco', categoria: 'celulares', preco: 2799.00, precoAntigo: 3499.00, descricao: 'iPhone 13 128GB', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.9, reviews: 312},
+    {id: 5, nome: 'iPhone 14 128GB Preto', categoria: 'celulares', preco: 3499.00, precoAntigo: 4299.00, descricao: 'iPhone 14 128GB', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.9, reviews: 267},
+    {id: 6, nome: 'iPhone 15 128GB Azul', categoria: 'celulares', preco: 4299.00, precoAntigo: 5299.00, descricao: 'iPhone 15 128GB', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.9, reviews: 178},
+    {id: 7, nome: 'Xiaomi Redmi Note 11 128GB Cinza', categoria: 'celulares', preco: 999.00, precoAntigo: 1299.00, descricao: 'Redmi Note 11', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.7, reviews: 145},
+    {id: 8, nome: 'Motorola Moto G32 128GB Cinza', categoria: 'celulares', preco: 899.00, precoAntigo: 1199.00, descricao: 'Moto G32 128GB', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.6, reviews: 123},
+
+    // ACESSÓRIOS CELULAR
+    {id: 9, nome: 'Bateria Original Samsung A50', categoria: 'acessorios-celular', preco: 89.00, precoAntigo: 139.00, descricao: 'Bateria A50', icon: '<i class="fas fa-battery-half"></i>', avaliacao: 4.8, reviews: 234},
+    {id: 10, nome: 'Bateria Original iPhone 12', categoria: 'acessorios-celular', preco: 129.00, precoAntigo: 189.00, descricao: 'Bateria iPhone 12', icon: '<i class="fas fa-battery-half"></i>', avaliacao: 4.9, reviews: 178},
+    {id: 11, nome: 'Tela LCD Samsung A30 Display', categoria: 'acessorios-celular', preco: 149.00, precoAntigo: 229.00, descricao: 'Tela LCD A30', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.7, reviews: 156},
+    {id: 12, nome: 'Tela OLED iPhone 13', categoria: 'acessorios-celular', preco: 199.00, precoAntigo: 299.00, descricao: 'Tela OLED iPhone 13', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.9, reviews: 145},
+    {id: 13, nome: 'Carregador Rápido 65W USB-C', categoria: 'acessorios-celular', preco: 49.00, precoAntigo: 89.00, descricao: 'Carregador 65W', icon: '<i class="fas fa-plug"></i>', avaliacao: 4.8, reviews: 267},
+    {id: 14, nome: 'Carregador Wireless 15W Preto', categoria: 'acessorios-celular', preco: 39.00, precoAntigo: 79.00, descricao: 'Carregador Wireless', icon: '<i class="fas fa-plug"></i>', avaliacao: 4.7, reviews: 189},
+    {id: 15, nome: 'Fone Bluetooth Estéreo Preto', categoria: 'acessorios-celular', preco: 79.00, precoAntigo: 149.00, descricao: 'Fone Bluetooth', icon: '<i class="fas fa-headphones"></i>', avaliacao: 4.6, reviews: 198},
+    {id: 16, nome: 'Fone Bluetooth com Cancelamento Ruído', categoria: 'acessorios-celular', preco: 199.00, precoAntigo: 349.00, descricao: 'Fone ANC', icon: '<i class="fas fa-headphones"></i>', avaliacao: 4.9, reviews: 234},
+    {id: 17, nome: 'Cabo USB-C 2m Nylon Trançado', categoria: 'acessorios-celular', preco: 24.00, precoAntigo: 44.00, descricao: 'Cabo USB-C', icon: '<i class="fas fa-code-branch"></i>', avaliacao: 4.7, reviews: 312},
+    {id: 18, nome: 'Cabo Lightning 2m Certificado', categoria: 'acessorios-celular', preco: 34.00, precoAntigo: 64.00, descricao: 'Cabo Lightning', icon: '<i class="fas fa-code-branch"></i>', avaliacao: 4.8, reviews: 267},
+    {id: 19, nome: 'Capa de Silicone Transparente Celular', categoria: 'acessorios-celular', preco: 19.00, precoAntigo: 39.00, descricao: 'Capa Silicone', icon: '<i class="fas fa-shield-alt"></i>', avaliacao: 4.5, reviews: 178},
+    {id: 20, nome: 'Película de Vidro Temperado 9H', categoria: 'acessorios-celular', preco: 14.00, precoAntigo: 29.00, descricao: 'Película 9H', icon: '<i class="fas fa-square"></i>', avaliacao: 4.8, reviews: 289},
+
+    // MEMÓRIA RAM
+    {id: 21, nome: 'Memória RAM 8GB DDR5 5600MHz', categoria: 'ram', preco: 189.00, precoAntigo: 249.00, descricao: 'DDR5 8GB 5600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.9, reviews: 187},
+    {id: 22, nome: 'Memória RAM 16GB DDR5 5600MHz', categoria: 'ram', preco: 349.00, precoAntigo: 449.00, descricao: 'DDR5 16GB 5600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.9, reviews: 156},
+    {id: 23, nome: 'Memória RAM 32GB DDR5 5600MHz', categoria: 'ram', preco: 689.00, precoAntigo: 899.00, descricao: 'DDR5 32GB 5600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.8, reviews: 89},
+    {id: 24, nome: 'Memória RAM 8GB DDR4 3200MHz', categoria: 'ram', preco: 149.00, precoAntigo: 199.00, descricao: 'DDR4 8GB 3200MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.8, reviews: 312},
+    {id: 25, nome: 'Memória RAM 16GB DDR4 3200MHz', categoria: 'ram', preco: 269.00, precoAntigo: 369.00, descricao: 'DDR4 16GB 3200MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.8, reviews: 267},
+
+    // SSD
+    {id: 26, nome: 'Unidade SSD 480GB SATA III', categoria: 'ssd', preco: 249.00, precoAntigo: 329.00, descricao: 'SSD 480GB SATA', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.8, reviews: 312},
+    {id: 27, nome: 'Unidade SSD 1TB SATA III', categoria: 'ssd', preco: 499.00, precoAntigo: 699.00, descricao: 'SSD 1TB SATA', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 267},
+    {id: 28, nome: 'Unidade SSD 500GB NVMe PCIe 3.0', categoria: 'ssd', preco: 299.00, precoAntigo: 399.00, descricao: 'NVMe 500GB', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 234},
+    {id: 29, nome: 'Unidade SSD 1TB NVMe PCIe 4.0', categoria: 'ssd', preco: 699.00, precoAntigo: 949.00, descricao: 'NVMe 1TB PCIe 4.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 267},
+
+    // PERIFÉRICOS
+    {id: 30, nome: 'Teclado Mecânico RGB Switches Azuis', categoria: 'perifericos', preco: 199.00, precoAntigo: 299.00, descricao: 'Teclado Mecânico', icon: '<i class="fas fa-keyboard"></i>', avaliacao: 4.8, reviews: 267},
+    {id: 31, nome: 'Mouse Gamer RGB 12000 DPI', categoria: 'perifericos', preco: 149.00, precoAntigo: 229.00, descricao: 'Mouse Gamer 12K', icon: '<i class="fas fa-mouse"></i>', avaliacao: 4.9, reviews: 312},
+    {id: 32, nome: 'Mouse Sem Fio Wireless', categoria: 'perifericos', preco: 69.00, precoAntigo: 119.00, descricao: 'Mouse Wireless', icon: '<i class="fas fa-mouse"></i>', avaliacao: 4.7, reviews: 234},
+
+    // MONITORES
+    {id: 33, nome: 'Monitor LED 24 Full HD', categoria: 'monitores', preco: 599.00, precoAntigo: 799.00, descricao: 'Monitor 24\" Full HD', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.7, reviews: 289},
+    {id: 34, nome: 'Monitor LED 27 2K', categoria: 'monitores', preco: 899.00, precoAntigo: 1199.00, descricao: 'Monitor 27\" 2K', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.8, reviews: 178},
+    {id: 35, nome: 'Monitor Gamer 27 165Hz', categoria: 'monitores', preco: 1199.00, precoAntigo: 1599.00, descricao: 'Monitor Gaming', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.9, reviews: 189},
+
+    // NOTEBOOKS
+    {id: 36, nome: 'Notebook Intel Core i5 8GB RAM', categoria: 'notebooks', preco: 2499.00, precoAntigo: 3299.00, descricao: 'Notebook i5', icon: '<i class="fas fa-laptop"></i>', avaliacao: 4.7, reviews: 178},
+    {id: 37, nome: 'Notebook Intel Core i7 16GB RAM', categoria: 'notebooks', preco: 3799.00, precoAntigo: 4999.00, descricao: 'Notebook i7', icon: '<i class="fas fa-laptop"></i>', avaliacao: 4.8, reviews: 145},
+    {id: 38, nome: 'Notebook Gamer RTX 3050', categoria: 'notebooks', preco: 4999.00, precoAntigo: 6499.00, descricao: 'Notebook Gamer', icon: '<i class="fas fa-laptop"></i>', avaliacao: 4.9, reviews: 198},
+
+    // ACESSÓRIOS PC
+    {id: 39, nome: 'Pasta Térmica Arctic MX-6 2g', categoria: 'acessorios', preco: 49.00, precoAntigo: 69.00, descricao: 'Pasta Arctic', icon: '<i class="fas fa-droplet"></i>', avaliacao: 4.8, reviews: 345},
+    {id: 40, nome: 'Cooler Processador LED RGB', categoria: 'acessorios', preco: 99.00, precoAntigo: 149.00, descricao: 'Cooler RGB', icon: '<i class="fas fa-fan"></i>', avaliacao: 4.7, reviews: 145},
+    {id: 41, nome: 'Mousepad RGB Grande 80cm', categoria: 'acessorios', preco: 149.00, precoAntigo: 229.00, descricao: 'Mousepad RGB', icon: '<i class="fas fa-square"></i>', avaliacao: 4.8, reviews: 267},
+    {id: 42, nome: 'Hub USB 3.0 com 7 Portas', categoria: 'acessorios', preco: 99.00, precoAntigo: 159.00, descricao: 'Hub USB 7P', icon: '<i class="fas fa-plug"></i>', avaliacao: 4.7, reviews: 178},
+    {id: 43, nome: 'Cabo HDMI 2.0 4K Premium 2m', categoria: 'acessorios', preco: 49.00, precoAntigo: 79.00, descricao: 'Cabo HDMI', icon: '<i class="fas fa-arrow-right"></i>', avaliacao: 4.7, reviews: 189},
+    {id: 44, nome: 'Kit Limpeza Profissional Completo', categoria: 'acessorios', preco: 89.00, precoAntigo: 139.00, descricao: 'Kit Limpeza', icon: '<i class="fas fa-broom"></i>', avaliacao: 4.7, reviews: 289},
 ];
 
 let carrinho = [];
