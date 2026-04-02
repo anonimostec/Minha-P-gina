@@ -8,775 +8,115 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
-        :root { 
-            --primary: #00ff88; 
-            --bg: #050505; 
-            --card-bg: #0f0f0f; 
-            --text: #fff;
-        }
+        :root { --primary: #00ff88; --bg: #050505; --card-bg: #0f0f0f; --text: #fff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+        html { font-size: clamp(14px, 3vw, 16px); }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; }
         
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            scroll-behavior: smooth;
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        html {
-            font-size: clamp(14px, 3vw, 16px);
-        }
-        
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: var(--bg); 
-            color: var(--text); 
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-        
-        /* ===== HEADER ===== */
-        header { 
-            position: fixed; 
-            width: 100%; 
-            top: 0; 
-            background: rgba(0,0,0,0.95); 
-            backdrop-filter: blur(15px); 
-            border-bottom: 1px solid #1f1f1f; 
-            z-index: 1000;
-            padding: 0;
-        }
-        
-        nav { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            max-width: 1300px; 
-            margin: 0 auto; 
-            padding: clamp(12px, 3vw, 15px) clamp(15px, 4vw, 20px);
-            width: 100%;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .logo { 
-            color: var(--primary); 
-            font-weight: 900; 
-            font-size: clamp(1rem, 5vw, 1.5rem); 
-            text-transform: uppercase; 
-            letter-spacing: clamp(1px, 2vw, 2px); 
-            cursor: pointer;
-            white-space: nowrap;
-        }
-        
-        .nav-links { 
-            display: flex; 
-            align-items: center; 
-            gap: clamp(8px, 2vw, 15px);
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .nav-links a { 
-            color: #888; 
-            text-decoration: none; 
-            font-size: clamp(0.65rem, 2vw, 0.75rem); 
-            font-weight: bold; 
-            transition: 0.3s; 
-            cursor: pointer; 
-            text-transform: uppercase;
-            white-space: nowrap;
-        }
-        
-        .nav-links a:hover, 
-        .nav-links a:active { 
-            color: var(--primary); 
-        }
-        
-        .nav-contact { 
-            color: var(--primary) !important; 
-            border: 1px solid rgba(0,255,136,0.2); 
-            padding: clamp(4px, 1vw, 8px);
-            border-radius: 5px;
-            font-size: clamp(0.6rem, 1.5vw, 0.7rem) !important;
-            display: inline-flex;
-            align-items: center;
-        }
+        header { position: fixed; width: 100%; top: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(15px); border-bottom: 1px solid #1f1f1f; z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; padding: clamp(10px, 3vw, 15px) clamp(15px, 4vw, 20px); width: 100%; flex-wrap: wrap; gap: 10px; }
+        .logo { color: var(--primary); font-weight: 900; font-size: clamp(1rem, 5vw, 1.5rem); text-transform: uppercase; letter-spacing: clamp(1px, 2vw, 2px); cursor: pointer; white-space: nowrap; }
+        .nav-links { display: flex; align-items: center; gap: clamp(8px, 2vw, 15px); flex-wrap: wrap; justify-content: center; }
+        .nav-links a { color: #888; text-decoration: none; font-size: clamp(0.65rem, 2vw, 0.75rem); font-weight: bold; transition: 0.3s; cursor: pointer; text-transform: uppercase; white-space: nowrap; }
+        .nav-links a:hover, .nav-links a:active { color: var(--primary); }
+        .nav-contact { color: var(--primary) !important; border: 1px solid rgba(0,255,136,0.2); padding: clamp(4px, 1vw, 8px); border-radius: 5px; font-size: clamp(0.6rem, 1.5vw, 0.7rem) !important; display: inline-flex; align-items: center; }
 
-        /* ===== HERO LOJA ===== */
-        .hero-loja { 
-            height: clamp(30vh, 50vh, 45vh); 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            text-align: center; 
-            background: radial-gradient(circle at center, #0a1f14 0%, #000 100%); 
-            padding: clamp(20px, 4vw, 30px);
-            margin-top: clamp(60px, 10vw, 75px);
-        }
-        
-        .hero-loja h1 { 
-            font-size: clamp(1.8rem, 8vw, 4rem); 
-            color: var(--primary); 
-            margin-bottom: clamp(8px, 2vw, 10px);
-            letter-spacing: clamp(1px, 1vw, 2px);
-        }
-        
-        .hero-loja p { 
-            color: #666; 
-            font-size: clamp(0.85rem, 3vw, 0.95rem);
-        }
+        .hero-loja { height: clamp(30vh, 50vh, 45vh); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, #0a1f14 0%, #000 100%); padding: clamp(20px, 4vw, 30px); margin-top: clamp(60px, 10vw, 75px); }
+        .hero-loja h1 { font-size: clamp(1.8rem, 8vw, 4rem); color: var(--primary); margin-bottom: clamp(8px, 2vw, 10px); letter-spacing: clamp(1px, 1vw, 2px); }
+        .hero-loja p { color: #666; font-size: clamp(0.85rem, 3vw, 0.95rem); }
 
-        /* ===== CONTAINER ===== */
-        .container { 
-            max-width: 1200px; 
-            margin: 0 auto; 
-            padding: clamp(25px, 5vw, 40px) clamp(15px, 4vw, 15px);
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: clamp(25px, 5vw, 40px) clamp(15px, 4vw, 15px); }
+        .produtos-header { display: flex; justify-content: center; align-items: center; margin-bottom: clamp(20px, 4vw, 30px); flex-wrap: wrap; gap: clamp(15px, 3vw, 25px); position: relative; }
+        .section-title { font-size: clamp(1.3rem, 5vw, 1.8rem); color: var(--primary); margin: 0; text-align: center; flex: 0 0 auto; }
+        .btn-voltar-container { position: absolute; right: 0; top: 0; }
         
-        /* ===== HEADER PRODUTOS - CENTRALIZADO ===== */
-        .produtos-header {
-            display: flex; 
-            justify-content: center;
-            align-items: center; 
-            margin-bottom: clamp(20px, 4vw, 30px); 
-            flex-wrap: wrap; 
-            gap: clamp(15px, 3vw, 25px);
-            position: relative;
-        }
-        
-        .section-title { 
-            font-size: clamp(1.3rem, 5vw, 1.8rem); 
-            color: var(--primary); 
-            margin: 0;
-            text-align: center;
-            flex: 0 0 auto;
-        }
-        
-        .btn-voltar-container {
-            position: absolute;
-            right: 0;
-            top: 0;
-        }
+        .filtros { display: flex; justify-content: center; gap: clamp(8px, 2vw, 10px); margin-bottom: clamp(25px, 5vw, 35px); flex-wrap: wrap; padding: 0 clamp(10px, 2vw, 10px); }
+        .filtro-btn { background: #1a1a1a; color: #888; border: 1px solid #333; padding: clamp(8px, 2vw, 10px) clamp(14px, 3vw, 18px); border-radius: 25px; cursor: pointer; transition: 0.3s; font-weight: bold; font-size: clamp(0.75rem, 2.5vw, 0.85rem); touch-action: manipulation; white-space: nowrap; }
+        .filtro-btn:hover, .filtro-btn.active { background: var(--primary); color: #000; border-color: var(--primary); }
 
-        /* ===== FILTROS ===== */
-        .filtros { 
-            display: flex; 
-            justify-content: center; 
-            gap: clamp(8px, 2vw, 10px); 
-            margin-bottom: clamp(25px, 5vw, 35px); 
-            flex-wrap: wrap; 
-            padding: 0 clamp(10px, 2vw, 10px);
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(clamp(130px, 35vw, 160px), 1fr)); gap: clamp(14px, 2.5vw, 18px); padding: 0 clamp(5px, 1vw, 5px); margin-bottom: clamp(30px, 6vw, 50px); }
         
-        .filtro-btn { 
-            background: #1a1a1a; 
-            color: #888; 
-            border: 1px solid #333; 
-            padding: clamp(8px, 2vw, 10px) clamp(14px, 3vw, 18px); 
-            border-radius: 25px; 
-            cursor: pointer; 
-            transition: 0.3s; 
-            font-weight: bold; 
-            font-size: clamp(0.75rem, 2.5vw, 0.85rem);
-            touch-action: manipulation;
-            white-space: nowrap;
-        }
+        .produto-card { background: var(--card-bg); border-radius: clamp(12px, 3vw, 15px); overflow: hidden; border: 1px solid #1a1a1a; transition: 0.4s ease-out; display: flex; flex-direction: column; height: 100%; }
+        .produto-card:hover, .produto-card:active { transform: translateY(-8px); border-color: var(--primary); }
         
-        .filtro-btn:hover, 
-        .filtro-btn.active { 
-            background: var(--primary); 
-            color: #000; 
-            border-color: var(--primary); 
-        }
+        .produto-img { width: 100%; height: clamp(100px, 28vw, 160px); background: linear-gradient(135deg, #1a1a1a, #2a2a2a); display: flex; align-items: center; justify-content: center; font-size: clamp(2.2rem, 9vw, 3.2rem); color: var(--primary); }
+        .produto-info { padding: clamp(12px, 3vw, 15px); display: flex; flex-direction: column; flex: 1; }
+        .produto-nome { font-size: clamp(0.85rem, 2.2vw, 0.95rem); font-weight: 700; margin-bottom: clamp(6px, 1.5vw, 8px); text-align: center; line-height: 1.3; word-break: break-word; }
+        .produto-desc { color: #aaa; font-size: clamp(0.7rem, 2vw, 0.75rem); line-height: 1.35; margin-bottom: clamp(8px, 2vw, 10px); text-align: center; }
+        .produto-preco { font-size: clamp(0.95rem, 3vw, 1.2rem); color: var(--primary); font-weight: 900; margin-bottom: clamp(10px, 2vw, 12px); text-align: center; }
+        .produto-preco-old { text-decoration: line-through; color: #555; font-size: clamp(0.6rem, 1.8vw, 0.7rem); margin-right: 4px; }
 
-        /* ===== GRID PRODUTOS ===== */
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(clamp(130px, 35vw, 160px), 1fr)); 
-            gap: clamp(14px, 2.5vw, 18px); 
-            padding: 0 clamp(5px, 1vw, 5px);
-            margin-bottom: clamp(30px, 6vw, 50px);
-        }
-        
-        /* ===== CARDS PRODUTOS ===== */
-        .produto-card { 
-            background: var(--card-bg); 
-            border-radius: clamp(12px, 3vw, 15px); 
-            overflow: hidden; 
-            border: 1px solid #1a1a1a; 
-            transition: 0.4s ease-out;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        
-        .produto-card:hover, 
-        .produto-card:active { 
-            transform: translateY(-8px); 
-            border-color: var(--primary); 
-        }
-        
-        .produto-img { 
-            width: 100%; 
-            height: clamp(100px, 28vw, 160px); 
-            background: linear-gradient(135deg, #1a1a1a, #2a2a2a); 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-size: clamp(2.2rem, 9vw, 3.2rem); 
-            color: var(--primary);
-        }
-        
-        .produto-info { 
-            padding: clamp(12px, 3vw, 15px);
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-        
-        .produto-nome { 
-            font-size: clamp(0.85rem, 2.2vw, 0.95rem); 
-            font-weight: 700; 
-            margin-bottom: clamp(6px, 1.5vw, 8px);
-            text-align: center;
-            line-height: 1.3;
-            word-break: break-word;
-        }
-        
-        .produto-desc { 
-            color: #aaa; 
-            font-size: clamp(0.7rem, 2vw, 0.75rem); 
-            line-height: 1.35; 
-            margin-bottom: clamp(8px, 2vw, 10px);
-            text-align: center;
-        }
-        
-        .produto-preco { 
-            font-size: clamp(0.95rem, 3vw, 1.2rem); 
-            color: var(--primary); 
-            font-weight: 900; 
-            margin-bottom: clamp(10px, 2vw, 12px);
-            text-align: center;
-        }
-        
-        .produto-preco-old { 
-            text-decoration: line-through; 
-            color: #555; 
-            font-size: clamp(0.6rem, 1.8vw, 0.7rem); 
-            margin-right: 4px; 
-        }
+        .avaliacao { display: flex; align-items: center; gap: 3px; margin-bottom: clamp(8px, 2vw, 10px); flex-wrap: wrap; justify-content: center; }
+        .estrela { color: #ffc107; font-size: clamp(0.65rem, 2vw, 0.8rem); }
+        .nota { color: #aaa; font-size: clamp(0.6rem, 1.8vw, 0.7rem); }
 
-        .avaliacao { 
-            display: flex; 
-            align-items: center; 
-            gap: 3px; 
-            margin-bottom: clamp(8px, 2vw, 10px); 
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .estrela { 
-            color: #ffc107; 
-            font-size: clamp(0.65rem, 2vw, 0.8rem);
-        }
-        
-        .nota { 
-            color: #aaa; 
-            font-size: clamp(0.6rem, 1.8vw, 0.7rem);
-        }
+        .btn-comprar { background: linear-gradient(135deg, #ff6b00, #ff8c00); color: #fff; border: none; padding: clamp(8px, 2vw, 10px) clamp(12px, 2vw, 15px); border-radius: clamp(6px, 2vw, 8px); font-weight: 900; cursor: pointer; transition: 0.3s; text-transform: uppercase; width: 100%; margin-bottom: 0; font-size: clamp(0.65rem, 2vw, 0.75rem); touch-action: manipulation; }
+        .btn-comprar:hover, .btn-comprar:active { background: linear-gradient(135deg, #ff8c00, #ffa500); transform: scale(1.02); }
 
-        .btn-comprar { 
-            background: linear-gradient(135deg, #ff6b00, #ff8c00); 
-            color: #fff; 
-            border: none; 
-            padding: clamp(8px, 2vw, 10px) clamp(12px, 2vw, 15px); 
-            border-radius: clamp(6px, 2vw, 8px); 
-            font-weight: 900; 
-            cursor: pointer; 
-            transition: 0.3s; 
-            text-transform: uppercase; 
-            width: 100%; 
-            margin-bottom: 0; 
-            font-size: clamp(0.65rem, 2vw, 0.75rem);
-            touch-action: manipulation;
-        }
-        
-        .btn-comprar:hover, 
-        .btn-comprar:active { 
-            background: linear-gradient(135deg, #ff8c00, #ffa500); 
-            transform: scale(1.02); 
-        }
+        #carrinho-flutuante { position: fixed; bottom: clamp(25px, 5vw, 30px); right: clamp(25px, 5vw, 30px); background: linear-gradient(135deg, #ff6b00, #ff8c00); width: clamp(55px, 12vw, 60px); height: clamp(55px, 12vw, 60px); border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 15px 40px rgba(255, 107, 0, 0.6); cursor: pointer; transition: 0.3s; font-size: clamp(24px, 6vw, 28px); color: #fff; touch-action: manipulation; }
+        #carrinho-flutuante:hover, #carrinho-flutuante:active { transform: scale(1.1); }
+        .carrinho-badge { position: absolute; top: -5px; right: -5px; background: #ff0000; color: #fff; border-radius: 50%; width: clamp(20px, 5vw, 22px); height: clamp(20px, 5vw, 22px); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: clamp(0.65rem, 2vw, 0.75rem); }
 
-        /* ===== CARRINHO FLUTUANTE ===== */
-        #carrinho-flutuante { 
-            position: fixed; 
-            bottom: clamp(25px, 5vw, 30px); 
-            right: clamp(25px, 5vw, 30px); 
-            background: linear-gradient(135deg, #ff6b00, #ff8c00); 
-            width: clamp(55px, 12vw, 60px); 
-            height: clamp(55px, 12vw, 60px); 
-            border-radius: 50%; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            z-index: 1000; 
-            box-shadow: 0 15px 40px rgba(255, 107, 0, 0.6); 
-            cursor: pointer; 
-            transition: 0.3s; 
-            font-size: clamp(24px, 6vw, 28px); 
-            color: #fff;
-            touch-action: manipulation;
-        }
-        
-        #carrinho-flutuante:hover, 
-        #carrinho-flutuante:active { 
-            transform: scale(1.1); 
-        }
-        
-        .carrinho-badge { 
-            position: absolute; 
-            top: -5px; 
-            right: -5px; 
-            background: #ff0000; 
-            color: #fff; 
-            border-radius: 50%; 
-            width: clamp(20px, 5vw, 22px); 
-            height: clamp(20px, 5vw, 22px); 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-weight: bold; 
-            font-size: clamp(0.65rem, 2vw, 0.75rem);
-        }
+        #modal-carrinho { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; z-index: 2000; justify-content: flex-end; align-items: flex-start; }
+        .carrinho-modal { width: 100%; max-width: clamp(280px, 95vw, 420px); height: 100%; max-height: 100vh; background: #0a0a0a; display: flex; flex-direction: column; border-left: 2px solid var(--primary); overflow: hidden; }
+        .carrinho-header { background: linear-gradient(135deg, #ff6b00, #ff8c00); padding: clamp(14px, 3vw, 18px); color: #fff; font-weight: bold; font-size: clamp(1rem, 3vw, 1.2rem); display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+        .carrinho-header button { background: none; border: none; color: #fff; font-size: clamp(1.2rem, 4vw, 1.5rem); cursor: pointer; padding: 4px; touch-action: manipulation; }
+        .carrinho-items { flex: 1; overflow-y: auto; padding: clamp(12px, 3vw, 15px); -webkit-overflow-scrolling: touch; }
+        .carrinho-item { background: #1a1a1a; padding: clamp(10px, 2vw, 12px); border-radius: clamp(8px, 2vw, 10px); margin-bottom: clamp(10px, 2vw, 12px); display: flex; justify-content: space-between; align-items: center; border: 1px solid #333; gap: 8px; }
+        .item-info { flex: 1; min-width: 0; }
+        .item-nome { font-weight: bold; margin-bottom: clamp(3px, 1vw, 4px); font-size: clamp(0.85rem, 2vw, 0.9rem); word-break: break-word; }
+        .item-preco { color: var(--primary); font-weight: bold; font-size: clamp(0.8rem, 2vw, 0.85rem); }
+        .item-remove { background: #ff4444; color: #fff; border: none; padding: clamp(4px, 1vw, 5px) clamp(6px, 1vw, 8px); border-radius: 5px; cursor: pointer; font-size: clamp(0.65rem, 2vw, 0.75rem); white-space: nowrap; touch-action: manipulation; flex-shrink: 0; }
+        .carrinho-footer { padding: clamp(12px, 3vw, 15px); border-top: 1px solid #333; flex-shrink: 0; }
+        .carrinho-total { display: flex; justify-content: space-between; align-items: center; margin-bottom: clamp(12px, 2vw, 15px); font-size: clamp(1rem, 3vw, 1.2rem); font-weight: bold; }
+        .btn-finalizar { background: linear-gradient(135deg, #00ff88, #00cc6e); color: #000; border: none; padding: clamp(10px, 2vw, 12px); border-radius: clamp(8px, 2vw, 10px); font-weight: 900; cursor: pointer; text-transform: uppercase; width: 100%; font-size: clamp(0.85rem, 2vw, 0.9rem); touch-action: manipulation; }
+        .btn-finalizar:hover, .btn-finalizar:active { background: linear-gradient(135deg, #00cc6e, #00aa55); }
+        .carrinho-vazio { text-align: center; padding: clamp(20px, 4vw, 30px) clamp(12px, 3vw, 15px); color: #666; }
+        .carrinho-vazio i { font-size: clamp(2rem, 8vw, 2.5rem); margin-bottom: clamp(12px, 2vw, 15px); display: block; }
 
-        /* ===== MODAL CARRINHO ===== */
-        #modal-carrinho { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            background: rgba(0,0,0,0.9); 
-            display: none; 
-            z-index: 2000; 
-            justify-content: flex-end;
-            align-items: flex-start;
-        }
-        
-        .carrinho-modal { 
-            width: 100%; 
-            max-width: clamp(280px, 95vw, 420px); 
-            height: 100%; 
-            max-height: 100vh;
-            background: #0a0a0a; 
-            display: flex; 
-            flex-direction: column; 
-            border-left: 2px solid var(--primary);
-            overflow: hidden;
-        }
-        
-        .carrinho-header { 
-            background: linear-gradient(135deg, #ff6b00, #ff8c00); 
-            padding: clamp(14px, 3vw, 18px); 
-            color: #fff; 
-            font-weight: bold; 
-            font-size: clamp(1rem, 3vw, 1.2rem); 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
-            flex-shrink: 0;
-        }
-        
-        .carrinho-header button { 
-            background: none; 
-            border: none; 
-            color: #fff; 
-            font-size: clamp(1.2rem, 4vw, 1.5rem); 
-            cursor: pointer;
-            padding: 4px;
-            touch-action: manipulation;
-        }
-        
-        .carrinho-items { 
-            flex: 1; 
-            overflow-y: auto; 
-            padding: clamp(12px, 3vw, 15px);
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        .carrinho-item { 
-            background: #1a1a1a; 
-            padding: clamp(10px, 2vw, 12px); 
-            border-radius: clamp(8px, 2vw, 10px); 
-            margin-bottom: clamp(10px, 2vw, 12px); 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            border: 1px solid #333; 
-            gap: 8px;
-        }
-        
-        .item-info { 
-            flex: 1;
-            min-width: 0;
-        }
-        
-        .item-nome { 
-            font-weight: bold; 
-            margin-bottom: clamp(3px, 1vw, 4px); 
-            font-size: clamp(0.85rem, 2vw, 0.9rem);
-            word-break: break-word;
-        }
-        
-        .item-preco { 
-            color: var(--primary); 
-            font-weight: bold; 
-            font-size: clamp(0.8rem, 2vw, 0.85rem);
-        }
-        
-        .item-remove { 
-            background: #ff4444; 
-            color: #fff; 
-            border: none; 
-            padding: clamp(4px, 1vw, 5px) clamp(6px, 1vw, 8px); 
-            border-radius: 5px; 
-            cursor: pointer; 
-            font-size: clamp(0.65rem, 2vw, 0.75rem); 
-            white-space: nowrap;
-            touch-action: manipulation;
-            flex-shrink: 0;
-        }
-        
-        .carrinho-footer { 
-            padding: clamp(12px, 3vw, 15px); 
-            border-top: 1px solid #333;
-            flex-shrink: 0;
-        }
-        
-        .carrinho-total { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            margin-bottom: clamp(12px, 2vw, 15px); 
-            font-size: clamp(1rem, 3vw, 1.2rem); 
-            font-weight: bold;
-        }
-        
-        .btn-finalizar { 
-            background: linear-gradient(135deg, #00ff88, #00cc6e); 
-            color: #000; 
-            border: none; 
-            padding: clamp(10px, 2vw, 12px); 
-            border-radius: clamp(8px, 2vw, 10px); 
-            font-weight: 900; 
-            cursor: pointer; 
-            text-transform: uppercase; 
-            width: 100%; 
-            font-size: clamp(0.85rem, 2vw, 0.9rem);
-            touch-action: manipulation;
-        }
-        
-        .btn-finalizar:hover, 
-        .btn-finalizar:active { 
-            background: linear-gradient(135deg, #00cc6e, #00aa55); 
-        }
+        .btn-voltar { background: var(--primary); color: #000; border: none; padding: clamp(8px, 2vw, 10px) clamp(15px, 3vw, 20px); border-radius: clamp(6px, 2vw, 8px); font-weight: 900; cursor: pointer; text-transform: uppercase; font-size: clamp(0.7rem, 2vw, 0.8rem); transition: 0.3s; white-space: nowrap; touch-action: manipulation; }
+        .btn-voltar:hover, .btn-voltar:active { background: #fff; }
 
-        .carrinho-vazio { 
-            text-align: center; 
-            padding: clamp(20px, 4vw, 30px) clamp(12px, 3vw, 15px); 
-            color: #666;
-        }
-        
-        .carrinho-vazio i { 
-            font-size: clamp(2rem, 8vw, 2.5rem); 
-            margin-bottom: clamp(12px, 2vw, 15px); 
-            display: block;
-        }
+        #btnTopo { display: none; position: fixed; bottom: clamp(80px, 15vw, 100px); left: clamp(15px, 3vw, 20px); z-index: 99999; border: 2px solid var(--primary); background: rgba(0,0,0,0.9); color: var(--primary); cursor: pointer; width: clamp(40px, 10vw, 45px); height: clamp(40px, 10vw, 45px); border-radius: 50%; font-size: clamp(16px, 4vw, 18px); transition: 0.3s; backdrop-filter: blur(10px); align-items: center; justify-content: center; touch-action: manipulation; }
+        #btnTopo:hover, #btnTopo:active { background: var(--primary); color: #000; }
 
-        .btn-voltar { 
-            background: var(--primary); 
-            color: #000; 
-            border: none; 
-            padding: clamp(8px, 2vw, 10px) clamp(15px, 3vw, 20px); 
-            border-radius: clamp(6px, 2vw, 8px); 
-            font-weight: 900; 
-            cursor: pointer; 
-            text-transform: uppercase; 
-            font-size: clamp(0.7rem, 2vw, 0.8rem); 
-            transition: 0.3s;
-            white-space: nowrap;
-            touch-action: manipulation;
-        }
-        
-        .btn-voltar:hover, 
-        .btn-voltar:active { 
-            background: #fff; 
-        }
+        footer { text-align: center; padding: clamp(20px, 4vw, 30px) clamp(15px, 4vw, 15px); color: #444; font-size: clamp(0.65rem, 2vw, 0.75rem); border-top: 1px solid #111; }
 
-        /* ===== BOTÃO TOPO ===== */
-        #btnTopo { 
-            display: none; 
-            position: fixed; 
-            bottom: clamp(80px, 15vw, 100px); 
-            left: clamp(15px, 3vw, 20px); 
-            z-index: 99999; 
-            border: 2px solid var(--primary); 
-            background: rgba(0,0,0,0.9); 
-            color: var(--primary); 
-            cursor: pointer; 
-            width: clamp(40px, 10vw, 45px); 
-            height: clamp(40px, 10vw, 45px); 
-            border-radius: 50%; 
-            font-size: clamp(16px, 4vw, 18px); 
-            transition: 0.3s; 
-            backdrop-filter: blur(10px); 
-            align-items: center; 
-            justify-content: center;
-            touch-action: manipulation;
-        }
-        
-        #btnTopo:hover, 
-        #btnTopo:active { 
-            background: var(--primary); 
-            color: #000; 
-        }
-
-        /* ===== FOOTER ===== */
-        footer { 
-            text-align: center; 
-            padding: clamp(20px, 4vw, 30px) clamp(15px, 4vw, 15px); 
-            color: #444; 
-            font-size: clamp(0.65rem, 2vw, 0.75rem); 
-            border-top: 1px solid #111;
-        }
-
-        /* ===== MEDIA QUERIES ===== */
         @media (max-width: 768px) {
-            html {
-                font-size: 14px;
-            }
-
-            nav {
-                padding: 10px 12px;
-            }
-
-            .hero-loja {
-                height: 35vh;
-                margin-top: 60px;
-                padding: 20px 15px;
-            }
-
-            .container {
-                padding: 25px 12px;
-            }
-
-            .grid {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-                gap: 12px;
-            }
-
-            .produtos-header {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .btn-voltar-container {
-                position: static;
-                width: 100%;
-            }
-
-            .btn-voltar {
-                width: 100%;
-            }
-
-            #modal-carrinho {
-                justify-content: center;
-            }
-
-            .carrinho-modal {
-                width: 95%;
-                max-width: 100%;
-                max-height: 85vh;
-                border-left: none;
-                border-top: 2px solid var(--primary);
-            }
-
-            #btnTopo {
-                bottom: 70px;
-                left: 12px;
-            }
-
-            #carrinho-flutuante {
-                width: 50px;
-                height: 50px;
-                font-size: 22px;
-            }
+            nav { padding: 10px 12px; }
+            .hero-loja { height: 35vh; margin-top: 60px; }
+            .container { padding: 25px 12px; }
+            .grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
+            .produtos-header { flex-direction: column; gap: 15px; }
+            .btn-voltar-container { position: static; width: 100%; }
+            .btn-voltar { width: 100%; }
+            #modal-carrinho { justify-content: center; }
+            .carrinho-modal { width: 95%; max-width: 100%; max-height: 85vh; border-left: none; border-top: 2px solid var(--primary); }
+            #btnTopo { bottom: 70px; left: 12px; }
+            #carrinho-flutuante { width: 50px; height: 50px; font-size: 22px; }
         }
 
         @media (max-width: 480px) {
-            html {
-                font-size: 13px;
-            }
-
-            nav {
-                padding: 8px 10px;
-            }
-
-            .logo {
-                font-size: 0.9rem;
-                letter-spacing: 0.5px;
-            }
-
-            .nav-links {
-                gap: 5px;
-                width: 100%;
-            }
-
-            .nav-links a {
-                font-size: 0.6rem;
-            }
-
-            .hero-loja {
-                height: 30vh;
-                margin-top: 50px;
-                padding: 15px 12px;
-            }
-
-            .hero-loja h1 {
-                font-size: 1.5rem;
-                margin-bottom: 6px;
-            }
-
-            .hero-loja p {
-                font-size: 0.8rem;
-            }
-
-            .container {
-                padding: 20px 10px;
-            }
-
-            .section-title {
-                font-size: 1.2rem;
-                margin: 0;
-            }
-
-            .grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-            }
-
-            .produto-card {
-                border-radius: 10px;
-            }
-
-            .produto-img {
-                height: 90px;
-                font-size: 1.6rem;
-            }
-
-            .produto-nome {
-                font-size: 0.8rem;
-            }
-
-            .produto-desc {
-                font-size: 0.65rem;
-            }
-
-            .price {
-                font-size: 0.9rem;
-            }
-
-            .btn-comprar {
-                font-size: 0.6rem;
-                padding: 6px 8px;
-            }
-
-            .filtros {
-                gap: 6px;
-            }
-
-            .filtro-btn {
-                padding: 6px 10px;
-                font-size: 0.65rem;
-            }
-
-            #modal-carrinho {
-                justify-content: center;
-            }
-
-            .carrinho-modal {
-                width: 98%;
-                max-height: 80vh;
-                border-top: 2px solid var(--primary);
-                border-left: none;
-            }
-
-            .carrinho-header {
-                font-size: 1rem;
-            }
-
-            .item-nome {
-                font-size: 0.8rem;
-            }
-
-            .item-preco {
-                font-size: 0.75rem;
-            }
-
-            .carrinho-total {
-                font-size: 1rem;
-            }
-
-            .btn-finalizar {
-                font-size: 0.8rem;
-            }
-
-            #btnTopo {
-                bottom: 60px;
-                left: 10px;
-                width: 38px;
-                height: 38px;
-                font-size: 14px;
-            }
-
-            #carrinho-flutuante {
-                bottom: 20px;
-                right: 15px;
-                width: 48px;
-                height: 48px;
-                font-size: 20px;
-            }
-
-            .btn-voltar {
-                padding: 8px 12px;
-                font-size: 0.65rem;
-                width: 100%;
-            }
-
-            .produtos-header {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .btn-voltar-container {
-                width: 100%;
-            }
-        }
-
-        @media (max-height: 600px) and (orientation: landscape) {
-            .hero-loja {
-                height: 30vh;
-            }
-
-            #btnTopo {
-                bottom: 60px;
-            }
-
-            header {
-                position: sticky;
-            }
+            html { font-size: 13px; }
+            nav { padding: 8px 10px; }
+            .logo { font-size: 0.9rem; letter-spacing: 0.5px; }
+            .nav-links { gap: 5px; width: 100%; }
+            .nav-links a { font-size: 0.6rem; }
+            .hero-loja { height: 30vh; margin-top: 50px; }
+            .hero-loja h1 { font-size: 1.5rem; margin-bottom: 6px; }
+            .hero-loja p { font-size: 0.8rem; }
+            .container { padding: 20px 10px; }
+            .section-title { font-size: 1.2rem; margin: 0; }
+            .grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .produto-img { height: 90px; font-size: 1.6rem; }
+            .produto-nome { font-size: 0.8rem; }
+            .produto-desc { font-size: 0.65rem; }
+            .btn-comprar { font-size: 0.6rem; padding: 6px 8px; }
+            .filtros { gap: 6px; }
+            .filtro-btn { padding: 6px 10px; font-size: 0.65rem; }
+            .carrinho-modal { width: 98%; max-height: 80vh; border-top: 2px solid var(--primary); border-left: none; }
+            #btnTopo { bottom: 60px; left: 10px; width: 38px; height: 38px; font-size: 14px; }
+            #carrinho-flutuante { bottom: 20px; right: 15px; width: 48px; height: 48px; font-size: 20px; }
         }
     </style>
 </head>
@@ -820,9 +160,7 @@
         <button class="filtro-btn" onclick="filtrar('acessorios')">Acessórios</button>
     </div>
 
-    <div class="grid" id="produtos-grid">
-        <!-- Produtos inseridos aqui -->
-    </div>
+    <div class="grid" id="produtos-grid"></div>
 </div>
 
 <div id="carrinho-flutuante" onclick="abrirCarrinho()">
@@ -853,1085 +191,213 @@
 </div>
 
 <footer>© 2026 OPTIMUS TECH - TODOS OS DIREITOS RESERVADOS</footer>
+
 <script>
-    const produtos = [
-        // ===== MEMÓRIA RAM DDR5 =====
-        {
-            id: 1,
-            nome: 'Memória RAM 8GB DDR5 5600MHz',
-            categoria: 'ram',
-            preco: 189.00,
-            precoAntigo: 249.00,
-            descricao: 'DDR5 8GB 5600MHz',
-            icon: '<i class="fas fa-memory"></i>',
-            avaliacao: 4.9,
-            reviews: 187
-        },
-        {
-            id: 2,
-            nome: 'Memória RAM 16GB DDR5 5600MHz',
-            categoria: 'ram',
-            preco: 349.00,
-            precoAntigo: 449.00,
-            descricao: 'DDR5 16GB 5600MHz',
-            icon: '<i class="fas fa-memory"></i>',
-            avaliacao: 4.9,
-            reviews: 156
-        },
-        {
-            id: 3,
-            nome: 'Memória RAM 32GB DDR5 5600MHz',
-            categoria: 'ram',
-            preco: 689.00,
-            precoAntigo: 899.00,
-            descricao: 'DDR5 32GB 5600MHz',
-            icon: '<i class="fas fa-memory"></i>',
-            avaliacao: 4.8,
-            reviews: 89
-        },
+const produtos = [
+    {id: 1, nome: 'Memória RAM 8GB DDR5 5600MHz', categoria: 'ram', preco: 189.00, precoAntigo: 249.00, descricao: 'DDR5 8GB 5600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.9, reviews: 187},
+    {id: 2, nome: 'Memória RAM 16GB DDR5 5600MHz', categoria: 'ram', preco: 349.00, precoAntigo: 449.00, descricao: 'DDR5 16GB 5600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.9, reviews: 156},
+    {id: 3, nome: 'Memória RAM 32GB DDR5 5600MHz', categoria: 'ram', preco: 689.00, precoAntigo: 899.00, descricao: 'DDR5 32GB 5600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.8, reviews: 89},
+    {id: 4, nome: 'Memória RAM 2GB DDR4 2133MHz', categoria: 'ram', preco: 39.00, precoAntigo: 59.00, descricao: 'DDR4 2GB 2133MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.3, reviews: 45},
+    {id: 5, nome: 'Memória RAM 4GB DDR4 2400MHz', categoria: 'ram', preco: 69.00, precoAntigo: 99.00, descricao: 'DDR4 4GB 2400MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.5, reviews: 78},
+    {id: 6, nome: 'Memória RAM 8GB DDR4 2666MHz', categoria: 'ram', preco: 129.00, precoAntigo: 179.00, descricao: 'DDR4 8GB 2666MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.7, reviews: 234},
+    {id: 7, nome: 'Memória RAM 8GB DDR4 3200MHz', categoria: 'ram', preco: 149.00, precoAntigo: 199.00, descricao: 'DDR4 8GB 3200MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.8, reviews: 312},
+    {id: 8, nome: 'Memória RAM 16GB DDR4 2666MHz', categoria: 'ram', preco: 229.00, precoAntigo: 329.00, descricao: 'DDR4 16GB 2666MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.7, reviews: 198},
+    {id: 9, nome: 'Memória RAM 16GB DDR4 3200MHz', categoria: 'ram', preco: 269.00, precoAntigo: 369.00, descricao: 'DDR4 16GB 3200MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.8, reviews: 267},
+    {id: 10, nome: 'Memória RAM 16GB DDR4 3600MHz', categoria: 'ram', preco: 299.00, precoAntigo: 399.00, descricao: 'DDR4 16GB 3600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.9, reviews: 145},
+    {id: 11, nome: 'Memória RAM 32GB DDR4 3200MHz', categoria: 'ram', preco: 499.00, precoAntigo: 699.00, descricao: 'DDR4 32GB 3200MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.8, reviews: 128},
+    {id: 12, nome: 'Memória RAM 32GB DDR4 3600MHz', categoria: 'ram', preco: 549.00, precoAntigo: 749.00, descricao: 'DDR4 32GB 3600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.9, reviews: 98},
+    {id: 13, nome: 'Memória RAM 2GB DDR3 1333MHz', categoria: 'ram', preco: 29.00, precoAntigo: 49.00, descricao: 'DDR3 2GB 1333MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.2, reviews: 34},
+    {id: 14, nome: 'Memória RAM 4GB DDR3 1600MHz', categoria: 'ram', preco: 49.00, precoAntigo: 79.00, descricao: 'DDR3 4GB 1600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.4, reviews: 56},
+    {id: 15, nome: 'Memória RAM 8GB DDR3 1600MHz', categoria: 'ram', preco: 89.00, precoAntigo: 139.00, descricao: 'DDR3 8GB 1600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.5, reviews: 92},
+    {id: 16, nome: 'Memória RAM 8GB DDR3 1866MHz', categoria: 'ram', preco: 99.00, precoAntigo: 149.00, descricao: 'DDR3 8GB 1866MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.6, reviews: 76},
+    {id: 17, nome: 'Unidade SSD 240GB 2.5 polegadas SATA III', categoria: 'ssd', preco: 149.00, precoAntigo: 199.00, descricao: 'SSD 240GB SATA 3.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.7, reviews: 234},
+    {id: 18, nome: 'Unidade SSD 480GB 2.5 polegadas SATA III', categoria: 'ssd', preco: 249.00, precoAntigo: 329.00, descricao: 'SSD 480GB SATA 3.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.8, reviews: 312},
+    {id: 19, nome: 'Unidade SSD 960GB 2.5 polegadas SATA III', categoria: 'ssd', preco: 449.00, precoAntigo: 599.00, descricao: 'SSD 960GB SATA 3.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.8, reviews: 189},
+    {id: 20, nome: 'Unidade SSD 1TB 2.5 polegadas SATA III', categoria: 'ssd', preco: 499.00, precoAntigo: 699.00, descricao: 'SSD 1TB SATA 3.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 267},
+    {id: 21, nome: 'Unidade SSD 250GB NVMe M.2 PCIe 3.0', categoria: 'ssd', preco: 179.00, precoAntigo: 249.00, descricao: 'NVMe 250GB PCIe 3.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.8, reviews: 156},
+    {id: 22, nome: 'Unidade SSD 500GB NVMe M.2 PCIe 3.0', categoria: 'ssd', preco: 299.00, precoAntigo: 399.00, descricao: 'NVMe 500GB PCIe 3.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 234},
+    {id: 23, nome: 'Unidade SSD 1TB NVMe M.2 PCIe 3.0', categoria: 'ssd', preco: 549.00, precoAntigo: 749.00, descricao: 'NVMe 1TB PCIe 3.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 312},
+    {id: 24, nome: 'Unidade SSD 500GB NVMe M.2 PCIe 4.0', categoria: 'ssd', preco: 399.00, precoAntigo: 549.00, descricao: 'NVMe 500GB PCIe 4.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 198},
+    {id: 25, nome: 'Unidade SSD 1TB NVMe M.2 PCIe 4.0', categoria: 'ssd', preco: 699.00, precoAntigo: 949.00, descricao: 'NVMe 1TB PCIe 4.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 267},
+    {id: 26, nome: 'Unidade SSD 2TB NVMe M.2 PCIe 4.0', categoria: 'ssd', preco: 1299.00, precoAntigo: 1799.00, descricao: 'NVMe 2TB PCIe 4.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 145},
+    {id: 27, nome: 'Unidade SSD 1TB NVMe M.2 PCIe 5.0', categoria: 'ssd', preco: 899.00, precoAntigo: 1299.00, descricao: 'NVMe 1TB PCIe 5.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 89},
+    {id: 28, nome: 'Unidade SSD 2TB NVMe M.2 PCIe 5.0', categoria: 'ssd', preco: 1599.00, precoAntigo: 2199.00, descricao: 'NVMe 2TB PCIe 5.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 67},
+    {id: 29, nome: 'Teclado Mecânico RGB Switches Azuis', categoria: 'perifericos', preco: 199.00, precoAntigo: 299.00, descricao: 'Teclado Mecânico RGB', icon: '<i class="fas fa-keyboard"></i>', avaliacao: 4.8, reviews: 267},
+    {id: 30, nome: 'Teclado Mecânico RGB Switches Vermelhos', categoria: 'perifericos', preco: 209.00, precoAntigo: 309.00, descricao: 'Teclado Mecânico Red', icon: '<i class="fas fa-keyboard"></i>', avaliacao: 4.9, reviews: 234},
+    {id: 31, nome: 'Teclado Mecânico RGB Switches Marrons', categoria: 'perifericos', preco: 219.00, precoAntigo: 319.00, descricao: 'Teclado Mecânico Brown', icon: '<i class="fas fa-keyboard"></i>', avaliacao: 4.8, reviews: 189},
+    {id: 32, nome: 'Teclado Sem Fio Wireless 2.4GHz', categoria: 'perifericos', preco: 89.00, precoAntigo: 139.00, descricao: 'Teclado Wireless', icon: '<i class="fas fa-keyboard"></i>', avaliacao: 4.6, reviews: 156},
+    {id: 33, nome: 'Teclado Bluetooth com Bateria Recarregável', categoria: 'perifericos', preco: 129.00, precoAntigo: 189.00, descricao: 'Teclado Bluetooth', icon: '<i class="fas fa-keyboard"></i>', avaliacao: 4.7, reviews: 145},
+    {id: 34, nome: 'Mouse Gamer RGB 12000 DPI Sensor óptico', categoria: 'perifericos', preco: 149.00, precoAntigo: 229.00, descricao: 'Mouse Gamer 12000 DPI', icon: '<i class="fas fa-mouse"></i>', avaliacao: 4.9, reviews: 312},
+    {id: 35, nome: 'Mouse Gamer RGB 16000 DPI Sensor laser', categoria: 'perifericos', preco: 189.00, precoAntigo: 289.00, descricao: 'Mouse Gamer 16000 DPI', icon: '<i class="fas fa-mouse"></i>', avaliacao: 4.9, reviews: 267},
+    {id: 36, nome: 'Mouse Sem Fio Wireless 2.4GHz Silencioso', categoria: 'perifericos', preco: 69.00, precoAntigo: 119.00, descricao: 'Mouse Wireless', icon: '<i class="fas fa-mouse"></i>', avaliacao: 4.7, reviews: 234},
+    {id: 37, nome: 'Mouse Bluetooth com Bateria Recarregável', categoria: 'perifericos', preco: 89.00, precoAntigo: 149.00, descricao: 'Mouse Bluetooth', icon: '<i class="fas fa-mouse"></i>', avaliacao: 4.6, reviews: 178},
+    {id: 38, nome: 'Mouse Trackball Ergonômico Sem Fio', categoria: 'perifericos', preco: 99.00, precoAntigo: 159.00, descricao: 'Mouse Trackball', icon: '<i class="fas fa-mouse"></i>', avaliacao: 4.5, reviews: 98},
+    {id: 39, nome: 'Monitor LED 24 polegadas Full HD 1920x1080', categoria: 'monitores', preco: 599.00, precoAntigo: 799.00, descricao: 'Monitor 24\" Full HD', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.7, reviews: 289},
+    {id: 40, nome: 'Monitor LED 27 polegadas Full HD 1920x1080', categoria: 'monitores', preco: 699.00, precoAntigo: 899.00, descricao: 'Monitor 27\" Full HD', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.8, reviews: 234},
+    {id: 41, nome: 'Monitor LED 27 polegadas 2K 2560x1440', categoria: 'monitores', preco: 899.00, precoAntigo: 1199.00, descricao: 'Monitor 27\" 2K', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.8, reviews: 178},
+    {id: 42, nome: 'Monitor LED 32 polegadas 4K 3840x2160', categoria: 'monitores', preco: 1499.00, precoAntigo: 1999.00, descricao: 'Monitor 32\" 4K', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.9, reviews: 145},
+    {id: 43, nome: 'Monitor Gamer Curvo 27 polegadas 165Hz', categoria: 'monitores', preco: 1199.00, precoAntigo: 1599.00, descricao: 'Monitor Gaming Curvo', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.9, reviews: 189},
+    {id: 44, nome: 'Monitor Gamer 24 polegadas 240Hz', categoria: 'monitores', preco: 899.00, precoAntigo: 1199.00, descricao: 'Monitor 24\" 240Hz', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.9, reviews: 156},
+    {id: 45, nome: 'Notebook Intel Celeron 4GB RAM 64GB SSD 14 polegadas', categoria: 'notebooks', preco: 1299.00, precoAntigo: 1699.00, descricao: 'Notebook Celeron', icon: '<i class="fas fa-laptop"></i>', avaliacao: 4.3, reviews: 87},
+    {id: 46, nome: 'Notebook Intel Core i5 8GB RAM 256GB SSD 14 polegadas', categoria: 'notebooks', preco: 2499.00, precoAntigo: 3299.00, descricao: 'Notebook Core i5', icon: '<i class="fas fa-laptop"></i>', avaliacao: 4.7, reviews: 178},
+    {id: 47, nome: 'Notebook Intel Core i7 16GB RAM 512GB SSD 15 polegadas', categoria: 'notebooks', preco: 3799.00, precoAntigo: 4999.00, descricao: 'Notebook Core i7', icon: '<i class="fas fa-laptop"></i>', avaliacao: 4.8, reviews: 145},
+    {id: 48, nome: 'Notebook AMD Ryzen 5 8GB RAM 256GB SSD 15 polegadas', categoria: 'notebooks', preco: 2699.00, precoAntigo: 3599.00, descricao: 'Notebook Ryzen 5', icon: '<i class="fas fa-laptop"></i>', avaliacao: 4.7, reviews: 134},
+    {id: 49, nome: 'Notebook AMD Ryzen 7 16GB RAM 512GB SSD 15 polegadas', categoria: 'notebooks', preco: 3999.00, precoAntigo: 5299.00, descricao: 'Notebook Ryzen 7', icon: '<i class="fas fa-laptop"></i>', avaliacao: 4.8, reviews: 167},
+    {id: 50, nome: 'Notebook Gamer RTX 3050 Intel i5 16GB 512GB SSD', categoria: 'notebooks', preco: 4999.00, precoAntigo: 6499.00, descricao: 'Notebook Gamer RTX', icon: '<i class="fas fa-laptop"></i>', avaliacao: 4.9, reviews: 198},
+    {id: 51, nome: 'Pasta Térmica Arctic MX-6 2 Gramas', categoria: 'acessorios', preco: 49.00, precoAntigo: 69.00, descricao: 'Pasta Arctic MX-6 2g', icon: '<i class="fas fa-droplet"></i>', avaliacao: 4.8, reviews: 345},
+    {id: 52, nome: 'Pasta Térmica Arctic MX-6 4 Gramas', categoria: 'acessorios', preco: 79.00, precoAntigo: 109.00, descricao: 'Pasta Arctic MX-6 4g', icon: '<i class="fas fa-droplet"></i>', avaliacao: 4.9, reviews: 312},
+    {id: 53, nome: 'Pasta Térmica Thermal Grizzly Conductonaut', categoria: 'acessorios', preco: 129.00, precoAntigo: 169.00, descricao: 'Thermal Grizzly', icon: '<i class="fas fa-droplet"></i>', avaliacao: 4.9, reviews: 178},
+    {id: 54, nome: 'Pasta Térmica Cooler Master MasterGel Maker', categoria: 'acessorios', preco: 59.00, precoAntigo: 79.00, descricao: 'Cooler Master', icon: '<i class="fas fa-droplet"></i>', avaliacao: 4.7, reviews: 156},
+    {id: 55, nome: 'Cooler Processador Soquete 1155 2200RPM LED Azul', categoria: 'acessorios', preco: 89.00, precoAntigo: 129.00, descricao: 'Cooler Socket 1155', icon: '<i class="fas fa-fan"></i>', avaliacao: 4.6, reviews: 123},
+    {id: 56, nome: 'Cooler Processador Soquete AM4 2200RPM LED RGB', categoria: 'acessorios', preco: 99.00, precoAntigo: 149.00, descricao: 'Cooler Socket AM4', icon: '<i class="fas fa-fan"></i>', avaliacao: 4.7, reviews: 145},
+    {id: 57, nome: 'Cooler Processador Soquete LGA1700 2200RPM LED RGB', categoria: 'acessorios', preco: 109.00, precoAntigo: 159.00, descricao: 'Cooler Socket LGA1700', icon: '<i class="fas fa-fan"></i>', avaliacao: 4.7, reviews: 167},
+    {id: 58, nome: 'Cooler Processador Soquete 1366 2200RPM LED Vermelho', categoria: 'acessorios', preco: 119.00, precoAntigo: 169.00, descricao: 'Cooler Socket 1366', icon: '<i class="fas fa-fan"></i>', avaliacao: 4.6, reviews: 98},
+    {id: 59, nome: 'Cooler Processador Soquete 775 2200RPM LED Verde', categoria: 'acessorios', preco: 79.00, precoAntigo: 119.00, descricao: 'Cooler Socket 775', icon: '<i class="fas fa-fan"></i>', avaliacao: 4.5, reviews: 87},
+    {id: 60, nome: 'Cabo SATA III 50 centímetros', categoria: 'acessorios', preco: 29.00, precoAntigo: 49.00, descricao: 'Cabo SATA 50cm', icon: '<i class="fas fa-ethernet"></i>', avaliacao: 4.5, reviews: 234},
+    {id: 61, nome: 'Cabo SATA III 90 centímetros', categoria: 'acessorios', preco: 34.00, precoAntigo: 54.00, descricao: 'Cabo SATA 90cm', icon: '<i class="fas fa-code-branch"></i>', avaliacao: 4.6, reviews: 178},
+    {id: 62, nome: 'Cabo Alimentação Duplo Conector Molex', categoria: 'acessorios', preco: 39.00, precoAntigo: 59.00, descricao: 'Cabo Molex', icon: '<i class="fas fa-plug"></i>', avaliacao: 4.5, reviews: 145},
+    {id: 63, nome: 'Cabo Alimentação Serial ATA Power', categoria: 'acessorios', preco: 44.00, precoAntigo: 64.00, descricao: 'Cabo SATA Power', icon: '<i class="fas fa-bolt"></i>', avaliacao: 4.6, reviews: 167},
+    {id: 64, nome: 'Cabo HDMI 2.0 4K Premium 2 metros', categoria: 'acessorios', preco: 49.00, precoAntigo: 79.00, descricao: 'Cabo HDMI 2m', icon: '<i class="fas fa-arrow-right"></i>', avaliacao: 4.7, reviews: 189},
+    {id: 65, nome: 'Cabo DisplayPort 1.4 8K 3 metros', categoria: 'acessorios', preco: 69.00, precoAntigo: 109.00, descricao: 'Cabo DisplayPort', icon: '<i class="fas fa-arrows-alt-h"></i>', avaliacao: 4.8, reviews: 156},
+    {id: 66, nome: 'Kit Limpeza Profissional Completo', categoria: 'acessorios', preco: 89.00, precoAntigo: 139.00, descricao: 'Kit Limpeza', icon: '<i class="fas fa-broom"></i>', avaliacao: 4.7, reviews: 289},
+    {id: 67, nome: 'Kit Limpeza com Compressor 110V', categoria: 'acessorios', preco: 249.00, precoAntigo: 349.00, descricao: 'Kit Compressor 110V', icon: '<i class="fas fa-broom"></i>', avaliacao: 4.8, reviews: 156},
+    {id: 68, nome: 'Kit Limpeza com Compressor 220V', categoria: 'acessorios', preco: 279.00, precoAntigo: 379.00, descricao: 'Kit Compressor 220V', icon: '<i class="fas fa-broom"></i>', avaliacao: 4.8, reviews: 134},
+    {id: 69, nome: 'Pulseira Antiestática com Cabo de Aterramento', categoria: 'acessorios', preco: 49.00, precoAntigo: 79.00, descricao: 'Pulseira Antiestática', icon: '<i class="fas fa-ring"></i>', avaliacao: 4.8, reviews: 198},
+    {id: 70, nome: 'Suporte de Cooler Universal para Refrigerador', categoria: 'acessorios', preco: 59.00, precoAntigo: 89.00, descricao: 'Suporte Cooler', icon: '<i class="fas fa-wrench"></i>', avaliacao: 4.7, reviews: 123},
+    {id: 71, nome: 'Dissipador Alumínio com Ventilador 80mm LED', categoria: 'acessorios', preco: 119.00, precoAntigo: 169.00, descricao: 'Dissipador LED', icon: '<i class="fas fa-snowflake"></i>', avaliacao: 4.7, reviews: 145},
+    {id: 72, nome: 'Parafusos Sextavados M.3 Aço Inoxidável Kit 50 peças', categoria: 'acessorios', preco: 29.00, precoAntigo: 49.00, descricao: 'Kit Parafusos', icon: '<i class="fas fa-bolt"></i>', avaliacao: 4.6, reviews: 89},
+    {id: 73, nome: 'Espaçador Plástico para Placa Mãe Kit 10 peças', categoria: 'acessorios', preco: 34.00, precoAntigo: 54.00, descricao: 'Kit Espaçadores', icon: '<i class="fas fa-cube"></i>', avaliacao: 4.5, reviews: 76},
+    {id: 74, nome: 'Arandela de Feltro Protetor para Parafusos Kit 20 peças', categoria: 'acessorios', preco: 24.00, precoAntigo: 44.00, descricao: 'Kit Arandelas', icon: '<i class="fas fa-ring"></i>', avaliacao: 4.4, reviews: 62},
+    {id: 75, nome: 'Adaptador Serial ATA para IDE Parallel', categoria: 'acessorios', preco: 44.00, precoAntigo: 74.00, descricao: 'Adaptador SATA IDE', icon: '<i class="fas fa-plug"></i>', avaliacao: 4.5, reviews: 98},
+    {id: 76, nome: 'Mousepad Grande com RGB 80cm x 30cm', categoria: 'acessorios', preco: 149.00, precoAntigo: 229.00, descricao: 'Mousepad RGB', icon: '<i class="fas fa-square"></i>', avaliacao: 4.8, reviews: 267},
+    {id: 77, nome: 'Hub USB 3.0 com 7 Portas Powered', categoria: 'acessorios', preco: 99.00, precoAntigo: 159.00, descricao: 'Hub USB 7 Portas', icon: '<i class="fas fa-plug"></i>', avaliacao: 4.7, reviews: 178},
+    {id: 78, nome: 'Docking Station USB Type-C Multifuncional', categoria: 'acessorios', preco: 199.00, precoAntigo: 299.00, descricao: 'Docking Station USB-C', icon: '<i class="fas fa-link"></i>', avaliacao: 4.8, reviews: 134},
+    {id: 79, nome: 'Webcam Full HD 1080p com Microfone', categoria: 'acessorios', preco: 129.00, precoAntigo: 199.00, descricao: 'Webcam Full HD', icon: '<i class="fas fa-video"></i>', avaliacao: 4.7, reviews: 156},
+    {id: 80, nome: 'Headset Gamer com Microfone e RGB', categoria: 'acessorios', preco: 179.00, precoAntigo: 279.00, descricao: 'Headset Gamer RGB', icon: '<i class="fas fa-headphones"></i>', avaliacao: 4.8, reviews: 189}
+];
 
-        // ===== MEMÓRIA RAM DDR4 =====
-        {
-            id: 4,
-            nome: 'Memória RAM 2GB DDR4 2133MHz',
-            categoria: 'ram',
-            preco: 39.00,
-            precoAntigo: 59.00,
-            descricao: 'DDR4 2GB 2133MHz',
-            icon: '<i class="fas fa-memory"></i>',
-            avaliacao: 4.3,
-            reviews: 45
-        },
-        {
-            id: 5,
-            nome: 'Memória RAM 4GB DDR4 2400MHz',
-            categoria: 'ram',
-            preco: 69.00,
-            precoAntigo: 99.00,
-            descricao: 'DDR4 4GB 2400MHz',
-            icon: '<i class="fas fa-memory"></i>',
-            avaliacao: 4.5,
-            reviews: 78
-        },
-        {
-            id: 6,
-            nome: 'Memória RAM 8GB DDR4 2666MHz',
-            categoria: 'ram',
-            preco: 129.00,
-            precoAntigo: 179.00,
-            descricao: 'DDR4 8GB 2666MHz',
-            icon: '<i class="fas fa-memory"></i>',
-            avaliacao: 4.7,
-            reviews: 234
-        },
-        {
-            id: 7,
-            nome: 'Memória RAM 8GB DDR4 3200MHz',
-            categoria: 'ram',
-            preco: 149.00,
-            precoAntigo: 199.00,
-            descricao: 'DDR4 8GB 3200MHz',
-            icon: '<i class="fas fa-memory"></i>',
-            avaliacao: 4.8,
-            reviews: 312
-        },
-        {
-            id: 8,
-            nome: 'Memória RAM 16GB DDR4 2666MHz',
-            categoria: 'ram',
-            preco: 229.00,
-            precoAntigo: 329.00,
-            descricao: 'DDR4 16GB 2666MHz',
-            icon: '<i class="fas fa-memory"></i>',
-            avaliacao: 4.7,
-            reviews: 198
-        },
-        {
-            id: 9,
-            nome: 'Memória RAM 16GB DDR4 3200MHz',
-            categoria: 'ram',
-            preco: 269.00,
-            precoAntigo: 369.00,
-            descricao: 'DDR4 16GB 3200MHz',
-            icon: '<i class="fas fa-memory"></i>',
-            avaliacao: 4.8,
-            reviews: 267
-        },
-        {
-            id: 10,
-            nome: 'Memória RAM 16GB DDR4 3600MHz',
-            categoria: 'ram',
-            preco: 299.00,
-            precoAntigo: 399.00,
-            descricao: 'DDR4 16GB 3600MHz',
-            icon: '<i class="fas fa-memory"></i>',
-            avaliacao: 4.9,
-            reviews: 145
-        },
-        {
-            id: 11,
-            nome: 'Memória RAM 32GB DDR4 3200MHz',
-            categoria: 'ram',
-            preco: 499.00,
-            precoAntigo: 699.00,
-            descricao: 'DDR4 32GB 3200MHz',
-            icon: '<i class="fas fa-memory"></i>',
-            avaliacao: 4.8,
-            reviews: 128
-        },
-        {
-            id: 12,
-            nome: 'Memória RAM 32GB DDR4 3600MHz',
-            categoria: 'ram',
-            preco: 549.00,
-            precoAntigo: 749.00,
-            descricao: 'DDR4 32GB 3600MHz',
-            icon: '<i class="fas fa-memory"></i>',
-            avaliacao: 4.9,
-            reviews: 98
-        },
+let carrinho = [];
 
-        // ===== MEMÓRIA RAM DDR3 =====
-        {
-            id: 13,
-            nome: 'Memória RAM 2GB DDR3 1333MHz',
-            categoria: 'ram',
-            preco: 29.00,
-            precoAntigo: 49.00,
-            descricao: 'DDR3 2GB 1333MHz',
-            icon: '<i class="fas fa-memory"></i>',
-            avaliacao: 4.2,
-            reviews: 34
-        },
-        {
-            id: 14,
-            nome: 'Memória RAM 4GB DDR3 1600MHz',
-            categoria: 'ram',
-            preco: 49.00,
-            precoAntigo: 79.00,
-            descricao: 'DDR3 4GB 1600MHz',
-            icon: '<i class="fas fa-memory"></i>',
-            avaliacao: 4.4,
-            reviews: 56
-        },
-        {
-            id: 15,
-            nome: 'Memória RAM 8GB DDR3 1600MHz',
-            categoria: 'ram',
-            preco: 89.00,
-            precoAntigo: 139.00,
-            descricao: 'DDR3 8GB 1600MHz',
-            icon: '<i class="fas fa-memory"></i>',
-            avaliacao: 4.5,
-            reviews: 92
-        },
-        {
-            id: 16,
-            nome: 'Memória RAM 8GB DDR3 1866MHz',
-            categoria: 'ram',
-            preco: 99.00,
-            precoAntigo: 149.00,
-            descricao: 'DDR3 8GB 1866MHz',
-            icon: '<i class="fas fa-memory"></i>',
-            avaliacao: 4.6,
-            reviews: 76
-        },
+function renderProdutos(categoria = 'todos') {
+    const grid = document.getElementById('produtos-grid');
+    grid.innerHTML = '';
+    
+    const produtosFiltrados = categoria === 'todos' ? produtos : produtos.filter(p => p.categoria === categoria);
+    
+    produtosFiltrados.forEach(produto => {
+        const stars = '⭐'.repeat(Math.floor(produto.avaliacao));
+        grid.innerHTML += `<div class="produto-card"><div class="produto-img">${produto.icon}</div><div class="produto-info"><div class="produto-nome">${produto.nome}</div><div class="produto-desc">${produto.descricao}</div><div class="produto-preco"><span class="produto-preco-old">R$ ${produto.precoAntigo.toFixed(2)}</span>R$ ${produto.preco.toFixed(2)}</div><div class="avaliacao"><span class="estrela">${stars}</span><span class="nota">(${produto.reviews})</span></div><button class="btn-comprar" onclick="adicionarAoCarrinho(${produto.id})">Comprar</button></div></div>`;
+    });
+}
 
-        // ===== SSD 2.5" SATA =====
-        {
-            id: 17,
-            nome: 'Unidade SSD 240GB 2.5 polegadas SATA III',
-            categoria: 'ssd',
-            preco: 149.00,
-            precoAntigo: 199.00,
-            descricao: 'SSD 240GB SATA 3.0',
-            icon: '<i class="fas fa-hdd"></i>',
-            avaliacao: 4.7,
-            reviews: 234
-        },
-        {
-            id: 18,
-            nome: 'Unidade SSD 480GB 2.5 polegadas SATA III',
-            categoria: 'ssd',
-            preco: 249.00,
-            precoAntigo: 329.00,
-            descricao: 'SSD 480GB SATA 3.0',
-            icon: '<i class="fas fa-hdd"></i>',
-            avaliacao: 4.8,
-            reviews: 312
-        },
-        {
-            id: 19,
-            nome: 'Unidade SSD 960GB 2.5 polegadas SATA III',
-            categoria: 'ssd',
-            preco: 449.00,
-            precoAntigo: 599.00,
-            descricao: 'SSD 960GB SATA 3.0',
-            icon: '<i class="fas fa-hdd"></i>',
-            avaliacao: 4.8,
-            reviews: 189
-        },
-        {
-            id: 20,
-            nome: 'Unidade SSD 1TB 2.5 polegadas SATA III',
-            categoria: 'ssd',
-            preco: 499.00,
-            precoAntigo: 699.00,
-            descricao: 'SSD 1TB SATA 3.0',
-            icon: '<i class="fas fa-hdd"></i>',
-            avaliacao: 4.9,
-            reviews: 267
-        },
+function filtrar(categoria) {
+    document.querySelectorAll('.filtro-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    renderProdutos(categoria);
+}
 
-        // ===== SSD NVME M.2 =====
-        {
-            id: 21,
-            nome: 'Unidade SSD 250GB NVMe M.2 PCIe 3.0',
-            categoria: 'ssd',
-            preco: 179.00,
-            precoAntigo: 249.00,
-            descricao: 'NVMe 250GB PCIe 3.0',
-            icon: '<i class="fas fa-hdd"></i>',
-            avaliacao: 4.8,
-            reviews: 156
-        },
-        {
-            id: 22,
-            nome: 'Unidade SSD 500GB NVMe M.2 PCIe 3.0',
-            categoria: 'ssd',
-            preco: 299.00,
-            precoAntigo: 399.00,
-            descricao: 'NVMe 500GB PCIe 3.0',
-            icon: '<i class="fas fa-hdd"></i>',
-            avaliacao: 4.9,
-            reviews: 234
-        },
-        {
-            id: 23,
-            nome: 'Unidade SSD 1TB NVMe M.2 PCIe 3.0',
-            categoria: 'ssd',
-            preco: 549.00,
-            precoAntigo: 749.00,
-            descricao: 'NVMe 1TB PCIe 3.0',
-            icon: '<i class="fas fa-hdd"></i>',
-            avaliacao: 4.9,
-            reviews: 312
-        },
-        {
-            id: 24,
-            nome: 'Unidade SSD 500GB NVMe M.2 PCIe 4.0',
-            categoria: 'ssd',
-            preco: 399.00,
-            precoAntigo: 549.00,
-            descricao: 'NVMe 500GB PCIe 4.0',
-            icon: '<i class="fas fa-hdd"></i>',
-            avaliacao: 4.9,
-            reviews: 198
-        },
-        {
-            id: 25,
-            nome: 'Unidade SSD 1TB NVMe M.2 PCIe 4.0',
-            categoria: 'ssd',
-            preco: 699.00,
-            precoAntigo: 949.00,
-            descricao: 'NVMe 1TB PCIe 4.0',
-            icon: '<i class="fas fa-hdd"></i>',
-            avaliacao: 4.9,
-            reviews: 267
-        },
-        {
-            id: 26,
-            nome: 'Unidade SSD 2TB NVMe M.2 PCIe 4.0',
-            categoria: 'ssd',
-            preco: 1299.00,
-            precoAntigo: 1799.00,
-            descricao: 'NVMe 2TB PCIe 4.0',
-            icon: '<i class="fas fa-hdd"></i>',
-            avaliacao: 4.9,
-            reviews: 145
-        },
-        {
-            id: 27,
-            nome: 'Unidade SSD 1TB NVMe M.2 PCIe 5.0',
-            categoria: 'ssd',
-            preco: 899.00,
-            precoAntigo: 1299.00,
-            descricao: 'NVMe 1TB PCIe 5.0',
-            icon: '<i class="fas fa-hdd"></i>',
-            avaliacao: 4.9,
-            reviews: 89
-        },
-        {
-            id: 28,
-            nome: 'Unidade SSD 2TB NVMe M.2 PCIe 5.0',
-            categoria: 'ssd',
-            preco: 1599.00,
-            precoAntigo: 2199.00,
-            descricao: 'NVMe 2TB PCIe 5.0',
-            icon: '<i class="fas fa-hdd"></i>',
-            avaliacao: 4.9,
-            reviews: 67
-        },
-
-        // ===== TECLADOS =====
-        {
-            id: 29,
-            nome: 'Teclado Mecânico RGB Switches Azuis',
-            categoria: 'perifericos',
-            preco: 199.00,
-            precoAntigo: 299.00,
-            descricao: 'Teclado Mecânico RGB',
-            icon: '<i class="fas fa-keyboard"></i>',
-            avaliacao: 4.8,
-            reviews: 267
-        },
-        {
-            id: 30,
-            nome: 'Teclado Mecânico RGB Switches Vermelhos',
-            categoria: 'perifericos',
-            preco: 209.00,
-            precoAntigo: 309.00,
-            descricao: 'Teclado Mecânico Red Switch',
-            icon: '<i class="fas fa-keyboard"></i>',
-            avaliacao: 4.9,
-            reviews: 234
-        },
-        {
-            id: 31,
-            nome: 'Teclado Mecânico RGB Switches Marrons',
-            categoria: 'perifericos',
-            preco: 219.00,
-            precoAntigo: 319.00,
-            descricao: 'Teclado Mecânico Brown',
-            icon: '<i class="fas fa-keyboard"></i>',
-            avaliacao: 4.8,
-            reviews: 189
-        },
-        {
-            id: 32,
-            nome: 'Teclado Sem Fio Wireless 2.4GHz',
-            categoria: 'perifericos',
-            preco: 89.00,
-            precoAntigo: 139.00,
-            descricao: 'Teclado Sem Fio',
-            icon: '<i class="fas fa-keyboard"></i>',
-            avaliacao: 4.6,
-            reviews: 156
-        },
-        {
-            id: 33,
-            nome: 'Teclado Bluetooth com Bateria Recarregável',
-            categoria: 'perifericos',
-            preco: 129.00,
-            precoAntigo: 189.00,
-            descricao: 'Teclado Bluetooth',
-            icon: '<i class="fas fa-keyboard"></i>',
-            avaliacao: 4.7,
-            reviews: 145
-        },
-
-        // ===== MOUSES =====
-        {
-            id: 34,
-            nome: 'Mouse Gamer RGB 12000 DPI Sensor óptico',
-            categoria: 'perifericos',
-            preco: 149.00,
-            precoAntigo: 229.00,
-            descricao: 'Mouse Gamer 12000 DPI',
-            icon: '<i class="fas fa-mouse"></i>',
-            avaliacao: 4.9,
-            reviews: 312
-        },
-        {
-            id: 35,
-            nome: 'Mouse Gamer RGB 16000 DPI Sensor laser',
-            categoria: 'perifericos',
-            preco: 189.00,
-            precoAntigo: 289.00,
-            descricao: 'Mouse Gamer 16000 DPI',
-            icon: '<i class="fas fa-mouse"></i>',
-            avaliacao: 4.9,
-            reviews: 267
-        },
-        {
-            id: 36,
-            nome: 'Mouse Sem Fio Wireless 2.4GHz Silencioso',
-            categoria: 'perifericos',
-            preco: 69.00,
-            precoAntigo: 119.00,
-            descricao: 'Mouse Wireless',
-            icon: '<i class="fas fa-mouse"></i>',
-            avaliacao: 4.7,
-            reviews: 234
-        },
-        {
-            id: 37,
-            nome: 'Mouse Bluetooth com Bateria Recarregável',
-            categoria: 'perifericos',
-            preco: 89.00,
-            precoAntigo: 149.00,
-            descricao: 'Mouse Bluetooth',
-            icon: '<i class="fas fa-mouse"></i>',
-            avaliacao: 4.6,
-            reviews: 178
-        },
-        {
-            id: 38,
-            nome: 'Mouse Trackball Ergonômico Sem Fio',
-            categoria: 'perifericos',
-            preco: 99.00,
-            precoAntigo: 159.00,
-            descricao: 'Mouse Trackball',
-            icon: '<i class="fas fa-mouse"></i>',
-            avaliacao: 4.5,
-            reviews: 98
-        },
-
-        // ===== MONITORES =====
-        {
-            id: 39,
-            nome: 'Monitor LED 24 polegadas Full HD 1920x1080',
-            categoria: 'monitores',
-            preco: 599.00,
-            precoAntigo: 799.00,
-            descricao: 'Monitor 24\" Full HD',
-            icon: '<i class="fas fa-tv"></i>',
-            avaliacao: 4.7,
-            reviews: 289
-        },
-        {
-            id: 40,
-            nome: 'Monitor LED 27 polegadas Full HD 1920x1080',
-            categoria: 'monitores',
-            preco: 699.00,
-            precoAntigo: 899.00,
-            descricao: 'Monitor 27\" Full HD',
-            icon: '<i class="fas fa-tv"></i>',
-            avaliacao: 4.8,
-            reviews: 234
-        },
-        {
-            id: 41,
-            nome: 'Monitor LED 27 polegadas 2K 2560x1440',
-            categoria: 'monitores',
-            preco: 899.00,
-            precoAntigo: 1199.00,
-            descricao: 'Monitor 27\" 2K',
-            icon: '<i class="fas fa-tv"></i>',
-            avaliacao: 4.8,
-            reviews: 178
-        },
-        {
-            id: 42,
-            nome: 'Monitor LED 32 polegadas 4K 3840x2160',
-            categoria: 'monitores',
-            preco: 1499.00,
-            precoAntigo: 1999.00,
-            descricao: 'Monitor 32\" 4K',
-            icon: '<i class="fas fa-tv"></i>',
-            avaliacao: 4.9,
-            reviews: 145
-        },
-        {
-            id: 43,
-            nome: 'Monitor Gamer Curvo 27 polegadas 165Hz',
-            categoria: 'monitores',
-            preco: 1199.00,
-            precoAntigo: 1599.00,
-            descricao: 'Monitor Gaming Curvo',
-            icon: '<i class="fas fa-tv"></i>',
-            avaliacao: 4.9,
-            reviews: 189
-        },
-        {
-            id: 44,
-            nome: 'Monitor Gamer 24 polegadas 240Hz',
-            categoria: 'monitores',
-            preco: 899.00,
-            precoAntigo: 1199.00,
-            descricao: 'Monitor 24\" 240Hz',
-            icon: '<i class="fas fa-tv"></i>',
-            avaliacao: 4.9,
-            reviews: 156
-        },
-
-        // ===== NOTEBOOKS =====
-        {
-            id: 45,
-            nome: 'Notebook Intel Celeron 4GB RAM 64GB SSD 14 polegadas',
-            categoria: 'notebooks',
-            preco: 1299.00,
-            precoAntigo: 1699.00,
-            descricao: 'Notebook Celeron Básico',
-            icon: '<i class="fas fa-laptop"></i>',
-            avaliacao: 4.3,
-            reviews: 87
-        },
-        {
-            id: 46,
-            nome: 'Notebook Intel Core i5 8GB RAM 256GB SSD 14 polegadas',
-            categoria: 'notebooks',
-            preco: 2499.00,
-            precoAntigo: 3299.00,
-            descricao: 'Notebook Core i5',
-            icon: '<i class="fas fa-laptop"></i>',
-            avaliacao: 4.7,
-            reviews: 178
-        },
-        {
-            id: 47,
-            nome: 'Notebook Intel Core i7 16GB RAM 512GB SSD 15 polegadas',
-            categoria: 'notebooks',
-            preco: 3799.00,
-            precoAntigo: 4999.00,
-            descricao: 'Notebook Core i7',
-            icon: '<i class="fas fa-laptop"></i>',
-            avaliacao: 4.8,
-            reviews: 145
-        },
-        {
-            id: 48,
-            nome: 'Notebook AMD Ryzen 5 8GB RAM 256GB SSD 15 polegadas',
-            categoria: 'notebooks',
-            preco: 2699.00,
-            precoAntigo: 3599.00,
-            descricao: 'Notebook Ryzen 5',
-            icon: '<i class="fas fa-laptop"></i>',
-            avaliacao: 4.7,
-            reviews: 134
-        },
-        {
-            id: 49,
-            nome: 'Notebook AMD Ryzen 7 16GB RAM 512GB SSD 15 polegadas',
-            categoria: 'notebooks',
-            preco: 3999.00,
-            precoAntigo: 5299.00,
-            descricao: 'Notebook Ryzen 7',
-            icon: '<i class="fas fa-laptop"></i>',
-            avaliacao: 4.8,
-            reviews: 167
-        },
-        {
-            id: 50,
-            nome: 'Notebook Gamer RTX 3050 Intel i5 16GB 512GB SSD',
-            categoria: 'notebooks',
-            preco: 4999.00,
-            precoAntigo: 6499.00,
-            descricao: 'Notebook Gamer RTX 3050',
-            icon: '<i class="fas fa-laptop"></i>',
-            avaliacao: 4.9,
-            reviews: 198
-        },
-
-        // ===== ACESSÓRIOS - PASTA TÉRMICA =====
-        {
-            id: 51,
-            nome: 'Pasta Térmica Arctic MX-6 2 Gramas',
-            categoria: 'acessorios',
-            preco: 49.00,
-            precoAntigo: 69.00,
-            descricao: 'Pasta Arctic MX-6 2g',
-            icon: '<i class="fas fa-droplet"></i>',
-            avaliacao: 4.8,
-            reviews: 345
-        },
-        {
-            id: 52,
-            nome: 'Pasta Térmica Arctic MX-6 4 Gramas',
-            categoria: 'acessorios',
-            preco: 79.00,
-            precoAntigo: 109.00,
-            descricao: 'Pasta Arctic MX-6 4g',
-            icon: '<i class="fas fa-droplet"></i>',
-            avaliacao: 4.9,
-            reviews: 312
-        },
-        {
-            id: 53,
-            nome: 'Pasta Térmica Thermal Grizzly Conductonaut',
-            categoria: 'acessorios',
-            preco: 129.00,
-            precoAntigo: 169.00,
-            descricao: 'Thermal Grizzly',
-            icon: '<i class="fas fa-droplet"></i>',
-            avaliacao: 4.9,
-            reviews: 178
-        },
-        {
-            id: 54,
-            nome: 'Pasta Térmica Cooler Master MasterGel Maker',
-            categoria: 'acessorios',
-            preco: 59.00,
-            precoAntigo: 79.00,
-            descricao: 'Cooler Master MasterGel',
-            icon: '<i class="fas fa-droplet"></i>',
-            avaliacao: 4.7,
-            reviews: 156
-        },
-
-        // ===== ACESSÓRIOS - COOLER CPU =====
-        {
-            id: 55,
-            nome: 'Cooler Processador Soquete 1155 2200RPM LED Azul',
-            categoria: 'acessorios',
-            preco: 89.00,
-            precoAntigo: 129.00,
-            descricao: 'Cooler CPU Socket 1155',
-            icon: '<i class="fas fa-fan"></i>',
-            avaliacao: 4.6,
-            reviews: 123
-        },
-        {
-            id: 56,
-            nome: 'Cooler Processador Soquete AM4 2200RPM LED RGB',
-            categoria: 'acessorios',
-            preco: 99.00,
-            precoAntigo: 149.00,
-            descricao: 'Cooler CPU Socket AM4',
-            icon: '<i class="fas fa-fan"></i>',
-            avaliacao: 4.7,
-            reviews: 145
-        },
-        {
-            id: 57,
-            nome: 'Cooler Processador Soquete LGA1700 2200RPM LED RGB',
-            categoria: 'acessorios',
-            preco: 109.00,
-            precoAntigo: 159.00,
-            descricao: 'Cooler CPU Socket LGA1700',
-            icon: '<i class="fas fa-fan"></i>',
-            avaliacao: 4.7,
-            reviews: 167
-        },
-        {
-            id: 58,
-            nome: 'Cooler Processador Soquete 1366 2200RPM LED Vermelho',
-            categoria: 'acessorios',
-            preco: 119.00,
-            precoAntigo: 169.00,
-            descricao: 'Cooler CPU Socket 1366',
-            icon: '<i class="fas fa-fan"></i>',
-            avaliacao: 4.6,
-            reviews: 98
-        },
-        {
-            id: 59,
-            nome: 'Cooler Processador Soquete 775 2200RPM LED Verde',
-            categoria: 'acessorios',
-            preco: 79.00,
-            precoAntigo: 119.00,
-            descricao: 'Cooler CPU Socket 775',
-            icon: '<i class="fas fa-fan"></i>',
-            avaliacao: 4.5,
-            reviews: 87
-        },
-
-               // ===== ACESSÓRIOS - CABOS =====
-        {
-            id: 60,
-            nome: 'Cabo SATA III 50 centímetros',
-            categoria: 'acessorios',
-            preco: 29.00,
-            precoAntigo: 49.00,
-            descricao: 'Cabo SATA 50cm',
-            icon: '<i class="fas fa-ethernet"></i>',
-            avaliacao: 4.5,
-            reviews: 234
-        },
-        {
-            id: 61,
-            nome: 'Cabo SATA III 90 centímetros',
-            categoria: 'acessorios',
-            preco: 34.00,
-            precoAntigo: 54.00,
-            descricao: 'Cabo SATA 90cm',
-            icon: '<i class="fas fa-code-branch"></i>',
-            avaliacao: 4.6,
-            reviews: 178
-        },
-        {
-            id: 62,
-            nome: 'Cabo Alimentação Duplo Conector Molex',
-            categoria: 'acessorios',
-            preco: 39.00,
-            precoAntigo: 59.00,
-            descricao: 'Cabo Molex',
-            icon: '<i class="fas fa-plug"></i>',
-            avaliacao: 4.5,
-            reviews: 145
-        },
-        {
-            id: 63,
-            nome: 'Cabo Alimentação Serial ATA Power',
-            categoria: 'acessorios',
-            preco: 44.00,
-            precoAntigo: 64.00,
-            descricao: 'Cabo SATA Power',
-            icon: '<i class="fas fa-bolt"></i>',
-            avaliacao: 4.6,
-            reviews: 167
-        },
-        {
-            id: 64,
-            nome: 'Cabo HDMI 2.0 4K Premium 2 metros',
-            categoria: 'acessorios',
-            preco: 49.00,
-            precoAntigo: 79.00,
-            descricao: 'Cabo HDMI 2m',
-            icon: '<i class="fas fa-arrow-right"></i>',
-            avaliacao: 4.7,
-            reviews: 189
-        },
-        {
-            id: 65,
-            nome: 'Cabo DisplayPort 1.4 8K 3 metros',
-            categoria: 'acessorios',
-            preco: 69.00,
-            precoAntigo: 109.00,
-            descricao: 'Cabo DisplayPort',
-            icon: '<i class="fas fa-arrows-alt-h"></i>',
-            avaliacao: 4.8,
-            reviews: 156
-        },
-        // ===== ACESSÓRIOS - KITS DE LIMPEZA =====
-        {
-            id: 66,
-            nome: 'Kit Limpeza Profissional Completo',
-            categoria: 'acessorios',
-            preco: 89.00,
-            precoAntigo: 139.00,
-            descricao: 'Kit Limpeza Profissional',
-            icon: '<i class="fas fa-broom"></i>',
-            avaliacao: 4.7,
-            reviews: 289
-        },
-        {
-            id: 67,
-            nome: 'Kit Limpeza com Compressor 110V',
-            categoria: 'acessorios',
-            preco: 249.00,
-            precoAntigo: 349.00,
-            descricao: 'Kit Compressor Limpeza',
-            icon: '<i class="fas fa-broom"></i>',
-            avaliacao: 4.8,
-            reviews: 156
-        },
-        {
-            id: 68,
-            nome: 'Kit Limpeza com Compressor 220V',
-            categoria: 'acessorios',
-            preco: 279.00,
-            precoAntigo: 379.00,
-            descricao: 'Kit Compressor 220V',
-            icon: '<i class="fas fa-broom"></i>',
-            avaliacao: 4.8,
-            reviews: 134
-        },
-
-        // ===== ACESSÓRIOS - OUTROS =====
-        {
-            id: 69,
-            nome: 'Pulseira Antiestática com Cabo de Aterramento',
-            categoria: 'acessorios',
-            preco: 49.00,
-            precoAntigo: 79.00,
-            descricao: 'Pulseira Antiestática',
-            icon: '<i class="fas fa-ring"></i>',
-            avaliacao: 4.8,
-            reviews: 198
-        },
-        {
-            id: 70,
-            nome: 'Suporte de Cooler Universal para Refrigerador',
-            categoria: 'acessorios',
-            preco: 59.00,
-            precoAntigo: 89.00,
-            descricao: 'Suporte de Cooler',
-            icon: '<i class="fas fa-wrench"></i>',
-            avaliacao: 4.7,
-            reviews: 123
-        },
-        {
-            id: 71,
-            nome: 'Dissipador Alumínio com Ventilador 80mm LED',
-            categoria: 'acessorios',
-            preco: 119.00,
-            precoAntigo: 169.00,
-            descricao: 'Dissipador com Ventilador',
-            icon: '<i class="fas fa-snowflake"></i>',
-            avaliacao: 4.7,
-            reviews: 145
-        },
-        {
-            id: 72,
-            nome: 'Parafusos Sextavados M.3 Aço Inoxidável Kit 50 peças',
-            categoria: 'acessorios',
-            preco: 29.00,
-            precoAntigo: 49.00,
-            descricao: 'Kit Parafusos M.3',
-            icon: '<i class="fas fa-bolt"></i>',
-            avaliacao: 4.6,
-            reviews: 89
-        },
-        {
-            id: 73,
-            nome: 'Espaçador Plástico para Placa Mãe Kit 10 peças',
-            categoria: 'acessorios',
-            preco: 34.00,
-            precoAntigo: 54.00,
-            descricao: 'Kit Espaçadores',
-            icon: '<i class="fas fa-cube"></i>',
-            avaliacao: 4.5,
-            reviews: 76
-        },
-        {
-            id: 74,
-            nome: 'Arandela de Feltro Protetor para Parafusos Kit 20 peças',
-            categoria: 'acessorios',
-            preco: 24.00,
-            precoAntigo: 44.00,
-            descricao: 'Kit Arandelas Feltro',
-            icon: '<i class="fas fa-ring"></i>',
-            avaliacao: 4.4,
-            reviews: 62
-        },
-        {
-            id: 75,
-            nome: 'Adaptador Serial ATA para IDE Parallel',
-            categoria: 'acessorios',
-            preco: 44.00,
-            precoAntigo: 74.00,
-            descricao: 'Adaptador SATA para IDE',
-            icon: '<i class="fas fa-plug"></i>',
-            avaliacao: 4.5,
-            reviews: 98
-        },
-        {
-            id: 76,
-            nome: 'Mousepad Grande com RGB 80cm x 30cm',
-            categoria: 'acessorios',
-            preco: 149.00,
-            precoAntigo: 229.00,
-            descricao: 'Mousepad RGB Grande',
-            icon: '<i class="fas fa-square"></i>',
-            avaliacao: 4.8,
-            reviews: 267
-        },
-        {
-            id: 77,
-            nome: 'Hub USB 3.0 com 7 Portas Powered',
-            categoria: 'acessorios',
-            preco: 99.00,
-            precoAntigo: 159.00,
-            descricao: 'Hub USB 7 Portas',
-            icon: '<i class="fas fa-plug"></i>',
-            avaliacao: 4.7,
-            reviews: 178
-        },
-        {
-            id: 78,
-            nome: 'Docking Station USB Type-C Multifuncional',
-            categoria: 'acessorios',
-            preco: 199.00,
-            precoAntigo: 299.00,
-            descricao: 'Docking Station USB-C',
-            icon: '<i class="fas fa-link"></i>',
-            avaliacao: 4.8,
-            reviews: 134
-        },
-        {
-            id: 79,
-            nome: 'Webcam Full HD 1080p com Microfone',
-            categoria: 'acessorios',
-            preco: 129.00,
-            precoAntigo: 199.00,
-            descricao: 'Webcam Full HD',
-            icon: '<i class="fas fa-video"></i>',
-            avaliacao: 4.7,
-            reviews: 156
-        },
-        {
-            id: 80,
-            nome: 'Headset Gamer com Microfone e RGB',
-            categoria: 'acessorios',
-            preco: 179.00,
-            precoAntigo: 279.00,
-            descricao: 'Headset Gamer RGB',
-            icon: '<i class="fas fa-headphones"></i>',
-            avaliacao: 4.8,
-            reviews: 189
-        }
-    ];
-
-    let carrinho = [];
-
-    function renderProdutos(categoria = 'todos') {
-        const grid = document.getElementById('produtos-grid');
-        grid.innerHTML = '';
-        
-        const produtosFiltrados = categoria === 'todos' 
-            ? produtos 
-            : produtos.filter(p => p.categoria === categoria);
-        
-        if (produtosFiltrados.length === 0) {
-            grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #666; padding: 40px 20px;">Nenhum produto encontrado nesta categoria</p>';
-            return;
-        }
-        
-        produtosFiltrados.forEach(produto => {
-            const stars = '⭐'.repeat(Math.floor(produto.avaliacao));
-            grid.innerHTML += `
-                <div class="produto-card">
-                    <div class="produto-img">${produto.icon}</div>
-                    <div class="produto-info">
-                        <div class="produto-nome">${produto.nome}</div>
-                        <div class="produto-desc">${produto.descricao}</div>
-                        <div class="produto-preco">
-                            <span class="produto-preco-old">R$ ${produto.precoAntigo.toFixed(2)}</span>
-                            R$ ${produto.preco.toFixed(2)}
-                        </div>
-                        <div class="avaliacao">
-                            <span class="estrela">${stars}</span>
-                            <span class="nota">(${produto.reviews})</span>
-                        </div>
-                        <button class="btn-comprar" onclick="adicionarAoCarrinho(${produto.id})">Comprar</button>
-                    </div>
-                </div>
-            `;
-        });
+function adicionarAoCarrinho(produtoId) {
+    const produto = produtos.find(p => p.id === produtoId);
+    const itemExistente = carrinho.find(c => c.id === produtoId);
+    
+    if (itemExistente) {
+        itemExistente.quantidade++;
+    } else {
+        carrinho.push({...produto, quantidade: 1});
     }
+    
+    atualizarCarrinho();
+    
+    const btn = event.target;
+    const originalText = btn.textContent;
+    btn.textContent = '✓ Adicionado!';
+    btn.style.background = 'linear-gradient(135deg, #00ff88, #00cc6e)';
+    setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = 'linear-gradient(135deg, #ff6b00, #ff8c00)';
+    }, 1500);
+}
 
-    function filtrar(categoria) {
-        document.querySelectorAll('.filtro-btn').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
-        renderProdutos(categoria);
+function removerDoCarrinho(produtoId) {
+    carrinho = carrinho.filter(c => c.id !== produtoId);
+    atualizarCarrinho();
+}
+
+function atualizarCarrinho() {
+    const total = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
+    document.getElementById('carrinho-count').textContent = total;
+    renderCarrinho();
+}
+
+function renderCarrinho() {
+    const container = document.getElementById('carrinho-items');
+    const total = carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0);
+    
+    if (carrinho.length === 0) {
+        container.innerHTML = `<div class="carrinho-vazio"><i class="fas fa-shopping-cart"></i><p>Seu carrinho está vazio</p></div>`;
+        document.getElementById('carrinho-total').textContent = 'R$ 0,00';
+        return;
     }
+    
+    container.innerHTML = carrinho.map(item => `<div class="carrinho-item"><div class="item-info"><div class="item-nome">${item.nome}</div><div class="item-preco">R$ ${item.preco.toFixed(2)} x${item.quantidade}</div></div><button class="item-remove" onclick="removerDoCarrinho(${item.id})">✕</button></div>`).join('');
+    
+    document.getElementById('carrinho-total').textContent = `R$ ${total.toFixed(2)}`;
+}
 
-    function adicionarAoCarrinho(produtoId) {
-        const produto = produtos.find(p => p.id === produtoId);
-        const itemExistente = carrinho.find(c => c.id === produtoId);
-        
-        if (itemExistente) {
-            itemExistente.quantidade++;
-        } else {
-            carrinho.push({...produto, quantidade: 1});
-        }
-        
-        atualizarCarrinho();
-        
-        const btn = event.target;
-        const originalText = btn.textContent;
-        btn.textContent = '✓ Adicionado!';
-        btn.style.background = 'linear-gradient(135deg, #00ff88, #00cc6e)';
-        setTimeout(() => {
-            btn.textContent = originalText;
-            btn.style.background = 'linear-gradient(135deg, #ff6b00, #ff8c00)';
-        }, 1500);
+function abrirCarrinho() {
+    document.getElementById('modal-carrinho').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function fecharCarrinho(e) {
+    if (e && e.target.id !== 'modal-carrinho') return;
+    document.getElementById('modal-carrinho').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+function finalizarCompra() {
+    if (carrinho.length === 0) {
+        alert('Carrinho vazio!');
+        return;
     }
+    
+    const total = carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0);
+    const itens = carrinho.map(c => `${c.nome} (${c.quantidade}x) - R$ ${(c.preco * c.quantidade).toFixed(2)}`).join('\n');
+    const mensagem = `Olá! Gostaria de comprar:\n\n${itens}\n\n*TOTAL: R$ ${total.toFixed(2)}*\n\nPor favor, confirme a disponibilidade e o prazo de entrega.`;
+    
+    window.open(`https://wa.me/5542999112756?text=${encodeURIComponent(mensagem)}`, '_blank');
+    
+    carrinho = [];
+    atualizarCarrinho();
+    fecharCarrinho();
+}
 
-    function removerDoCarrinho(produtoId) {
-        carrinho = carrinho.filter(c => c.id !== produtoId);
-        atualizarCarrinho();
-    }
+window.onscroll = () => {
+    const btnTopo = document.getElementById("btnTopo");
+    const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+    btnTopo.style.display = (scrollTop > 200) ? "flex" : "none";
+};
 
-    function atualizarCarrinho() {
-        const total = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
-        document.getElementById('carrinho-count').textContent = total;
-        renderCarrinho();
-    }
+function topo() { 
+    window.scrollTo({top: 0, behavior: 'smooth'}); 
+}
 
-    function renderCarrinho() {
-        const container = document.getElementById('carrinho-items');
-        const total = carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0);
-        
-        if (carrinho.length === 0) {
-            container.innerHTML = `
-                <div class="carrinho-vazio">
-                    <i class="fas fa-shopping-cart"></i>
-                    <p>Seu carrinho está vazio</p>
-                </div>
-            `;
-            document.getElementById('carrinho-total').textContent = 'R$ 0,00';
-            return;
-        }
-        
-        container.innerHTML = carrinho.map(item => `
-            <div class="carrinho-item">
-                <div class="item-info">
-                    <div class="item-nome">${item.nome}</div>
-                    <div class="item-preco">R$ ${item.preco.toFixed(2)} x${item.quantidade}</div>
-                </div>
-                <button class="item-remove" onclick="removerDoCarrinho(${item.id})">✕</button>
-            </div>
-        `).join('');
-        
-        document.getElementById('carrinho-total').textContent = `R$ ${total.toFixed(2)}`;
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    renderProdutos();
+});
 
-    function abrirCarrinho() {
-        document.getElementById('modal-carrinho').style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-
-    function fecharCarrinho(e) {
-        if (e && e.target.id !== 'modal-carrinho') return;
-        document.getElementById('modal-carrinho').style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-
-    function finalizarCompra() {
-        if (carrinho.length === 0) {
-            alert('Carrinho vazio!');
-            return;
-        }
-        
-        const total = carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0);
-        const itens = carrinho.map(c => `${c.nome} (${c.quantidade}x) - R$ ${(c.preco * c.quantidade).toFixed(2)}`).join('\n');
-        const mensagem = `Olá! Gostaria de comprar:\n\n${itens}\n\n*TOTAL: R$ ${total.toFixed(2)}*\n\nPor favor, confirme a disponibilidade e o prazo de entrega.`;
-        
-        window.open(`https://wa.me/5542999112756?text=${encodeURIComponent(mensagem)}`, '_blank');
-        
-        carrinho = [];
-        atualizarCarrinho();
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
         fecharCarrinho();
     }
+});
 
-    window.onscroll = () => {
-        const btnTopo = document.getElementById("btnTopo");
-        const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-        btnTopo.style.display = (scrollTop > 200) ? "flex" : "none";
-    };
-    
-    function topo() { 
-        window.scrollTo({top: 0, behavior: 'smooth'}); 
+document.addEventListener('click', (e) => {
+    const modal = document.getElementById('modal-carrinho');
+    if (!modal.contains(e.target) && e.target.id !== 'carrinho-flutuante') {
+        modal.style.display = 'none';
     }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        renderProdutos();
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            fecharCarrinho();
-        }
-    });
-
-    document.addEventListener('touchmove', (e) => {
-        const modal = document.getElementById('modal-carrinho');
-        if (modal.style.display === 'flex') {
-            const carrinhoItems = document.getElementById('carrinho-items');
-            if (!carrinhoItems.contains(e.target)) {
-                e.preventDefault();
-            }
-        }
-    }, { passive: false });
-
-    window.addEventListener('orientationchange', () => {
-        setTimeout(() => {
-            window.scrollTo(0, 0);
-        }, 100);
-    });
-
+});
 </script>
 
 </body>
