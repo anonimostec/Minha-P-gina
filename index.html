@@ -21,7 +21,7 @@
         
         header { position: fixed; width: 100%; top: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(15px); border-bottom: 1px solid #1f1f1f; z-index: 1000; }
         nav { display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; padding: 20px; width: 100%; }
-        .logo { color: var(--primary); font-weight: 900; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; }
+        .logo { color: var(--primary); font-weight: 900; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; }
         .nav-links { display: flex; align-items: center; gap: 20px; }
         .nav-links a { color: #888; text-decoration: none; font-size: 0.8rem; font-weight: bold; transition: 0.3s; cursor: pointer; text-transform: uppercase; }
         .nav-links a:hover { color: var(--primary); }
@@ -140,7 +140,7 @@
 
 <header>
     <nav>
-        <div class="logo">OPTIMUS TECH</div>
+        <div class="logo" onclick="window.location.href='index.html'">OPTIMUS TECH</div>
         <div class="nav-links">
             <a onclick="toggleAbout()">QUEM SOMOS</a>
             <a href="#mobile">MOBILE</a>
@@ -186,7 +186,7 @@
 
     <h2 class="section-title" id="pc">PC voando baixo... 🚀</h2>
     <div class="grid">
-        <div class="card"><div class="content"><i class="fas fa-snowflake"></i><h3>Limpeza e Pasta Térmica</h3><span class="price"><span class="old-price">R$ 65,00</span>R$ 50,00</span><button class="btn" onclick="selecionar('Limpeza e Pasta Térmica PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🌬️ Limpeza interna completa: removemos toda a poeira dos ventiladores, dissipador e componentes internos. 🧴 Aplicamos pasta térmica de alta performance, garantindo melhor condução de calor.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-snowflake"></i><h3>Limpeza e Pasta Térmica</h3><span class="price"><span class="old-price">R$ 65,00</span>R$ 50,00</span><button class="btn" onclick="selecionar('Limpeza e Pasta Térmica PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🌬️ Limpeza interna completa: removemos toda a poeira dos ventiladores, dissipador e componentes internos. 🧴 Aplicamos pasta térmica de alta performance, garantindo melhor conduç  o de calor.</p></div></div>
         <div class="card"><div class="content"><i class="fas fa-microchip"></i><h3>Upgrade Peças (SSD/RAM)</h3><span class="price"><span class="old-price">R$ 65,00</span>R$ 50,00</span><button class="btn" onclick="selecionar('Upgrade Peças PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">⚡ Instalação de SSDs (até 5x mais rápido que HD), compatibilização e clonagem de dados. 💾 Aumento de memória RAM para multitarefa suave e programas pesados.</p></div></div>
         <div class="card"><div class="content"><i class="fas fa-bolt"></i><h3>Otimização FPS</h3><span class="price"><span class="old-price">R$ 100,00</span>R$ 80,00</span><button class="btn" onclick="selecionar('Otimização FPS PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🎮 Ajustes finos de configurações de jogo para ganho real de FPS. 📊 Otimizamos drivers de vídeo, desativamos programas em background, ajustamos Power Plan.</p></div></div>
         <div class="card"><div class="content"><i class="fas fa-hammer"></i><h3>Ajuda na Montagem do PC</h3><span class="price">Consulte</span><button class="btn" onclick="selecionar('Ajuda Montagem PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🖥️ Fazemos o orçamento das peças conforme seus desejos e necessidades. 💡 Consultoria técnica personalizada para montar um PC de acordo com seu orçamento. 🎯 Selecionamos as melhores relações custo-benefício para cada tipo de uso.</p></div></div>
@@ -200,7 +200,6 @@
         <div class="card"><div class="content"><i class="fas fa-video"></i><h3>Edição de Vídeos</h3><span class="price">R$ 150,00</span><button class="btn" onclick="selecionar('Aula Edição de Vídeos')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🎬 Aprenda edição com softwares profissionais: cortes, efeitos e transições. 🎥 Composição visual, sincronização de áudio, correção de cores. ✨ Crie conteúdos incríveis para YouTube, TikTok e redes sociais!</p></div></div>
     </div>
 </div>
-
     <section id="agendar" style="background:#080808; border-radius:30px; padding:60px 20px; text-align:center; margin-top:80px; border: 1px solid #111;">
         <h2>📅 Agendar Horário</h2>
         <input type="text" id="cliNome" placeholder="Seu Nome" style="background:#000; border:1px solid #222; color:#fff; padding:15px; border-radius:10px; margin:10px; width:100%; max-width:350px;">
