@@ -14,77 +14,115 @@
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
         
         header { position: fixed; width: 100%; top: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(15px); border-bottom: 1px solid #1f1f1f; z-index: 1000; }
-        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; padding: 20px; width: 100%; }
+        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; padding: 15px 20px; width: 100%; }
         .logo { color: var(--primary); font-weight: 900; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; }
-        .nav-links { display: flex; align-items: center; gap: 20px; }
-        .nav-links a { color: #888; text-decoration: none; font-size: 0.8rem; font-weight: bold; transition: 0.3s; cursor: pointer; text-transform: uppercase; }
+        .nav-links { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .nav-links a { color: #888; text-decoration: none; font-size: 0.75rem; font-weight: bold; transition: 0.3s; cursor: pointer; text-transform: uppercase; }
         .nav-links a:hover { color: var(--primary); }
-        .nav-contact { color: var(--primary) !important; border: 1px solid rgba(0,255,136,0.2); padding: 5px 10px; border-radius: 5px; }
+        .nav-contact { color: var(--primary) !important; border: 1px solid rgba(0,255,136,0.2); padding: 5px 8px; border-radius: 5px; font-size: 0.7rem !important; }
 
-        .hero-loja { height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, #0a1f14 0%, #000 100%); padding: 20px; margin-top: 75px; }
-        .hero-loja h1 { font-size: clamp(2.5rem, 8vw, 5rem); color: var(--primary); margin-bottom: 15px; }
-        .hero-loja p { color: #666; font-size: 1.1rem; }
+        .hero-loja { height: 45vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, #0a1f14 0%, #000 100%); padding: 20px; margin-top: 75px; }
+        .hero-loja h1 { font-size: clamp(2rem, 8vw, 4rem); color: var(--primary); margin-bottom: 10px; }
+        .hero-loja p { color: #666; font-size: 0.95rem; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
-        .section-title { font-size: 1.8rem; color: var(--primary); margin: 40px 0 30px 0; text-align: center; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 15px; }
+        .section-title { font-size: 1.5rem; color: var(--primary); margin: 30px 0 25px 0; text-align: center; }
         
-        .filtros { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
-        .filtro-btn { background: #1a1a1a; color: #888; border: 1px solid #333; padding: 10px 20px; border-radius: 20px; cursor: pointer; transition: 0.3s; font-weight: bold; }
+        .filtros { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; padding: 0 10px; }
+        .filtro-btn { background: #1a1a1a; color: #888; border: 1px solid #333; padding: 8px 15px; border-radius: 20px; cursor: pointer; transition: 0.3s; font-weight: bold; font-size: 0.8rem; }
         .filtro-btn:hover, .filtro-btn.active { background: var(--primary); color: #000; border-color: var(--primary); }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .produto-card { background: var(--card-bg); border-radius: 20px; overflow: hidden; border: 1px solid #1a1a1a; transition: 0.4s; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; padding: 0 5px; }
+        .produto-card { background: var(--card-bg); border-radius: 15px; overflow: hidden; border: 1px solid #1a1a1a; transition: 0.4s; }
         .produto-card:hover { transform: translateY(-8px); border-color: var(--primary); }
         
-        .produto-img { width: 100%; height: 250px; background: linear-gradient(135deg, #1a1a1a, #2a2a2a); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: var(--primary); }
-        .produto-info { padding: 25px; }
-        .produto-nome { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
-        .produto-desc { color: #aaa; font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px; }
-        .produto-preco { font-size: 1.6rem; color: var(--primary); font-weight: 900; margin-bottom: 20px; }
-        .produto-preco-old { text-decoration: line-through; color: #555; font-size: 0.9rem; margin-right: 10px; }
+        .produto-img { width: 100%; height: 180px; background: linear-gradient(135deg, #1a1a1a, #2a2a2a); display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--primary); }
+        .produto-info { padding: 15px; }
+        .produto-nome { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+        .produto-desc { color: #aaa; font-size: 0.8rem; line-height: 1.4; margin-bottom: 12px; }
+        .produto-preco { font-size: 1.3rem; color: var(--primary); font-weight: 900; margin-bottom: 15px; }
+        .produto-preco-old { text-decoration: line-through; color: #555; font-size: 0.75rem; margin-right: 8px; }
 
-        .btn-comprar { background: linear-gradient(135deg, #ff6b00, #ff8c00); color: #fff; border: none; padding: 12px 25px; border-radius: 10px; font-weight: 900; cursor: pointer; transition: 0.3s; text-transform: uppercase; width: 100%; margin-bottom: 10px; }
+        .btn-comprar { background: linear-gradient(135deg, #ff6b00, #ff8c00); color: #fff; border: none; padding: 10px 15px; border-radius: 8px; font-weight: 900; cursor: pointer; transition: 0.3s; text-transform: uppercase; width: 100%; margin-bottom: 8px; font-size: 0.8rem; }
         .btn-comprar:hover { background: linear-gradient(135deg, #ff8c00, #ffa500); transform: scale(1.02); }
 
-        .btn-carrinho { background: transparent; color: var(--primary); border: 2px solid var(--primary); padding: 10px 20px; border-radius: 10px; font-weight: 900; cursor: pointer; transition: 0.3s; text-transform: uppercase; width: 100%; }
+        .btn-carrinho { background: transparent; color: var(--primary); border: 2px solid var(--primary); padding: 8px 12px; border-radius: 8px; font-weight: 900; cursor: pointer; transition: 0.3s; text-transform: uppercase; width: 100%; font-size: 0.75rem; }
         .btn-carrinho:hover { background: var(--primary); color: #000; }
 
-        .avaliacao { display: flex; align-items: center; gap: 5px; margin-top: 10px; }
-        .estrela { color: #ffc107; font-size: 0.9rem; }
-        .nota { color: #aaa; font-size: 0.85rem; }
+        .avaliacao { display: flex; align-items: center; gap: 5px; margin-top: 8px; flex-wrap: wrap; }
+        .estrela { color: #ffc107; font-size: 0.85rem; }
+        .nota { color: #aaa; font-size: 0.75rem; }
 
-        #carrinho-flutuante { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, #ff6b00, #ff8c00); width: 70px; height: 70px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 15px 40px rgba(255, 107, 0, 0.6); cursor: pointer; transition: 0.3s; font-size: 32px; color: #fff; }
+        #carrinho-flutuante { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, #ff6b00, #ff8c00); width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 15px 40px rgba(255, 107, 0, 0.6); cursor: pointer; transition: 0.3s; font-size: 28px; color: #fff; }
         #carrinho-flutuante:hover { transform: scale(1.1); }
-        .carrinho-badge { position: absolute; top: -5px; right: -5px; background: #ff0000; color: #fff; border-radius: 50%; width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem; }
+        .carrinho-badge { position: absolute; top: -5px; right: -5px; background: #ff0000; color: #fff; border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.75rem; }
 
-        #modal-carrinho { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; z-index: 2000; justify-content: flex-end; }
-        .carrinho-modal { width: 100%; max-width: 450px; height: 100%; background: #0a0a0a; display: flex; flex-direction: column; border-left: 2px solid var(--primary); }
-        .carrinho-header { background: linear-gradient(135deg, #ff6b00, #ff8c00); padding: 20px; color: #fff; font-weight: bold; font-size: 1.3rem; display: flex; justify-content: space-between; align-items: center; }
+        #modal-carrinho { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; z-index: 2000; justify-content: flex-end; }
+        .carrinho-modal { width: 100%; max-width: 420px; height: 100%; background: #0a0a0a; display: flex; flex-direction: column; border-left: 2px solid var(--primary); }
+        .carrinho-header { background: linear-gradient(135deg, #ff6b00, #ff8c00); padding: 18px; color: #fff; font-weight: bold; font-size: 1.2rem; display: flex; justify-content: space-between; align-items: center; }
         .carrinho-header button { background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
-        .carrinho-items { flex: 1; overflow-y: auto; padding: 20px; }
-        .carrinho-item { background: #1a1a1a; padding: 15px; border-radius: 10px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #333; }
+        .carrinho-items { flex: 1; overflow-y: auto; padding: 15px; }
+        .carrinho-item { background: #1a1a1a; padding: 12px; border-radius: 10px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #333; gap: 10px; }
         .item-info { flex: 1; }
-        .item-nome { font-weight: bold; margin-bottom: 5px; }
-        .item-preco { color: var(--primary); font-weight: bold; }
-        .item-remove { background: #ff4444; color: #fff; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.8rem; }
-        .carrinho-footer { padding: 20px; border-top: 1px solid #333; }
-        .carrinho-total { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-size: 1.3rem; font-weight: bold; }
-        .btn-finalizar { background: linear-gradient(135deg, #00ff88, #00cc6e); color: #000; border: none; padding: 15px; border-radius: 10px; font-weight: 900; cursor: pointer; text-transform: uppercase; width: 100%; }
+        .item-nome { font-weight: bold; margin-bottom: 4px; font-size: 0.9rem; }
+        .item-preco { color: var(--primary); font-weight: bold; font-size: 0.85rem; }
+        .item-remove { background: #ff4444; color: #fff; border: none; padding: 5px 8px; border-radius: 5px; cursor: pointer; font-size: 0.75rem; white-space: nowrap; }
+        .carrinho-footer { padding: 15px; border-top: 1px solid #333; }
+        .carrinho-total { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 1.2rem; font-weight: bold; }
+        .btn-finalizar { background: linear-gradient(135deg, #00ff88, #00cc6e); color: #000; border: none; padding: 12px; border-radius: 10px; font-weight: 900; cursor: pointer; text-transform: uppercase; width: 100%; font-size: 0.9rem; }
         .btn-finalizar:hover { background: linear-gradient(135deg, #00cc6e, #00aa55); }
 
-        .carrinho-vazio { text-align: center; padding: 40px 20px; color: #666; }
-        .carrinho-vazio i { font-size: 3rem; margin-bottom: 15px; display: block; }
+        .carrinho-vazio { text-align: center; padding: 30px 15px; color: #666; }
+        .carrinho-vazio i { font-size: 2.5rem; margin-bottom: 15px; display: block; }
 
-        #btnTopo { display: none; position: fixed; bottom: 30px; left: 25px; z-index: 99999; border: 2px solid var(--primary); background: rgba(0,0,0,0.9); color: var(--primary); cursor: pointer; width: 55px; height: 55px; border-radius: 50%; font-size: 22px; transition: 0.3s; backdrop-filter: blur(10px); align-items: center; justify-content: center; }
+        .btn-voltar { background: var(--primary); color: #000; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 900; cursor: pointer; text-transform: uppercase; font-size: 0.8rem; transition: 0.3s; }
+        .btn-voltar:hover { background: #fff; }
+
+        #btnTopo { display: none; position: fixed; bottom: 100px; left: 20px; z-index: 99999; border: 2px solid var(--primary); background: rgba(0,0,0,0.9); color: var(--primary); cursor: pointer; width: 45px; height: 45px; border-radius: 50%; font-size: 18px; transition: 0.3s; backdrop-filter: blur(10px); align-items: center; justify-content: center; }
         #btnTopo:hover { background: var(--primary); color: #000; }
 
-        footer { text-align: center; padding: 40px; color: #444; font-size: 0.8rem; border-top: 1px solid #111; }
+        footer { text-align: center; padding: 30px 15px; color: #444; font-size: 0.75rem; border-top: 1px solid #111; }
 
         @media (max-width: 768px) {
+            nav { padding: 12px 15px; }
+            .logo { font-size: 1.2rem; }
+            .nav-links { gap: 10px; }
+            .nav-links a { font-size: 0.7rem; }
+            .nav-contact { padding: 4px 6px; font-size: 0.6rem !important; }
+            
+            .hero-loja { height: 35vh; margin-top: 70px; }
+            .hero-loja h1 { font-size: 1.8rem; }
+            .hero-loja p { font-size: 0.9rem; }
+            
+            .container { padding: 30px 12px; }
+            .section-title { font-size: 1.3rem; }
+            .grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+            .produto-img { height: 150px; font-size: 2.5rem; }
+            
             #modal-carrinho { justify-content: center; }
-            .carrinho-modal { width: 95%; max-width: 100%; max-height: 80vh; }
-            .filtros { padding: 0 10px; }
-            .grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+            .carrinho-modal { width: 95%; max-width: 100%; max-height: 85vh; border-left: none; border-top: 2px solid var(--primary); }
+            
+            #btnTopo { bottom: 90px; left: 15px; width: 40px; height: 40px; font-size: 16px; }
+            #carrinho-flutuante { width: 55px; height: 55px; font-size: 24px; }
+        }
+
+        @media (max-width: 480px) {
+            nav { padding: 10px 12px; }
+            .logo { font-size: 1rem; letter-spacing: 1px; }
+            .nav-links { gap: 8px; }
+            .nav-links a { font-size: 0.65rem; }
+            
+            .hero-loja { height: 30vh; }
+            .hero-loja h1 { font-size: 1.5rem; }
+            
+            .container { padding: 25px 10px; }
+            .filtros { gap: 8px; }
+            .filtro-btn { padding: 6px 12px; font-size: 0.7rem; }
+            .grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .produto-img { height: 120px; font-size: 2rem; }
+            .produto-nome { font-size: 0.9rem; }
+            .produto-desc { font-size: 0.75rem; }
+            .btn-comprar, .btn-carrinho { font-size: 0.7rem; padding: 8px 10px; }
         }
     </style>
 </head>
@@ -99,30 +137,32 @@
             <a href="index.html">HOME</a>
             <a href="index.html#mobile">SERVIÇOS</a>
             <a href="index.html#agendar">AGENDAR</a>
-            <a href="loja.html" style="color: var(--primary) !important;">🛒 LOJA</a>
-            <a href="mailto:optimustech.support@gmail.com" class="nav-contact"><i class="far fa-envelope"></i> E-MAIL</a>
-            <a href="https://wa.me/5542999112756" class="nav-contact" target="_blank"><i class="fab fa-whatsapp"></i> WHATSAPP</a>
+            <a href="mailto:optimustech.support@gmail.com" class="nav-contact"><i class="far fa-envelope"></i></a>
+            <a href="https://wa.me/5542999112756" class="nav-contact" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
     </nav>
 </header>
 
 <section class="hero-loja">
     <h1>🛒 LOJA OPTIMUS</h1>
-    <p>Produtos Premium para sua Performance Máxima</p>
+    <p>Produtos Premium para sua Performance</p>
 </section>
 
 <div class="container">
-    <h2 class="section-title">Produtos Disponíveis</h2>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+        <h2 class="section-title" style="margin: 0; flex: 1; min-width: 200px;">Produtos</h2>
+        <a href="index.html" class="btn-voltar">← Voltar</a>
+    </div>
     
     <div class="filtros">
         <button class="filtro-btn active" onclick="filtrar('todos')">Todos</button>
         <button class="filtro-btn" onclick="filtrar('ssd')">SSD</button>
-        <button class="filtro-btn" onclick="filtrar('ram')">Memória RAM</button>
+        <button class="filtro-btn" onclick="filtrar('ram')">RAM</button>
         <button class="filtro-btn" onclick="filtrar('acessorios')">Acessórios</button>
     </div>
 
     <div class="grid" id="produtos-grid">
-        <!-- Produtos serão inseridos aqui pelo JavaScript -->
+        <!-- Produtos inseridos aqui -->
     </div>
 </div>
 
@@ -148,7 +188,7 @@
                 <span>Total:</span>
                 <span id="carrinho-total">R$ 0,00</span>
             </div>
-            <button class="btn-finalizar" onclick="finalizarCompra()">Finalizar Compra</button>
+            <button class="btn-finalizar" onclick="finalizarCompra()">Finalizar</button>
         </div>
     </div>
 </div>
@@ -163,7 +203,7 @@
             categoria: 'ssd',
             preco: 249.00,
             precoAntigo: 299.00,
-            descricao: 'SSD de alta velocidade com 480GB de armazenamento',
+            descricao: 'SSD 480GB alta velocidade',
             icon: '<i class="fas fa-hdd"></i>',
             avaliacao: 4.8,
             reviews: 125
@@ -174,7 +214,7 @@
             categoria: 'ssd',
             preco: 449.00,
             precoAntigo: 549.00,
-            descricao: 'SSD rápido 960GB - Ideal para programadores',
+            descricao: 'SSD 960GB para profissionais',
             icon: '<i class="fas fa-hdd"></i>',
             avaliacao: 4.9,
             reviews: 89
@@ -185,7 +225,7 @@
             categoria: 'ram',
             preco: 129.00,
             precoAntigo: 159.00,
-            descricao: 'Memória RAM 8GB DDR4 3200MHz',
+            descricao: 'RAM 8GB DDR4 3200MHz',
             icon: '<i class="fas fa-memory"></i>',
             avaliacao: 4.7,
             reviews: 234
@@ -196,29 +236,29 @@
             categoria: 'ram',
             preco: 249.00,
             precoAntigo: 329.00,
-            descricao: 'Memória RAM 16GB DDR4 3200MHz - Top Performance',
+            descricao: 'RAM 16GB DDR4 3200MHz',
             icon: '<i class="fas fa-memory"></i>',
             avaliacao: 4.9,
             reviews: 156
         },
         {
             id: 5,
-            nome: 'Pasta Térmica Arctic MX-6',
+            nome: 'Pasta Térmica',
             categoria: 'acessorios',
             preco: 79.00,
             precoAntigo: 99.00,
-            descricao: 'Pasta térmica profissional de alta performance',
+            descricao: 'Pasta Arctic MX-6',
             icon: '<i class="fas fa-droplet"></i>',
             avaliacao: 4.8,
             reviews: 312
         },
         {
             id: 6,
-            nome: 'Cooler CPU 2200RPM',
+            nome: 'Cooler CPU',
             categoria: 'acessorios',
             preco: 149.00,
             precoAntigo: 189.00,
-            descricao: 'Cooler CPU silencioso com LED RGB',
+            descricao: 'Cooler 2200RPM LED',
             icon: '<i class="fas fa-fan"></i>',
             avaliacao: 4.6,
             reviews: 98
@@ -229,18 +269,18 @@
             categoria: 'acessorios',
             preco: 29.00,
             precoAntigo: 39.00,
-            descricao: 'Cabo SATA III de 50cm - Alta qualidade',
+            descricao: 'Cabo SATA 50cm',
             icon: '<i class="fas fa-cable"></i>',
             avaliacao: 4.5,
             reviews: 145
         },
         {
             id: 8,
-            nome: 'Kit Limpeza Profissional',
+            nome: 'Kit Limpeza',
             categoria: 'acessorios',
             preco: 89.00,
             precoAntigo: 119.00,
-            descricao: 'Kit completo para limpeza de computadores',
+            descricao: 'Kit profissional completo',
             icon: '<i class="fas fa-broom"></i>',
             avaliacao: 4.7,
             reviews: 267
@@ -248,7 +288,6 @@
     ];
 
     let carrinho = [];
-    let filtroAtual = 'todos';
 
     function renderProdutos(categoria = 'todos') {
         const grid = document.getElementById('produtos-grid');
@@ -271,11 +310,10 @@
                             R$ ${produto.preco.toFixed(2)}
                         </div>
                         <div class="avaliacao">
-                            <span class="estrela">${stars} ${produto.avaliacao}</span>
-                            <span class="nota">(${produto.reviews} avaliações)</span>
+                            <span class="estrela">${stars}</span>
+                            <span class="nota">(${produto.reviews})</span>
                         </div>
                         <button class="btn-comprar" onclick="adicionarAoCarrinho(${produto.id})">Comprar</button>
-                        <button class="btn-carrinho" onclick="adicionarAoCarrinho(${produto.id})">+ Carrinho</button>
                     </div>
                 </div>
             `;
@@ -283,7 +321,6 @@
     }
 
     function filtrar(categoria) {
-        filtroAtual = categoria;
         document.querySelectorAll('.filtro-btn').forEach(btn => btn.classList.remove('active'));
         event.target.classList.add('active');
         renderProdutos(categoria);
@@ -308,7 +345,7 @@
     }
 
     function atualizarCarrinho() {
-        document.getElementById('carrinho-count').textContent = carrinho.length;
+        document.getElementById('carrinho-count').textContent = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
         renderCarrinho();
     }
 
@@ -320,7 +357,7 @@
             container.innerHTML = `
                 <div class="carrinho-vazio">
                     <i class="fas fa-shopping-cart"></i>
-                    <p>Seu carrinho está vazio</p>
+                    <p>Carrinho vazio</p>
                 </div>
             `;
             document.getElementById('carrinho-total').textContent = 'R$ 0,00';
@@ -331,9 +368,9 @@
             <div class="carrinho-item">
                 <div class="item-info">
                     <div class="item-nome">${item.nome}</div>
-                    <div class="item-preco">R$ ${item.preco.toFixed(2)} x ${item.quantidade}</div>
+                    <div class="item-preco">R$ ${item.preco.toFixed(2)} x${item.quantidade}</div>
                 </div>
-                <button class="item-remove" onclick="removerDoCarrinho(${item.id})">Remover</button>
+                <button class="item-remove" onclick="removerDoCarrinho(${item.id})">✕</button>
             </div>
         `).join('');
         
@@ -351,19 +388,19 @@
 
     function finalizarCompra() {
         if (carrinho.length === 0) {
-            alert('Seu carrinho está vazio!');
+            alert('Carrinho vazio!');
             return;
         }
         
         const total = carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0);
-        const itens = carrinho.map(c => `${c.nome} (${c.quantidade}x)`).join('\n');
-        const mensagem = `Olá Daniel! Gostaria de comprar:\n\n${itens}\n\nTotal: R$ ${total.toFixed(2)}`;
+        const itens = carrinho.map(c => `${c.nome} (${c.quantidade}x) - R$ ${(c.preco * c.quantidade).toFixed(2)}`).join('\n');
+        const mensagem = `Olá! Gostaria de comprar:\n\n${itens}\n\n*TOTAL: R$ ${total.toFixed(2)}*`;
         
         window.open(`https://wa.me/5542999112756?text=${encodeURIComponent(mensagem)}`);
     }
 
-    const btnTopo = document.getElementById("btnTopo");
     window.onscroll = () => {
+        const btnTopo = document.getElementById("btnTopo");
         btnTopo.style.display = (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) ? "flex" : "none";
     };
     
@@ -371,7 +408,6 @@
         window.scrollTo({top: 0, behavior: 'smooth'}); 
     }
 
-    // Renderizar produtos ao carregar
     renderProdutos();
 </script>
 
