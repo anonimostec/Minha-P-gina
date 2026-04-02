@@ -13,83 +13,30 @@
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
         
-        /* INTRO ANIMADA */
         #intro { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; transition: 1s; }
         .fire-text { font-size: clamp(2rem, 10vw, 5rem); font-weight: 900; color: #fff; text-shadow: 0 0 20px #f00, 0 0 40px #f00; animation: burn 0.2s infinite alternate; }
         @keyframes burn { from { transform: scale(1); } to { transform: scale(1.02); text-shadow: 0 0 30px #ff4500, 0 0 50px #ff8c00; } }
         .falling-letter { display: inline-block; transition: 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045); }
         .fall { transform: translateY(100vh) rotate(45deg); opacity: 0; }
         
-        /* HEADER */
-        header { 
-            position: fixed; 
-            width: 100%; 
-            top: 0; 
-            background: rgba(0,0,0,0.95); 
-            backdrop-filter: blur(15px); 
-            border-bottom: 1px solid #1f1f1f; 
-            z-index: 1000; 
-        }
-        nav { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            max-width: 1300px; 
-            margin: 0 auto; 
-            padding: 20px; 
-        }
-        .logo { 
-            color: var(--primary); 
-            font-weight: 900; 
-            font-size: 1.5rem; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-        }
-        .nav-links { 
-            display: flex; 
-            align-items: center; 
-            gap: 20px; 
-        }
-        .nav-links a { 
-            color: #888; 
-            text-decoration: none; 
-            font-size: 0.8rem; 
-            font-weight: bold; 
-            transition: 0.3s; 
-            cursor: pointer; 
-            text-transform: uppercase; 
-        }
+        header { position: fixed; width: 100%; top: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(15px); border-bottom: 1px solid #1f1f1f; z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; padding: 20px; width: 100%; }
+        .logo { color: var(--primary); font-weight: 900; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; }
+        .nav-links { display: flex; align-items: center; gap: 20px; }
+        .nav-links a { color: #888; text-decoration: none; font-size: 0.8rem; font-weight: bold; transition: 0.3s; cursor: pointer; text-transform: uppercase; }
         .nav-links a:hover { color: var(--primary); }
-        .nav-contact { 
-            color: var(--primary) !important; 
-            border: 1px solid rgba(0,255,136,0.2); 
-            padding: 5px 10px; 
-            border-radius: 5px; 
-        }
+        .nav-contact { color: var(--primary) !important; border: 1px solid rgba(0,255,136,0.2); padding: 5px 10px; border-radius: 5px; }
 
-        /* QUEM SOMOS */
-        #quem-somos { 
-            max-height: 0; 
-            overflow: hidden; 
-            background: #0a0a0a; 
-            transition: max-height 0.7s ease-in-out; 
-            border-bottom: 1px solid #1f1f1f; 
-            margin-top: 75px; 
-        }
-        #quem-somos.active { 
-            max-height: 2500px; 
-            padding: 80px 20px; 
-        }
+        #quem-somos { max-height: 0; overflow: hidden; background: #0a0a0a; transition: max-height 0.7s ease-in-out; border-bottom: 1px solid #1f1f1f; margin-top: 75px; }
+        #quem-somos.active { max-height: 2500px; padding: 80px 20px; }
         .about-content { max-width: 850px; margin: 0 auto; text-align: center; line-height: 1.8; }
         .about-content h2 { color: var(--primary); font-size: 2rem; margin-bottom: 30px; letter-spacing: 2px; }
         .about-content p { color: #ccc; margin-bottom: 25px; font-size: 1.05rem; text-align: justify; }
         
-        /* HERO */
         .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, #0a1f14 0%, #000 100%); padding: 20px; }
         .hero h1 { font-size: clamp(3.5rem, 12vw, 7rem); color: var(--primary); margin-bottom: 15px; }
         .hero p { color: #666; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; }
         
-        /* CONTEÚDO */
         .container { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
         .section-title { font-size: 1.8rem; color: var(--primary); margin: 60px 0 30px 0; text-align: left; border-left: 4px solid var(--primary); padding-left: 15px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
@@ -99,93 +46,92 @@
         .content h3 { text-align: center; margin-bottom: 15px;}
         .price { color: var(--primary); font-size: 1.4rem; font-weight: 900; margin: 20px 0; display: block; text-align: center;}
         .old-price { text-decoration: line-through; color: #444; font-size: 0.9rem; margin-right: 10px; }
-        .saber-mais { color: #00aaff; cursor: pointer; display: block; margin-top: 15px; font-weight: bold; text-decoration: underline; font-size: 0.9rem; text-align: center;}
-        .desc-escondida { display: none; margin-top: 10px; color: #bbb; font-size: 0.85rem; line-height: 1.4; text-align: center;}
+        .saber-mais { color: #00aaff; cursor: pointer; display: block; margin-top: 15px; font-weight: bold; text-decoration: underline; font-size: 0.9rem; text-align: center; transition: 0.3s; }
+        .saber-mais:hover { color: var(--primary); }
+        .desc-escondida { display: none; margin-top: 15px; color: #aaa; font-size: 0.9rem; line-height: 1.6; text-align: center; padding: 15px; background: rgba(0,255,136,0.05); border-left: 3px solid var(--primary); border-radius: 5px; }
         
         .btn { background: var(--primary); color: #000; border: none; padding: 16px 32px; border-radius: 10px; font-weight: 900; cursor: pointer; transition: 0.3s; text-transform: uppercase; width: 100%; margin-top: 15px; }
         .btn:hover { background: #fff; transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0, 255, 136, 0.3); }
 
-        /* SETA VOLTAR AO TOPO (Z-INDEX MÁXIMO) */
-        #btnTopo {
-            display: none; 
-            position: fixed; 
-            bottom: 30px; 
-            left: 25px; 
-            z-index: 99999; 
-            border: 2px solid var(--primary); 
-            background: rgba(0,0,0,0.9); 
-            color: var(--primary);
-            cursor: pointer; 
-            width: 55px; 
-            height: 55px; 
-            border-radius: 50%; 
-            font-size: 22px;
-            transition: 0.3s; 
-            backdrop-filter: blur(10px);
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-        }
+        #btnTopo { display: none; position: fixed; bottom: 30px; left: 25px; z-index: 99999; border: 2px solid var(--primary); background: rgba(0,0,0,0.9); color: var(--primary); cursor: pointer; width: 55px; height: 55px; border-radius: 50%; font-size: 22px; transition: 0.3s; backdrop-filter: blur(10px); align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
         #btnTopo:hover { background: var(--primary); color: #000; }
+
+        #faq { background: #0a0a0a; padding: 80px 20px; margin-top: 60px; border-top: 1px solid #1f1f1f; }
+        .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
+        .faq-card { background: var(--card-bg); padding: 30px; border-radius: 15px; border: 1px solid #1a1a1a; cursor: pointer; transition: 0.4s; }
+        .faq-card:hover { transform: translateY(-8px); border-color: var(--primary); background: #151515; }
+        .faq-title { color: var(--primary); font-size: 1.2rem; font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .faq-desc { color: #aaa; font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px; }
+        .faq-link { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 5px; transition: 0.3s; cursor: pointer; }
+        .faq-link:hover { gap: 10px; }
         
-        /* CHATBOT */
-        .ia-float {
-            position: fixed; bottom: 35px; right: 35px;
-            background: linear-gradient(135deg, #00ff88, #00cc6e);
-            width: 70px; height: 70px; border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
-            z-index: 1000; box-shadow: 0 15px 40px rgba(0, 255, 136, 0.6);
-            cursor: pointer; transition: 0.3s; font-size: 32px;
-        }
-        #chatbot-container {
-            position: fixed; bottom: 120px; right: 30px; width: 380px; height: 560px;
-            background: #0a0a0a; border: 2px solid var(--primary); border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.9); display: none; flex-direction: column;
-            overflow: hidden; z-index: 1001;
-        }
-        #chat-header { background: #000; padding: 16px 20px; display: flex; align-items: center; gap: 12px; }
-        #chat-header h3 { margin: 0; color: #00ff88; }
+        .faq-resposta { display: none; margin-top: 15px; color: #ccc; font-size: 0.9rem; line-height: 1.8; padding: 15px; background: rgba(0,255,136,0.05); border-left: 3px solid var(--primary); border-radius: 5px; white-space: pre-wrap; }
+        
+        .ia-float { position: fixed; bottom: 35px; right: 35px; background: linear-gradient(135deg, #00ff88, #00cc6e); width: 70px; height: 70px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 15px 40px rgba(0, 255, 136, 0.6); cursor: pointer; transition: 0.3s; font-size: 32px; animation: pulse 2s infinite; }
+        .ia-float:hover { transform: scale(1.1); }
+        @keyframes pulse { 0%, 100% { box-shadow: 0 15px 40px rgba(0, 255, 136, 0.6); } 50% { box-shadow: 0 15px 60px rgba(0, 255, 136, 1); } }
+
+        #chatbot-container { position: fixed; bottom: 120px; right: 30px; width: 380px; height: 560px; background: #0a0a0a; border: 2px solid var(--primary); border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.9); display: none; flex-direction: column; overflow: hidden; z-index: 1001; max-height: 85vh; }
+
+        #chat-header { background: linear-gradient(135deg, #000, #0a1a0f); padding: 16px 20px; display: flex; align-items: center; gap: 12px; flex-shrink: 0; border-bottom: 1px solid rgba(0,255,136,0.2); }
+        #chat-header h3 { margin: 0; color: #00ff88; font-size: 1.1rem; }
+        #chat-header .status { width: 8px; height: 8px; background: #00ff88; border-radius: 50%; animation: statusPulse 1s infinite; margin-left: auto; }
+        @keyframes statusPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        #chat-header button { margin-left: 10px; }
+
         #chat-body { flex: 1; padding: 20px; overflow-y: auto; background: #050505; }
-        .chat-message { margin-bottom: 16px; max-width: 90%; }
-        .bot-message { background: #1f1f1f; padding: 14px 18px; border-radius: 18px 18px 18px 6px; color: #ddd; line-height: 1.5; }
-        .user-message { margin-left: auto; background: var(--primary); color: #000; padding: 14px 18px; border-radius: 18px 18px 6px 18px; font-weight: 600; }
+        .chat-message { margin-bottom: 16px; max-width: 90%; word-wrap: break-word; animation: slideIn 0.3s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .bot-message { background: #1f1f1f; padding: 14px 18px; border-radius: 18px 18px 18px 6px; color: #ddd; line-height: 1.5; font-size: 0.9rem; white-space: pre-wrap; border-left: 3px solid var(--primary); }
+        .user-message { margin-left: auto; background: var(--primary); color: #000; padding: 14px 18px; border-radius: 18px 18px 6px 18px; font-weight: 600; font-size: 0.9rem; max-width: 85%; }
+
+        .typing-indicator { display: flex; gap: 4px; padding: 14px 18px; background: #1f1f1f; border-radius: 18px 18px 18px 6px; width: fit-content; border-left: 3px solid var(--primary); }
+        .typing-dot { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; animation: typingAnim 1.4s infinite; }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typingAnim { 0%, 60%, 100% { opacity: 0.5; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-10px); } }
+
         .quick-options { display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0; }
-        .quick-btn { background: #1f1f1f; color: #00ff88; border: 1px solid #00ff88; padding: 9px 14px; border-radius: 20px; font-size: 0.85rem; cursor: pointer; }
-        #chat-input-area { padding: 15px; background: #000; border-top: 1px solid #222; display: flex; gap: 10px; }
-        #chat-input { flex: 1; background: #111; border: 1px solid #333; color: #fff; padding: 12px 16px; border-radius: 12px; }
-        #chat-send { background: var(--primary); color: #000; border: none; width: 48px; border-radius: 12px; cursor: pointer; }
+        .quick-btn { background: #1f1f1f; color: #00ff88; border: 1px solid #00ff88; padding: 9px 14px; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: 0.3s; }
+        .quick-btn:hover { background: #00ff88; color: #000; transform: translateY(-2px); }
+
+        .whatsapp-btn { background: linear-gradient(135deg, #25d366, #20ba58); color: #fff !important; border: none !important; padding: 12px 18px !important; border-radius: 20px !important; font-size: 0.9rem !important; cursor: pointer !important; transition: 0.3s !important; width: 100% !important; margin-top: 10px !important; font-weight: 600 !important; display: flex !important; align-items: center !important; justify-content: center !important; gap: 8px !important; }
+        .whatsapp-btn:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4); }
+
+        #chat-input-area { padding: 15px; background: #000; border-top: 1px solid #222; display: flex; gap: 10px; flex-shrink: 0; }
+        #chat-input { flex: 1; background: #111; border: 1px solid #333; color: #fff; padding: 12px 16px; border-radius: 12px; font-size: 0.9rem; min-height: 45px; }
+        #chat-input:focus { outline: none; border-color: var(--primary); }
+        #chat-send { background: var(--primary); color: #000; border: none; width: 48px; height: 48px; border-radius: 12px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        #chat-send:hover { background: #fff; transform: scale(1.05); }
 
         footer { text-align: center; padding: 40px; color: #444; font-size: 0.8rem; border-top: 1px solid #111; }
 
-        /* AJUSTES MOBILE */
         @media (max-width: 768px) {
             header { position: absolute; padding: 10px 0; }
             nav { flex-direction: column; gap: 15px; }
             .logo { font-size: 1.2rem; }
             .nav-links { flex-wrap: wrap; justify-content: center; gap: 12px; padding: 0 10px; }
             .nav-links a { font-size: 0.75rem; }
-            .nav-contact { margin: 5px; padding: 8px 15px !important; }
             .hero { height: auto; padding: 180px 20px 80px 20px; min-height: 80vh; }
             .container { padding: 20px; }
             .section-title { margin: 80px 0 40px 0; font-size: 1.5rem; }
-            .grid { gap: 40px; }
-            .card { padding: 40px 25px; }
-            #chatbot-container { width: 92vw; height: 70vh; right: 4vw; bottom: 100px; }
-            .ia-float { bottom: 20px; right: 20px; width: 60px; height: 60px; }
-            #btnTopo { bottom: 20px; left: 20px; display: none; }
-            #quem-somos.active { max-height: 4500px; padding-top: 180px; }
+            #chatbot-container { width: calc(100vw - 20px); height: calc(100vh - 200px); right: 10px; bottom: 100px; }
+            .faq-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            #chatbot-container { width: calc(100vw - 10px); height: calc(100vh - 150px); right: 5px; bottom: 80px; }
         }
     </style>
 </head>
 <body>
 
-<button onclick="topo()" id="btnTopo" title="Voltar ao Topo"><i class="fas fa-arrow-up"></i></button>
+<button onclick="topo()" id="btnTopo"><i class="fas fa-arrow-up"></i></button>
 
 <div id="intro">
-    <div class="fire-text" id="fireText">
-        <span class="falling-letter">O</span><span class="falling-letter">P</span><span class="falling-letter">T</span><span class="falling-letter">I</span><span class="falling-letter">M</span><span class="falling-letter">U</span><span class="falling-letter">S</span>
-        &nbsp;
-        <span class="falling-letter">T</span><span class="falling-letter">E</span><span class="falling-letter">C</span><span class="falling-letter">H</span>
+    <div class="fire-text">
+        <span class="falling-letter">O</span><span class="falling-letter">P</span><span class="falling-letter">T</span><span class="falling-letter">I</span><span class="falling-letter">M</span><span class="falling-letter">U</span><span class="falling-letter">S</span>&nbsp;<span class="falling-letter">T</span><span class="falling-letter">E</span><span class="falling-letter">C</span><span class="falling-letter">H</span>
     </div>
 </div>
 
@@ -215,7 +161,6 @@
         <h2 style="color: var(--primary); font-size: 1.8rem; margin-bottom: 30px;">SOBRE O CRIADOR</h2>
         <p>Meu nome é <strong>Daniel Gonçalves</strong>, tenho 20 anos e sou o fundador da Optimus Tech.</p>
         <p>Sempre fui apaixonado por tecnologia e, ao longo do tempo, fui aprofundando meu conhecimento na prática, trabalhando com manutenção, otimização e melhoria de desempenho de computadores e dispositivos móveis.</p>
-        <p>Hoje, tenho experiência com hardware, software, sistemas operacionais, redes e também com segurança da informação, incluindo testes em ambientes controlados (ethical hacking), o que me permite ter uma visão mais completa de como os sistemas realmente funcionam.</p>
         <p>Meu foco não é apenas consertar, mas melhorar de verdade — deixar cada máquina mais rápida, estável e eficiente.</p>
         <p style="color: var(--primary); margin-top: 50px; font-weight: bold; font-size: 1.35rem;">⚡ Tecnologia sem limites, desempenho de verdade.</p>
         <br><br>
@@ -231,57 +176,298 @@
 <div class="container">
     <h2 class="section-title" id="mobile">Celular travou? 📱</h2>
     <div class="grid">
-        <div class="card"><div class="content"><i class="fas fa-mobile-alt"></i><h3>Formatação e Recuperação</h3><span class="price"><span class="old-price">R$ 60,00</span>R$ 50,00</span><button class="btn" onclick="selecionar('Mobile - Formatação')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">Reset e otimização de sistema.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-tools"></i><h3>Troca de Peças Mobile</h3><span class="price">R$ 50,00 (Mão de Obra) + Peça</span><button class="btn" onclick="selecionar('Mobile - Peças')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">Telas, baterias e conectores.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-shield-virus"></i><h3>Remoção de Vírus</h3><span class="price"><span class="old-price">R$ 50,00</span>R$ 40,00</span><button class="btn" onclick="selecionar('Mobile - Vírus')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">Limpeza de malwares e adwares.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-mobile-alt"></i><h3>Formatação e Recuperação</h3><span class="price"><span class="old-price">R$ 60,00</span>R$ 50,00</span><button class="btn" onclick="selecionar('Formatação Mobile')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🔧 Realizamos limpeza completa do sistema operacional, removendo arquivos temporários, cache acumulado e dados desnecessários. ✨ Atualizamos o SO para a versão mais recente, otimizamos permissões de aplicativos e configurações de desempenho.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-tools"></i><h3>Troca de Peças Mobile</h3><span class="price">R$ 80,00 + Peça</span><button class="btn" onclick="selecionar('Troca de Peças Mobile')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🖥️ Trocamos telas quebradas, baterias desgastadas, conectores de carga danificados e componentes internos. 🛠️ Usamos peças de qualidade com garantia, realizamos diagnóstico prévio e teste completo após a manutenção.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-shield-virus"></i><h3>Remoção de Vírus</h3><span class="price"><span class="old-price">R$ 50,00</span>R$ 40,00</span><button class="btn" onclick="selecionar('Remoção de Vírus Mobile')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🛡️ Escaneamos profundamente o celular com ferramentas avançadas de detecção, removemos malwares, adwares, trojans e aplicativos maliciosos. 🔒 Reforçamos a segurança e limpamos registros do sistema.</p></div></div>
     </div>
 
     <h2 class="section-title" id="pc">PC voando baixo... 🚀</h2>
     <div class="grid">
-        <div class="card"><div class="content"><i class="fas fa-snowflake"></i><h3>Limpeza e Pasta Térmica</h3><span class="price"><span class="old-price">R$ 65,00</span>R$ 50,00</span><button class="btn" onclick="selecionar('PC - Limpeza')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">Limpeza interna e pasta térmica premium.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-microchip"></i><h3>Upgrade Peças (SSD/RAM)</h3><span class="price"><span class="old-price">R$ 65,00</span>R$ 50,00</span><button class="btn" onclick="selecionar('PC - Upgrade')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">Instalação de SSD e memórias.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-bolt"></i><h3>Otimização FPS</h3><span class="price"><span class="old-price">R$ 100,00</span>R$ 80,00</span><button class="btn" onclick="selecionar('PC - Otimização')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">Configurações para ganho real de FPS.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-snowflake"></i><h3>Limpeza e Pasta Térmica</h3><span class="price"><span class="old-price">R$ 65,00</span>R$ 50,00</span><button class="btn" onclick="selecionar('Limpeza e Pasta Térmica PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🌬️ Limpeza interna completa: removemos toda a poeira dos ventiladores, dissipador e componentes internos. 🧴 Aplicamos pasta térmica de alta performance, garantindo melhor condução de calor.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-microchip"></i><h3>Upgrade Peças (SSD/RAM)</h3><span class="price"><span class="old-price">R$ 65,00</span>R$ 50,00</span><button class="btn" onclick="selecionar('Upgrade Peças PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">⚡ Instalação de SSDs (até 5x mais rápido que HD), compatibilização e clonagem de dados. 💾 Aumento de memória RAM para multitarefa suave e programas pesados.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-bolt"></i><h3>Otimização FPS</h3><span class="price"><span class="old-price">R$ 100,00</span>R$ 80,00</span><button class="btn" onclick="selecionar('Otimização FPS PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🎮 Ajustes finos de configurações de jogo para ganho real de FPS. 📊 Otimizamos drivers de vídeo, desativamos programas em background, ajustamos Power Plan.</p></div></div>
     </div>
 
     <h2 class="section-title" id="aulas">Aulas práticas 📚</h2>
     <div class="grid">
-        <div class="card"><div class="content"><i class="fas fa-user-secret"></i><h3>Boas Práticas Hacker</h3><span class="price">R$ 100,00</span><button class="btn" onclick="selecionar('Aula Hacker')">CONTRATAR</button></div></div>
-        <div class="card"><div class="content"><i class="fas fa-file-word"></i><h3>Pacote Office</h3><span class="price">R$ 200,00</span><button class="btn" onclick="selecionar('Aula Office')">CONTRATAR</button></div></div>
-        <div class="card"><div class="content"><i class="fas fa-graduation-cap"></i><h3>Informática Particular</h3><span class="price">R$ 30,00 /h</span><button class="btn" onclick="selecionar('Aula Informática')">CONTRATAR</button></div></div>
+        <div class="card"><div class="content"><i class="fas fa-user-secret"></i><h3>Boas Práticas Hacker</h3><span class="price">R$ 100,00</span><button class="btn" onclick="selecionar('Aula Boas Práticas Hacker')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🔐 Aprenda sobre segurança da informação, proteção de dados e como os hackers agem. 🛡️ Tópicos: senhas seguras, autenticação 2FA, phishing, malware, Wi-Fi seguro.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-file-word"></i><h3>Pacote Office</h3><span class="price">R$ 200,00</span><button class="btn" onclick="selecionar('Aula Pacote Office')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">📝 Word: formatação profissional, tabelas, estilos e referências. 📊 Excel: fórmulas avançadas, gráficos, análise de dados. 📈 PowerPoint: apresentações impactantes.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-graduation-cap"></i><h3>Informática Particular</h3><span class="price">R$ 30,00 /h</span><button class="btn" onclick="selecionar('Aula Informática Particular')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">💡 Aulas personalizadas conforme seu nível: Windows, programas, internet, redes sociais. 🎯 Foco na sua autonomia digital, resolvemos suas dúvidas específicas.</p></div></div>
     </div>
 
     <h2 class="section-title" id="loja">🛒 Loja Optimus</h2>
     <div class="grid">
-        <div class="card"><div class="content"><i class="fas fa-hdd"></i><h3>SSD 480GB</h3><span class="price">R$ 249,00</span><button class="btn" onclick="comprar('SSD 480GB')">COMPRAR</button></div></div>
+        <div class="card"><div class="content"><i class="fas fa-hdd"></i><h3>SSD 480GB</h3><span class="price">R$ 249,00</span><button class="btn" onclick="comprar('SSD 480GB')">COMPRAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">⚡ SSD de alta velocidade com 480GB de armazenamento. 🚀 Velocidade de leitura/escrita até 560MB/s, garantia de 3 anos. 💾 Interface SATA 2.5", compatível com notebooks.</p></div></div>
     </div>
-
+</div>
     <section id="agendar" style="background:#080808; border-radius:30px; padding:60px 20px; text-align:center; margin-top:80px; border: 1px solid #111;">
         <h2>📅 Agendar Horário</h2>
         <input type="text" id="cliNome" placeholder="Seu Nome" style="background:#000; border:1px solid #222; color:#fff; padding:15px; border-radius:10px; margin:10px; width:100%; max-width:350px;">
         <select id="cliServico" style="background:#000; border:1px solid #222; color:#fff; padding:15px; border-radius:10px; margin:10px; width:100%; max-width:350px;">
             <option value="">Selecione...</option>
-            <option value="Mobile">Mobile</option>
-            <option value="PC">Computador</option>
-            <option value="Aula">Aula</option>
+            <option value="Formatação Mobile">Formatação Mobile</option>
+            <option value="Troca de Peças Mobile">Troca de Peças Mobile</option>
+            <option value="Remoção de Vírus Mobile">Remoção de Vírus Mobile</option>
+            <option value="Limpeza e Pasta Térmica PC">Limpeza e Pasta Térmica PC</option>
+            <option value="Upgrade Peças PC">Upgrade Peças PC</option>
+            <option value="Otimização FPS PC">Otimização FPS PC</option>
+            <option value="Aula Boas Práticas Hacker">Aula Boas Práticas Hacker</option>
+            <option value="Aula Pacote Office">Aula Pacote Office</option>
+            <option value="Aula Informática Particular">Aula Informática Particular</option>
         </select>
         <input type="datetime-local" id="cliData" style="background:#000; border:1px solid #222; color:#fff; padding:15px; border-radius:10px; margin:10px; width:100%; max-width:350px;">
         <br>
         <button class="btn" style="max-width:350px;" onclick="enviarAgendamento()">Confirmar via WhatsApp</button>
     </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq">
+        <h2 class="section-title">❓ Dúvidas Frequentes</h2>
+        <div class="faq-grid">
+            <div class="faq-card">
+                <div class="faq-title">🌡️ Pasta Térmica</div>
+                <div class="faq-desc">Entenda por que é importante trocar...</div>
+                <a class="faq-link" onclick="toggleFaq(this)">Saiba mais →</a>
+                <div class="faq-resposta">🌡️ POR QUE TROCAR PASTA TÉRMICA?
+
+A pasta seca com o tempo (2 anos).
+
+❌ QUANDO SECA:
+• PC 20°C mais quente
+• CPU fica lento
+• FPS cai muito
+• PC desliga sozinho
+• Risco de queimar
+
+✅ SOLUÇÃO:
+• Limpeza completa
+• Pasta Arctic MX-6
+• Reaplicamos em CPU/GPU
+• PC 10-15°C mais frio
+
+💰 R$ 50,00
+⏱️ Dura 2+ anos</div>
+            </div>
+
+            <div class="faq-card">
+                <div class="faq-title">💾 O que é RAM?</div>
+                <div class="faq-desc">Descubra o papel fundamental...</div>
+                <a class="faq-link" onclick="toggleFaq(this)">Saiba mais →</a>
+                <div class="faq-resposta">💾 O QUE É RAM?
+
+Memória rápida do PC!
+
+💪 COM 8GB:
+✅ 50+ abas navegador
+✅ Discord + Chrome + games
+✅ Editar vídeos rápido
+✅ Multitarefa fluida
+
+❌ SEM:
+• Trava com 5 apps
+• Muito lento
+• Jogos ruins
+
+💰 Upgrade: R$ 50 instalação
++ Preço da RAM</div>
+            </div>
+
+            <div class="faq-card">
+                <div class="faq-title">⚡ O que é SSD?</div>
+                <div class="faq-desc">Por que é 5x mais rápido...</div>
+                <a class="faq-link" onclick="toggleFaq(this)">Saiba mais →</a>
+                <div class="faq-resposta">⚡ O QUE É SSD?
+
+Disco rápido! 🚀
+
+🔥 5x MAIS RÁPIDO:
+• Boot: 30 seg (vs 5 min)
+• Programas: 2x rápido
+• Arquivos: 5x rápido
+• Jogos: Instantâneo
+
+✨ VANTAGENS:
+✅ Sem peças móveis
+✅ Menos calor
+✅ Menos barulho
+✅ Mais durável
+
+💾 SSD 480GB: R$ 249,00
+📊 560MB/s
+✅ Garantia 3 anos</div>
+            </div>
+
+            <div class="faq-card">
+                <div class="faq-title">🐢 PC Lento</div>
+                <div class="faq-desc">Principais razões...</div>
+                <a class="faq-link" onclick="toggleFaq(this)">Saiba mais →</a>
+                <div class="faq-resposta">🐢 POR QUE LENTO?
+
+1️⃣ POEIRA (40%)
+❌ Ventiladores entupidos
+✅ Solução: Limpeza R$ 50
+
+2️⃣ DISCO CHEIO (30%)
+❌ Cache grande
+✅ Solução: Limpeza
+
+3️⃣ POUCA RAM (20%)
+❌ Sistema usa disco
+✅ Solução: Upgrade RAM
+
+4️⃣ HD ANTIGO (10%)
+❌ Muito lento
+✅ Solução: SSD R$ 249
+
+5️⃣ VIRUS/MALWARE
+✅ Solução: Remoção R$ 40</div>
+            </div>
+
+            <div class="faq-card">
+                <div class="faq-title">🎮 Otimizar FPS</div>
+                <div class="faq-desc">Dicas para melhorar...</div>
+                <a class="faq-link" onclick="toggleFaq(this)">Saiba mais →</a>
+                <div class="faq-resposta">🎮 OTIMIZAR FPS:
+
+⚙️ FAZEMOS:
+• Drivers atualizados
+• Power Plan máximo
+• Desativar background
+• Otimização BIOS
+• Limpeza Windows
+• Pasta térmica
+
+📈 RESULTADO:
+🚀 +20-40% FPS
+⚙️ Sem lag
+🏆 Gameplay fluido
+
+💰 R$ 80,00</div>
+            </div>
+
+            <div class="faq-card">
+                <div class="faq-title">🔄 Formatação</div>
+                <div class="faq-desc">Entenda o reset completo...</div>
+                <a class="faq-link" onclick="toggleFaq(this)">Saiba mais →</a>
+                <div class="faq-resposta">🔄 FORMATAÇÃO = RESET!
+
+📱 CELULAR:
+✨ Apaga tudo
+✨ Reinstala sistema
+✨ Remove vírus 100%
+✨ Volta como novo
+⏱️ 1-2 horas
+💰 R$ 50,00
+
+⚠️ FAZEMOS BACKUP ANTES!</div>
+            </div>
+
+            <div class="faq-card">
+                <div class="faq-title">🛡️ Remoção de Vírus</div>
+                <div class="faq-desc">Identifique e remova...</div>
+                <a class="faq-link" onclick="toggleFaq(this)">Saiba mais →</a>
+                <div class="faq-resposta">🛡️ REMOVER VÍRUS:
+
+⚠️ SINAIS:
+🔴 Pop-ups
+🔴 Navegador redireciona
+🔴 Consumo alto internet
+🔴 Apps estranhos
+🔴 Muito lento
+
+✅ SOLUÇÃO:
+📱 Celular: R$ 40 (1-2h)
+💻 PC: Consulte
+✨ Remove 100%
+🛡️ Reforça proteção</div>
+            </div>
+
+            <div class="faq-card">
+                <div class="faq-title">💿 HD vs SSD</div>
+                <div class="faq-desc">Compare a performance...</div>
+                <a class="faq-link" onclick="toggleFaq(this)">Saiba mais →</a>
+                <div class="faq-resposta">💿 HD vs SSD:
+
+⚡ VELOCIDADE:
+HD: Boot 5 min
+SSD: Boot 30 seg
+
+🔧 COMO FUNCIONA:
+HD: Peças móveis (lento)
+SSD: Chips rápidos (5x+)
+
+✅ VANTAGENS SSD:
+• Muito mais rápido
+• Mais durável
+• Sem barulho
+• Menos calor
+
+💰 SSD 1TB: R$ 500
+Mas compensa muito!</div>
+            </div>
+
+            <div class="faq-card">
+                <div class="faq-title">📈 Vale Aumentar RAM?</div>
+                <div class="faq-desc">Benefícios reais...</div>
+                <a class="faq-link" onclick="toggleFaq(this)">Saiba mais →</a>
+                <div class="faq-resposta">📈 VALE AUMENTAR RAM?
+
+✅ SIM! DEFINITIVAMENTE!
+
+💪 COM 8GB:
+✅ 50+ abas browser
+✅ Discord + games
+✅ Vídeos suaves
+✅ Multitarefa fluida
+
+❌ COM 4GB:
+❌ Trava com 5 apps
+❌ Muito lento
+❌ Jogos ruins
+
+💰 CUSTO:
+RAM 8GB: R$ 120
+Instalação: R$ 50
+Melhora: 300%+
+
+Vale MUITO!</div>
+            </div>
+        </div>
+    </section>
 </div>
 
+<script>
+    function toggleFaq(el) {
+        const resposta = el.nextElementSibling;
+        resposta.style.display = (resposta.style.display === "block") ? "none" : "block";
+    }
+</script>
+<!-- CHATBOT -->
 <div class="ia-float" onclick="toggleChat()"><i class="fas fa-robot"></i></div>
 <div id="chatbot-container">
-    <div id="chat-header"><h3>Optimus IA</h3><button onclick="toggleChat()" style="margin-left:auto; background:none; border:none; color:#888; font-size:1.5rem; cursor:pointer;">✕</button></div>
+    <div id="chat-header">
+        <i class="fas fa-robot" style="font-size:1.8rem;color:#00ff88;"></i>
+        <h3>Optimus IA</h3>
+        <div class="status"></div>
+        <button onclick="toggleChat()" style="background:none;border:none;color:#888;font-size:1.6rem;cursor:pointer;">✕</button>
+    </div>
     <div id="chat-body">
-        <div class="chat-message bot-message">Olá! Escolha uma dúvida ou digite abaixo:</div>
-        <div class="quick-options">
-            <div class="quick-btn" onclick="sendMessage('Pasta térmica?')">Pasta térmica?</div>
-            <div class="quick-btn" onclick="sendMessage('Celular travando?')">Celular travando?</div>
+        <div class="chat-message bot-message" id="greeting-msg">👋 Olá! Sou a <strong>Optimus IA</strong>
+
+Estou aqui para ajudar com dúvidas sobre nossos serviços!
+
+📋 Escolha uma opção ou me faça uma pergunta:</div>
+        <div class="quick-options" id="quick-options">
+            <div class="quick-btn" onclick="quickReply(this)">💵 Melhor custo-benefício?</div>
+            <div class="quick-btn" onclick="quickReply(this)">🎮 Otimizar PC para games</div>
+            <div class="quick-btn" onclick="quickReply(this)">📱 Celular lento</div>
+            <div class="quick-btn" onclick="quickReply(this)">🛡️ Estou com vírus!</div>
+            <div class="quick-btn" onclick="quickReply(this)">📞 Como agendar?</div>
+            <div class="quick-btn" onclick="quickReply(this)">💬 Falar com Daniel</div>
         </div>
     </div>
     <div id="chat-input-area">
-        <input type="text" id="chat-input" placeholder="Dúvida...">
+        <input type="text" id="chat-input" placeholder="Digite sua dúvida..." onkeypress="if(event.key==='Enter') sendMessage()">
         <button id="chat-send" onclick="sendMessage()">→</button>
     </div>
 </div>
@@ -289,26 +475,112 @@
 <footer>© 2026 OPTIMUS TECH - TODOS OS DIREITOS RESERVADOS</footer>
 
 <script>
-    // LÓGICA SETA VOLTAR AO TOPO (Z-INDEX E DISPLAY FLEX)
-    const btnTopo = document.getElementById("btnTopo");
-    window.onscroll = function() {
-        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-            btnTopo.style.display = "flex";
-        } else {
-            btnTopo.style.display = "none";
-        }
+    const respostasIA = {
+        "custo": "💰 MELHOR CUSTO-BENEFÍCIO:\n\n🥇 TOP 3:\n1️⃣ Formatação Mobile - R$ 50\n2️⃣ Limpeza + Pasta - R$ 50\n3️⃣ Upgrade RAM/SSD - R$ 50",
+        "game": "🎮 OTIMIZAÇÃO FPS:\n\n✨ O que fazemos:\n🔧 Drivers atualizados\n⚡ Power Plan máximo\n🗑️ Limpeza Windows\n📈 +20-40% FPS!\n💰 R$ 80,00",
+        "lento": "📱 CELULAR LENTO?\n\n❌ Causas:\n• Memória cheia\n• Muitos apps\n• Cache grande\n\n✅ Solução: Formatação\nR$ 50,00 | Fica novo!",
+        "virus": "🛡️ TEM VÍRUS?\n\n✅ Remove 100%\n📱 Celular: R$ 40 (1-2h)\n💻 PC: Consulte\n\nRemove malware completamente!",
+        "agendar": "📅 COMO AGENDAR:\n\n1️⃣ Seu nome\n2️⃣ Serviço\n3️⃣ Data/hora\n\nOu WhatsApp:\n(42) 99911-2756",
+        "daniel": "👨‍💻 QUER FALAR COM DANIEL?\n\nClique no botão abaixo!"
     };
-    function topo() { window.scrollTo({top: 0, behavior: 'smooth'}); }
 
+    function showTyping() {
+        const body = document.getElementById('chat-body');
+        const typing = document.createElement('div');
+        typing.className = 'chat-message typing-indicator';
+        typing.id = 'typing-indicator';
+        typing.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+        body.appendChild(typing);
+        body.scrollTop = body.scrollHeight;
+    }
+
+    function removeTyping() {
+        const typing = document.getElementById('typing-indicator');
+        if (typing) typing.remove();
+    }
+
+    function addMessage(text, isUser = false) {
+        const body = document.getElementById('chat-body');
+        removeTyping();
+        const div = document.createElement('div');
+        div.className = `chat-message ${isUser ? 'user-message' : 'bot-message'}`;
+        div.textContent = text;
+        body.appendChild(div);
+        body.scrollTop = body.scrollHeight;
+    }
+
+    function addWhatsAppButton() {
+        const chatBody = document.getElementById('chat-body');
+        const btn = document.createElement('button');
+        btn.className = 'whatsapp-btn';
+        btn.innerHTML = '<i class="fab fa-whatsapp"></i> Ir para WhatsApp';
+        btn.onclick = () => window.open('https://wa.me/5542999112756', '_blank');
+        chatBody.appendChild(btn);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function getBotResponse(question) {
+        const q = question.toLowerCase().trim();
+        showTyping();
+
+        for (let chave in respostasIA) {
+            if (q.includes(chave)) {
+                setTimeout(() => {
+                    addMessage(respostasIA[chave], false);
+                    if (chave === "daniel") {
+                        setTimeout(() => addWhatsAppButton(), 500);
+                    }
+                }, 700);
+                return;
+            }
+        }
+
+        setTimeout(() => {
+            addMessage("Ótima pergunta! 🤔\n\nMe diga mais:\n• É sobre PC ou Mobile?\n• Qual é o problema?\n\nOu fale com Daniel! 📞", false);
+            setTimeout(() => addWhatsAppButton(), 500);
+        }, 700);
+    }
+
+    function sendMessage() {
+        const input = document.getElementById('chat-input');
+        const text = input.value.trim();
+        if (!text) return;
+        
+        addMessage(text, true);
+        input.value = '';
+        getBotResponse(text);
+    }
+
+    function quickReply(el) {
+        const question = el.textContent;
+        addMessage(question, true);
+        getBotResponse(question);
+    }
+
+    function toggleChat() {
+        const chat = document.getElementById('chatbot-container');
+        chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
+    }
+
+    const btnTopo = document.getElementById("btnTopo");
+    window.onscroll = () => {
+        btnTopo.style.display = (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) ? "flex" : "none";
+    };
+    
+    function topo() { 
+        window.scrollTo({top: 0, behavior: 'smooth'}); 
+    }
+    
     function toggleAbout() {
         const p = document.getElementById("quem-somos");
         p.classList.toggle("active");
-        if(p.classList.contains("active")) window.scrollTo({top:0, behavior:'smooth'});
     }
+    
     function toggleDesc(el) {
         const desc = el.nextElementSibling;
         desc.style.display = (desc.style.display === "block") ? "none" : "block";
     }
+
     window.onload = () => {
         setTimeout(() => {
             const letters = document.querySelectorAll('.falling-letter');
@@ -319,30 +591,31 @@
             }, 1800);
         }, 800);
     };
-    function selecionar(s) { document.getElementById('cliServico').value = s.includes("Mobile") ? "Mobile" : "PC"; window.location.href = "#agendar"; }
-    function comprar(p) { window.open(`https://wa.me/5542999112756?text=Oi Daniel! Quero comprar: ${p}`); }
+
+    function selecionar(s) {
+        document.getElementById('cliServico').value = s;
+        window.location.href = "#agendar";
+    }
+    
+    function comprar(p) {
+        window.open(`https://wa.me/5542999112756?text=Oi Daniel! Quero comprar: ${p}`);
+    }
+    
     function enviarAgendamento() {
         const n = document.getElementById('cliNome').value;
+        const s = document.getElementById('cliServico').value;
         const d = document.getElementById('cliData').value;
-        if(!n || !d) return alert("Preencha o nome e a data!");
-        window.open(`https://wa.me/5542999112756?text=Olá Daniel! Sou ${n}, agendando para ${d}`);
+        if(!n || !s || !d) return alert("Preencha tudo!");
+        window.open(`https://wa.me/5542999112756?text=Olá Daniel! Sou ${n}, gostaria de agendar: ${s}, para ${d}`);
     }
-    function toggleChat() {
+
+    document.addEventListener('click', (e) => {
         const chat = document.getElementById('chatbot-container');
-        chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
-    }
-    function sendMessage(texto = null) {
-        const input = document.getElementById('chat-input');
-        const t = texto || input.value;
-        if(!t) return;
-        const body = document.getElementById('chat-body');
-        body.innerHTML += `<div class="chat-message user-message">${t}</div>`;
-        input.value = '';
-        setTimeout(() => {
-            body.innerHTML += `<div class="chat-message bot-message">Vou te passar para o suporte humano no WhatsApp para detalhes técnicos!</div>`;
-            body.scrollTop = body.scrollHeight;
-        }, 800);
-    }
+        if (!chat.contains(e.target) && !e.target.closest('.ia-float')) {
+            chat.style.display = 'none';
+        }
+    });
 </script>
+
 </body>
 </html>
