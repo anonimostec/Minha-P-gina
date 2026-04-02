@@ -2,129 +2,965 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Optimus Tech | Assistência & Loja Premium</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
-        :root { --primary: #00ff88; --bg: #050505; --card-bg: #0f0f0f; --text: #fff; }
+        :root { 
+            --primary: #00ff88; 
+            --bg: #050505; 
+            --card-bg: #0f0f0f; 
+            --text: #fff;
+            --spacing-mobile: 15px;
+            --spacing-desktop: 20px;
+        }
         
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            scroll-behavior: smooth; 
+            -webkit-tap-highlight-color: transparent;
+        }
         
-        #intro { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; transition: 1s; }
-        .fire-text { font-size: clamp(2rem, 10vw, 5rem); font-weight: 900; color: #fff; text-shadow: 0 0 20px #f00, 0 0 40px #f00; animation: burn 0.2s infinite alternate; }
-        @keyframes burn { from { transform: scale(1); } to { transform: scale(1.02); text-shadow: 0 0 30px #ff4500, 0 0 50px #ff8c00; } }
-        .falling-letter { display: inline-block; transition: 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045); }
-        .fall { transform: translateY(100vh) rotate(45deg); opacity: 0; }
+        html { 
+            font-size: clamp(14px, 3vw, 16px);
+        }
         
-        header { position: fixed; width: 100%; top: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(15px); border-bottom: 1px solid #1f1f1f; z-index: 1000; }
-        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; padding: 20px; width: 100%; }
-        .logo { color: var(--primary); font-weight: 900; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; }
-        .nav-links { display: flex; align-items: center; gap: 20px; }
-        .nav-links a { color: #888; text-decoration: none; font-size: 0.8rem; font-weight: bold; transition: 0.3s; cursor: pointer; text-transform: uppercase; }
-        .nav-links a:hover { color: var(--primary); }
-        .nav-contact { color: var(--primary) !important; border: 1px solid rgba(0,255,136,0.2); padding: 5px 10px; border-radius: 5px; }
-
-        #quem-somos { max-height: 0; overflow: hidden; background: #0a0a0a; transition: max-height 0.7s ease-in-out; border-bottom: 1px solid #1f1f1f; margin-top: 75px; }
-        #quem-somos.active { max-height: 2500px; padding: 80px 20px; }
-        .about-content { max-width: 850px; margin: 0 auto; text-align: center; line-height: 1.8; }
-        .about-content h2 { color: var(--primary); font-size: 2rem; margin-bottom: 30px; letter-spacing: 2px; }
-        .about-content p { color: #ccc; margin-bottom: 25px; font-size: 1.05rem; text-align: justify; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg); 
+            color: var(--text); 
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
         
-        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, #0a1f14 0%, #000 100%); padding: 20px; }
-        .hero h1 { font-size: clamp(3.5rem, 12vw, 7rem); color: var(--primary); margin-bottom: 15px; }
-        .hero p { color: #666; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; }
+        /* ===== ANIMAÇÕES DE ENTRADA ===== */
+        #intro { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: #000; 
+            z-index: 9999; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            flex-direction: column; 
+            transition: 1s;
+            opacity: 1;
+        }
         
-        .container { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
-        .section-title { font-size: 1.8rem; color: var(--primary); margin: 60px 0 30px 0; text-align: left; border-left: 4px solid var(--primary); padding-left: 15px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .card { background: var(--card-bg); padding: 45px 30px; border-radius: 20px; position: relative; overflow: hidden; border: 1px solid #1a1a1a; transition: 0.4s; height: 100%; }
-        .card:hover { transform: translateY(-8px); border-color: var(--primary); }
-        .content i { font-size: 2.8rem; color: var(--primary); margin-bottom: 25px; display: block; text-align: center;}
-        .content h3 { text-align: center; margin-bottom: 15px;}
-        .price { color: var(--primary); font-size: 1.4rem; font-weight: 900; margin: 20px 0; display: block; text-align: center;}
-        .old-price { text-decoration: line-through; color: #444; font-size: 0.9rem; margin-right: 10px; }
-        .saber-mais { color: #00aaff; cursor: pointer; display: block; margin-top: 15px; font-weight: bold; text-decoration: underline; font-size: 0.9rem; text-align: center; transition: 0.3s; }
-        .saber-mais:hover { color: var(--primary); }
-        .desc-escondida { display: none; margin-top: 15px; color: #aaa; font-size: 0.9rem; line-height: 1.6; text-align: center; padding: 15px; background: rgba(0,255,136,0.05); border-left: 3px solid var(--primary); border-radius: 5px; }
+        .fire-text { 
+            font-size: clamp(1.5rem, 10vw, 5rem); 
+            font-weight: 900; 
+            color: #fff; 
+            text-shadow: 0 0 20px #f00, 0 0 40px #f00; 
+            animation: burn 0.2s infinite alternate; 
+        }
         
-        .btn { background: var(--primary); color: #000; border: none; padding: 16px 32px; border-radius: 10px; font-weight: 900; cursor: pointer; transition: 0.3s; text-transform: uppercase; width: 100%; margin-top: 15px; }
-        .btn:hover { background: #fff; transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0, 255, 136, 0.3); }
-
-        .btn-loja { background: linear-gradient(135deg, #ff6b00, #ff8c00); color: #fff; border: none; padding: 16px 32px; border-radius: 10px; font-weight: 900; cursor: pointer; transition: 0.3s; text-transform: uppercase; width: 100%; margin-top: 15px; text-decoration: none; display: block; text-align: center; }
-        .btn-loja:hover { background: linear-gradient(135deg, #ff8c00, #ffa500); transform: translateY(-8px); box-shadow: 0 15px 30px rgba(255, 107, 0, 0.5); }
-
-        #btnTopo { display: none; position: fixed; bottom: 30px; left: 25px; z-index: 99999; border: 2px solid var(--primary); background: rgba(0,0,0,0.9); color: var(--primary); cursor: pointer; width: 55px; height: 55px; border-radius: 50%; font-size: 22px; transition: 0.3s; backdrop-filter: blur(10px); align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
-        #btnTopo:hover { background: var(--primary); color: #000; }
-
-        #faq { background: #0a0a0a; padding: 80px 20px; margin-top: 60px; border-top: 1px solid #1f1f1f; }
-        .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
-        .faq-card { background: var(--card-bg); padding: 30px; border-radius: 15px; border: 1px solid #1a1a1a; cursor: pointer; transition: 0.4s; }
-        .faq-card:hover { transform: translateY(-8px); border-color: var(--primary); background: #151515; }
-        .faq-title { color: var(--primary); font-size: 1.2rem; font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-        .faq-desc { color: #aaa; font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px; }
-        .faq-link { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 5px; transition: 0.3s; cursor: pointer; }
-        .faq-link:hover { gap: 10px; }
+        @keyframes burn { 
+            from { transform: scale(1); } 
+            to { transform: scale(1.02); text-shadow: 0 0 30px #ff4500, 0 0 50px #ff8c00; } 
+        }
         
-        .faq-resposta { display: none; margin-top: 15px; color: #ccc; font-size: 0.9rem; line-height: 1.8; padding: 15px; background: rgba(0,255,136,0.05); border-left: 3px solid var(--primary); border-radius: 5px; white-space: pre-wrap; }
+        .falling-letter { 
+            display: inline-block; 
+            transition: 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045); 
+        }
         
-        .ia-float { position: fixed; bottom: 35px; right: 35px; background: linear-gradient(135deg, #00ff88, #00cc6e); width: 70px; height: 70px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 15px 40px rgba(0, 255, 136, 0.6); cursor: pointer; transition: 0.3s; font-size: 32px; animation: pulse 2s infinite; }
-        .ia-float:hover { transform: scale(1.1); }
-        @keyframes pulse { 0%, 100% { box-shadow: 0 15px 40px rgba(0, 255, 136, 0.6); } 50% { box-shadow: 0 15px 60px rgba(0, 255, 136, 1); } }
+        .fall { 
+            transform: translateY(100vh) rotate(45deg); 
+            opacity: 0; 
+        }
+        
+        /* ===== HEADER ===== */
+        header { 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            background: rgba(0,0,0,0.95); 
+            backdrop-filter: blur(15px); 
+            border-bottom: 1px solid #1f1f1f; 
+            z-index: 1000;
+            padding: 0;
+        }
+        
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            max-width: 1300px; 
+            margin: 0 auto; 
+            padding: clamp(10px, 3vw, 20px);
+            width: 100%; 
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .logo { 
+            color: var(--primary); 
+            font-weight: 900; 
+            font-size: clamp(1rem, 5vw, 1.5rem); 
+            text-transform: uppercase; 
+            letter-spacing: clamp(1px, 2vw, 2px); 
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        
+        .nav-links { 
+            display: flex; 
+            align-items: center; 
+            gap: clamp(8px, 2vw, 20px);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .nav-links a { 
+            color: #888; 
+            text-decoration: none; 
+            font-size: clamp(0.65rem, 2vw, 0.8rem); 
+            font-weight: bold; 
+            transition: 0.3s; 
+            cursor: pointer; 
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        
+        .nav-links a:hover, 
+        .nav-links a:active { 
+            color: var(--primary); 
+        }
+        
+        .nav-contact { 
+            color: var(--primary) !important; 
+            border: 1px solid rgba(0,255,136,0.2); 
+            padding: clamp(4px, 1vw, 10px);
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: clamp(0.6rem, 2vw, 0.8rem) !important;
+        }
 
-        #chatbot-container { position: fixed; bottom: 120px; right: 30px; width: 380px; height: 560px; background: #0a0a0a; border: 2px solid var(--primary); border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.9); display: none; flex-direction: column; overflow: hidden; z-index: 1001; max-height: 85vh; }
+        /* ===== QUEM SOMOS (DROPDOWN) ===== */
+        #quem-somos { 
+            max-height: 0; 
+            overflow: hidden; 
+            background: #0a0a0a; 
+            transition: max-height 0.7s ease-in-out; 
+            border-bottom: 1px solid #1f1f1f; 
+            margin-top: clamp(60px, 10vw, 75px);
+        }
+        
+        #quem-somos.active { 
+            max-height: 3000px; 
+            padding: clamp(40px, 8vw, 80px) clamp(15px, 4vw, 20px); 
+        }
+        
+        .about-content { 
+            max-width: 850px; 
+            margin: 0 auto; 
+            text-align: center; 
+            line-height: 1.8; 
+        }
+        
+        .about-content h2 { 
+            color: var(--primary); 
+            font-size: clamp(1.5rem, 5vw, 2rem); 
+            margin-bottom: clamp(20px, 4vw, 30px); 
+            letter-spacing: 2px; 
+        }
+        
+        .about-content p { 
+            color: #ccc; 
+            margin-bottom: clamp(15px, 4vw, 25px); 
+            font-size: clamp(0.9rem, 2.5vw, 1.05rem); 
+            text-align: justify;
+        }
+        
+        /* ===== HERO ===== */
+        .hero { 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            background: radial-gradient(circle at center, #0a1f14 0%, #000 100%); 
+            padding: clamp(20px, 4vw, 40px);
+            margin-top: clamp(50px, 10vw, 75px);
+        }
+        
+        .hero h1 { 
+            font-size: clamp(2.5rem, 12vw, 7rem); 
+            color: var(--primary); 
+            margin-bottom: clamp(10px, 3vw, 15px);
+            letter-spacing: clamp(1px, 1vw, 2px);
+        }
+        
+        .hero p { 
+            color: #666; 
+            font-size: clamp(0.9rem, 3vw, 1.2rem); 
+            text-transform: uppercase; 
+            letter-spacing: clamp(1px, 1vw, 2px);
+        }
+        
+        /* ===== CONTAINER ===== */
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: clamp(30px, 6vw, 100px) clamp(15px, 4vw, 20px);
+        }
+        
+        .section-title { 
+            font-size: clamp(1.3rem, 4vw, 1.8rem); 
+            color: var(--primary); 
+            margin: clamp(40px, 8vw, 60px) 0 clamp(20px, 4vw, 30px) 0; 
+            text-align: left; 
+            border-left: 4px solid var(--primary); 
+            padding-left: clamp(10px, 3vw, 15px);
+        }
+        
+        /* ===== GRID ===== */
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(clamp(150px, 40vw, 280px), 1fr)); 
+            gap: clamp(15px, 3vw, 30px);
+            margin-bottom: clamp(30px, 6vw, 60px);
+        }
+        
+        /* ===== CARDS ===== */
+        .card { 
+            background: var(--card-bg); 
+            padding: clamp(25px, 5vw, 45px) clamp(20px, 4vw, 30px); 
+            border-radius: clamp(12px, 3vw, 20px); 
+            position: relative; 
+            overflow: hidden; 
+            border: 1px solid #1a1a1a; 
+            transition: 0.4s ease-out;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card:hover, 
+        .card:active { 
+            transform: translateY(-8px); 
+            border-color: var(--primary); 
+        }
+        
+        .content i { 
+            font-size: clamp(2rem, 6vw, 2.8rem); 
+            color: var(--primary); 
+            margin-bottom: clamp(15px, 3vw, 25px); 
+            display: block; 
+            text-align: center;
+        }
+        
+        .content h3 { 
+            text-align: center; 
+            margin-bottom: clamp(10px, 2vw, 15px);
+            font-size: clamp(1rem, 3vw, 1.2rem);
+        }
+        
+        .price { 
+            color: var(--primary); 
+            font-size: clamp(1.1rem, 3vw, 1.4rem); 
+            font-weight: 900; 
+            margin: clamp(15px, 3vw, 20px) 0; 
+            display: block; 
+            text-align: center;
+        }
+        
+        .old-price { 
+            text-decoration: line-through; 
+            color: #444; 
+            font-size: clamp(0.75rem, 2vw, 0.9rem); 
+            margin-right: 8px; 
+        }
+        
+        .saber-mais { 
+            color: #00aaff; 
+            cursor: pointer; 
+            display: block; 
+            margin-top: clamp(10px, 2vw, 15px); 
+            font-weight: bold; 
+            text-decoration: underline; 
+            font-size: clamp(0.8rem, 2vw, 0.9rem); 
+            text-align: center; 
+            transition: 0.3s; 
+            padding: 8px;
+        }
+        
+        .saber-mais:active { 
+            color: var(--primary); 
+        }
+        
+        .desc-escondida { 
+            display: none; 
+            margin-top: clamp(10px, 2vw, 15px); 
+            color: #aaa; 
+            font-size: clamp(0.8rem, 2vw, 0.9rem); 
+            line-height: 1.6; 
+            text-align: center; 
+            padding: clamp(10px, 2vw, 15px); 
+            background: rgba(0,255,136,0.05); 
+            border-left: 3px solid var(--primary); 
+            border-radius: 5px;
+            animation: slideDown 0.3s ease-out;
+        }
 
-        #chat-header { background: linear-gradient(135deg, #000, #0a1a0f); padding: 16px 20px; display: flex; align-items: center; gap: 12px; flex-shrink: 0; border-bottom: 1px solid rgba(0,255,136,0.2); }
-        #chat-header h3 { margin: 0; color: #00ff88; font-size: 1.1rem; }
-        #chat-header .status { width: 8px; height: 8px; background: #00ff88; border-radius: 50%; animation: statusPulse 1s infinite; margin-left: auto; }
-        @keyframes statusPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-        #chat-header button { margin-left: 10px; }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* ===== BOTÕES ===== */
+        .btn { 
+            background: var(--primary); 
+            color: #000; 
+            border: none; 
+            padding: clamp(12px, 3vw, 16px) clamp(20px, 4vw, 32px); 
+            border-radius: clamp(8px, 2vw, 10px); 
+            font-weight: 900; 
+            cursor: pointer; 
+            transition: 0.3s; 
+            text-transform: uppercase; 
+            width: 100%; 
+            margin-top: clamp(10px, 2vw, 15px);
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            touch-action: manipulation;
+        }
+        
+        .btn:hover, 
+        .btn:active { 
+            background: #fff; 
+            transform: translateY(-4px); 
+            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.3); 
+        }
 
-        #chat-body { flex: 1; padding: 20px; overflow-y: auto; background: #050505; }
-        .chat-message { margin-bottom: 16px; max-width: 90%; word-wrap: break-word; animation: slideIn 0.3s ease-out; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .btn-loja { 
+            background: linear-gradient(135deg, #ff6b00, #ff8c00); 
+            color: #fff; 
+            border: none; 
+            padding: clamp(12px, 3vw, 16px) clamp(20px, 4vw, 32px); 
+            border-radius: clamp(8px, 2vw, 10px); 
+            font-weight: 900; 
+            cursor: pointer; 
+            transition: 0.3s; 
+            text-transform: uppercase; 
+            width: 100%; 
+            margin-top: clamp(10px, 2vw, 15px); 
+            text-decoration: none; 
+            display: block; 
+            text-align: center;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+        }
+        
+        .btn-loja:hover, 
+        .btn-loja:active { 
+            background: linear-gradient(135deg, #ff8c00, #ffa500); 
+            transform: translateY(-4px); 
+            box-shadow: 0 15px 30px rgba(255, 107, 0, 0.5); 
+        }
 
-        .bot-message { background: #1f1f1f; padding: 14px 18px; border-radius: 18px 18px 18px 6px; color: #ddd; line-height: 1.5; font-size: 0.9rem; white-space: pre-wrap; border-left: 3px solid var(--primary); }
-        .user-message { margin-left: auto; background: var(--primary); color: #000; padding: 14px 18px; border-radius: 18px 18px 6px 18px; font-weight: 600; font-size: 0.9rem; max-width: 85%; }
+        /* ===== BOTÃO TOPO ===== */
+        #btnTopo { 
+            display: none; 
+            position: fixed; 
+            bottom: clamp(20px, 4vw, 30px); 
+            left: clamp(15px, 3vw, 25px); 
+            z-index: 99999; 
+            border: 2px solid var(--primary); 
+            background: rgba(0,0,0,0.9); 
+            color: var(--primary); 
+            cursor: pointer; 
+            width: clamp(40px, 10vw, 55px); 
+            height: clamp(40px, 10vw, 55px); 
+            border-radius: 50%; 
+            font-size: clamp(16px, 4vw, 22px); 
+            transition: 0.3s; 
+            backdrop-filter: blur(10px); 
+            display: none;
+            align-items: center; 
+            justify-content: center; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            touch-action: manipulation;
+        }
+        
+        #btnTopo:hover, 
+        #btnTopo:active { 
+            background: var(--primary); 
+            color: #000; 
+        }
 
-        .typing-indicator { display: flex; gap: 4px; padding: 14px 18px; background: #1f1f1f; border-radius: 18px 18px 18px 6px; width: fit-content; border-left: 3px solid var(--primary); }
-        .typing-dot { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; animation: typingAnim 1.4s infinite; }
+        /* ===== FAQ ===== */
+        #faq { 
+            background: #0a0a0a; 
+            padding: clamp(40px, 8vw, 80px) clamp(15px, 4vw, 20px); 
+            margin-top: clamp(40px, 8vw, 60px); 
+            border-top: 1px solid #1f1f1f; 
+        }
+        
+        .faq-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 80vw, 300px), 1fr)); 
+            gap: clamp(15px, 3vw, 25px); 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        
+        .faq-card { 
+            background: var(--card-bg); 
+            padding: clamp(20px, 4vw, 30px); 
+            border-radius: clamp(12px, 3vw, 15px); 
+            border: 1px solid #1a1a1a; 
+            cursor: pointer; 
+            transition: 0.4s;
+        }
+        
+        .faq-card:hover, 
+        .faq-card:active { 
+            transform: translateY(-8px); 
+            border-color: var(--primary); 
+            background: #151515; 
+        }
+        
+        .faq-title { 
+            color: var(--primary); 
+            font-size: clamp(1rem, 3vw, 1.2rem); 
+            font-weight: 700; 
+            margin-bottom: clamp(10px, 2vw, 15px); 
+            display: flex; 
+            align-items: center; 
+            gap: 10px;
+        }
+        
+        .faq-desc { 
+            color: #aaa; 
+            font-size: clamp(0.8rem, 2vw, 0.9rem); 
+            line-height: 1.6; 
+            margin-bottom: clamp(10px, 2vw, 15px); 
+        }
+        
+        .faq-link { 
+            color: var(--primary); 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: clamp(0.8rem, 2vw, 0.9rem); 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 5px; 
+            transition: 0.3s; 
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .faq-link:hover, 
+        .faq-link:active { 
+            gap: 10px; 
+        }
+        
+        .faq-resposta { 
+            display: none; 
+            margin-top: clamp(10px, 2vw, 15px); 
+            color: #ccc; 
+            font-size: clamp(0.8rem, 2vw, 0.9rem); 
+            line-height: 1.8; 
+            padding: clamp(10px, 2vw, 15px); 
+            background: rgba(0,255,136,0.05); 
+            border-left: 3px solid var(--primary); 
+            border-radius: 5px; 
+            white-space: pre-wrap;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        /* ===== CHATBOT FLUTUANTE ===== */
+        .ia-float { 
+            position: fixed; 
+            bottom: clamp(30px, 6vw, 35px); 
+            right: clamp(30px, 6vw, 35px); 
+            background: linear-gradient(135deg, #00ff88, #00cc6e); 
+            width: clamp(60px, 14vw, 70px); 
+            height: clamp(60px, 14vw, 70px); 
+            border-radius: 50%; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            z-index: 1000; 
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.6); 
+            cursor: pointer; 
+            transition: 0.3s; 
+            font-size: clamp(28px, 6vw, 32px); 
+            animation: pulse 2s infinite;
+            touch-action: manipulation;
+        }
+        
+        .ia-float:hover, 
+        .ia-float:active { 
+            transform: scale(1.1); 
+        }
+        
+        @keyframes pulse { 
+            0%, 100% { box-shadow: 0 15px 40px rgba(0, 255, 136, 0.6); } 
+            50% { box-shadow: 0 15px 60px rgba(0, 255, 136, 1); } 
+        }
+
+        /* ===== MODAL CHATBOT ===== */
+        #chatbot-container { 
+            position: fixed; 
+            bottom: clamp(80px, 15vw, 120px); 
+            right: clamp(15px, 3vw, 30px); 
+            width: clamp(280px, 95vw, 380px); 
+            height: clamp(400px, 70vh, 560px); 
+            background: #0a0a0a; 
+            border: 2px solid var(--primary); 
+            border-radius: clamp(15px, 3vw, 20px); 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.9); 
+            display: none; 
+            flex-direction: column; 
+            overflow: hidden; 
+            z-index: 1001;
+        }
+
+        #chat-header { 
+            background: linear-gradient(135deg, #000, #0a1a0f); 
+            padding: clamp(12px, 3vw, 16px) clamp(15px, 3vw, 20px); 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            flex-shrink: 0; 
+            border-bottom: 1px solid rgba(0,255,136,0.2);
+        }
+        
+        #chat-header h3 { 
+            margin: 0; 
+            color: #00ff88; 
+            font-size: clamp(0.95rem, 3vw, 1.1rem);
+        }
+        
+        #chat-header .status { 
+            width: 8px; 
+            height: 8px; 
+            background: #00ff88; 
+            border-radius: 50%; 
+            animation: statusPulse 1s infinite; 
+            margin-left: auto; 
+        }
+        
+        @keyframes statusPulse { 
+            0%, 100% { opacity: 1; } 
+            50% { opacity: 0.5; } 
+        }
+        
+        #chat-header button { 
+            background: none; 
+            border: none; 
+            color: #fff; 
+            font-size: clamp(1.2rem, 4vw, 1.5rem); 
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        #chat-body { 
+            flex: 1; 
+            padding: clamp(12px, 3vw, 20px); 
+            overflow-y: auto; 
+            background: #050505;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .chat-message { 
+            margin-bottom: clamp(10px, 2vw, 16px); 
+            max-width: 90%; 
+            word-wrap: break-word; 
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn { 
+            from { opacity: 0; transform: translateY(10px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+
+        .bot-message { 
+            background: #1f1f1f; 
+            padding: clamp(10px, 2vw, 14px) clamp(12px, 3vw, 18px); 
+            border-radius: clamp(12px, 3vw, 18px) clamp(12px, 3vw, 18px) clamp(12px, 3vw, 18px) 6px; 
+            color: #ddd; 
+            line-height: 1.5; 
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem); 
+            white-space: pre-wrap; 
+            border-left: 3px solid var(--primary);
+        }
+        
+        .user-message { 
+            margin-left: auto; 
+            background: var(--primary); 
+            color: #000; 
+            padding: clamp(10px, 2vw, 14px) clamp(12px, 3vw, 18px); 
+            border-radius: clamp(12px, 3vw, 18px) clamp(12px, 3vw, 18px) 6px clamp(12px, 3vw, 18px); 
+            font-weight: 600; 
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem); 
+            max-width: 85%;
+        }
+
+        .typing-indicator { 
+            display: flex; 
+            gap: 4px; 
+            padding: clamp(10px, 2vw, 14px) clamp(12px, 3vw, 18px); 
+            background: #1f1f1f; 
+            border-radius: clamp(12px, 3vw, 18px) clamp(12px, 3vw, 18px) clamp(12px, 3vw, 18px) 6px; 
+            width: fit-content; 
+            border-left: 3px solid var(--primary);
+        }
+        
+        .typing-dot { 
+            width: 8px; 
+            height: 8px; 
+            background: var(--primary); 
+            border-radius: 50%; 
+            animation: typingAnim 1.4s infinite; 
+        }
+        
         .typing-dot:nth-child(2) { animation-delay: 0.2s; }
         .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-        @keyframes typingAnim { 0%, 60%, 100% { opacity: 0.5; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-10px); } }
+        
+        @keyframes typingAnim { 
+            0%, 60%, 100% { opacity: 0.5; transform: translateY(0); } 
+            30% { opacity: 1; transform: translateY(-10px); } 
+        }
 
-        .quick-options { display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0; }
-        .quick-btn { background: #1f1f1f; color: #00ff88; border: 1px solid #00ff88; padding: 9px 14px; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: 0.3s; }
-        .quick-btn:hover { background: #00ff88; color: #000; transform: translateY(-2px); }
+        .quick-options { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: clamp(6px, 2vw, 8px); 
+            margin: clamp(10px, 2vw, 15px) 0;
+            padding: 0 clamp(10px, 2vw, 15px);
+        }
+        
+        .quick-btn { 
+            background: #1f1f1f; 
+            color: #00ff88; 
+            border: 1px solid #00ff88; 
+            padding: clamp(7px, 2vw, 9px) clamp(10px, 2vw, 14px); 
+            border-radius: 20px; 
+            font-size: clamp(0.75rem, 2vw, 0.85rem); 
+            cursor: pointer; 
+            transition: 0.3s;
+            touch-action: manipulation;
+        }
+        
+        .quick-btn:hover, 
+        .quick-btn:active { 
+            background: #00ff88; 
+            color: #000; 
+            transform: translateY(-2px); 
+        }
 
-        .whatsapp-btn { background: linear-gradient(135deg, #25d366, #20ba58); color: #fff !important; border: none !important; padding: 12px 18px !important; border-radius: 20px !important; font-size: 0.9rem !important; cursor: pointer !important; transition: 0.3s !important; width: 100% !important; margin-top: 10px !important; font-weight: 600 !important; display: flex !important; align-items: center !important; justify-content: center !important; gap: 8px !important; }
-        .whatsapp-btn:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4); }
+        .whatsapp-btn { 
+            background: linear-gradient(135deg, #25d366, #20ba58) !important; 
+            color: #fff !important; 
+            border: none !important; 
+            padding: clamp(10px, 2vw, 12px) clamp(12px, 3vw, 18px) !important; 
+            border-radius: 20px !important; 
+            font-size: clamp(0.8rem, 2vw, 0.9rem) !important; 
+            cursor: pointer !important; 
+            transition: 0.3s !important; 
+            width: 100% !important; 
+            margin-top: clamp(8px, 2vw, 10px) !important; 
+            font-weight: 600 !important; 
+            display: flex !important; 
+            align-items: center !important; 
+            justify-content: center !important; 
+            gap: 8px !important;
+            touch-action: manipulation;
+        }
+        
+        .whatsapp-btn:hover, 
+        .whatsapp-btn:active { 
+            transform: scale(1.05); 
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4) !important; 
+        }
 
-        #chat-input-area { padding: 15px; background: #000; border-top: 1px solid #222; display: flex; gap: 10px; flex-shrink: 0; }
-        #chat-input { flex: 1; background: #111; border: 1px solid #333; color: #fff; padding: 12px 16px; border-radius: 12px; font-size: 0.9rem; min-height: 45px; }
-        #chat-input:focus { outline: none; border-color: var(--primary); }
-        #chat-send { background: var(--primary); color: #000; border: none; width: 48px; height: 48px; border-radius: 12px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        #chat-send:hover { background: #fff; transform: scale(1.05); }
+        #chat-input-area { 
+            padding: clamp(12px, 3vw, 15px); 
+            background: #000; 
+            border-top: 1px solid #222; 
+            display: flex; 
+            gap: clamp(8px, 2vw, 10px); 
+            flex-shrink: 0;
+        }
+        
+        #chat-input { 
+            flex: 1; 
+            background: #111; 
+            border: 1px solid #333; 
+            color: #fff; 
+            padding: clamp(10px, 2vw, 12px) clamp(12px, 3vw, 16px); 
+            border-radius: clamp(8px, 2vw, 12px); 
+            font-size: clamp(0.85rem, 2vw, 0.9rem);
+            min-height: clamp(40px, 10vw, 45px);
+        }
+        
+        #chat-input:focus { 
+            outline: none; 
+            border-color: var(--primary); 
+        }
+        
+        #chat-send { 
+            background: var(--primary); 
+            color: #000; 
+            border: none; 
+            width: clamp(40px, 10vw, 48px); 
+            height: clamp(40px, 10vw, 48px); 
+            border-radius: clamp(8px, 2vw, 12px); 
+            cursor: pointer; 
+            font-weight: bold; 
+            transition: 0.3s;
+            touch-action: manipulation;
+        }
+        
+        #chat-send:hover, 
+        #chat-send:active { 
+            background: #fff; 
+            transform: scale(1.05); 
+        }
 
-        footer { text-align: center; padding: 40px; color: #444; font-size: 0.8rem; border-top: 1px solid #111; }
+        /* ===== SEÇÃO AGENDAMENTO ===== */
+        #agendar { 
+            background: #080808; 
+            border-radius: clamp(20px, 5vw, 30px); 
+            padding: clamp(30px, 6vw, 60px) clamp(15px, 4vw, 20px); 
+            text-align: center; 
+            margin-top: clamp(40px, 8vw, 80px); 
+            border: 1px solid #111;
+        }
 
+        #agendar h2 {
+            font-size: clamp(1.3rem, 4vw, 1.8rem);
+            margin-bottom: clamp(20px, 4vw, 30px);
+            color: var(--primary);
+        }
+
+        #agendar input,
+        #agendar select {
+            background: #000; 
+            border: 1px solid #222; 
+            color: #fff; 
+            padding: clamp(12px, 3vw, 15px); 
+            border-radius: clamp(8px, 2vw, 10px); 
+            margin: clamp(8px, 2vw, 10px) auto; 
+            width: 100%; 
+            max-width: 350px;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            display: block;
+        }
+
+        #agendar input:focus,
+        #agendar select:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: #0a0a0a;
+        }
+
+        /* ===== FOOTER ===== */
+        footer { 
+            text-align: center; 
+            padding: clamp(25px, 5vw, 40px) clamp(15px, 4vw, 20px); 
+            color: #444; 
+            font-size: clamp(0.7rem, 2vw, 0.8rem); 
+            border-top: 1px solid #111;
+        }
+
+        /* ===== MEDIA QUERIES ===== */
         @media (max-width: 768px) {
-            header { position: absolute; padding: 10px 0; }
-            nav { flex-direction: column; gap: 15px; }
-            .logo { font-size: 1.2rem; }
-            .nav-links { flex-wrap: wrap; justify-content: center; gap: 12px; padding: 0 10px; }
-            .nav-links a { font-size: 0.75rem; }
-            .hero { height: auto; padding: 180px 20px 80px 20px; min-height: 80vh; }
-            .container { padding: 20px; }
-            .section-title { margin: 80px 0 40px 0; font-size: 1.5rem; }
-            #chatbot-container { width: calc(100vw - 20px); height: calc(100vh - 200px); right: 10px; bottom: 100px; }
-            .faq-grid { grid-template-columns: 1fr; }
+            html {
+                font-size: 14px;
+            }
+
+            header {
+                padding: 0;
+            }
+
+            nav {
+                padding: 12px 10px;
+            }
+
+            .hero {
+                min-height: 70vh;
+                padding: 20px 15px;
+            }
+
+            .container {
+                padding: 30px 15px;
+            }
+
+            .grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 12px;
+            }
+
+            #chatbot-container {
+                width: calc(100vw - 20px);
+                height: calc(100vh - 150px);
+                right: 10px;
+                bottom: 80px;
+                border-radius: 15px;
+            }
+
+            #faq {
+                padding: 40px 15px;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            #btnTopo {
+                bottom: 80px;
+                left: 15px;
+            }
         }
 
         @media (max-width: 480px) {
-            #chatbot-container { width: calc(100vw - 10px); height: calc(100vh - 150px); right: 5px; bottom: 80px; }
+            html {
+                font-size: 13px;
+            }
+
+            nav {
+                padding: 10px 8px;
+            }
+
+            .logo {
+                font-size: 0.9rem;
+                letter-spacing: 0.5px;
+            }
+
+            .nav-links {
+                gap: 5px;
+                width: 100%;
+                justify-content: space-around;
+            }
+
+            .nav-links a {
+                font-size: 0.6rem;
+            }
+
+            .hero {
+                min-height: 60vh;
+                padding: 15px 12px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                margin-bottom: 8px;
+            }
+
+            .hero p {
+                font-size: 0.85rem;
+                letter-spacing: 0.5px;
+            }
+
+            .container {
+                padding: 20px 12px;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+                margin: 30px 0 20px 0;
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .card {
+                padding: 15px 12px;
+            }
+
+            .content i {
+                font-size: 1.8rem;
+            }
+
+            .content h3 {
+                font-size: 0.95rem;
+            }
+
+            .price {
+                font-size: 1rem;
+            }
+
+            .btn, .btn-loja {
+                padding: 10px 15px;
+                font-size: 0.75rem;
+                margin-top: 8px;
+            }
+
+            #chatbot-container {
+                width: calc(100vw - 10px);
+                height: calc(100vh - 100px);
+                right: 5px;
+                bottom: 60px;
+            }
+
+            #agendar {
+                margin-top: 40px;
+                padding: 25px 12px;
+                border-radius: 15px;
+            }
+
+            #agendar input,
+            #agendar select {
+                max-width: 100%;
+                padding: 10px;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .faq-card {
+                padding: 15px;
+            }
+
+            #btnTopo {
+                bottom: 70px;
+                left: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .ia-float {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+                font-size: 26px;
+            }
+        }
+
+        @media (max-height: 600px) and (orientation: landscape) {
+            .hero {
+                min-height: auto;
+                height: 80vh;
+            }
+
+            #chatbot-container {
+                height: 90vh;
+            }
         }
     </style>
 </head>
@@ -149,7 +985,7 @@
             <a href="loja.html">🛒 LOJA</a>
             <a href="#agendar">AGENDAR</a>
             <a href="mailto:optimustech.support@gmail.com" class="nav-contact"><i class="far fa-envelope"></i> E-MAIL</a>
-            <a href="https://wa.me/5542999112756" class="nav-contact" target="_blank"><i class="fab fa-whatsapp"></i> WHATSAPP</a>
+            <a href="https://wa.me/5542999112756" class="nav-contact" target="_blank"><i class="fab fa-whatsapp"></i> WPP</a>
         </div>
     </nav>
 </header>
@@ -160,13 +996,13 @@
         <p>A Optimus Tech nasceu com o objetivo de ir além da manutenção tradicional, oferecendo soluções completas em tecnologia com foco em desempenho, eficiência e confiabilidade.</p>
         <p>Trabalhamos com otimização de computadores, upgrades de hardware, manutenção preventiva e corretiva, além de soluções mobile como formatação, recuperação de sistemas e desbloqueios.</p>
         <p>Nosso diferencial está na atenção aos detalhes e na busca por performance real, garantindo que cada equipamento funcione no seu máximo potencial.</p>
-        <hr style="border: none; border-top: 1px solid #222; margin: 50px 0;">
-        <h2 style="color: var(--primary); font-size: 1.8rem; margin-bottom: 30px;">SOBRE O CRIADOR</h2>
+        <hr style="border: none; border-top: 1px solid #222; margin: 30px 0;">
+        <h2 style="color: var(--primary); font-size: clamp(1.3rem, 4vw, 1.8rem); margin-bottom: 20px;">SOBRE O CRIADOR</h2>
         <p>Meu nome é <strong>Daniel Gonçalves</strong>, tenho 20 anos e sou o fundador da Optimus Tech.</p>
         <p>Sempre fui apaixonado por tecnologia e, ao longo do tempo, fui aprofundando meu conhecimento na prática, trabalhando com manutenção, otimização e melhoria de desempenho de computadores e dispositivos móveis.</p>
         <p>Meu foco não é apenas consertar, mas melhorar de verdade — deixar cada máquina mais rápida, estável e eficiente.</p>
-        <p style="color: var(--primary); margin-top: 50px; font-weight: bold; font-size: 1.35rem;">⚡ Tecnologia sem limites, desempenho de verdade.</p>
-        <br><br>
+        <p style="color: var(--primary); margin-top: 30px; font-weight: bold; font-size: clamp(1.1rem, 3vw, 1.35rem);">⚡ Tecnologia sem limites, desempenho de verdade.</p>
+        <br>
         <button class="btn" onclick="toggleAbout()">FECHAR</button>
     </div>
 </section>
@@ -186,7 +1022,7 @@
 
     <h2 class="section-title" id="pc">PC voando baixo... 🚀</h2>
     <div class="grid">
-        <div class="card"><div class="content"><i class="fas fa-snowflake"></i><h3>Limpeza e Pasta Térmica</h3><span class="price"><span class="old-price">R$ 65,00</span>R$ 50,00</span><button class="btn" onclick="selecionar('Limpeza e Pasta Térmica PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🌬️ Limpeza interna completa: removemos toda a poeira dos ventiladores, dissipador e componentes internos. 🧴 Aplicamos pasta térmica de alta performance, garantindo melhor conduç  o de calor.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-snowflake"></i><h3>Limpeza e Pasta Térmica</h3><span class="price"><span class="old-price">R$ 65,00</span>R$ 50,00</span><button class="btn" onclick="selecionar('Limpeza e Pasta Térmica PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🌬️ Limpeza interna completa: removemos toda a poeira dos ventiladores, dissipador e componentes internos. 🧴 Aplicamos pasta térmica de alta performance, garantindo melhor condução de calor.</p></div></div>
         <div class="card"><div class="content"><i class="fas fa-microchip"></i><h3>Upgrade Peças (SSD/RAM)</h3><span class="price"><span class="old-price">R$ 65,00</span>R$ 50,00</span><button class="btn" onclick="selecionar('Upgrade Peças PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">⚡ Instalação de SSDs (até 5x mais rápido que HD), compatibilização e clonagem de dados. 💾 Aumento de memória RAM para multitarefa suave e programas pesados.</p></div></div>
         <div class="card"><div class="content"><i class="fas fa-bolt"></i><h3>Otimização FPS</h3><span class="price"><span class="old-price">R$ 100,00</span>R$ 80,00</span><button class="btn" onclick="selecionar('Otimização FPS PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🎮 Ajustes finos de configurações de jogo para ganho real de FPS. 📊 Otimizamos drivers de vídeo, desativamos programas em background, ajustamos Power Plan.</p></div></div>
         <div class="card"><div class="content"><i class="fas fa-hammer"></i><h3>Ajuda na Montagem do PC</h3><span class="price">Consulte</span><button class="btn" onclick="selecionar('Ajuda Montagem PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🖥️ Fazemos o orçamento das peças conforme seus desejos e necessidades. 💡 Consultoria técnica personalizada para montar um PC de acordo com seu orçamento. 🎯 Selecionamos as melhores relações custo-benefício para cada tipo de uso.</p></div></div>
@@ -200,10 +1036,10 @@
         <div class="card"><div class="content"><i class="fas fa-video"></i><h3>Edição de Vídeos</h3><span class="price">R$ 150,00</span><button class="btn" onclick="selecionar('Aula Edição de Vídeos')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🎬 Aprenda edição com softwares profissionais: cortes, efeitos e transições. 🎥 Composição visual, sincronização de áudio, correção de cores. ✨ Crie conteúdos incríveis para YouTube, TikTok e redes sociais!</p></div></div>
     </div>
 </div>
-    <section id="agendar" style="background:#080808; border-radius:30px; padding:60px 20px; text-align:center; margin-top:80px; border: 1px solid #111;">
-        <h2>📅 Agendar Horário</h2>
-        <input type="text" id="cliNome" placeholder="Seu Nome" style="background:#000; border:1px solid #222; color:#fff; padding:15px; border-radius:10px; margin:10px; width:100%; max-width:350px;">
-        <select id="cliServico" style="background:#000; border:1px solid #222; color:#fff; padding:15px; border-radius:10px; margin:10px; width:100%; max-width:350px;">
+    <section id="agendar" style="background:#080808; border-radius:clamp(15px, 5vw, 30px); padding:clamp(30px, 6vw, 60px) clamp(15px, 4vw, 20px); text-align:center; margin-top:clamp(40px, 8vw, 80px); border: 1px solid #111;">
+        <h2 style="font-size: clamp(1.3rem, 4vw, 1.8rem); margin-bottom: clamp(20px, 4vw, 30px); color: var(--primary);">📅 Agendar Horário</h2>
+        <input type="text" id="cliNome" placeholder="Seu Nome" style="background:#000; border:1px solid #222; color:#fff; padding:clamp(12px, 3vw, 15px); border-radius:clamp(8px, 2vw, 10px); margin:clamp(8px, 2vw, 10px) auto; width:100%; max-width:350px; font-size: clamp(0.9rem, 2.5vw, 1rem); display: block;">
+        <select id="cliServico" style="background:#000; border:1px solid #222; color:#fff; padding:clamp(12px, 3vw, 15px); border-radius:clamp(8px, 2vw, 10px); margin:clamp(8px, 2vw, 10px) auto; width:100%; max-width:350px; font-size: clamp(0.9rem, 2.5vw, 1rem); display: block;">
             <option value="">Selecione...</option>
             <option value="Formatação Mobile">Formatação Mobile</option>
             <option value="Troca de Peças Mobile">Troca de Peças Mobile</option>
@@ -217,7 +1053,7 @@
             <option value="Aula Informática Particular">Aula Informática Particular</option>
             <option value="Aula Edição de Vídeos">Aula Edição de Vídeos</option>
         </select>
-        <input type="datetime-local" id="cliData" style="background:#000; border:1px solid #222; color:#fff; padding:15px; border-radius:10px; margin:10px; width:100%; max-width:350px;">
+        <input type="datetime-local" id="cliData" style="background:#000; border:1px solid #222; color:#fff; padding:clamp(12px, 3vw, 15px); border-radius:clamp(8px, 2vw, 10px); margin:clamp(8px, 2vw, 10px) auto; width:100%; max-width:350px; font-size: clamp(0.9rem, 2.5vw, 1rem); display: block;">
         <br>
         <button class="btn" style="max-width:350px;" onclick="enviarAgendamento()">Confirmar via WhatsApp</button>
     </section>
@@ -438,20 +1274,14 @@ Vale MUITO!</div>
     </section>
 </div>
 
-<script>
-    function toggleFaq(el) {
-        const resposta = el.nextElementSibling;
-        resposta.style.display = (resposta.style.display === "block") ? "none" : "block";
-    }
-</script>
 <!-- CHATBOT -->
 <div class="ia-float" onclick="toggleChat()"><i class="fas fa-robot"></i></div>
 <div id="chatbot-container">
     <div id="chat-header">
-        <i class="fas fa-robot" style="font-size:1.8rem;color:#00ff88;"></i>
+        <i class="fas fa-robot" style="font-size: clamp(1.4rem, 4vw, 1.8rem); color:#00ff88;"></i>
         <h3>Optimus IA</h3>
         <div class="status"></div>
-        <button onclick="toggleChat()" style="background:none;border:none;color:#888;font-size:1.6rem;cursor:pointer;">✕</button>
+        <button onclick="toggleChat()" style="background:none;border:none;color:#888;font-size:clamp(1.2rem, 4vw, 1.6rem);cursor:pointer;padding:4px;">✕</button>
     </div>
     <div id="chat-body">
         <div class="chat-message bot-message" id="greeting-msg">👋 Olá! Sou a <strong>Optimus IA</strong>
@@ -460,12 +1290,12 @@ Estou aqui para ajudar com dúvidas sobre nossos serviços!
 
 📋 Escolha uma opção ou me faça uma pergunta:</div>
         <div class="quick-options" id="quick-options">
-            <div class="quick-btn" onclick="quickReply(this)">💵 Melhor custo-benefício?</div>
-            <div class="quick-btn" onclick="quickReply(this)">🎮 Otimizar PC para games</div>
-            <div class="quick-btn" onclick="quickReply(this)">📱 Celular lento</div>
-            <div class="quick-btn" onclick="quickReply(this)">🛡️ Estou com vírus!</div>
-            <div class="quick-btn" onclick="quickReply(this)">📞 Como agendar?</div>
-            <div class="quick-btn" onclick="quickReply(this)">💬 Falar com Daniel</div>
+            <div class="quick-btn" onclick="quickReply(this)">💵 Melhor custo?</div>
+            <div class="quick-btn" onclick="quickReply(this)">🎮 Games</div>
+            <div class="quick-btn" onclick="quickReply(this)">📱 Lento</div>
+            <div class="quick-btn" onclick="quickReply(this)">🛡️ Vírus!</div>
+            <div class="quick-btn" onclick="quickReply(this)">📞 Agendar</div>
+            <div class="quick-btn" onclick="quickReply(this)">💬 Daniel</div>
         </div>
     </div>
     <div id="chat-input-area">
