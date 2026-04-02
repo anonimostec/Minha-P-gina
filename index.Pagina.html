@@ -53,6 +53,9 @@
         .btn { background: var(--primary); color: #000; border: none; padding: 16px 32px; border-radius: 10px; font-weight: 900; cursor: pointer; transition: 0.3s; text-transform: uppercase; width: 100%; margin-top: 15px; }
         .btn:hover { background: #fff; transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0, 255, 136, 0.3); }
 
+        .btn-loja { background: linear-gradient(135deg, #ff6b00, #ff8c00); color: #fff; border: none; padding: 16px 32px; border-radius: 10px; font-weight: 900; cursor: pointer; transition: 0.3s; text-transform: uppercase; width: 100%; margin-top: 15px; text-decoration: none; display: block; text-align: center; }
+        .btn-loja:hover { background: linear-gradient(135deg, #ff8c00, #ffa500); transform: translateY(-8px); box-shadow: 0 15px 30px rgba(255, 107, 0, 0.5); }
+
         #btnTopo { display: none; position: fixed; bottom: 30px; left: 25px; z-index: 99999; border: 2px solid var(--primary); background: rgba(0,0,0,0.9); color: var(--primary); cursor: pointer; width: 55px; height: 55px; border-radius: 50%; font-size: 22px; transition: 0.3s; backdrop-filter: blur(10px); align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
         #btnTopo:hover { background: var(--primary); color: #000; }
 
@@ -143,7 +146,7 @@
             <a href="#mobile">MOBILE</a>
             <a href="#pc">PC</a>
             <a href="#aulas">AULAS</a>
-            <a href="#loja">LOJA</a>
+            <a href="loja.html">🛒 LOJA</a>
             <a href="#agendar">AGENDAR</a>
             <a href="mailto:optimustech.support@gmail.com" class="nav-contact"><i class="far fa-envelope"></i> E-MAIL</a>
             <a href="https://wa.me/5542999112756" class="nav-contact" target="_blank"><i class="fab fa-whatsapp"></i> WHATSAPP</a>
@@ -197,7 +200,7 @@
 
     <h2 class="section-title" id="loja">🛒 Loja Optimus</h2>
     <div class="grid">
-        <div class="card"><div class="content"><i class="fas fa-hdd"></i><h3>SSD 480GB</h3><span class="price">R$ 249,00</span><button class="btn" onclick="comprar('SSD 480GB')">COMPRAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">⚡ SSD de alta velocidade com 480GB de armazenamento. 🚀 Velocidade de leitura/escrita até 560MB/s, garantia de 3 anos. 💾 Interface SATA 2.5", compatível com notebooks.</p></div></div>
+        <div class="card"><div class="content"><i class="fas fa-hdd"></i><h3>SSD 480GB</h3><span class="price">R$ 249,00</span><a href="loja.html" class="btn-loja">IR PARA LOJA →</a><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">⚡ SSD de alta velocidade com 480GB de armazenamento. 🚀 Velocidade de leitura/escrita até 560MB/s, garantia de 3 anos. 💾 Interface SATA 2.5", compatível com notebooks.</p></div></div>
     </div>
 </div>
     <section id="agendar" style="background:#080808; border-radius:30px; padding:60px 20px; text-align:center; margin-top:80px; border: 1px solid #111;">
@@ -595,10 +598,6 @@ Estou aqui para ajudar com dúvidas sobre nossos serviços!
     function selecionar(s) {
         document.getElementById('cliServico').value = s;
         window.location.href = "#agendar";
-    }
-    
-    function comprar(p) {
-        window.open(`https://wa.me/5542999112756?text=Oi Daniel! Quero comprar: ${p}`);
     }
     
     function enviarAgendamento() {
