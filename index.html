@@ -59,7 +59,7 @@
         .btn { background: var(--primary); color: #000; border: none; padding: clamp(12px, 3vw, 16px) clamp(20px, 4vw, 32px); border-radius: clamp(8px, 2vw, 10px); font-weight: 900; cursor: pointer; transition: 0.3s; text-transform: uppercase; width: 100%; margin-top: clamp(10px, 2vw, 15px); font-size: clamp(0.8rem, 2vw, 0.9rem); touch-action: manipulation; }
         .btn:hover, .btn:active { background: #fff; transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0, 255, 136, 0.3); }
 
-        #btnTopo { display: none; position: fixed; bottom: clamp(30px, 6vw, 40px); left: clamp(30px, 6vw, 40px); z-index: 99998; border: 2px solid var(--primary); background: rgba(0,0,0,0.9); color: var(--primary); cursor: pointer; width: clamp(40px, 10vw, 55px); height: clamp(40px, 10vw, 55px); border-radius: 50%; font-size: clamp(16px, 4vw, 22px); transition: 0.3s; backdrop-filter: blur(10px); align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(0,0,0,0.5); touch-action: manipulation; }
+        #btnTopo { display: none; position: fixed; bottom: clamp(30px, 6vw, 35px); left: clamp(30px, 6vw, 40px); z-index: 99998; border: 2px solid var(--primary); background: rgba(0,0,0,0.9); color: var(--primary); cursor: pointer; width: clamp(40px, 10vw, 55px); height: clamp(40px, 10vw, 55px); border-radius: 50%; font-size: clamp(16px, 4vw, 22px); transition: 0.3s; backdrop-filter: blur(10px); align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(0,0,0,0.5); touch-action: manipulation; }
         #btnTopo:hover, #btnTopo:active { background: var(--primary); color: #000; }
 
         #faq { background: #0a0a0a; padding: clamp(40px, 8vw, 80px) clamp(15px, 4vw, 20px); margin-top: clamp(40px, 8vw, 60px); border-top: 1px solid #1f1f1f; }
@@ -124,7 +124,7 @@
             .grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
             #chatbot-container { width: calc(100vw - 20px); height: calc(100vh - 150px); right: 10px; bottom: 80px; border-radius: 15px; }
             .faq-grid { grid-template-columns: 1fr; }
-            #btnTopo { bottom: 80px; left: 15px; }
+            #btnTopo { bottom: 30px; left: 15px; }
         }
 
         @media (max-width: 480px) {
@@ -173,7 +173,7 @@
             .faq-link { font-size: 0.85rem; }
             .faq-resposta { font-size: 0.85rem; padding: 12px; margin-top: 10px; }
             
-            #btnTopo { bottom: 75px; left: 15px; width: 48px; height: 48px; font-size: 20px; }
+            #btnTopo { bottom: 30px; left: 15px; width: 48px; height: 48px; font-size: 20px; }
             .ia-float { bottom: 30px; right: 30px; width: 60px; height: 60px; font-size: 28px; }
         }
     </style>
@@ -191,7 +191,6 @@
     <nav>
         <div class="logo" onclick="window.location.href='index.html'">OPTIMUS TECH</div>
         <div class="nav-links">
-            <a onclick="toggleAbout()">QUEM SOMOS</a>
             <a href="#mobile">MOBILE</a>
             <a href="#pc">PC</a>
             <a href="#aulas">AULAS</a>
