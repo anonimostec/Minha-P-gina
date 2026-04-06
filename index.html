@@ -2,638 +2,396 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Optimus Tech | Assistência & Consultoria</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Loja Optimus Tech | Produtos Premium</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
         :root { --primary: #00ff88; --bg: #050505; --card-bg: #0f0f0f; --text: #fff; }
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
-        html { font-size: clamp(14px, 3vw, 16px); }
+        html { font-size: 16px; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; }
         
-        #intro { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; transition: 1s; opacity: 1; }
-        .fire-text { font-size: clamp(1.5rem, 10vw, 5rem); font-weight: 900; color: #fff; text-shadow: 0 0 20px #f00, 0 0 40px #f00; animation: burn 0.2s infinite alternate; }
-        @keyframes burn { from { transform: scale(1); } to { transform: scale(1.02); text-shadow: 0 0 30px #ff4500, 0 0 50px #ff8c00; } }
-        .falling-letter { display: inline-block; transition: 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045); }
-        .fall { transform: translateY(100vh) rotate(45deg); opacity: 0; }
-        
         header { position: fixed; width: 100%; top: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(15px); border-bottom: 1px solid #1f1f1f; z-index: 1000; }
-        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; padding: clamp(10px, 3vw, 20px); width: 100%; flex-wrap: wrap; gap: 10px; }
-        .logo { color: var(--primary); font-weight: 900; font-size: clamp(1rem, 5vw, 1.5rem); text-transform: uppercase; letter-spacing: clamp(1px, 2vw, 2px); cursor: pointer; white-space: nowrap; }
-        .nav-links { display: flex; align-items: center; gap: clamp(8px, 2vw, 20px); flex-wrap: wrap; justify-content: center; }
-        .nav-links a { color: #888; text-decoration: none; font-size: clamp(0.65rem, 2vw, 0.8rem); font-weight: bold; transition: 0.3s; cursor: pointer; text-transform: uppercase; white-space: nowrap; }
-        .nav-links a:hover, .nav-links a:active { color: var(--primary); }
-        .nav-contact { color: #888 !important; border: 1px solid rgba(128,128,128,0.3); padding: clamp(4px, 1vw, 10px); border-radius: 5px; display: inline-flex; align-items: center; gap: 4px; font-size: 0 !important; }
-        .nav-contact:hover, .nav-contact:active { color: var(--primary) !important; border-color: rgba(0,255,136,0.2) !important; }
-        .nav-contact i { font-size: clamp(0.8rem, 2vw, 1rem) !important; }
+        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; padding: 12px 15px; width: 100%; }
+        .logo { color: var(--primary); font-weight: 900; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
+        .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .nav-links a { color: #888; text-decoration: none; font-size: 0.75rem; font-weight: bold; transition: 0.3s; text-transform: uppercase; }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-contact { color: #888 !important; border: 1px solid rgba(128,128,128,0.3); padding: 6px 8px; border-radius: 5px; font-size: 0 !important; display: inline-flex; align-items: center; gap: 4px; }
+        .nav-contact:hover { color: var(--primary) !important; border-color: rgba(0,255,136,0.2) !important; }
+        .nav-contact i { font-size: 1rem !important; }
 
-        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, #0a1f14 0%, #000 100%); padding: clamp(20px, 4vw, 40px); margin-top: clamp(50px, 10vw, 75px); }
-        .hero h1 { font-size: clamp(2.5rem, 12vw, 7rem); color: var(--primary); margin-bottom: clamp(10px, 3vw, 15px); letter-spacing: clamp(1px, 1vw, 2px); }
-        .hero p { color: #666; font-size: clamp(0.9rem, 3vw, 1.2rem); text-transform: uppercase; letter-spacing: clamp(1px, 1vw, 2px); }
+        .hero-loja { height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, #0a1f14 0%, #000 100%); padding: 20px; margin-top: 60px; }
+        .hero-loja h1 { font-size: 3rem; color: var(--primary); margin-bottom: 15px; letter-spacing: 2px; }
+        .hero-loja p { color: #666; font-size: 1rem; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 30px 15px; }
+        .produtos-header { display: flex; justify-content: center; align-items: center; margin-bottom: 20px; }
+        .section-title { font-size: 1.8rem; color: var(--primary); margin: 0; text-align: center; }
         
-        .container { max-width: 1200px; margin: 0 auto; padding: clamp(30px, 6vw, 100px) clamp(15px, 4vw, 20px); }
-        .section-title { font-size: clamp(1.3rem, 4vw, 1.8rem); color: var(--primary); margin: clamp(40px, 8vw, 60px) 0 clamp(20px, 4vw, 30px) 0; text-align: left; border-left: 4px solid var(--primary); padding-left: clamp(10px, 3vw, 15px); }
+        .filtros { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+        .filtro-btn { background: #1a1a1a; color: #888; border: 1px solid #333; padding: 10px 16px; border-radius: 25px; cursor: pointer; transition: 0.3s; font-weight: bold; font-size: 0.8rem; white-space: nowrap; }
+        .filtro-btn:hover, .filtro-btn.active { background: var(--primary); color: #000; border-color: var(--primary); }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 18px; padding: 0; margin-bottom: 40px; }
         
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(clamp(150px, 40vw, 280px), 1fr)); gap: clamp(15px, 3vw, 30px); margin-bottom: clamp(30px, 6vw, 60px); }
+        .produto-card { background: var(--card-bg); border-radius: 15px; overflow: hidden; border: 1px solid #1a1a1a; transition: 0.4s; display: flex; flex-direction: column; height: 100%; }
+        .produto-card:hover { transform: translateY(-8px); border-color: var(--primary); }
         
-        .card { background: var(--card-bg); padding: clamp(25px, 5vw, 45px) clamp(20px, 4vw, 30px); border-radius: clamp(12px, 3vw, 20px); position: relative; overflow: hidden; border: 1px solid #1a1a1a; transition: 0.4s ease-out; height: 100%; display: flex; flex-direction: column; }
-        .card:hover, .card:active { transform: translateY(-8px); border-color: var(--primary); }
-        .content i { font-size: clamp(2rem, 6vw, 2.8rem); color: var(--primary); margin-bottom: clamp(15px, 3vw, 25px); display: block; text-align: center; }
-        .content h3 { text-align: center; margin-bottom: clamp(10px, 2vw, 15px); font-size: clamp(1rem, 3vw, 1.2rem); }
-        .price { color: var(--primary); font-size: clamp(1.1rem, 3vw, 1.4rem); font-weight: 900; margin: clamp(15px, 3vw, 20px) 0; display: block; text-align: center; }
-        .old-price { text-decoration: line-through; color: #444; font-size: clamp(0.75rem, 2vw, 0.9rem); margin-right: 10px; }
-        .service-location { color: #888; font-size: clamp(0.75rem, 2vw, 0.85rem); text-align: center; margin: clamp(5px, 2vw, 10px) 0; font-style: italic; }
-        .saber-mais { color: #00aaff; cursor: pointer; display: block; margin-top: clamp(10px, 2vw, 15px); font-weight: bold; text-decoration: underline; font-size: clamp(0.8rem, 2vw, 0.9rem); text-align: center; transition: 0.3s; padding: 8px; }
-        .saber-mais:active { color: var(--primary); }
-        .desc-escondida { display: none; margin-top: clamp(10px, 2vw, 15px); color: #aaa; font-size: clamp(0.8rem, 2vw, 0.9rem); line-height: 1.6; text-align: center; padding: clamp(10px, 2vw, 15px); background: rgba(0,255,136,0.05); border-left: 3px solid var(--primary); border-radius: 5px; animation: slideDown 0.3s ease-out; }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .btn { background: var(--primary); color: #000; border: none; padding: clamp(12px, 3vw, 16px) clamp(20px, 4vw, 32px); border-radius: clamp(8px, 2vw, 10px); font-weight: 900; cursor: pointer; transition: 0.3s; text-transform: uppercase; width: 100%; margin-top: clamp(10px, 2vw, 15px); font-size: clamp(0.8rem, 2vw, 0.9rem); touch-action: manipulation; }
-        .btn:hover, .btn:active { background: #fff; transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0, 255, 136, 0.3); }
+        .produto-img { width: 100%; height: 160px; background: linear-gradient(135deg, #1a1a1a, #2a2a2a); display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--primary); }
+        .produto-info { padding: 15px; display: flex; flex-direction: column; flex: 1; }
+        .produto-nome { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; text-align: center; line-height: 1.3; word-break: break-word; }
+        .produto-desc { color: #aaa; font-size: 0.75rem; line-height: 1.35; margin-bottom: 10px; text-align: center; }
+        .produto-preco { font-size: 1.2rem; color: var(--primary); font-weight: 900; margin-bottom: 12px; text-align: center; }
+        .produto-preco-old { text-decoration: line-through; color: #555; font-size: 0.7rem; margin-right: 4px; }
 
-        #btnTopo { display: flex; position: fixed; bottom: 40px; left: 30px; z-index: 99998; border: 2px solid var(--primary); background: rgba(0,0,0,0.9); color: var(--primary); cursor: pointer; width: 55px; height: 55px; border-radius: 50%; font-size: 22px; transition: 0.3s; backdrop-filter: blur(10px); align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(0,0,0,0.5); touch-action: manipulation; }
-        #btnTopo:hover, #btnTopo:active { background: var(--primary); color: #000; }
+        .avaliacao { display: flex; align-items: center; gap: 3px; margin-bottom: 10px; flex-wrap: wrap; justify-content: center; }
+        .estrela { color: #ffc107; font-size: 0.8rem; }
+        .nota { color: #aaa; font-size: 0.7rem; }
 
-        #faq { background: #0a0a0a; padding: clamp(40px, 8vw, 80px) clamp(15px, 4vw, 20px); margin-top: clamp(40px, 8vw, 60px); border-top: 1px solid #1f1f1f; }
-        .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 80vw, 300px), 1fr)); gap: clamp(15px, 3vw, 25px); max-width: 1200px; margin: 0 auto; }
-        .faq-card { background: var(--card-bg); padding: clamp(20px, 4vw, 30px); border-radius: clamp(12px, 3vw, 15px); border: 1px solid #1a1a1a; cursor: pointer; transition: 0.4s; }
-        .faq-card:hover, .faq-card:active { transform: translateY(-8px); border-color: var(--primary); background: #151515; }
-        .faq-title { color: var(--primary); font-size: clamp(1rem, 3vw, 1.2rem); font-weight: 700; margin-bottom: clamp(10px, 2vw, 15px); display: flex; align-items: center; gap: 10px; }
-        .faq-desc { color: #aaa; font-size: clamp(0.8rem, 2vw, 0.9rem); line-height: 1.6; margin-bottom: clamp(10px, 2vw, 15px); }
-        .faq-link { color: var(--primary); text-decoration: none; font-weight: 600; font-size: clamp(0.8rem, 2vw, 0.9rem); display: inline-flex; align-items: center; gap: 5px; transition: 0.3s; cursor: pointer; padding: 5px; }
-        .faq-link:hover, .faq-link:active { gap: 10px; }
-        .faq-resposta { display: none; margin-top: clamp(10px, 2vw, 15px); color: #ccc; font-size: clamp(0.8rem, 2vw, 0.9rem); line-height: 1.8; padding: clamp(10px, 2vw, 15px); background: rgba(0,255,136,0.05); border-left: 3px solid var(--primary); border-radius: 5px; white-space: pre-wrap; animation: slideDown 0.3s ease-out; }
-        
-        .ia-float { position: fixed; bottom: 40px; right: 30px; background: linear-gradient(135deg, #00ff88, #00cc6e); width: 70px; height: 70px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 15px 40px rgba(0, 255, 136, 0.6); cursor: pointer; transition: 0.3s; font-size: 32px; animation: pulse 2s infinite; touch-action: manipulation; }
-        .ia-float:hover, .ia-float:active { transform: scale(1.1); }
-        @keyframes pulse { 0%, 100% { box-shadow: 0 15px 40px rgba(0, 255, 136, 0.6); } 50% { box-shadow: 0 15px 60px rgba(0, 255, 136, 1); } }
+        .btn-comprar { background: linear-gradient(135deg, #ff6b00, #ff8c00); color: #fff; border: none; padding: 10px 15px; border-radius: 8px; font-weight: 900; cursor: pointer; transition: 0.3s; text-transform: uppercase; width: 100%; font-size: 0.75rem; }
+        .btn-comprar:hover { background: linear-gradient(135deg, #ff8c00, #ffa500); transform: scale(1.02); }
 
-        #chatbot-container { position: fixed; bottom: 100px; right: 30px; width: 380px; height: 560px; background: #0a0a0a; border: 2px solid var(--primary); border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.9); display: none; flex-direction: column; overflow: hidden; z-index: 1001; }
+        #btnTopo { display: none; position: fixed; bottom: 100px; left: 20px; z-index: 99998; border: 2px solid var(--primary); background: rgba(0,0,0,0.9); color: var(--primary); cursor: pointer; width: 55px; height: 55px; border-radius: 50%; font-size: 22px; transition: 0.3s; align-items: center; justify-content: center; flex-direction: column; }
+        #btnTopo:hover { background: var(--primary); color: #000; }
 
-        #chat-header { background: linear-gradient(135deg, #000, #0a1a0f); padding: 16px 20px; display: flex; align-items: center; gap: 12px; flex-shrink: 0; border-bottom: 1px solid rgba(0,255,136,0.2); }
-        #chat-header h3 { margin: 0; color: #00ff88; font-size: 1.1rem; }
-        #chat-header .status { width: 8px; height: 8px; background: #00ff88; border-radius: 50%; animation: statusPulse 1s infinite; margin-left: auto; }
-        @keyframes statusPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-        #chat-header button { background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; padding: 4px; touch-action: manipulation; }
+        #carrinho-flutuante { position: fixed; bottom: 100px; right: 20px; background: linear-gradient(135deg, #ff6b00, #ff8c00); width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 15px 40px rgba(255, 107, 0, 0.6); cursor: pointer; transition: 0.3s; font-size: 28px; color: #fff; border: none; }
+        #carrinho-flutuante:hover { transform: scale(1.1); }
+        .carrinho-badge { position: absolute; top: -5px; right: -5px; background: #ff0000; color: #fff; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.75rem; }
 
-        #chat-body { flex: 1; padding: 20px; overflow-y: auto; background: #050505; -webkit-overflow-scrolling: touch; }
-        .chat-message { margin-bottom: 16px; max-width: 90%; word-wrap: break-word; animation: slideIn 0.3s ease-out; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        #modal-carrinho { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; z-index: 2000; justify-content: flex-end; align-items: flex-start; }
+        .carrinho-modal { width: 100%; max-width: 420px; height: 100%; max-height: 100vh; background: #0a0a0a; display: flex; flex-direction: column; border-left: 2px solid var(--primary); overflow: hidden; }
+        .carrinho-header { background: linear-gradient(135deg, #ff6b00, #ff8c00); padding: 18px; color: #fff; font-weight: bold; font-size: 1.2rem; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+        .carrinho-header button { background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; padding: 4px; }
+        .carrinho-items { flex: 1; overflow-y: auto; padding: 15px; -webkit-overflow-scrolling: touch; }
+        .carrinho-item { background: #1a1a1a; padding: 12px; border-radius: 10px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #333; gap: 8px; }
+        .item-info { flex: 1; min-width: 0; }
+        .item-nome { font-weight: bold; margin-bottom: 4px; font-size: 0.9rem; word-break: break-word; }
+        .item-preco { color: var(--primary); font-weight: bold; font-size: 0.85rem; }
+        .item-remove { background: #ff4444; color: #fff; border: none; padding: 5px 8px; border-radius: 5px; cursor: pointer; font-size: 0.75rem; white-space: nowrap; flex-shrink: 0; }
+        .carrinho-footer { padding: 15px; border-top: 1px solid #333; flex-shrink: 0; }
+        .carrinho-total { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 1.2rem; font-weight: bold; }
+        .btn-finalizar { background: linear-gradient(135deg, #00ff88, #00cc6e); color: #000; border: none; padding: 12px; border-radius: 10px; font-weight: 900; cursor: pointer; text-transform: uppercase; width: 100%; font-size: 0.9rem; }
+        .btn-finalizar:hover { background: linear-gradient(135deg, #00cc6e, #00aa55); }
+        .carrinho-vazio { text-align: center; padding: 30px 15px; color: #666; }
+        .carrinho-vazio i { font-size: 2.5rem; margin-bottom: 15px; display: block; }
 
-        .bot-message { background: #1f1f1f; padding: 14px 18px; border-radius: 18px 18px 18px 6px; color: #ddd; line-height: 1.5; font-size: 0.9rem; white-space: pre-wrap; border-left: 3px solid var(--primary); }
-        .user-message { margin-left: auto; background: var(--primary); color: #000; padding: 14px 18px; border-radius: 18px 18px 6px 18px; font-weight: 600; font-size: 0.9rem; max-width: 85%; }
-
-        .typing-indicator { display: flex; gap: 4px; padding: 14px 18px; background: #1f1f1f; border-radius: 18px 18px 18px 6px; width: fit-content; border-left: 3px solid var(--primary); }
-        .typing-dot { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; animation: typingAnim 1.4s infinite; }
-        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-        @keyframes typingAnim { 0%, 60%, 100% { opacity: 0.5; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-10px); } }
-
-        .quick-options { display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0; padding: 0 15px; }
-        .quick-btn { background: #1f1f1f; color: #00ff88; border: 1px solid #00ff88; padding: 9px 14px; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: 0.3s; touch-action: manipulation; }
-        .quick-btn:hover, .quick-btn:active { background: #00ff88; color: #000; transform: translateY(-2px); }
-
-        .whatsapp-btn { background: linear-gradient(135deg, #25d366, #20ba58) !important; color: #fff !important; border: none !important; padding: 12px 18px !important; border-radius: 20px !important; font-size: 0.9rem !important; cursor: pointer !important; transition: 0.3s !important; width: 100% !important; margin-top: 10px !important; font-weight: 600 !important; display: flex !important; align-items: center !important; justify-content: center !important; gap: 8px !important; touch-action: manipulation; }
-        .whatsapp-btn:hover, .whatsapp-btn:active { transform: scale(1.05); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4) !important; }
-
-        #chat-input-area { padding: 15px; background: #000; border-top: 1px solid #222; display: flex; gap: 10px; flex-shrink: 0; }
-        #chat-input { flex: 1; background: #111; border: 1px solid #333; color: #fff; padding: 12px 16px; border-radius: 12px; font-size: 0.9rem; min-height: 45px; }
-        #chat-input:focus { outline: none; border-color: var(--primary); }
-        #chat-send { background: var(--primary); color: #000; border: none; width: 48px; height: 48px; border-radius: 12px; cursor: pointer; font-weight: bold; transition: 0.3s; touch-action: manipulation; }
-        #chat-send:hover, #chat-send:active { background: #fff; transform: scale(1.05); }
-
-        #agendar { background: #080808; border-radius: clamp(20px, 5vw, 30px); padding: clamp(30px, 6vw, 60px) clamp(15px, 4vw, 20px); text-align: center; margin-top: clamp(40px, 8vw, 80px); border: 1px solid #111; }
-        #agendar h2 { font-size: clamp(1.3rem, 4vw, 1.8rem); margin-bottom: clamp(20px, 4vw, 30px); color: var(--primary); }
-        #agendar input, #agendar select { background: #000; border: 1px solid #222; color: #fff; padding: clamp(12px, 3vw, 15px); border-radius: clamp(8px, 2vw, 10px); margin: clamp(8px, 2vw, 10px) auto; width: 100%; max-width: 350px; font-size: clamp(0.9rem, 2.5vw, 1rem); display: block; }
-        #agendar input:focus, #agendar select:focus { outline: none; border-color: var(--primary); background: #0a0a0a; }
-
-        footer { text-align: center; padding: clamp(25px, 5vw, 40px) clamp(15px, 4vw, 20px); color: #444; font-size: clamp(0.7rem, 2vw, 0.8rem); border-top: 1px solid #111; }
+        footer { text-align: center; padding: 30px 15px; color: #444; font-size: 0.8rem; border-top: 1px solid #111; }
 
         @media (max-width: 768px) {
-            nav { padding: 10px 12px; }
-            .hero { min-height: 70vh; padding: 20px 15px; }
-            .container { padding: 30px 15px; }
-            .grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
-            #chatbot-container { width: calc(100vw - 20px); height: calc(100vh - 150px); right: 10px; bottom: 80px; border-radius: 15px; }
-            .faq-grid { grid-template-columns: 1fr; }
-            #btnTopo { bottom: 80px; left: 15px; width: 50px; height: 50px; font-size: 20px; }
-            .ia-float { bottom: 80px; right: 15px; width: 60px; height: 60px; font-size: 28px; }
+            .grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 15px; }
+            #modal-carrinho { justify-content: center; }
+            .carrinho-modal { width: 95%; max-height: 85vh; border-left: none; border-top: 2px solid var(--primary); }
         }
 
         @media (max-width: 480px) {
-            html { font-size: 16px; }
-            nav { padding: 12px 15px; }
-            .logo { font-size: 1.1rem; letter-spacing: 1px; }
-            .nav-links { gap: 8px; width: 100%; }
-            .nav-links a { font-size: 0.75rem; font-weight: 600; }
-            .nav-contact { padding: 6px 8px; }
-            .nav-contact i { font-size: 1rem !important; }
+            html { font-size: 14px; }
+            nav { padding: 10px 12px; }
+            .logo { font-size: 1rem; }
+            .nav-links { gap: 6px; }
+            .nav-links a { font-size: 0.65rem; }
             
-            .hero { min-height: 50vh; padding: 20px 15px; margin-top: 70px; }
-            .hero h1 { font-size: 2.2rem; margin-bottom: 10px; line-height: 1.2; }
-            .hero p { font-size: 1rem; letter-spacing: 0.5px; }
+            .hero-loja { height: 40vh; padding: 15px; margin-top: 50px; }
+            .hero-loja h1 { font-size: 2rem; margin-bottom: 10px; }
+            .hero-loja p { font-size: 0.9rem; }
             
-            .container { padding: 25px 15px; }
-            .section-title { font-size: 1.4rem; margin: 35px 0 20px 0; font-weight: 700; }
+            .container { padding: 20px 12px; }
+            .section-title { font-size: 1.5rem; margin: 20px 0; }
             
             .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-            .card { padding: 18px 14px; border-radius: 10px; }
-            .content i { font-size: 2.2rem; margin-bottom: 12px; }
-            .content h3 { font-size: 1.1rem; font-weight: 700; line-height: 1.3; }
-            .price { font-size: 1.3rem; margin: 12px 0; }
-            .old-price { font-size: 0.85rem; }
-            .service-location { font-size: 0.8rem; margin: 8px 0; }
-            .saber-mais { font-size: 0.85rem; margin-top: 10px; }
-            .btn { padding: 12px 16px; font-size: 0.9rem; margin-top: 10px; border-radius: 8px; font-weight: 700; }
+            .produto-img { height: 120px; font-size: 2.2rem; }
+            .produto-nome { font-size: 0.95rem; margin-bottom: 10px; font-weight: 800; }
+            .produto-desc { font-size: 0.85rem; margin-bottom: 12px; }
+            .produto-preco { font-size: 1.2rem; margin-bottom: 12px; }
+            .produto-preco-old { font-size: 0.8rem; }
+            .avaliacao { margin-bottom: 12px; }
+            .estrela { font-size: 1rem; }
+            .nota { font-size: 0.85rem; }
+            .btn-comprar { font-size: 0.85rem; padding: 12px; }
             
-            #chatbot-container { width: calc(100vw - 15px); height: calc(100vh - 120px); right: 7.5px; bottom: 80px; border-radius: 12px; }
-            #chat-header h3 { font-size: 1rem; }
-            #chat-body { padding: 12px; }
-            .chat-message { font-size: 0.95rem; }
-            .bot-message { font-size: 0.9rem; padding: 10px 12px; }
-            .user-message { font-size: 0.9rem; padding: 10px 12px; }
-            .quick-btn { font-size: 0.8rem; padding: 8px 12px; }
-            #chat-input { font-size: 0.9rem; padding: 10px; }
+            .filtros { gap: 8px; margin-bottom: 25px; }
+            .filtro-btn { padding: 8px 12px; font-size: 0.7rem; }
             
-            #agendar { margin-top: 40px; padding: 25px 15px; border-radius: 12px; }
-            #agendar h2 { font-size: 1.4rem; margin-bottom: 20px; }
-            #agendar input, #agendar select { font-size: 1rem; padding: 12px; margin: 10px auto; max-width: 100%; }
+            .carrinho-modal { width: 98%; max-height: 80vh; border-top: 2px solid var(--primary); border-left: none; }
+            .carrinho-header { padding: 16px; font-size: 1.1rem; }
+            .carrinho-item { padding: 12px; margin-bottom: 12px; }
+            .item-nome { font-size: 0.95rem; }
+            .item-preco { font-size: 0.85rem; }
+            .carrinho-total { font-size: 1.1rem; }
+            .btn-finalizar { padding: 12px; font-size: 0.9rem; }
             
-            .faq-grid { grid-template-columns: 1fr; gap: 12px; }
-            .faq-card { padding: 16px; border-radius: 10px; }
-            .faq-title { font-size: 1.1rem; margin-bottom: 10px; }
-            .faq-desc { font-size: 0.85rem; margin-bottom: 10px; }
-            .faq-link { font-size: 0.85rem; }
-            .faq-resposta { font-size: 0.85rem; padding: 12px; margin-top: 10px; }
-            
-            #btnTopo { bottom: 80px; left: 15px; width: 48px; height: 48px; font-size: 18px; }
-            .ia-float { bottom: 80px; right: 15px; width: 60px; height: 60px; font-size: 22px; }
+            #btnTopo { bottom: 100px; left: 15px; width: 50px; height: 50px; font-size: 20px; }
+            #carrinho-flutuante { bottom: 100px; right: 15px; width: 50px; height: 50px; font-size: 24px; }
+            .carrinho-badge { width: 24px; height: 24px; font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
-<button onclick="topo()" id="btnTopo"><i class="fas fa-arrow-up"></i></button>
 
-<div id="intro">
-    <div class="fire-text">
-        <span class="falling-letter">O</span><span class="falling-letter">P</span><span class="falling-letter">T</span><span class="falling-letter">I</span><span class="falling-letter">M</span><span class="falling-letter">U</span><span class="falling-letter">S</span>&nbsp;<span class="falling-letter">T</span><span class="falling-letter">E</span><span class="falling-letter">C</span><span class="falling-letter">H</span>
-    </div>
-</div>
+<button onclick="topo()" id="btnTopo"><i class="fas fa-arrow-up"></i></button>
+<button onclick="abrirCarrinho()" id="carrinho-flutuante">
+    <i class="fas fa-shopping-cart"></i>
+    <div class="carrinho-badge" id="carrinho-count">0</div>
+</button>
 
 <header>
     <nav>
         <div class="logo" onclick="window.location.href='index.html'">OPTIMUS TECH</div>
         <div class="nav-links">
-            <a href="#mobile">MOBILE</a>
-            <a href="#pc">PC</a>
-            <a href="#aulas">AULAS</a>
-            <a href="loja.html">LOJA</a>
-            <a href="#agendar">AGENDAR</a>
+            <a href="index.html">HOME</a>
+            <a href="index.html#mobile">SERVIÇOS</a>
+            <a href="index.html#agendar">AGENDAR</a>
+            <a href="index.html#agendar">SUPORTE</a>
             <a href="mailto:optimustech.support@gmail.com" class="nav-contact"><i class="far fa-envelope"></i></a>
             <a href="https://wa.me/5542999112756" class="nav-contact" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
     </nav>
 </header>
 
-<section class="hero">
-    <h1>OPTIMUS TECH</h1>
-    <p>Performance Extrema | Segurança Hacker</p>
+<section class="hero-loja">
+    <h1>🛒 LOJA OPTIMUS</h1>
+    <p>Os melhores produtos para seu computador e celular</p>
 </section>
 
 <div class="container">
-    <h2 class="section-title" id="mobile">Celular travou? 📱</h2>
-    <div class="grid">
-        <div class="card"><div class="content"><i class="fas fa-mobile-alt"></i><h3>Formatação e Recuperação</h3><span class="price"><span class="old-price">R$ 60,00</span>R$ 50,00</span><div class="service-location">📍 Guarapuava - Presencial</div><button class="btn" onclick="selecionar('Formatação Mobile')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🔧 Realizamos limpeza completa do sistema operacional, removendo arquivos temporários, cache acumulado e dados desnecessários. ✨ Atualizamos o SO para a versão mais recente, otimizamos permissões de aplicativos e configurações de desempenho.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-tools"></i><h3>Troca de Peças Mobile</h3><span class="price">R$ 80,00 + Peça</span><div class="service-location">📍 Guarapuava - Presencial</div><button class="btn" onclick="selecionar('Troca de Peças Mobile')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🖥️ Trocamos telas quebradas, baterias desgastadas, conectores de carga danificados e componentes internos. 🛠️ Usamos peças de qualidade com garantia, realizamos diagnóstico prévio e teste completo após a manutenção.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-shield-virus"></i><h3>Remoção de Vírus</h3><span class="price"><span class="old-price">R$ 50,00</span>R$ 40,00</span><div class="service-location">📍 Guarapuava - Presencial</div><button class="btn" onclick="selecionar('Remoção de Vírus Mobile')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🛡️ Escaneamos profundamente o celular com ferramentas avançadas de detecção, removemos malwares, adwares, trojans e aplicativos maliciosos. 🔒 Reforçamos a segurança e limpamos registros do sistema.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-wifi"></i><h3>Suporte Online</h3><span class="price">R$ 20,00</span><div class="service-location">💻 Remoto - Via WhatsApp/TeamViewer</div><button class="btn" onclick="selecionar('Suporte Online Mobile')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🌐 Suporte remoto via acesso ao seu dispositivo. Resolvemos problemas de software, otimização e dúvidas técnicas. ⚡ Rápido e prático, sem sair de casa!</p></div></div>
+    <div class="produtos-header">
+        <h2 class="section-title">Produtos</h2>
+    </div>
+    
+    <div class="filtros">
+        <button class="filtro-btn active" onclick="filtrar('todos')">Todos</button>
+        <button class="filtro-btn" onclick="filtrar('celulares')">Celulares</button>
+        <button class="filtro-btn" onclick="filtrar('acessorios-celular')">Acessórios Celular</button>
+        <button class="filtro-btn" onclick="filtrar('ssd')">SSD</button>
+        <button class="filtro-btn" onclick="filtrar('ram')">Memória RAM</button>
+        <button class="filtro-btn" onclick="filtrar('perifericos')">Periféricos</button>
+        <button class="filtro-btn" onclick="filtrar('monitores')">Monitores</button>
+        <button class="filtro-btn" onclick="filtrar('notebooks')">Notebooks</button>
+        <button class="filtro-btn" onclick="filtrar('acessorios')">Acessórios PC</button>
     </div>
 
-    <h2 class="section-title" id="pc">PC voando baixo... 🚀</h2>
-    <div class="grid">
-        <div class="card"><div class="content"><i class="fas fa-snowflake"></i><h3>Limpeza e Pasta Térmica</h3><span class="price"><span class="old-price">R$ 65,00</span>R$ 50,00</span><div class="service-location">📍 Guarapuava - Presencial</div><button class="btn" onclick="selecionar('Limpeza e Pasta Térmica PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🌬️ Limpeza interna completa: removemos toda a poeira dos ventiladores, dissipador e componentes internos. 🧴 Aplicamos pasta térmica de alta performance, garantindo melhor condução de calor.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-microchip"></i><h3>Upgrade Peças (SSD/RAM)</h3><span class="price"><span class="old-price">R$ 65,00</span>R$ 50,00</span><div class="service-location">📍 Guarapuava - Presencial</div><button class="btn" onclick="selecionar('Upgrade Peças PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">⚡ Instalação de SSDs (até 5x mais rápido que HD), compatibilização e clonagem de dados. 💾 Aumento de memória RAM para multitarefa suave e programas pesados.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-bolt"></i><h3>Otimização FPS</h3><span class="price"><span class="old-price">R$ 100,00</span>R$ 80,00</span><div class="service-location">📍 Guarapuava - Presencial</div><button class="btn" onclick="selecionar('Otimização FPS PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🎮 Ajustes finos de configurações de jogo para ganho real de FPS. 📊 Otimizamos drivers de vídeo, desativamos programas em background, ajustamos Power Plan.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-hammer"></i><h3>Ajuda na Montagem do PC</h3><span class="price">Consulte</span><div class="service-location">📍 Guarapuava - Presencial</div><button class="btn" onclick="selecionar('Ajuda Montagem PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🖥️ Fazemos o orçamento das peças conforme seus desejos e necessidades. 💡 Consultoria técnica personalizada para montar um PC de acordo com seu orçamento. 🎯 Selecionamos as melhores relações custo-benefício para cada tipo de uso.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-headset"></i><h3>Suporte Remoto</h3><span class="price">R$ 70,00</span><div class="service-location">💻 Remoto - Acesso ao PC</div><button class="btn" onclick="selecionar('Suporte Remoto PC')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🌐 Acesso remoto ao seu PC para resolver problemas, otimizações e diagnósticos. ⚡ Prático e rápido, resolve problemas sem você sair de casa!</p></div></div>
-    </div>
-
-    <h2 class="section-title" id="aulas">Aulas práticas 📚</h2>
-    <div class="grid">
-        <div class="card"><div class="content"><i class="fas fa-user-secret"></i><h3>Boas Práticas Hacker</h3><span class="price">R$ 100,00</span><div class="service-location">💻 Online | 📍 Guarapuava Presencial</div><button class="btn" onclick="selecionar('Aula Boas Práticas Hacker')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🔐 Aprenda sobre segurança da informação, proteção de dados e como os hackers agem. 🛡️ Tópicos: senhas seguras, autenticação 2FA, phishing, malware, Wi-Fi seguro.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-file-word"></i><h3>Pacote Office</h3><span class="price">R$ 200,00</span><div class="service-location">💻 Online | 📍 Guarapuava Presencial</div><button class="btn" onclick="selecionar('Aula Pacote Office')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">📝 Word: formatação profissional, tabelas, estilos e referências. 📊 Excel: fórmulas avançadas, gráficos, análise de dados. 📈 PowerPoint: apresentações impactantes.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-graduation-cap"></i><h3>Informática Particular</h3><span class="price">R$ 30,00 /h</span><div class="service-location">💻 Online | 📍 Guarapuava Presencial</div><button class="btn" onclick="selecionar('Aula Informática Particular')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">💡 Aulas personalizadas conforme seu nível: Windows, programas, internet, redes sociais. 🎯 Foco na sua autonomia digital, resolvemos suas dúvidas específicas.</p></div></div>
-        <div class="card"><div class="content"><i class="fas fa-video"></i><h3>Edição de Vídeos</h3><span class="price">R$ 150,00</span><div class="service-location">💻 Online | 📍 Guarapuava Presencial</div><button class="btn" onclick="selecionar('Aula Edição de Vídeos')">CONTRATAR</button><span class="saber-mais" onclick="toggleDesc(this)">Saber mais</span><p class="desc-escondida">🎬 Aprenda edição com softwares profissionais: cortes, efeitos e transições. 🎥 Composição visual, sincronização de áudio, correção de cores. ✨ Crie conteúdos incríveis para YouTube, TikTok e redes sociais!</p></div></div>
-    </div>
+    <div class="grid" id="produtos-grid"></div>
 </div>
 
-<section id="agendar">
-    <h2>📅 Agendar Horário</h2>
-    <input type="text" id="cliNome" placeholder="Seu Nome">
-    <select id="cliServico">
-        <option value="">Selecione...</option>
-        <option value="Formatação Mobile">Formatação Mobile</option>
-        <option value="Troca de Peças Mobile">Troca de Peças Mobile</option>
-        <option value="Remoção de Vírus Mobile">Remoção de Vírus Mobile</option>
-        <option value="Suporte Online Mobile">Suporte Online Mobile - R$ 20</option>
-        <option value="Limpeza e Pasta Térmica PC">Limpeza e Pasta Térmica PC</option>
-        <option value="Upgrade Peças PC">Upgrade Peças PC</option>
-        <option value="Otimização FPS PC">Otimização FPS PC</option>
-        <option value="Ajuda Montagem PC">Ajuda Montagem PC</option>
-        <option value="Suporte Remoto PC">Suporte Remoto PC - R$ 70</option>
-        <option value="Aula Boas Práticas Hacker">Aula Boas Práticas Hacker</option>
-        <option value="Aula Pacote Office">Aula Pacote Office</option>
-        <option value="Aula Informática Particular">Aula Informática Particular</option>
-        <option value="Aula Edição de Vídeos">Aula Edição de Vídeos</option>
-    </select>
-    <input type="datetime-local" id="cliData">
-    <br>
-    <button class="btn" style="max-width:350px;" onclick="enviarAgendamento()">Confirmar via WhatsApp</button>
-</section>
-
-<section id="faq">
-    <h2 class="section-title">❓ Dúvidas Frequentes</h2>
-    <div class="faq-grid">
-        <div class="faq-card">
-            <div class="faq-title">🌡️ Pasta Térmica</div>
-            <div class="faq-desc">Entenda por que é importante trocar...</div>
-            <a class="faq-link" onclick="toggleFaq(this)">Saiba mais →</a>
-            <div class="faq-resposta">🌡️ POR QUE TROCAR PASTA TÉRMICA?
-
-A pasta seca com o tempo (2 anos).
-
-❌ QUANDO SECA:
-• PC 20°C mais quente
-• CPU fica lento
-• FPS cai muito
-• PC desliga sozinho
-• Risco de queimar
-
-✅ SOLUÇÃO:
-• Limpeza completa
-• Pasta Arctic MX-6
-• Reaplicamos em CPU/GPU
-• PC 10-15°C mais frio
-
-💰 R$ 50,00
-⏱️ Dura 2+ anos</div>
+<div id="modal-carrinho" onclick="fecharCarrinho(event)">
+    <div class="carrinho-modal" onclick="event.stopPropagation()">
+        <div class="carrinho-header">
+            Meu Carrinho
+            <button onclick="fecharCarrinho()">✕</button>
         </div>
-
-        <div class="faq-card">
-            <div class="faq-title">💾 O que é RAM?</div>
-            <div class="faq-desc">Descubra o papel fundamental...</div>
-            <a class="faq-link" onclick="toggleFaq(this)">Saiba mais →</a>
-            <div class="faq-resposta">💾 O QUE É RAM?
-
-Memória rápida do PC!
-
-💪 COM 8GB:
-✅ 50+ abas navegador
-✅ Discord + Chrome + games
-✅ Editar vídeos rápido
-✅ Multitarefa fluida
-
-❌ SEM:
-• Trava com 5 apps
-• Muito lento
-• Jogos ruins
-
-💰 Upgrade: R$ 50 instalação
-+ Preço da RAM</div>
+        <div class="carrinho-items" id="carrinho-items">
+            <div class="carrinho-vazio">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Seu carrinho está vazio</p>
+            </div>
         </div>
-
-        <div class="faq-card">
-            <div class="faq-title">⚡ O que é SSD?</div>
-            <div class="faq-desc">Por que é 5x mais rápido...</div>
-            <a class="faq-link" onclick="toggleFaq(this)">Saiba mais →</a>
-            <div class="faq-resposta">⚡ O QUE É SSD?
-
-Disco rápido! 🚀
-
-🔥 5x MAIS RÁPIDO:
-• Boot: 30 seg (vs 5 min)
-• Programas: 2x rápido
-• Arquivos: 5x rápido
-• Jogos: Instantâneo
-
-✨ VANTAGENS:
-✅ Sem peças móveis
-✅ Menos calor
-✅ Menos barulho
-✅ Mais durável
-
-💾 SSD 480GB: R$ 249,00
-📊 560MB/s
-✅ Garantia 3 anos</div>
+        <div class="carrinho-footer">
+            <div class="carrinho-total">
+                <span>Total:</span>
+                <span id="carrinho-total">R$ 0,00</span>
+            </div>
+            <button class="btn-finalizar" onclick="finalizarCompra()">Finalizar</button>
         </div>
-
-        <div class="faq-card">
-            <div class="faq-title">🐢 PC Lento</div>
-            <div class="faq-desc">Principais razões...</div>
-            <a class="faq-link" onclick="toggleFaq(this)">Saiba mais →</a>
-            <div class="faq-resposta">🐢 POR QUE LENTO?
-
-1️⃣ POEIRA (40%)
-❌ Ventiladores entupidos
-✅ Solução: Limpeza R$ 50
-
-2️⃣ DISCO CHEIO (30%)
-❌ Cache grande
-✅ Solução: Limpeza
-
-3️⃣ POUCA RAM (20%)
-❌ Sistema usa disco
-✅ Solução: Upgrade RAM
-
-4️⃣ HD ANTIGO (10%)
-❌ Muito lento
-✅ Solução: SSD R$ 249
-
-5️⃣ VIRUS/MALWARE
-✅ Solução: Remoção R$ 40</div>
-        </div>
-
-        <div class="faq-card">
-            <div class="faq-title">🎮 Otimizar FPS</div>
-            <div class="faq-desc">Dicas para melhorar...</div>
-            <a class="faq-link" onclick="toggleFaq(this)">Saiba mais →</a>
-            <div class="faq-resposta">🎮 OTIMIZAR FPS:
-
-⚙️ FAZEMOS:
-• Drivers atualizados
-• Power Plan máximo
-• Desativar background
-• Otimização BIOS
-• Limpeza Windows
-• Pasta térmica
-
-📈 RESULTADO:
-🚀 +20-40% FPS
-⚙️ Sem lag
-🏆 Gameplay fluido
-
-💰 R$ 80,00</div>
-        </div>
-
-        <div class="faq-card">
-            <div class="faq-title">🔄 Formatação</div>
-            <div class="faq-desc">Entenda o reset completo...</div>
-            <a class="faq-link" onclick="toggleFaq(this)">Saiba mais →</a>
-            <div class="faq-resposta">🔄 FORMATAÇÃO = RESET!
-
-📱 CELULAR:
-✨ Apaga tudo
-✨ Reinstala sistema
-✨ Remove vírus 100%
-✨ Volta como novo
-⏱️ 1-2 horas
-💰 R$ 50,00
-
-⚠️ FAZEMOS BACKUP ANTES!</div>
-        </div>
-
-        <div class="faq-card">
-            <div class="faq-title">🛡️ Remoção de Vírus</div>
-            <div class="faq-desc">Identifique e remova...</div>
-            <a class="faq-link" onclick="toggleFaq(this)">Saiba mais →</a>
-            <div class="faq-resposta">🛡️ REMOVER VÍRUS:
-
-⚠️ SINAIS:
-🔴 Pop-ups
-🔴 Navegador redireciona
-🔴 Consumo alto internet
-🔴 Apps estranhos
-🔴 Muito lento
-
-✅ SOLUÇÃO:
-📱 Celular: R$ 40 (1-2h)
-💻 PC: Consulte
-✨ Remove 100%
-🛡️ Reforça proteção</div>
-        </div>
-
-        <div class="faq-card">
-            <div class="faq-title">💿 HD vs SSD</div>
-            <div class="faq-desc">Compare a performance...</div>
-            <a class="faq-link" onclick="toggleFaq(this)">Saiba mais →</a>
-            <div class="faq-resposta">💿 HD vs SSD:
-
-⚡ VELOCIDADE:
-HD: Boot 5 min
-SSD: Boot 30 seg
-
-🔧 COMO FUNCIONA:
-HD: Peças móveis (lento)
-SSD: Chips rápidos (5x+)
-
-✅ VANTAGENS SSD:
-• Muito mais rápido
-• Mais durável
-• Sem barulho
-• Menos calor
-
-💰 SSD 1TB: R$ 500
-Mas compensa muito!</div>
-        </div>
-
-        <div class="faq-card">
-            <div class="faq-title">📈 Vale Aumentar RAM?</div>
-            <div class="faq-desc">Benefícios reais...</div>
-            <a class="faq-link" onclick="toggleFaq(this)">Saiba mais →</a>
-            <div class="faq-resposta">📈 VALE AUMENTAR RAM?
-
-✅ SIM! DEFINITIVAMENTE!
-
-💪 COM 8GB:
-✅ 50+ abas browser
-✅ Discord + games
-✅ Vídeos suaves
-✅ Multitarefa fluida
-
-❌ COM 4GB:
-❌ Trava com 5 apps
-❌ Muito lento
-❌ Jogos ruins
-
-💰 CUSTO:
-RAM 8GB: R$ 120
-Instalação: R$ 50
-Melhora: 300%+
-
-Vale MUITO!</div>
-        </div>
-    </div>
-</section>
-
-<div class="ia-float" onclick="toggleChat()"><i class="fas fa-robot"></i></div>
-<div id="chatbot-container">
-    <div id="chat-header">
-        <i class="fas fa-robot" style="font-size: 1.8rem; color:#00ff88;"></i>
-        <h3>Optimus IA</h3>
-        <div class="status"></div>
-        <button onclick="toggleChat()">✕</button>
-    </div>
-    <div id="chat-body">
-        <div class="chat-message bot-message" id="greeting-msg">👋 Olá! Sou a <strong>Optimus IA</strong>
-
-Estou aqui para ajudar com dúvidas sobre nossos serviços!
-
-📋 Escolha uma opção ou me faça uma pergunta:</div>
-        <div class="quick-options" id="quick-options">
-            <div class="quick-btn" onclick="quickReply(this)">💵 Melhor custo?</div>
-            <div class="quick-btn" onclick="quickReply(this)">🎮 Games</div>
-            <div class="quick-btn" onclick="quickReply(this)">📱 Lento</div>
-            <div class="quick-btn" onclick="quickReply(this)">🛡️ Vírus!</div>
-            <div class="quick-btn" onclick="quickReply(this)">📞 Agendar</div>
-            <div class="quick-btn" onclick="quickReply(this)">💬 Suporte</div>
-        </div>
-    </div>
-    <div id="chat-input-area">
-        <input type="text" id="chat-input" placeholder="Digite sua dúvida..." onkeypress="if(event.key==='Enter') sendMessage()">
-        <button id="chat-send" onclick="sendMessage()">→</button>
     </div>
 </div>
 
 <footer>© 2026 OPTIMUS TECH - TODOS OS DIREITOS RESERVADOS</footer>
+
 <script>
-    const respostasIA = {
-        "custo": "💰 MELHOR CUSTO-BENEFÍCIO:\n\n🥇 TOP 3:\n1️⃣ Formatação Mobile - R$ 50\n2️⃣ Limpeza + Pasta - R$ 50\n3️⃣ Upgrade RAM/SSD - R$ 50",
-        "game": "🎮 OTIMIZAÇÃO FPS:\n\n✨ O que fazemos:\n🔧 Drivers atualizados\n⚡ Power Plan máximo\n🗑️ Limpeza Windows\n📈 +20-40% FPS!\n💰 R$ 80,00",
-        "lento": "📱 CELULAR LENTO?\n\n❌ Causas:\n• Memória cheia\n• Muitos apps\n• Cache grande\n\n✅ Solução: Formatação\nR$ 50,00 | Fica novo!",
-        "virus": "🛡️ TEM VÍRUS?\n\n✅ Remove 100%\n📱 Celular: R$ 40 (1-2h)\n💻 PC: Consulte\n\nRemove malware completamente!",
-        "agendar": "📅 COMO AGENDAR:\n\n1️⃣ Seu nome\n2️⃣ Serviço\n3️⃣ Data/hora\n\nOu WhatsApp:\n(42) 99911-2756",
-        "suporte": "👨‍💻 QUER FALAR COM SUPORTE?\n\nClique no botão abaixo!"
-    };
+const produtos = [
+    // CELULARES
+    {id: 1, nome: 'Samsung Galaxy A13 64GB Azul', categoria: 'celulares', preco: 799.00, precoAntigo: 999.00, descricao: 'Galaxy A13 64GB', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.6, reviews: 156},
+    {id: 2, nome: 'Samsung Galaxy A23 128GB Preto', categoria: 'celulares', preco: 1099.00, precoAntigo: 1399.00, descricao: 'Galaxy A23 128GB', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.7, reviews: 189},
+    {id: 3, nome: 'Samsung Galaxy A53 128GB Azul', categoria: 'celulares', preco: 1799.00, precoAntigo: 2199.00, descricao: 'Galaxy A53 128GB', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.8, reviews: 234},
+    {id: 4, nome: 'iPhone 13 128GB Branco', categoria: 'celulares', preco: 2799.00, precoAntigo: 3499.00, descricao: 'iPhone 13 128GB', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.9, reviews: 312},
+    {id: 5, nome: 'iPhone 14 128GB Preto', categoria: 'celulares', preco: 3499.00, precoAntigo: 4299.00, descricao: 'iPhone 14 128GB', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.9, reviews: 267},
+    {id: 6, nome: 'iPhone 15 128GB Azul', categoria: 'celulares', preco: 4299.00, precoAntigo: 5299.00, descricao: 'iPhone 15 128GB', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.9, reviews: 178},
+    {id: 7, nome: 'Xiaomi Redmi Note 11 128GB Cinza', categoria: 'celulares', preco: 999.00, precoAntigo: 1299.00, descricao: 'Redmi Note 11', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.7, reviews: 145},
+    {id: 8, nome: 'Motorola Moto G32 128GB Cinza', categoria: 'celulares', preco: 899.00, precoAntigo: 1199.00, descricao: 'Moto G32 128GB', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.6, reviews: 123},
 
-    function showTyping() {
-        const body = document.getElementById('chat-body');
-        const typing = document.createElement('div');
-        typing.className = 'chat-message typing-indicator';
-        typing.id = 'typing-indicator';
-        typing.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
-        body.appendChild(typing);
-        body.scrollTop = body.scrollHeight;
-    }
+    // ACESSÓRIOS CELULAR
+    {id: 9, nome: 'Bateria Original Samsung A50', categoria: 'acessorios-celular', preco: 89.00, precoAntigo: 139.00, descricao: 'Bateria A50', icon: '<i class="fas fa-battery-half"></i>', avaliacao: 4.8, reviews: 234},
+    {id: 10, nome: 'Bateria Original iPhone 12', categoria: 'acessorios-celular', preco: 129.00, precoAntigo: 189.00, descricao: 'Bateria iPhone 12', icon: '<i class="fas fa-battery-half"></i>', avaliacao: 4.9, reviews: 178},
+    {id: 11, nome: 'Tela LCD Samsung A30 Display', categoria: 'acessorios-celular', preco: 149.00, precoAntigo: 229.00, descricao: 'Tela LCD A30', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.7, reviews: 156},
+    {id: 12, nome: 'Tela OLED iPhone 13', categoria: 'acessorios-celular', preco: 199.00, precoAntigo: 299.00, descricao: 'Tela OLED iPhone 13', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.9, reviews: 145},
+    {id: 13, nome: 'Carregador Rápido 65W USB-C', categoria: 'acessorios-celular', preco: 49.00, precoAntigo: 89.00, descricao: 'Carregador 65W', icon: '<i class="fas fa-plug"></i>', avaliacao: 4.8, reviews: 267},
+    {id: 14, nome: 'Carregador Wireless 15W Preto', categoria: 'acessorios-celular', preco: 39.00, precoAntigo: 79.00, descricao: 'Carregador Wireless', icon: '<i class="fas fa-plug"></i>', avaliacao: 4.7, reviews: 189},
+    {id: 15, nome: 'Fone Bluetooth Estéreo Preto', categoria: 'acessorios-celular', preco: 79.00, precoAntigo: 149.00, descricao: 'Fone Bluetooth', icon: '<i class="fas fa-headphones"></i>', avaliacao: 4.6, reviews: 198},
+    {id: 16, nome: 'Fone Bluetooth com Cancelamento Ruído', categoria: 'acessorios-celular', preco: 199.00, precoAntigo: 349.00, descricao: 'Fone ANC', icon: '<i class="fas fa-headphones"></i>', avaliacao: 4.9, reviews: 234},
+    {id: 17, nome: 'Cabo USB-C 2m Nylon Trançado', categoria: 'acessorios-celular', preco: 24.00, precoAntigo: 44.00, descricao: 'Cabo USB-C', icon: '<i class="fas fa-code-branch"></i>', avaliacao: 4.7, reviews: 312},
+    {id: 18, nome: 'Cabo Lightning 2m Certificado', categoria: 'acessorios-celular', preco: 34.00, precoAntigo: 64.00, descricao: 'Cabo Lightning', icon: '<i class="fas fa-code-branch"></i>', avaliacao: 4.8, reviews: 267},
+    {id: 19, nome: 'Capa de Silicone Transparente Celular', categoria: 'acessorios-celular', preco: 19.00, precoAntigo: 39.00, descricao: 'Capa Silicone', icon: '<i class="fas fa-shield-alt"></i>', avaliacao: 4.5, reviews: 178},
+    {id: 20, nome: 'Película de Vidro Temperado 9H', categoria: 'acessorios-celular', preco: 14.00, precoAntigo: 29.00, descricao: 'Película 9H', icon: '<i class="fas fa-square"></i>', avaliacao: 4.8, reviews: 289},
 
-    function removeTyping() {
-        const typing = document.getElementById('typing-indicator');
-        if (typing) typing.remove();
-    }
+    // MEMÓRIA RAM
+    {id: 21, nome: 'Memória RAM 8GB DDR5 5600MHz', categoria: 'ram', preco: 189.00, precoAntigo: 249.00, descricao: 'DDR5 8GB 5600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.9, reviews: 187},
+    {id: 22, nome: 'Memória RAM 16GB DDR5 5600MHz', categoria: 'ram', preco: 349.00, precoAntigo: 449.00, descricao: 'DDR5 16GB 5600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.9, reviews: 156},
+    {id: 23, nome: 'Memória RAM 32GB DDR5 5600MHz', categoria: 'ram', preco: 689.00, precoAntigo: 899.00, descricao: 'DDR5 32GB 5600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.8, reviews: 89},
+    {id: 24, nome: 'Memória RAM 8GB DDR4 3200MHz', categoria: 'ram', preco: 149.00, precoAntigo: 199.00, descricao: 'DDR4 8GB 3200MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.8, reviews: 312},
+    {id: 25, nome: 'Memória RAM 16GB DDR4 3200MHz', categoria: 'ram', preco: 269.00, precoAntigo: 369.00, descricao: 'DDR4 16GB 3200MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.8, reviews: 267},
 
-    function addMessage(text, isUser = false) {
-        const body = document.getElementById('chat-body');
-        removeTyping();
-        const div = document.createElement('div');
-        div.className = `chat-message ${isUser ? 'user-message' : 'bot-message'}`;
-        div.textContent = text;
-        body.appendChild(div);
-        body.scrollTop = body.scrollHeight;
-    }
+    // SSD
+    {id: 26, nome: 'Unidade SSD 480GB SATA III', categoria: 'ssd', preco: 249.00, precoAntigo: 329.00, descricao: 'SSD 480GB SATA', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.8, reviews: 312},
+    {id: 27, nome: 'Unidade SSD 1TB SATA III', categoria: 'ssd', preco: 499.00, precoAntigo: 699.00, descricao: 'SSD 1TB SATA', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 267},
+    {id: 28, nome: 'Unidade SSD 500GB NVMe PCIe 3.0', categoria: 'ssd', preco: 299.00, precoAntigo: 399.00, descricao: 'NVMe 500GB', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 234},
+    {id: 29, nome: 'Unidade SSD 1TB NVMe PCIe 4.0', categoria: 'ssd', preco: 699.00, precoAntigo: 949.00, descricao: 'NVMe 1TB PCIe 4.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 267},
 
-    function addWhatsAppButton() {
-        const chatBody = document.getElementById('chat-body');
-        const btn = document.createElement('button');
-        btn.className = 'whatsapp-btn';
-        btn.innerHTML = '<i class="fab fa-whatsapp"></i> Ir para WhatsApp';
-        btn.onclick = () => window.open('https://wa.me/5542999112756', '_blank');
-        chatBody.appendChild(btn);
-        chatBody.scrollTop = chatBody.scrollHeight;
-    }
+    // PERIFÉRICOS
+    {id: 30, nome: 'Teclado Mecânico RGB Switches Azuis', categoria: 'perifericos', preco: 199.00, precoAntigo: 299.00, descricao: 'Teclado Mecânico', icon: '<i class="fas fa-keyboard"></i>', avaliacao: 4.8, reviews: 267},
+    {id: 31, nome: 'Mouse Gamer RGB 12000 DPI', categoria: 'perifericos', preco: 149.00, precoAntigo: 229.00, descricao: 'Mouse Gamer 12K', icon: '<i class="fas fa-mouse"></i>', avaliacao: 4.9, reviews: 312},
+    {id: 32, nome: 'Mouse Sem Fio Wireless', categoria: 'perifericos', preco: 69.00, precoAntigo: 119.00, descricao: 'Mouse Wireless', icon: '<i class="fas fa-mouse"></i>', avaliacao: 4.7, reviews: 234},
 
-    function getBotResponse(question) {
-        const q = question.toLowerCase().trim();
-        showTyping();
+    // MONITORES
+    {id: 33, nome: 'Monitor LED 24 Full HD', categoria: 'monitores', preco: 599.00, precoAntigo: 799.00, descricao: 'Monitor 24" Full HD', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.7, reviews: 289},
+    {id: 34, nome: 'Monitor LED 27 2K', categoria: 'monitores', preco: 899.00, precoAntigo: 1199.00, descricao: 'Monitor 27" 2K', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.8, reviews: 178},
+    {id: 35, nome: 'Monitor Gamer 27 165Hz', categoria: 'monitores', preco: 1199.00, precoAntigo: 1599.00, descricao: 'Monitor Gaming', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.9, reviews: 189},
 
-        for (let chave in respostasIA) {
-            if (q.includes(chave)) {
-                setTimeout(() => {
-                    addMessage(respostasIA[chave], false);
-                    if (chave === "suporte") {
-                        setTimeout(() => addWhatsAppButton(), 500);
-                    }
-                }, 700);
-                return;
-            }
-        }
+    // NOTEBOOKS
+    {id: 36, nome: 'Notebook Intel Core i5 8GB RAM', categoria: 'notebooks', preco: 2499.00, precoAntigo: 3299.00, descricao: 'Notebook i5', icon: '<i class="fas fa-laptop"></i>', avaliacao: 4.7, reviews: 178},
+    {id: 37, nome: 'Notebook Intel Core i7 16GB RAM', categoria: 'notebooks', preco: 3799.00, precoAntigo: 4999.00, descricao: 'Notebook i7', icon: '<i class="fas fa-laptop"></i>', avaliacao: 4.8, reviews: 145},
+    {id: 38, nome: 'Notebook Gamer RTX 3050', categoria: 'notebooks', preco: 4999.00, precoAntigo: 6499.00, descricao: 'Notebook Gamer', icon: '<i class="fas fa-laptop"></i>', avaliacao: 4.9, reviews: 198},
 
-        setTimeout(() => {
-            addMessage("Ótima pergunta! 🤔\n\nMe diga mais:\n• É sobre PC ou Mobile?\n• Qual é o problema?\n\nOu fale com Suporte! 📞", false);
-            setTimeout(() => addWhatsAppButton(), 500);
-        }, 700);
-    }
+    // ACESSÓRIOS PC
+    {id: 39, nome: 'Pasta Térmica Arctic MX-6 2g', categoria: 'acessorios', preco: 49.00, precoAntigo: 69.00, descricao: 'Pasta Arctic', icon: '<i class="fas fa-droplet"></i>', avaliacao: 4.8, reviews: 345},
+    {id: 40, nome: 'Cooler Processador LED RGB', categoria: 'acessorios', preco: 99.00, precoAntigo: 149.00, descricao: 'Cooler RGB', icon: '<i class="fas fa-fan"></i>', avaliacao: 4.7, reviews: 145},
+    {id: 41, nome: 'Mousepad RGB Grande 80cm', categoria: 'acessorios', preco: 149.00, precoAntigo: 229.00, descricao: 'Mousepad RGB', icon: '<i class="fas fa-square"></i>', avaliacao: 4.8, reviews: 267},
+    {id: 42, nome: 'Hub USB 3.0 com 7 Portas', categoria: 'acessorios', preco: 99.00, precoAntigo: 159.00, descricao: 'Hub USB 7P', icon: '<i class="fas fa-plug"></i>', avaliacao: 4.7, reviews: 178},
+    {id: 43, nome: 'Cabo HDMI 2.0 4K Premium 2m', categoria: 'acessorios', preco: 49.00, precoAntigo: 79.00, descricao: 'Cabo HDMI', icon: '<i class="fas fa-arrow-right"></i>', avaliacao: 4.7, reviews: 189},
+    {id: 44, nome: 'Kit Limpeza Profissional Completo', categoria: 'acessorios', preco: 89.00, precoAntigo: 139.00, descricao: 'Kit Limpeza', icon: '<i class="fas fa-broom"></i>', avaliacao: 4.7, reviews: 289},
+];
 
-    function sendMessage() {
-        const input = document.getElementById('chat-input');
-        const text = input.value.trim();
-        if (!text) return;
-        
-        addMessage(text, true);
-        input.value = '';
-        getBotResponse(text);
-    }
+let carrinho = [];
+let lastScrollTop = 0;
 
-    function quickReply(el) {
-        const question = el.textContent;
-        addMessage(question, true);
-        getBotResponse(question);
-    }
-
-    function toggleChat() {
-        const chat = document.getElementById('chatbot-container');
-        chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
-    }
-
-    function toggleFaq(el) {
-        const resposta = el.nextElementSibling;
-        resposta.style.display = (resposta.style.display === "block") ? "none" : "block";
-    }
-
-    const btnTopo = document.getElementById("btnTopo");
-    window.onscroll = () => {
-        btnTopo.style.display = (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) ? "flex" : "none";
-    };
+window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const btnTopo = document.getElementById('btnTopo');
     
-    function topo() { 
-        window.scrollTo({top: 0, behavior: 'smooth'}); 
+    if (scrollTop > 200) {
+        btnTopo.style.display = 'flex';
+    } else {
+        btnTopo.style.display = 'none';
     }
     
-    function toggleDesc(el) {
-        const desc = el.nextElementSibling;
-        desc.style.display = (desc.style.display === "block") ? "none" : "block";
-    }
+    lastScrollTop = scrollTop;
+});
 
-    window.onload = () => {
-        setTimeout(() => {
-            const letters = document.querySelectorAll('.falling-letter');
-            letters.forEach((l, i) => setTimeout(() => l.classList.add('fall'), i * 80));
-            setTimeout(() => {
-                document.getElementById('intro').style.opacity = '0';
-                setTimeout(() => document.getElementById('intro').style.display = 'none', 1000);
-            }, 1800);
-        }, 800);
-    };
-
-    function selecionar(s) {
-        document.getElementById('cliServico').value = s;
-        window.location.href = "#agendar";
-    }
+function renderProdutos(categoria = 'todos') {
+    const grid = document.getElementById('produtos-grid');
+    grid.innerHTML = '';
     
-    function enviarAgendamento() {
-        const n = document.getElementById('cliNome').value;
-        const s = document.getElementById('cliServico').value;
-        const d = document.getElementById('cliData').value;
-        if(!n || !s || !d) return alert("Preencha tudo!");
-        window.open(`https://wa.me/5542999112756?text=Olá! Sou ${n}, gostaria de agendar: ${s}, para ${d}`);
-    }
-
-    document.addEventListener('click', (e) => {
-        const chat = document.getElementById('chatbot-container');
-        if (!chat.contains(e.target) && !e.target.closest('.ia-float')) {
-            chat.style.display = 'none';
-        }
+    const produtosFiltrados = categoria === 'todos' ? produtos : produtos.filter(p => p.categoria === categoria);
+    
+    produtosFiltrados.forEach(produto => {
+        const stars = '⭐'.repeat(Math.floor(produto.avaliacao));
+        grid.innerHTML += `<div class="produto-card"><div class="produto-img">${produto.icon}</div><div class="produto-info"><div class="produto-nome">${produto.nome}</div><div class="produto-desc">${produto.descricao}</div><div class="produto-preco"><span class="produto-preco-old">R$ ${produto.precoAntigo.toFixed(2)}</span>R$ ${produto.preco.toFixed(2)}</div><div class="avaliacao"><span class="estrela">${stars}</span><span class="nota">(${produto.reviews})</span></div><button class="btn-comprar" onclick="adicionarAoCarrinho(${produto.id})">Comprar</button></div></div>`;
     });
+}
+
+function filtrar(categoria) {
+    document.querySelectorAll('.filtro-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    renderProdutos(categoria);
+}
+
+function adicionarAoCarrinho(produtoId) {
+    const produto = produtos.find(p => p.id === produtoId);
+    const itemExistente = carrinho.find(c => c.id === produtoId);
+    
+    if (itemExistente) {
+        itemExistente.quantidade++;
+    } else {
+        carrinho.push({...produto, quantidade: 1});
+    }
+    
+    atualizarCarrinho();
+    
+    const btn = event.target;
+    const originalText = btn.textContent;
+    btn.textContent = '✓ Adicionado!';
+    btn.style.background = 'linear-gradient(135deg, #00ff88, #00cc6e)';
+    setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = 'linear-gradient(135deg, #ff6b00, #ff8c00)';
+    }, 1500);
+}
+
+function removerDoCarrinho(produtoId) {
+    carrinho = carrinho.filter(c => c.id !== produtoId);
+    atualizarCarrinho();
+}
+
+function atualizarCarrinho() {
+    const total = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
+    document.getElementById('carrinho-count').textContent = total;
+    renderCarrinho();
+}
+
+function renderCarrinho() {
+    const container = document.getElementById('carrinho-items');
+    const total = carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0);
+    
+    if (carrinho.length === 0) {
+        container.innerHTML = `<div class="carrinho-vazio"><i class="fas fa-shopping-cart"></i><p>Seu carrinho está vazio</p></div>`;
+        document.getElementById('carrinho-total').textContent = 'R$ 0,00';
+        return;
+    }
+    
+    container.innerHTML = carrinho.map(item => `<div class="carrinho-item"><div class="item-info"><div class="item-nome">${item.nome}</div><div class="item-preco">R$ ${item.preco.toFixed(2)} x${item.quantidade}</div></div><button class="item-remove" onclick="removerDoCarrinho(${item.id})">✕</button></div>`).join('');
+    
+    document.getElementById('carrinho-total').textContent = `R$ ${total.toFixed(2)}`;
+}
+
+function abrirCarrinho() {
+    document.getElementById('modal-carrinho').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function fecharCarrinho(e) {
+    if (e && e.target.id !== 'modal-carrinho') return;
+    document.getElementById('modal-carrinho').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+function finalizarCompra() {
+    if (carrinho.length === 0) {
+        alert('Carrinho vazio!');
+        return;
+    }
+    
+    const total = carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0);
+    const itens = carrinho.map(c => `${c.nome} (${c.quantidade}x) - R$ ${(c.preco * c.quantidade).toFixed(2)}`).join('\n');
+    const mensagem = `Olá! Gostaria de comprar:\n\n${itens}\n\n*TOTAL: R$ ${total.toFixed(2)}*\n\nPor favor, confirme a disponibilidade e o prazo de entrega.`;
+    
+    window.open(`https://wa.me/5542999112756?text=${encodeURIComponent(mensagem)}`, '_blank');
+    
+    carrinho = [];
+    atualizarCarrinho();
+    fecharCarrinho();
+}
+
+function topo() { 
+    window.scrollTo({top: 0, behavior: 'smooth'}); 
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderProdutos();
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        fecharCarrinho();
+    }
+});
+
+document.addEventListener('click', (e) => {
+    const modal = document.getElementById('modal-carrinho');
+    if (!modal.contains(e.target) && e.target.id !== 'carrinho-flutuante') {
+        modal.style.display = 'none';
+    }
+});
 </script>
 
 </body>
