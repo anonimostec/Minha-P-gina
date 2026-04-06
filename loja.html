@@ -94,26 +94,43 @@
         }
 
         @media (max-width: 480px) {
-            html { font-size: 13px; }
+            html { font-size: 14px; }
             nav { padding: 8px 10px; }
             .logo { font-size: 0.9rem; letter-spacing: 0.5px; }
             .nav-links { gap: 5px; width: 100%; }
             .nav-links a { font-size: 0.6rem; }
             .hero-loja { height: 30vh; margin-top: 50px; }
-            .hero-loja h1 { font-size: 1.5rem; margin-bottom: 6px; }
-            .hero-loja p { font-size: 0.8rem; }
+            .hero-loja h1 { font-size: 1.8rem; margin-bottom: 10px; }
+            .hero-loja p { font-size: 0.95rem; }
             .container { padding: 20px 10px; }
-            .section-title { font-size: 1.2rem; margin: 0; }
-            .grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .produto-img { height: 90px; font-size: 1.6rem; }
-            .produto-nome { font-size: 0.8rem; }
-            .produto-desc { font-size: 0.65rem; }
-            .btn-comprar { font-size: 0.6rem; padding: 6px 8px; }
-            .filtros { gap: 6px; }
-            .filtro-btn { padding: 6px 10px; font-size: 0.65rem; }
+            .section-title { font-size: 1.3rem; margin: 0; }
+            .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .produto-img { height: 110px; font-size: 2rem; }
+            .produto-card { border-radius: 12px; }
+            .produto-info { padding: 14px; }
+            .produto-nome { font-size: 0.95rem; margin-bottom: 8px; }
+            .produto-desc { font-size: 0.8rem; margin-bottom: 10px; }
+            .produto-preco { font-size: 1.1rem; margin-bottom: 12px; }
+            .produto-preco-old { font-size: 0.75rem; }
+            .avaliacao { margin-bottom: 12px; }
+            .estrela { font-size: 0.9rem; }
+            .nota { font-size: 0.8rem; }
+            .btn-comprar { font-size: 0.75rem; padding: 10px; }
+            .filtros { gap: 8px; margin-bottom: 30px; }
+            .filtro-btn { padding: 8px 12px; font-size: 0.7rem; }
             .carrinho-modal { width: 98%; max-height: 80vh; border-top: 2px solid var(--primary); border-left: none; }
-            #btnTopo { bottom: 20px; left: 20px; width: 40px; height: 40px; font-size: 16px; }
-            #carrinho-flutuante { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 18px; }
+            .carrinho-header { padding: 16px; font-size: 1.1rem; }
+            .carrinho-item { padding: 12px; margin-bottom: 12px; }
+            .item-nome { font-size: 0.95rem; }
+            .item-preco { font-size: 0.9rem; }
+            .item-remove { padding: 6px 10px; font-size: 0.75rem; }
+            .carrinho-total { font-size: 1.1rem; margin-bottom: 15px; }
+            .btn-finalizar { padding: 12px; font-size: 0.95rem; }
+            .carrinho-vazio i { font-size: 2.2rem; margin-bottom: 15px; }
+            .carrinho-vazio p { font-size: 0.95rem; }
+            #btnTopo { bottom: 20px; left: 20px; width: 48px; height: 48px; font-size: 18px; }
+            #carrinho-flutuante { bottom: 20px; right: 20px; width: 48px; height: 48px; font-size: 22px; }
+            .carrinho-badge { width: 24px; height: 24px; font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -187,7 +204,6 @@
 </div>
 
 <footer>© 2026 OPTIMUS TECH - TODOS OS DIREITOS RESERVADOS</footer>
-
 <script>
 const produtos = [
     // CELULARES
