@@ -29,12 +29,6 @@
         .nav-contact:hover, .nav-contact:active { color: var(--primary) !important; border-color: rgba(0,255,136,0.2) !important; }
         .nav-contact i { font-size: clamp(0.8rem, 2vw, 1rem) !important; }
 
-        #quem-somos { max-height: 0; overflow: hidden; background: #0a0a0a; transition: max-height 0.7s ease-in-out; border-bottom: 1px solid #1f1f1f; margin-top: clamp(60px, 10vw, 75px); }
-        #quem-somos.active { max-height: 3000px; padding: clamp(40px, 8vw, 80px) clamp(15px, 4vw, 20px); }
-        .about-content { max-width: 850px; margin: 0 auto; text-align: center; line-height: 1.8; }
-        .about-content h2 { color: var(--primary); font-size: clamp(1.3rem, 4vw, 2rem); margin-bottom: clamp(20px, 4vw, 30px); letter-spacing: 2px; }
-        .about-content p { color: #ccc; margin-bottom: clamp(15px, 4vw, 25px); font-size: clamp(0.9rem, 2.5vw, 1.05rem); text-align: justify; }
-        
         .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, #0a1f14 0%, #000 100%); padding: clamp(20px, 4vw, 40px); margin-top: clamp(50px, 10vw, 75px); }
         .hero h1 { font-size: clamp(2.5rem, 12vw, 7rem); color: var(--primary); margin-bottom: clamp(10px, 3vw, 15px); letter-spacing: clamp(1px, 1vw, 2px); }
         .hero p { color: #666; font-size: clamp(0.9rem, 3vw, 1.2rem); text-transform: uppercase; letter-spacing: clamp(1px, 1vw, 2px); }
@@ -153,7 +147,7 @@
             .saber-mais { font-size: 0.85rem; margin-top: 10px; }
             .btn { padding: 12px 16px; font-size: 0.9rem; margin-top: 10px; border-radius: 8px; font-weight: 700; }
             
-            #chatbot-container { width: calc(100vw - 15px); height: calc(100vh - 120px); right: 7.5px; bottom: 75px; border-radius: 12px; }
+            #chatbot-container { width: calc(100vw - 15px); height: calc(100vh - 120px); right: 7.5px; bottom: 80px; border-radius: 12px; }
             #chat-header h3 { font-size: 1rem; }
             #chat-body { padding: 12px; }
             .chat-message { font-size: 0.95rem; }
@@ -173,7 +167,7 @@
             .faq-link { font-size: 0.85rem; }
             .faq-resposta { font-size: 0.85rem; padding: 12px; margin-top: 10px; }
             
-            #btnTopo { bottom: 75px; left: 15px; width: 48px; height: 48px; font-size: 20px; }
+            #btnTopo { bottom: 80px; left: 15px; width: 48px; height: 48px; font-size: 20px; }
             .ia-float { bottom: 30px; right: 30px; width: 60px; height: 60px; font-size: 28px; }
         }
     </style>
@@ -191,7 +185,6 @@
     <nav>
         <div class="logo" onclick="window.location.href='index.html'">OPTIMUS TECH</div>
         <div class="nav-links">
-            <a onclick="toggleAbout()">QUEM SOMOS</a>
             <a href="#mobile">MOBILE</a>
             <a href="#pc">PC</a>
             <a href="#aulas">AULAS</a>
@@ -202,23 +195,6 @@
         </div>
     </nav>
 </header>
-
-<section id="quem-somos">
-    <div class="about-content">
-        <h2>A Optimus Tech</h2>
-        <p>A Optimus Tech nasceu com o objetivo de ir além da manutenção tradicional, oferecendo soluções completas em tecnologia com foco em desempenho, eficiência e confiabilidade.</p>
-        <p>Trabalhamos com otimização de computadores, upgrades de hardware, manutenção preventiva e corretiva, além de soluções mobile como formatação, recuperação de sistemas e desbloqueios.</p>
-        <p>Nosso diferencial está na atenção aos detalhes e na busca por performance real, garantindo que cada equipamento funcione no seu máximo potencial.</p>
-        <hr style="border: none; border-top: 1px solid #222; margin: 30px 0;">
-        <h2 style="color: var(--primary); font-size: clamp(1.3rem, 4vw, 1.8rem); margin-bottom: 20px;">SOBRE O CRIADOR</h2>
-        <p>Meu nome é <strong>Daniel Gonçalves</strong>, tenho 20 anos e sou o fundador da Optimus Tech.</p>
-        <p>Sempre fui apaixonado por tecnologia e, ao longo do tempo, fui aprofundando meu conhecimento na prática, trabalhando com manutenção, otimização e melhoria de desempenho de computadores e dispositivos móveis.</p>
-        <p>Meu foco não é apenas consertar, mas melhorar de verdade — deixar cada máquina mais rápida, estável e eficiente.</p>
-        <p style="color: var(--primary); margin-top: 30px; font-weight: bold; font-size: clamp(1.1rem, 3vw, 1.35rem);">⚡ Tecnologia sem limites, desempenho de verdade.</p>
-        <br>
-        <button class="btn" onclick="toggleAbout()">FECHAR</button>
-    </div>
-</section>
 
 <section class="hero">
     <h1>OPTIMUS TECH</h1>
@@ -622,11 +598,6 @@ Estou aqui para ajudar com dúvidas sobre nossos serviços!
         window.scrollTo({top: 0, behavior: 'smooth'}); 
     }
     
-    function toggleAbout() {
-        const p = document.getElementById("quem-somos");
-        p.classList.toggle("active");
-    }
-    
     function toggleDesc(el) {
         const desc = el.nextElementSibling;
         desc.style.display = (desc.style.display === "block") ? "none" : "block";
@@ -666,4 +637,3 @@ Estou aqui para ajudar com dúvidas sobre nossos serviços!
 
 </body>
 </html>
-                
