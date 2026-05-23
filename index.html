@@ -74,21 +74,25 @@
     }
     @keyframes drift{to{transform:translate3d(80px,70px,0)}}
     .preloader{
-      position:fixed;inset:0;background:#020303;z-index:9999;
-      display:grid;place-items:center;
-      animation:hideLoader .9s ease 1.75s forwards;
+      position:fixed;inset:0;background:radial-gradient(circle at center, #062014 0%, #020303 48%, #000 100%);z-index:9999;
+      display:grid;place-items:center;overflow:hidden;
+      animation:hideLoader .75s ease 2.65s forwards;
     }
-    .boot{
-      width:min(560px,86vw);padding:30px;border:1px solid rgba(0,255,136,.32);
-      border-radius:26px;background:rgba(0,0,0,.62);box-shadow:0 0 70px rgba(0,255,136,.16);
-      font-family:"JetBrains Mono",monospace;
-    }
-    .boot strong{display:block;font-size:clamp(1.45rem,5vw,3.8rem);line-height:1;color:var(--primary);text-shadow:0 0 28px rgba(0,255,136,.65)}
-    .boot span{display:block;margin-top:14px;color:#a6ffd2;font-size:.86rem;letter-spacing:.1em;text-transform:uppercase}
-    .bootbar{height:8px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:24px}
-    .bootbar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--primary),var(--primary2));animation:load 1.4s ease forwards}
-    @keyframes load{from{transform:translateX(-100%)}to{transform:translateX(0)}}
-    @keyframes hideLoader{to{opacity:0;visibility:hidden}}
+    .unlock-stage{position:relative;width:min(420px,88vw);height:520px;display:grid;place-items:center;font-family:"JetBrains Mono",monospace}
+    .unlock-stage::before{content:"ACESSO OPTIMUS";position:absolute;top:42px;left:0;right:0;text-align:center;color:rgba(166,255,210,.72);font-weight:900;letter-spacing:.22em;font-size:.82rem;text-transform:uppercase;animation:accessBlink 1.1s steps(2,end) infinite}
+    .unlock-key{position:absolute;top:34px;left:50%;transform:translateX(-50%);font-size:4.4rem;color:var(--primary);filter:drop-shadow(0 0 28px rgba(0,255,136,.75));animation:keyDrop 2.05s cubic-bezier(.7,.02,.18,1) forwards}
+    .unlock-lock{position:absolute;bottom:82px;left:50%;transform:translateX(-50%);width:148px;height:116px;border-radius:24px;background:linear-gradient(180deg,rgba(0,255,136,.92),rgba(0,150,80,.92));box-shadow:0 0 55px rgba(0,255,136,.42),inset 0 0 20px rgba(255,255,255,.16);animation:lockOpen .65s ease 2.03s forwards}
+    .unlock-lock::before{content:"";position:absolute;left:27px;top:-82px;width:94px;height:90px;border:16px solid rgba(0,255,136,.94);border-bottom:0;border-radius:58px 58px 0 0;filter:drop-shadow(0 0 24px rgba(0,255,136,.55));transform-origin:18px 78px;animation:shackleOpen .68s ease 2.05s forwards}
+    .unlock-lock::after{content:"";position:absolute;left:50%;top:45%;width:22px;height:22px;border-radius:50%;background:#04100a;transform:translate(-50%,-50%);box-shadow:0 25px 0 -6px #04100a}
+    .unlock-text{position:absolute;bottom:22px;left:0;right:0;text-align:center;color:#dfffee;font-weight:900;letter-spacing:.12em;text-transform:uppercase;text-shadow:0 0 24px rgba(0,255,136,.75);animation:textUnlock 2.65s ease forwards}
+    .unlock-flash{position:absolute;inset:-20%;background:radial-gradient(circle,rgba(0,255,136,.34),transparent 42%);opacity:0;animation:unlockFlash .55s ease 2.08s forwards}
+    @keyframes accessBlink{50%{opacity:.35}}
+    @keyframes keyDrop{0%{top:-130px;transform:translateX(-50%) rotate(-18deg) scale(.9);opacity:0}24%{opacity:1}72%{top:206px;transform:translateX(-50%) rotate(0) scale(1)}82%{top:190px}100%{top:206px;transform:translateX(-50%) rotate(0) scale(.92)}}
+    @keyframes shackleOpen{to{transform:rotate(-42deg) translate(-9px,-8px)}}
+    @keyframes lockOpen{55%{transform:translateX(-50%) scale(1.08)}100%{transform:translateX(-50%) scale(.94);opacity:.72}}
+    @keyframes unlockFlash{0%{opacity:0}45%{opacity:1}100%{opacity:0}}
+    @keyframes textUnlock{0%,74%{content:"VALIDANDO CHAVE";opacity:.75}100%{opacity:1}}
+    @keyframes hideLoader{to{opacity:0;visibility:hidden;pointer-events:none}}
     .topbar{
       position:fixed;top:0;left:0;right:0;z-index:1000;
       background:rgba(2,5,5,.72);backdrop-filter:blur(22px);
@@ -215,11 +219,41 @@
 
 
     .matrix-rain{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.22;mix-blend-mode:screen}
-    .page-transition{position:fixed;inset:0;z-index:9998;pointer-events:none;background:radial-gradient(circle at center,rgba(0,255,136,.24),rgba(0,0,0,.96) 58%);display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease}
+    .page-transition{position:fixed;inset:0;z-index:9998;pointer-events:none;background:radial-gradient(circle at center,rgba(0,255,136,.24),rgba(0,0,0,.96) 58%);display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;overflow:hidden}
     .page-transition.active{opacity:1;visibility:visible}
     .page-transition span{font-family:"JetBrains Mono",monospace;color:var(--primary);font-size:clamp(1rem,4vw,2rem);font-weight:900;text-transform:uppercase;letter-spacing:.18em;text-shadow:0 0 28px rgba(0,255,136,.8);animation:glitchPulse .55s infinite alternate}
+    .store-scene{display:none;position:absolute;inset:0;align-items:center;justify-content:center}
+    .store-track{position:absolute;left:7vw;right:7vw;bottom:28%;height:4px;border-radius:99px;background:linear-gradient(90deg,transparent,rgba(0,255,136,.75),transparent);box-shadow:0 0 30px rgba(0,255,136,.45)}
+    .store-cart{position:absolute;left:-160px;bottom:30%;font-size:4rem;color:var(--primary);filter:drop-shadow(0 0 24px rgba(0,255,136,.8));animation:cartToTruck 1.55s cubic-bezier(.62,.02,.18,1) forwards}
+    .store-truck{position:absolute;right:8vw;bottom:28%;width:170px;height:92px;border-radius:18px 10px 12px 12px;background:linear-gradient(180deg,#141b18,#07100b);border:2px solid rgba(0,255,136,.65);box-shadow:0 0 45px rgba(0,255,136,.28)}
+    .store-truck::before{content:"";position:absolute;left:-54px;bottom:0;width:62px;height:62px;border-radius:12px 0 0 12px;background:#0a130f;border:2px solid rgba(0,255,136,.65);border-right:0}
+    .store-truck::after{content:"";position:absolute;left:18px;top:14px;width:82px;height:62px;border:2px solid rgba(255,255,255,.32);border-right:0;border-radius:10px 0 0 10px;transform-origin:right center;animation:truckDoor .6s ease .18s forwards}
+    .store-wheel{position:absolute;bottom:-18px;width:34px;height:34px;border-radius:50%;background:#020403;border:6px solid var(--primary);box-shadow:0 0 18px rgba(0,255,136,.55)}
+    .store-wheel.one{left:-34px}.store-wheel.two{right:18px}
+    .page-transition.store-drive>span{top:22%;position:absolute;font-size:clamp(1rem,4vw,1.7rem)}
+    .page-transition.store-drive .store-scene{display:flex}
+    @keyframes cartToTruck{0%{left:-160px;transform:rotate(-6deg) scale(.92)}70%{left:calc(92vw - 300px);transform:rotate(0) scale(1)}86%{left:calc(92vw - 266px);transform:scale(.86)}100%{left:calc(92vw - 256px);transform:scale(.2);opacity:0}}
+    @keyframes truckDoor{to{transform:perspective(300px) rotateY(-58deg)}}
     @keyframes glitchPulse{from{transform:skewX(-2deg);opacity:.78}to{transform:skewX(2deg);opacity:1}}
-    @media(prefers-reduced-motion:reduce){.matrix-rain{display:none}.page-transition span{animation:none}}
+    @media(max-width:600px){.store-truck{right:4vw;width:132px;height:76px}.store-truck::before{left:-42px;width:48px;height:52px}.store-cart{font-size:3.2rem}.store-track{left:5vw;right:5vw}.page-transition.store-drive>span{top:18%}@keyframes cartToTruck{0%{left:-120px}74%{left:calc(96vw - 230px)}100%{left:calc(96vw - 205px);transform:scale(.18);opacity:0}}}
+    @media(prefers-reduced-motion:reduce){.matrix-rain{display:none}.page-transition span{animation:none}.store-cart,.store-truck::after{animation:none}}
+
+    .aurora{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:-1}
+    .aurora i{position:absolute;width:38vw;height:38vw;min-width:280px;min-height:280px;border-radius:999px;filter:blur(30px);opacity:.32;animation:floatOrb 12s ease-in-out infinite}
+    .aurora i:nth-child(1){left:-12%;top:18%;background:rgba(0,255,136,.45)}
+    .aurora i:nth-child(2){right:-14%;bottom:6%;background:rgba(0,213,255,.30);animation-delay:-4s}
+    @keyframes floatOrb{50%{transform:translate3d(35px,-25px,0) scale(1.12)}}
+    .trust-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:30px}
+    .trust-item{padding:14px 15px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.10);display:flex;gap:10px;align-items:center;color:#dfffee;font-weight:800}
+    .trust-item i{color:var(--primary)}
+    .diagnostic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .diagnostic-card{padding:20px;border-radius:24px;background:linear-gradient(180deg,rgba(0,255,136,.10),rgba(255,255,255,.045));border:1px solid rgba(0,255,136,.18)}
+    .diagnostic-card h3{margin-bottom:8px}.diagnostic-card p{color:#aebbb4}.diagnostic-card a{margin-top:14px}
+    .section-band{border-radius:32px;background:linear-gradient(135deg,rgba(0,255,136,.12),rgba(0,213,255,.08));border:1px solid rgba(0,255,136,.18);padding:24px;display:flex;justify-content:space-between;gap:18px;align-items:center;box-shadow:var(--shadow)}
+    .section-band p{color:#bad0c5;max-width:720px}.section-band strong{color:#fff;font-size:1.25rem}
+    .card,.glass,.hero-panel,.diagnostic-card,.trust-item{backdrop-filter:blur(14px)}
+    @media(max-width:720px){.trust-strip,.diagnostic-grid{grid-template-columns:1fr}.section-band{display:block}.section-band .btn{width:100%;margin-top:16px}.hero h1{font-size:clamp(2.05rem,8.4vw,3.05rem)!important;line-height:1.06!important}}
+
     footer{padding:34px 0;color:#728078;border-top:1px solid rgba(255,255,255,.08);text-align:center}
     .reveal{opacity:0;transform:translateY(24px);transition:.7s ease}
     .reveal.show{opacity:1;transform:none}
@@ -245,13 +279,14 @@
 </head>
 <body>
   <canvas class="matrix-rain" id="matrixRain" aria-hidden="true"></canvas>
-  <div class="page-transition" id="pageTransition"><span>Carregando interface</span></div>
+  <div class="page-transition" id="pageTransition"><span id="transitionText">Carregando interface</span><div class="store-scene" aria-hidden="true"><div class="store-track"></div><i class="fa-solid fa-cart-shopping store-cart"></i><div class="store-truck"><i class="store-wheel one"></i><i class="store-wheel two"></i></div></div></div>
   <div class="noise"></div>
   <div class="preloader" aria-hidden="true">
-    <div class="boot">
-      <strong>OPTIMUS TECH</strong>
-      <span>Inicializando atendimento premium...</span>
-      <div class="bootbar"><i></i></div>
+    <div class="unlock-stage">
+      <div class="unlock-flash"></div>
+      <i class="fa-solid fa-key unlock-key"></i>
+      <div class="unlock-lock"></div>
+      <div class="unlock-text">Sistema desbloqueado</div>
     </div>
   </div>
 
@@ -275,15 +310,22 @@
 
   <main id="top">
     <section class="hero">
+      <div class="aurora"><i></i><i></i></div>
       <div class="orb"></div>
       <div class="shell hero-grid">
         <div>
           <span class="eyebrow"><i class="fa-solid fa-shield-halved"></i> Guarapuava + atendimento remoto</span>
-          <h1><span class="hline">Celular e PC</span><span class="hline accent">em modo turbo.</span></h1>
-          <p>Assistência técnica para celulares, computadores e notebooks. Agende seu atendimento pelo WhatsApp e receba uma avaliação inicial do problema.</p>
+          <h1><span class="hline">Conserto rápido</span><span class="hline accent">para celular e PC.</span></h1>
+          <p>Manutenção, formatação, limpeza, upgrades e suporte remoto. Você chama no WhatsApp, explica o problema e recebe orientação objetiva para resolver.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#agendar"><i class="fa-brands fa-whatsapp"></i> Agendar agora</a>
             <a class="btn btn-secondary" href="loja.html"><i class="fa-solid fa-cart-shopping"></i> Ver loja</a>
+          </div>
+        <div class="trust-strip">
+            <div class="trust-item"><i class="fa-solid fa-location-dot"></i> Guarapuava</div>
+            <div class="trust-item"><i class="fa-solid fa-screwdriver-wrench"></i> Presencial</div>
+            <div class="trust-item"><i class="fa-solid fa-headset"></i> Remoto</div>
+            <div class="trust-item"><i class="fa-brands fa-whatsapp"></i> WhatsApp</div>
           </div>
         </div>
         <div class="hero-panel">
@@ -308,10 +350,15 @@
 
     <section class="section shell reveal" id="servicos">
       <div class="section-head">
-        <div><span class="kicker">Serviços</span><h2>Manutenção com cara de laboratório cyber.</h2></div>
-        <p>Escolha um serviço e envie direto para o WhatsApp com uma mensagem pronta. Simples, rápido e profissional.</p>
+        <div><span class="kicker">Serviços</span><h2>Serviços que resolvem problemas reais.</h2></div>
+        <p>Escolha o problema, veja uma base de preço e envie a solicitação direto para o WhatsApp.</p>
       </div>
       <div class="service-grid" id="servicesGrid"></div>
+      <div class="diagnostic-grid">
+        <div class="diagnostic-card"><h3>PC lento ou travando?</h3><p>Indicado: limpeza, SSD, RAM ou formatação, dependendo do estado da máquina.</p><a class="btn btn-secondary" href="#agendar">Pedir avaliação</a></div>
+        <div class="diagnostic-card"><h3>Celular com vírus ou pop-up?</h3><p>Indicado: remoção de apps suspeitos, limpeza de permissões e reforço de segurança.</p><a class="btn btn-secondary" href="#agendar">Resolver agora</a></div>
+        <div class="diagnostic-card"><h3>Quer fazer upgrade?</h3><p>Indicamos peças compatíveis e evitamos compra errada antes da instalação.</p><a class="btn btn-secondary" href="loja.html">Ver produtos</a></div>
+      </div>
     </section>
 
     <section class="section shell reveal" id="processo">
@@ -319,7 +366,7 @@
         <div class="glass">
           <span class="kicker">Por que escolher</span>
           <h2>Atendimento técnico sem mistério.</h2>
-          <p style="color:#adbbb3;margin-top:16px">Você entende o que será feito, quanto custa, o que é recomendado e qual é o próximo passo. Visual premium, mas serviço pé no chão.</p>
+          <p style="color:#adbbb3;margin-top:16px">Você entende o que será feito, quanto custa, o que é recomendado e qual é o próximo passo. Serviço explicado com clareza: problema, solução, custo e prazo combinados antes da execução.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="https://wa.me/5542999112756?text=Olá! Quero fazer um diagnóstico com a Optimus Tech." target="_blank" rel="noopener">Chamar no WhatsApp</a>
           </div>
@@ -340,7 +387,7 @@
       </div>
       <div class="glass booking">
         <div>
-          <h3 style="font-size:1.7rem;line-height:1.1">Vamos colocar sua máquina para respirar de novo.</h3>
+          <h3 style="font-size:1.7rem;line-height:1.1">Agende pelo WhatsApp em menos de um minuto.</h3>
           <p style="color:#aebbb4;margin-top:12px">Atendimento presencial em Guarapuava ou remoto, dependendo do serviço escolhido.</p>
         </div>
         <form class="form" id="bookingForm">
@@ -350,6 +397,10 @@
           <button class="btn btn-primary" type="submit"><i class="fa-brands fa-whatsapp"></i> Confirmar via WhatsApp</button>
         </form>
       </div>
+    </section>
+
+    <section class="section shell reveal">
+      <div class="section-band"><div><strong>Não sabe qual serviço escolher?</strong><p>Explique o defeito no WhatsApp. A Optimus Tech indica o caminho mais seguro antes de qualquer manutenção.</p></div><a class="btn btn-primary" href="https://wa.me/5542999112756?text=Olá! Não sei qual serviço escolher. Pode me ajudar?" target="_blank" rel="noopener">Tirar dúvida</a></div>
     </section>
 
     <section class="section shell reveal" id="faq">
@@ -386,7 +437,7 @@
       {icon:"fa-memory", title:"Upgrade SSD/RAM", old:"R$ 65", price:"R$ 50", tags:["Upgrade","Performance"], desc:"Instalação de SSD, memória RAM, clonagem e orientação de compatibilidade."},
       {icon:"fa-bolt", title:"Otimização FPS", old:"R$ 100", price:"R$ 80", tags:["Games","Windows"], desc:"Ajustes de drivers, inicialização, energia, processos e configurações para jogar melhor."},
       {icon:"fa-computer", title:"Ajuda na Montagem do PC", price:"Consulte", tags:["Consultoria","Setup"], desc:"Escolha de peças, compatibilidade, custo-benefício e orientação para montar seu computador."},
-      {icon:"fa-user-secret", title:"Boas Práticas Hacker", price:"R$ 100", tags:["Aula","Segurança"], desc:"Aula sobre proteção digital, phishing, senhas, 2FA, privacidade e comportamento seguro."},
+      {icon:"fa-user-secret", title:"Segurança Digital", price:"R$ 100", tags:["Aula","Segurança"], desc:"Aula prática sobre senhas, golpes, phishing, 2FA, privacidade e uso seguro da internet."},
       {icon:"fa-file-word", title:"Pacote Office", price:"R$ 200", tags:["Aula","Produtividade"], desc:"Word, Excel e PowerPoint com foco prático para estudo, trabalho e rotina."},
       {icon:"fa-graduation-cap", title:"Informática Particular", price:"R$ 30/h", tags:["Aula","Personalizado"], desc:"Aulas no seu ritmo: Windows, internet, arquivos, redes sociais e autonomia digital."},
       {icon:"fa-video", title:"Edição de Vídeos", price:"R$ 150", tags:["Aula","Criativo"], desc:"Cortes, transições, áudio, cor e fluxo de edição para redes sociais e projetos pessoais."}
@@ -457,7 +508,9 @@
     }
     function initPageTransitions(){
       const overlay = document.getElementById("pageTransition"); if(!overlay) return;
-      const hideOverlay = () => overlay.classList.remove("active");
+      const label = document.getElementById("transitionText");
+      const hideOverlay = () => { overlay.classList.remove("active","store-drive"); if(label) label.textContent = overlay.dataset.defaultText || "Carregando"; };
+      overlay.dataset.defaultText = label ? label.textContent : "Carregando";
       window.addEventListener("pageshow", hideOverlay);
       window.addEventListener("popstate", hideOverlay);
       document.addEventListener("visibilitychange", () => { if(!document.hidden) hideOverlay(); });
@@ -465,9 +518,13 @@
         link.addEventListener("click", e=>{
           const href = link.getAttribute("href");
           if(!href || link.target === "_blank" || href.startsWith("#")) return;
-          e.preventDefault(); overlay.classList.add("active");
-          setTimeout(()=>{ window.location.href = href; }, 360);
-          setTimeout(hideOverlay, 1400);
+          e.preventDefault();
+          const goingStore = href.includes("loja.html");
+          if(label) label.textContent = goingStore ? "Enviando carrinho para a loja" : "Voltando para a Optimus";
+          overlay.classList.toggle("store-drive", goingStore);
+          overlay.classList.add("active");
+          setTimeout(()=>{ window.location.href = href; }, goingStore ? 1650 : 420);
+          setTimeout(hideOverlay, goingStore ? 2600 : 1400);
         });
       });
     }
