@@ -1,1 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loja Optimus Tech | Produtos e Upgrades</title>
+  <meta name="description" content="Loja Optimus Tech: celulares, SSDs, memórias RAM, periféricos, monitores e acessórios." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    :root{--bg:#030507;--text:#f5fff9;--muted:#9aa7a0;--primary:#00ff88;--blue:#00d5ff;--orange:#ff7a00;--line:rgba(255,255,255,.12);--glass:rgba(255,255,255,.065);--radius:26px;--shadow:0 24px 80px rgba(0,0,0,.48)}
+    *{box-sizing:border-box;margin:0;padding:0} html{scroll-behavior:smooth} body{font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at 15% 5%,rgba(0,255,136,.17),transparent 28rem),radial-gradient(circle at 85% 20%,rgba(255,122,0,.15),transparent 28rem),linear-gradient(180deg,#020303,#06100b 55%,#030507);color:var(--text);overflow-x:hidden;line-height:1.6}
+    body::before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:50px 50px;mask-image:linear-gradient(to bottom,#000,transparent 82%);z-index:-2;pointer-events:none}
+    a{color:inherit;text-decoration:none} button,input{font:inherit}
+    .shell{width:min(1180px,calc(100% - 32px));margin:auto}
+    .topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(2,5,5,.72);backdrop-filter:blur(22px);border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.04em}.brand-mark{width:42px;height:42px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(0,255,136,.28),rgba(255,122,0,.14));border:1px solid rgba(0,255,136,.34)}.brand b{color:var(--primary)}
+    .navlinks{display:flex;align-items:center;gap:8px}.navlinks a{color:#b8c4be;font-size:.82rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:10px 12px;border-radius:99px;transition:.25s}.navlinks a:hover{background:rgba(0,255,136,.10);color:var(--primary)}.iconlink{border:1px solid rgba(255,255,255,.12)!important}.hamb{display:none;background:transparent;color:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 12px}
+    .hero{min-height:74vh;display:grid;align-items:center;padding:126px 0 52px;position:relative;overflow:hidden}.hero::after{content:"";position:absolute;width:520px;height:520px;right:-190px;top:70px;border-radius:50%;background:radial-gradient(circle,rgba(255,122,0,.22),transparent 62%);filter:blur(4px);animation:pulse 6s ease-in-out infinite}@keyframes pulse{50%{transform:scale(1.13);opacity:.65}}
+    .hero-grid{display:grid;grid-template-columns:1fr .9fr;gap:34px;align-items:center}.eyebrow{display:inline-flex;gap:9px;align-items:center;padding:9px 13px;border-radius:99px;border:1px solid rgba(255,122,0,.28);background:rgba(255,122,0,.09);color:#ffe0c7;font:800 .78rem "JetBrains Mono";text-transform:uppercase;letter-spacing:.1em}.hero h1{font-size:clamp(2.6rem,7vw,6.2rem);line-height:.92;letter-spacing:-.07em;margin-top:20px;font-weight:900}.hero h1 span{color:var(--orange);text-shadow:0 0 40px rgba(255,122,0,.35)}.hero p{margin-top:20px;color:#bfd0c7;max-width:650px;font-size:1.12rem}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;padding:14px 18px;border-radius:17px;font-weight:900;text-transform:uppercase;letter-spacing:.035em;transition:.25s}.btn:hover{transform:translateY(-4px)}.btn-primary{background:linear-gradient(135deg,var(--orange),#ffb000);color:#160800;box-shadow:0 18px 50px rgba(255,122,0,.25)}.btn-secondary{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#fff}.hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
+    .deal-card{position:relative;z-index:1;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.045));border-radius:30px;padding:24px;box-shadow:var(--shadow);overflow:hidden}.deal-card::before{content:"";position:absolute;inset:-1px;background:radial-gradient(circle at 20% 10%,rgba(0,255,136,.22),transparent 38%);pointer-events:none}.deal-card>*{position:relative}.deal-icon{height:150px;border-radius:24px;display:grid;place-items:center;font-size:4rem;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.08);color:var(--primary)}.deal-card h3{font-size:1.6rem;margin-top:18px}.deal-price{font-size:2rem;font-weight:900;color:var(--primary)}.deal-price small{font-size:.9rem;text-decoration:line-through;color:#718078;margin-right:8px}
+    .toolbar{position:sticky;top:76px;z-index:800;background:rgba(3,5,7,.72);backdrop-filter:blur(18px);border-block:1px solid rgba(255,255,255,.08);padding:14px 0}.toolbar-row{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center}.search{position:relative}.search i{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted)}.search input{width:100%;padding:14px 16px 14px 44px;border-radius:17px;border:1px solid var(--line);background:rgba(0,0,0,.30);color:#fff;outline:none}.cart-mini{background:linear-gradient(135deg,var(--orange),#ffb000);color:#160800;border:0;border-radius:17px;padding:14px 18px;font-weight:900;cursor:pointer}
+    .filters{display:flex;gap:10px;overflow:auto;padding:16px 0 4px}.filter{flex:0 0 auto;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.10);color:#c9d6cf;padding:10px 14px;border-radius:99px;cursor:pointer;font-weight:800;font-size:.82rem}.filter.active,.filter:hover{background:linear-gradient(135deg,var(--primary),#b6ffda);color:#00160b;border-color:transparent}
+    .section{padding:58px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:24px}.kicker{font:800 .78rem "JetBrains Mono";color:var(--primary);text-transform:uppercase;letter-spacing:.12em}h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.03;letter-spacing:-.05em}.section-head p{max-width:480px;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.product{position:relative;border-radius:25px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.10);overflow:hidden;transition:.28s;min-height:390px;display:flex;flex-direction:column}.product:hover{transform:translateY(-8px);border-color:rgba(0,255,136,.4);box-shadow:0 22px 60px rgba(0,0,0,.34)}.product-img{height:162px;display:grid;place-items:center;font-size:3.5rem;background:radial-gradient(circle at 50% 45%,rgba(0,255,136,.18),rgba(255,255,255,.04));color:var(--primary);position:relative}.tag{position:absolute;top:12px;left:12px;border-radius:99px;padding:6px 9px;font-size:.68rem;font-weight:900;color:#150900;background:linear-gradient(135deg,#ffb000,var(--orange))}
+    .product-info{padding:18px;display:flex;flex-direction:column;flex:1}.product h3{font-size:1rem;line-height:1.25;margin-bottom:8px}.desc{color:#9eaaa4;font-size:.86rem;margin-bottom:12px}.rating{font-size:.8rem;color:#ffc857;margin-top:auto}.price{font-size:1.35rem;font-weight:900;color:var(--primary);margin:8px 0 14px}.price small{font-size:.75rem;text-decoration:line-through;color:#65746c;margin-right:6px}.buy{width:100%;background:linear-gradient(135deg,var(--orange),#ffb000);color:#190b00;border:0;border-radius:15px;padding:12px;font-weight:900;cursor:pointer;transition:.25s}.buy:hover{transform:scale(1.02)}
+    .drawer-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:2000;display:none}.drawer-backdrop.open{display:block}.drawer{position:absolute;right:0;top:0;width:min(440px,94vw);height:100%;background:#06100b;border-left:1px solid rgba(0,255,136,.25);box-shadow:var(--shadow);display:flex;flex-direction:column}.drawer-head{padding:20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.10)}.drawer-head button{background:transparent;border:0;color:#fff;font-size:1.5rem;cursor:pointer}.cart-items{padding:16px;overflow:auto;flex:1}.cart-item{display:flex;gap:12px;align-items:center;padding:13px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09);margin-bottom:12px}.cart-ico{width:48px;height:48px;border-radius:14px;background:rgba(0,255,136,.12);display:grid;place-items:center;color:var(--primary)}.cart-item h4{font-size:.9rem}.cart-item p{color:var(--primary);font-weight:900}.qty{display:flex;align-items:center;gap:7px;margin-left:auto}.qty button{width:28px;height:28px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;cursor:pointer}.drawer-foot{padding:18px;border-top:1px solid rgba(255,255,255,.10)}.total{display:flex;justify-content:space-between;font-size:1.35rem;font-weight:900;margin-bottom:14px}.empty{text-align:center;color:#839189;padding:48px 12px}.empty i{font-size:3rem;display:block;margin-bottom:12px}
+    .float{position:fixed;right:18px;bottom:18px;z-index:900;display:flex;flex-direction:column;gap:10px}.float a,.float button{width:56px;height:56px;border-radius:18px;border:1px solid rgba(255,255,255,.15);display:grid;place-items:center;background:rgba(4,8,7,.85);backdrop-filter:blur(16px);color:var(--primary);font-size:1.25rem;cursor:pointer}.float a{background:linear-gradient(135deg,#00ff88,#00cc6e);color:#00160b}
+    footer{padding:34px 0;color:#728078;border-top:1px solid rgba(255,255,255,.08);text-align:center}
+    @media(max-width:980px){.hero-grid{grid-template-columns:1fr}.grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:760px){.nav{height:68px}.hamb{display:block}.navlinks{position:fixed;top:74px;left:16px;right:16px;padding:14px;border-radius:22px;background:rgba(2,5,5,.95);border:1px solid rgba(255,255,255,.12);display:none;flex-direction:column;align-items:stretch}.navlinks.open{display:flex}.navlinks a{text-align:center}.toolbar{top:68px}.toolbar-row{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.section-head{display:block}.section-head p{margin-top:10px}.hero-actions .btn{width:100%}.product-img{height:132px}.product-info{padding:14px}.product{min-height:350px}}
+    @media(max-width:430px){.grid{grid-template-columns:1fr}.hero{min-height:80vh}.cart-mini{width:100%}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav shell">
+      <a class="brand" href="index.html"><span class="brand-mark"><i class="fa-solid fa-microchip"></i></span><span>OPTIMUS <b>TECH</b></span></a>
+      <button class="hamb" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
+      <div class="navlinks" id="navLinks">
+        <a href="index.html">Home</a><a href="index.html#servicos">Serviços</a><a href="#produtos">Produtos</a><a href="index.html#agendar">Agendar</a>
+        <a class="iconlink" href="mailto:optimustech.support@gmail.com"><i class="fa-regular fa-envelope"></i></a>
+        <a class="iconlink" href="https://wa.me/5542999112756" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </nav>
+  </header>
 
+  <main>
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <span class="eyebrow"><i class="fa-solid fa-cart-shopping"></i> Loja Optimus</span>
+          <h1>Produtos para deixar seu setup <span>absurdo.</span></h1>
+          <p>Celulares, SSDs, memórias, periféricos e acessórios em uma vitrine moderna com carrinho direto para o WhatsApp.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#produtos">Ver produtos</a><a class="btn btn-secondary" href="index.html#agendar">Solicitar instalação</a></div>
+        </div>
+        <article class="deal-card">
+          <div class="deal-icon"><i class="fa-solid fa-hard-drive"></i></div>
+          <h3>Upgrade mais procurado</h3>
+          <p style="color:#aebbb4;margin:8px 0 10px">SSD + instalação para transformar PC lento em máquina responsiva.</p>
+          <div class="deal-price"><small>R$ 329</small>R$ 249</div>
+          <button class="btn btn-primary" onclick="addToCart(26)">Adicionar SSD 480GB</button>
+        </article>
+      </div>
+    </section>
+
+    <div class="toolbar">
+      <div class="shell">
+        <div class="toolbar-row">
+          <label class="search"><i class="fa-solid fa-magnifying-glass"></i><input id="searchInput" type="search" placeholder="Buscar produto, categoria ou upgrade..."></label>
+          <button class="cart-mini" onclick="openCart()"><i class="fa-solid fa-cart-shopping"></i> Carrinho <span id="cartCount">0</span></button>
+        </div>
+        <div class="filters" id="filters"></div>
+      </div>
+    </div>
+
+    <section class="section shell" id="produtos">
+      <div class="section-head">
+        <div><span class="kicker">Catálogo</span><h2>Vitrine premium.</h2></div>
+        <p>Filtre, pesquise e monte seu pedido. A finalização abre o WhatsApp com tudo organizado.</p>
+      </div>
+      <div class="grid" id="grid"></div>
+    </section>
+  </main>
+
+  <div class="drawer-backdrop" id="cartBackdrop" onclick="closeCart(event)">
+    <aside class="drawer" onclick="event.stopPropagation()">
+      <div class="drawer-head"><h3>Meu carrinho</h3><button onclick="closeCart()">×</button></div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="drawer-foot">
+        <div class="total"><span>Total</span><span id="cartTotal">R$ 0,00</span></div>
+        <button class="btn btn-primary" style="width:100%" onclick="checkout()"><i class="fa-brands fa-whatsapp"></i> Finalizar pelo WhatsApp</button>
+      </div>
+    </aside>
+  </div>
+
+  <div class="float">
+    <a href="https://wa.me/5542999112756?text=Olá! Vim pela loja da Optimus Tech." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
+    <button onclick="scrollTo({top:0,behavior:'smooth'})"><i class="fa-solid fa-arrow-up"></i></button>
+  </div>
+
+  <footer><div class="shell">© 2026 OPTIMUS TECH — Loja, peças e upgrades com atendimento direto.</div></footer>
+
+  <script>
+    const WHATSAPP = "5542999112756";
+    const categories = [
+      ["todos","Todos"],["celulares","Celulares"],["acessorios-celular","Acessórios Mobile"],["ssd","SSD"],["ram","Memória RAM"],["perifericos","Periféricos"],["monitores","Monitores"],["notebooks","Notebooks"],["acessorios","Acessórios PC"]
+    ];
+    const products = [
+      {id:1,nome:"Samsung Galaxy A13 64GB Azul",cat:"celulares",preco:799,old:999,desc:"Galaxy A13 64GB",icon:"fa-mobile-screen-button",rate:4.6,reviews:156},
+      {id:2,nome:"Samsung Galaxy A23 128GB Preto",cat:"celulares",preco:1099,old:1399,desc:"Galaxy A23 128GB",icon:"fa-mobile-screen-button",rate:4.7,reviews:189},
+      {id:3,nome:"Samsung Galaxy A53 128GB Azul",cat:"celulares",preco:1799,old:2199,desc:"Galaxy A53 128GB",icon:"fa-mobile-screen-button",rate:4.8,reviews:234},
+      {id:4,nome:"iPhone 13 128GB Branco",cat:"celulares",preco:2799,old:3499,desc:"iPhone 13 128GB",icon:"fa-mobile-screen-button",rate:4.9,reviews:312},
+      {id:5,nome:"iPhone 14 128GB Preto",cat:"celulares",preco:3499,old:4299,desc:"iPhone 14 128GB",icon:"fa-mobile-screen-button",rate:4.9,reviews:267},
+      {id:6,nome:"iPhone 15 128GB Azul",cat:"celulares",preco:4299,old:5299,desc:"iPhone 15 128GB",icon:"fa-mobile-screen-button",rate:4.9,reviews:178},
+      {id:7,nome:"Xiaomi Redmi Note 11 128GB",cat:"celulares",preco:999,old:1299,desc:"Redmi Note 11",icon:"fa-mobile-screen-button",rate:4.7,reviews:145},
+      {id:8,nome:"Motorola Moto G32 128GB",cat:"celulares",preco:899,old:1199,desc:"Moto G32 128GB",icon:"fa-mobile-screen-button",rate:4.6,reviews:123},
+      {id:9,nome:"Bateria Original Samsung A50",cat:"acessorios-celular",preco:89,old:139,desc:"Bateria A50",icon:"fa-battery-half",rate:4.8,reviews:234},
+      {id:10,nome:"Bateria Original iPhone 12",cat:"acessorios-celular",preco:129,old:189,desc:"Bateria iPhone 12",icon:"fa-battery-half",rate:4.9,reviews:178},
+      {id:11,nome:"Tela LCD Samsung A30 Display",cat:"acessorios-celular",preco:149,old:229,desc:"Tela LCD A30",icon:"fa-tv",rate:4.7,reviews:156},
+      {id:12,nome:"Tela OLED iPhone 13",cat:"acessorios-celular",preco:199,old:299,desc:"Tela OLED",icon:"fa-tv",rate:4.9,reviews:145},
+      {id:13,nome:"Carregador Rápido 65W USB-C",cat:"acessorios-celular",preco:49,old:89,desc:"Carregador 65W",icon:"fa-plug",rate:4.8,reviews:267},
+      {id:14,nome:"Carregador Wireless 15W",cat:"acessorios-celular",preco:39,old:79,desc:"Wireless 15W",icon:"fa-plug-circle-bolt",rate:4.7,reviews:189},
+      {id:15,nome:"Fone Bluetooth Estéreo Preto",cat:"acessorios-celular",preco:79,old:149,desc:"Fone Bluetooth",icon:"fa-headphones",rate:4.6,reviews:198},
+      {id:16,nome:"Fone Bluetooth com Cancelamento",cat:"acessorios-celular",preco:199,old:349,desc:"Fone ANC",icon:"fa-headphones",rate:4.9,reviews:234},
+      {id:17,nome:"Cabo USB-C 2m Nylon Trançado",cat:"acessorios-celular",preco:24,old:44,desc:"Cabo reforçado",icon:"fa-code-branch",rate:4.7,reviews:312},
+      {id:18,nome:"Cabo Lightning 2m Certificado",cat:"acessorios-celular",preco:34,old:64,desc:"Cabo Lightning",icon:"fa-code-branch",rate:4.8,reviews:267},
+      {id:19,nome:"Capa de Silicone Transparente",cat:"acessorios-celular",preco:19,old:39,desc:"Capa silicone",icon:"fa-shield-halved",rate:4.5,reviews:178},
+      {id:20,nome:"Película de Vidro Temperado 9H",cat:"acessorios-celular",preco:14,old:29,desc:"Película 9H",icon:"fa-square",rate:4.8,reviews:289},
+      {id:21,nome:"Memória RAM 8GB DDR5 5600MHz",cat:"ram",preco:189,old:249,desc:"DDR5 8GB",icon:"fa-memory",rate:4.9,reviews:187},
+      {id:22,nome:"Memória RAM 16GB DDR5 5600MHz",cat:"ram",preco:349,old:449,desc:"DDR5 16GB",icon:"fa-memory",rate:4.9,reviews:156},
+      {id:23,nome:"Memória RAM 32GB DDR5 5600MHz",cat:"ram",preco:689,old:899,desc:"DDR5 32GB",icon:"fa-memory",rate:4.8,reviews:89},
+      {id:24,nome:"Memória RAM 8GB DDR4 3200MHz",cat:"ram",preco:149,old:199,desc:"DDR4 8GB",icon:"fa-memory",rate:4.8,reviews:312},
+      {id:25,nome:"Memória RAM 16GB DDR4 3200MHz",cat:"ram",preco:269,old:369,desc:"DDR4 16GB",icon:"fa-memory",rate:4.8,reviews:267},
+      {id:26,nome:"Unidade SSD 480GB SATA III",cat:"ssd",preco:249,old:329,desc:"SSD 480GB SATA",icon:"fa-hard-drive",rate:4.8,reviews:312},
+      {id:27,nome:"Unidade SSD 1TB SATA III",cat:"ssd",preco:499,old:699,desc:"SSD 1TB SATA",icon:"fa-hard-drive",rate:4.9,reviews:267},
+      {id:28,nome:"Unidade SSD 500GB NVMe PCIe 3.0",cat:"ssd",preco:299,old:399,desc:"NVMe 500GB",icon:"fa-hard-drive",rate:4.9,reviews:234},
+      {id:29,nome:"Unidade SSD 1TB NVMe PCIe 4.0",cat:"ssd",preco:699,old:949,desc:"NVMe 1TB",icon:"fa-hard-drive",rate:4.9,reviews:267},
+      {id:30,nome:"Teclado Mecânico RGB Switch Azul",cat:"perifericos",preco:199,old:299,desc:"Teclado mecânico",icon:"fa-keyboard",rate:4.8,reviews:267},
+      {id:31,nome:"Mouse Gamer RGB 12000 DPI",cat:"perifericos",preco:149,old:229,desc:"Mouse gamer",icon:"fa-computer-mouse",rate:4.9,reviews:312},
+      {id:32,nome:"Mouse Sem Fio Wireless",cat:"perifericos",preco:69,old:119,desc:"Mouse wireless",icon:"fa-computer-mouse",rate:4.7,reviews:234},
+      {id:33,nome:"Monitor LED 24 Full HD",cat:"monitores",preco:599,old:799,desc:"Monitor 24”",icon:"fa-display",rate:4.7,reviews:289},
+      {id:34,nome:"Monitor LED 27 2K",cat:"monitores",preco:899,old:1199,desc:"Monitor 27” 2K",icon:"fa-display",rate:4.8,reviews:178},
+      {id:35,nome:"Monitor Gamer 27 165Hz",cat:"monitores",preco:1199,old:1599,desc:"165Hz gamer",icon:"fa-display",rate:4.9,reviews:189},
+      {id:36,nome:"Notebook Intel Core i5 8GB RAM",cat:"notebooks",preco:2499,old:3299,desc:"Notebook i5",icon:"fa-laptop",rate:4.7,reviews:178},
+      {id:37,nome:"Notebook Intel Core i7 16GB RAM",cat:"notebooks",preco:3799,old:4999,desc:"Notebook i7",icon:"fa-laptop",rate:4.8,reviews:145},
+      {id:38,nome:"Notebook Gamer RTX 3050",cat:"notebooks",preco:4999,old:6499,desc:"Gamer RTX",icon:"fa-laptop",rate:4.9,reviews:198},
+      {id:39,nome:"Pasta Térmica Arctic MX-6 2g",cat:"acessorios",preco:49,old:69,desc:"Pasta térmica",icon:"fa-droplet",rate:4.8,reviews:345},
+      {id:40,nome:"Cooler Processador LED RGB",cat:"acessorios",preco:99,old:149,desc:"Cooler RGB",icon:"fa-fan",rate:4.7,reviews:145},
+      {id:41,nome:"Mousepad RGB Grande 80cm",cat:"acessorios",preco:149,old:229,desc:"Mousepad RGB",icon:"fa-square",rate:4.8,reviews:267},
+      {id:42,nome:"Hub USB 3.0 com 7 Portas",cat:"acessorios",preco:99,old:159,desc:"Hub USB",icon:"fa-plug",rate:4.7,reviews:178},
+      {id:43,nome:"Cabo HDMI 2.0 4K Premium 2m",cat:"acessorios",preco:49,old:79,desc:"HDMI 4K",icon:"fa-right-left",rate:4.7,reviews:189},
+      {id:44,nome:"Kit Limpeza Profissional Completo",cat:"acessorios",preco:89,old:139,desc:"Kit limpeza",icon:"fa-broom",rate:4.7,reviews:289}
+    ];
+
+    let activeCat = "todos";
+    let cart = JSON.parse(localStorage.getItem("optimusCart") || "[]");
+    const fmt = v => v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+
+    function renderFilters(){
+      const wrap = document.getElementById("filters");
+      wrap.innerHTML = categories.map(([id,label])=>`<button class="filter ${activeCat===id?'active':''}" onclick="setCat('${id}')">${label}</button>`).join("");
+    }
+    function renderProducts(){
+      const q = document.getElementById("searchInput").value.toLowerCase().trim();
+      const list = products.filter(p => (activeCat==="todos" || p.cat===activeCat) && (`${p.nome} ${p.desc} ${p.cat}`.toLowerCase().includes(q)));
+      document.getElementById("grid").innerHTML = list.map(p=>`
+        <article class="product">
+          <div class="product-img"><span class="tag">-${Math.max(1,Math.round((1-p.preco/p.old)*100))}%</span><i class="fa-solid ${p.icon}"></i></div>
+          <div class="product-info">
+            <h3>${p.nome}</h3><p class="desc">${p.desc}</p>
+            <div class="rating">${"★".repeat(Math.round(p.rate))} <span style="color:#91a098">(${p.reviews})</span></div>
+            <div class="price"><small>${fmt(p.old)}</small>${fmt(p.preco)}</div>
+            <button class="buy" onclick="addToCart(${p.id}, this)">Comprar</button>
+          </div>
+        </article>`).join("") || `<div class="empty" style="grid-column:1/-1"><i class="fa-solid fa-magnifying-glass"></i><p>Nenhum produto encontrado.</p></div>`;
+    }
+    function setCat(id){activeCat=id;renderFilters();renderProducts();}
+    function addToCart(id, btn){
+      const p = products.find(x=>x.id===id); const item = cart.find(x=>x.id===id);
+      item ? item.qty++ : cart.push({...p, qty:1});
+      saveCart();
+      if(btn){const old=btn.textContent;btn.textContent="✓ Adicionado";setTimeout(()=>btn.textContent=old,900);}
+    }
+    function changeQty(id, delta){
+      const item = cart.find(x=>x.id===id); if(!item) return;
+      item.qty += delta; if(item.qty<=0) cart = cart.filter(x=>x.id!==id);
+      saveCart();
+    }
+    function saveCart(){localStorage.setItem("optimusCart",JSON.stringify(cart));renderCart();}
+    function renderCart(){
+      const count = cart.reduce((a,b)=>a+b.qty,0); document.getElementById("cartCount").textContent = count;
+      const total = cart.reduce((a,b)=>a+b.preco*b.qty,0); document.getElementById("cartTotal").textContent = fmt(total);
+      document.getElementById("cartItems").innerHTML = cart.length ? cart.map(i=>`
+        <div class="cart-item"><div class="cart-ico"><i class="fa-solid ${i.icon}"></i></div>
+          <div><h4>${i.nome}</h4><p>${fmt(i.preco)} · ${i.qty} un.</p></div>
+          <div class="qty"><button onclick="changeQty(${i.id},-1)">−</button><b>${i.qty}</b><button onclick="changeQty(${i.id},1)">+</button></div>
+        </div>`).join("") : `<div class="empty"><i class="fa-solid fa-cart-shopping"></i><p>Seu carrinho está vazio.</p></div>`;
+    }
+    function openCart(){document.getElementById("cartBackdrop").classList.add("open")}
+    function closeCart(e){if(e && e.target.id!=="cartBackdrop") return;document.getElementById("cartBackdrop").classList.remove("open")}
+    function checkout(){
+      if(!cart.length) return alert("Seu carrinho está vazio.");
+      const total = cart.reduce((a,b)=>a+b.preco*b.qty,0);
+      const itens = cart.map(i=>`• ${i.qty}x ${i.nome} — ${fmt(i.preco*i.qty)}`).join("%0A");
+      const msg = `Olá! Vim pela loja da Optimus Tech e gostaria de comprar:%0A%0A${itens}%0A%0ATotal: ${fmt(total)}%0A%0APode confirmar disponibilidade e entrega?`;
+      window.open(`https://wa.me/${WHATSAPP}?text=${msg}`,"_blank");
+    }
+
+    document.getElementById("searchInput").addEventListener("input", renderProducts);
+    document.getElementById("menuBtn").addEventListener("click",()=>document.getElementById("navLinks").classList.toggle("open"));
+    document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("cartBackdrop").classList.remove("open")});
+    renderFilters(); renderProducts(); renderCart();
+  </script>
+</body>
+</html>
