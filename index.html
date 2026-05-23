@@ -210,6 +210,14 @@
     }
     .float a:first-child{background:linear-gradient(135deg,#00ff88,#00cc6e);color:#00160b}
     .float a:hover,.float button:hover{transform:translateY(-4px)}
+
+    /* Assistente virtual Optimus */
+    .ai-launcher{position:fixed;left:18px;bottom:18px;z-index:1200;width:62px;height:62px;border-radius:22px;border:1px solid rgba(0,255,136,.34);background:linear-gradient(135deg,rgba(0,255,136,.96),rgba(0,213,255,.92));color:#00150c;display:grid;place-items:center;font-size:1.55rem;box-shadow:0 20px 70px rgba(0,255,136,.25);cursor:pointer;transition:.25s}.ai-launcher:hover{transform:translateY(-5px) scale(1.03)}.ai-launcher .ping{position:absolute;inset:-7px;border-radius:28px;border:1px solid rgba(0,255,136,.35);animation:aiPing 1.8s infinite}@keyframes aiPing{to{transform:scale(1.22);opacity:0}}
+    .ai-panel{position:fixed;left:18px;bottom:92px;width:min(410px,calc(100vw - 36px));height:min(650px,calc(100vh - 120px));z-index:1300;border:1px solid rgba(0,255,136,.22);border-radius:28px;background:linear-gradient(180deg,rgba(7,17,13,.96),rgba(3,7,7,.97));box-shadow:0 28px 95px rgba(0,0,0,.55);backdrop-filter:blur(22px);display:none;overflow:hidden}.ai-panel.open{display:flex;flex-direction:column;animation:aiIn .22s ease-out}@keyframes aiIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+    .ai-head{padding:16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,.09);background:radial-gradient(circle at 10% 0%,rgba(0,255,136,.18),transparent 45%)}.ai-avatar{width:45px;height:45px;border-radius:17px;display:grid;place-items:center;background:rgba(0,255,136,.14);border:1px solid rgba(0,255,136,.26);color:var(--primary)}.ai-head h3{font-size:1rem}.ai-head p{font-size:.78rem;color:#9fb0a7}.ai-close{margin-left:auto;background:transparent;border:0;color:#d7fff0;font-size:1.4rem;cursor:pointer}
+    .ai-messages{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}.ai-msg{max-width:88%;padding:12px 13px;border-radius:18px;font-size:.92rem;line-height:1.45;white-space:pre-wrap}.ai-msg.bot{align-self:flex-start;background:rgba(255,255,255,.075);border:1px solid rgba(255,255,255,.08);color:#effff7}.ai-msg.user{align-self:flex-end;background:linear-gradient(135deg,var(--primary),#b8ffdc);color:#00160b;font-weight:700}.ai-suggestions{padding:0 14px 12px;display:flex;gap:8px;overflow:auto}.ai-chip{flex:0 0 auto;border:1px solid rgba(0,255,136,.18);background:rgba(0,255,136,.08);color:#cfffe6;border-radius:99px;padding:8px 10px;font-size:.78rem;font-weight:800;cursor:pointer}.ai-input{display:flex;gap:9px;padding:13px;border-top:1px solid rgba(255,255,255,.09);background:rgba(0,0,0,.18)}.ai-input input{flex:1;min-width:0;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.32);color:#fff;border-radius:16px;padding:12px 13px;outline:none}.ai-input input:focus{border-color:rgba(0,255,136,.5)}.ai-input button{border:0;border-radius:16px;background:linear-gradient(135deg,var(--primary),#b8ffdc);color:#00160b;font-weight:900;width:48px;cursor:pointer}.ai-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.ai-action{display:inline-flex;align-items:center;gap:7px;padding:8px 10px;border-radius:12px;background:rgba(0,255,136,.12);border:1px solid rgba(0,255,136,.22);color:#bfffe0;font-size:.8rem;font-weight:900;cursor:pointer}
+    @media(max-width:560px){.ai-panel{left:10px;right:10px;bottom:82px;width:auto;height:min(620px,calc(100vh - 96px));border-radius:22px}.ai-launcher{left:12px;bottom:12px;width:56px;height:56px}.float{right:12px;bottom:12px}.ai-msg{max-width:94%}}
+
     footer{padding:34px 0;color:#728078;border-top:1px solid rgba(255,255,255,.08);text-align:center}
     .reveal{opacity:0;transform:translateY(24px);transition:.7s ease}
     .reveal.show{opacity:1;transform:none}
@@ -361,6 +369,28 @@
     <button id="toTop" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
   </div>
 
+
+  <button class="ai-launcher" id="aiLauncher" aria-label="Abrir assistente virtual"><span class="ping"></span><i class="fa-solid fa-robot"></i></button>
+  <section class="ai-panel" id="aiPanel" aria-label="Assistente virtual Optimus Tech">
+    <div class="ai-head">
+      <div class="ai-avatar"><i class="fa-solid fa-microchip"></i></div>
+      <div><h3>Optimus Assist</h3><p>Orçamentos, dúvidas e atendimento via WhatsApp</p></div>
+      <button class="ai-close" id="aiClose" aria-label="Fechar assistente">×</button>
+    </div>
+    <div class="ai-messages" id="aiMessages"></div>
+    <div class="ai-suggestions" id="aiSuggestions">
+      <button class="ai-chip">Quero um orçamento</button>
+      <button class="ai-chip">Meu PC está lento</button>
+      <button class="ai-chip">Celular travando</button>
+      <button class="ai-chip">Como funciona?</button>
+      <button class="ai-chip">Falar no WhatsApp</button>
+    </div>
+    <form class="ai-input" id="aiForm">
+      <input id="aiText" type="text" placeholder="Digite sua dúvida..." autocomplete="off">
+      <button type="submit" aria-label="Enviar"><i class="fa-solid fa-paper-plane"></i></button>
+    </form>
+  </section>
+
   <footer>
     <div class="shell">© 2026 OPTIMUS TECH — Assistência, consultoria e tecnologia com estética premium.</div>
   </footer>
@@ -429,6 +459,88 @@
     menuBtn.addEventListener("click", ()=>navLinks.classList.toggle("open"));
     navLinks.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>navLinks.classList.remove("open")));
     document.getElementById("toTop").addEventListener("click",()=>scrollTo({top:0,behavior:"smooth"}));
+
+
+    // Assistente virtual local: respostas naturais + orçamento + encaminhamento ao WhatsApp
+    const aiPanel = document.getElementById("aiPanel");
+    const aiLauncher = document.getElementById("aiLauncher");
+    const aiClose = document.getElementById("aiClose");
+    const aiMessages = document.getElementById("aiMessages");
+    const aiForm = document.getElementById("aiForm");
+    const aiText = document.getElementById("aiText");
+    const aiSuggestions = document.getElementById("aiSuggestions");
+    let aiContext = { lastIntent:"", device:"", problem:"", service:"" };
+
+    function aiAdd(text, who="bot", actions=[]){
+      const bubble = document.createElement("div");
+      bubble.className = `ai-msg ${who}`;
+      bubble.textContent = text;
+      if(actions.length){
+        const wrap = document.createElement("div");
+        wrap.className = "ai-actions";
+        actions.forEach(a=>{
+          const b=document.createElement("button"); b.type="button"; b.className="ai-action"; b.innerHTML=a.icon?`<i class="${a.icon}"></i>${a.label}`:a.label; b.onclick=a.run; wrap.appendChild(b);
+        });
+        bubble.appendChild(wrap);
+      }
+      aiMessages.appendChild(bubble);
+      aiMessages.scrollTop = aiMessages.scrollHeight;
+    }
+    function aiOpen(){aiPanel.classList.add("open");aiLauncher.style.display="none";setTimeout(()=>aiText.focus(),120);if(!aiMessages.dataset.started){aiMessages.dataset.started="1";aiAdd("Olá! Eu sou a assistente virtual da Optimus Tech. Posso tirar dúvidas, explicar serviços, montar um pré-orçamento e te mandar direto para o WhatsApp com a mensagem pronta.\n\nMe conta: é PC, notebook ou celular?", "bot", [{label:"Fazer orçamento",icon:"fa-solid fa-calculator",run:()=>aiHandle("quero um orçamento")},{label:"WhatsApp",icon:"fa-brands fa-whatsapp",run:()=>aiWhatsapp("Olá! Vim pelo site da Optimus Tech e gostaria de atendimento.")}]);}}
+    function aiClosePanel(){aiPanel.classList.remove("open");aiLauncher.style.display="grid";}
+    aiLauncher.addEventListener("click", aiOpen); aiClose.addEventListener("click", aiClosePanel);
+
+    function serviceByText(t){
+      const found = services.find(s => t.includes(s.title.toLowerCase()) || s.title.toLowerCase().split(" ").some(w=>w.length>4 && t.includes(w)));
+      if(found) return found;
+      if(/pasta|temperatura|esquent|limpeza|barulho|desliga/.test(t)) return services.find(s=>s.title.includes("Pasta"));
+      if(/ssd|ram|mem[oó]ria|upgrade|hd|lento|travando|demora/.test(t)) return services.find(s=>s.title.includes("Upgrade"));
+      if(/fps|jogo|game|lag|valorant|fortnite|cs|gta/.test(t)) return services.find(s=>s.title.includes("FPS"));
+      if(/v[ií]rus|malware|popup|an[uú]ncio|seguran/.test(t)) return services.find(s=>s.title.includes("Vírus"));
+      if(/celular|android|iphone|mobile|aparelho/.test(t) && /format|trav|lento|senha|reset/.test(t)) return services.find(s=>s.title.includes("Formatação Mobile"));
+      if(/tela|bateria|conector|pe[cç]a|carreg/.test(t)) return services.find(s=>s.title.includes("Troca de Peças Mobile"));
+      if(/office|excel|word|powerpoint/.test(t)) return services.find(s=>s.title.includes("Office"));
+      if(/aula|inform[aá]tica|aprender/.test(t)) return services.find(s=>s.title.includes("Informática"));
+      return null;
+    }
+    function aiWhatsapp(msg){ window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank"); }
+    function aiQuote(s, original){
+      const msg = `Olá! Vim pelo site da Optimus Tech. Gostaria de um atendimento/orçamento.\n\nInteresse identificado: ${s ? `${s.title} (${s.price})` : "diagnóstico técnico"}.\nMeu problema/dúvida: ${original}\n\nPode me orientar e confirmar disponibilidade?`;
+      aiWhatsapp(msg);
+    }
+    function aiHandle(raw){
+      const text = raw.trim(); if(!text) return;
+      aiAdd(text,"user");
+      const t = text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+      const svc = serviceByText(t); if(svc) aiContext.service = svc.title;
+      setTimeout(()=>{
+        if(/whats|zap|atendente|humano|chamar|contato|telefone/.test(t)){
+          aiAdd("Claro. Posso te mandar agora para o WhatsApp com uma mensagem pronta para agilizar o atendimento.","bot",[{label:"Abrir WhatsApp",icon:"fa-brands fa-whatsapp",run:()=>aiWhatsapp("Olá! Vim pelo site da Optimus Tech e gostaria de atendimento técnico.")}]); return;
+        }
+        if(/orcamento|orçamento|preco|preço|valor|quanto|custa/.test(t) || svc){
+          if(svc){
+            aiAdd(`Pelo que você descreveu, o serviço mais provável é: ${svc.title}.\n\nValor base: ${svc.price}${svc.old ? ` (antes ${svc.old})` : ""}.\nO ideal é confirmar modelo, sintomas e, se tiver peça envolvida, disponibilidade/valor da peça antes de fechar.`,"bot",[{label:"Enviar orçamento ao WhatsApp",icon:"fa-brands fa-whatsapp",run:()=>aiQuote(svc,text)},{label:"Agendar esse serviço",icon:"fa-solid fa-calendar-check",run:()=>selecionarServico(svc.title)}]);
+          }else{
+            aiAdd("Faço sim um pré-orçamento. Me diga qual é o equipamento e o sintoma principal: por exemplo, ‘notebook lento’, ‘celular travando’, ‘trocar tela’, ‘instalar SSD’ ou ‘otimizar FPS’.");
+          } return;
+        }
+        if(/quem|empresa|voces|vocês|optimus|sobre/.test(t)){
+          aiAdd("A Optimus Tech é uma assistência e consultoria de tecnologia em Guarapuava, com atendimento também remoto para alguns serviços. O foco é diagnóstico claro, manutenção cuidadosa, upgrades, formatação, segurança digital e aulas práticas.","bot",[{label:"Falar com a Optimus",icon:"fa-brands fa-whatsapp",run:()=>aiWhatsapp("Olá! Quero conhecer melhor os serviços da Optimus Tech.")}]); return;
+        }
+        if(/backup|format/.test(t)){
+          aiAdd("Antes de qualquer formatação, o ideal é separar o que precisa ser preservado: fotos, documentos, WhatsApp, senhas, favoritos e arquivos de trabalho. A Optimus pode orientar ou realizar backup quando combinado antes do serviço."); return;
+        }
+        if(/garantia|peca|peça/.test(t)){
+          aiAdd("A garantia depende do tipo de serviço e da peça usada. Em trocas de componentes, a condição é confirmada no orçamento, junto com modelo, fornecedor e disponibilidade."); return;
+        }
+        if(/loja|produto|comprar|ssd|ram|monitor|notebook|iphone|samsung/.test(t)){
+          aiAdd("A loja tem celulares, SSDs, RAM, periféricos, monitores, notebooks e acessórios. Você pode filtrar ou pesquisar na página da loja; ao finalizar, o pedido vai para o WhatsApp para confirmar disponibilidade.","bot",[{label:"Abrir loja",icon:"fa-solid fa-cart-shopping",run:()=>location.href="loja.html"}]); return;
+        }
+        aiAdd("Entendi. Para te responder com mais precisão, me diga: qual é o aparelho, o modelo se souber, e o que está acontecendo? Exemplo: ‘PC liga mas fica lento’, ‘notebook esquentando’, ‘celular não carrega’. Com isso eu já monto o caminho mais provável e posso enviar para o WhatsApp.","bot",[{label:"Mandar para WhatsApp",icon:"fa-brands fa-whatsapp",run:()=>aiQuote(null,text)}]);
+      }, 320);
+    }
+    aiForm.addEventListener("submit", e=>{e.preventDefault(); const v=aiText.value; aiText.value=""; aiHandle(v);});
+    aiSuggestions.addEventListener("click", e=>{const b=e.target.closest("button"); if(b) aiHandle(b.textContent);});
 
     const io = new IntersectionObserver(entries=>{
       entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add("show"); });
