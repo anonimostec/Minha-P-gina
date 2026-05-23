@@ -32,11 +32,31 @@
     .float{position:fixed;right:18px;bottom:18px;z-index:900;display:flex;flex-direction:column;gap:10px}.float a,.float button{width:56px;height:56px;border-radius:18px;border:1px solid rgba(255,255,255,.15);display:grid;place-items:center;background:rgba(4,8,7,.85);backdrop-filter:blur(16px);color:var(--primary);font-size:1.25rem;cursor:pointer}.float a{background:linear-gradient(135deg,#00ff88,#00cc6e);color:#00160b}
 
     .matrix-rain{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.22;mix-blend-mode:screen}
-    .page-transition{position:fixed;inset:0;z-index:9998;pointer-events:none;background:radial-gradient(circle at center,rgba(0,255,136,.24),rgba(0,0,0,.96) 58%);display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease}
+    .page-transition{position:fixed;inset:0;z-index:9998;pointer-events:none;background:radial-gradient(circle at center,rgba(0,255,136,.24),rgba(0,0,0,.96) 58%);display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;overflow:hidden}
     .page-transition.active{opacity:1;visibility:visible}
     .page-transition span{font-family:"JetBrains Mono",monospace;color:var(--primary);font-size:clamp(1rem,4vw,2rem);font-weight:900;text-transform:uppercase;letter-spacing:.18em;text-shadow:0 0 28px rgba(0,255,136,.8);animation:glitchPulse .55s infinite alternate}
+    .store-scene{display:none;position:absolute;inset:0;align-items:center;justify-content:center}
+    .store-track{position:absolute;left:7vw;right:7vw;bottom:28%;height:4px;border-radius:99px;background:linear-gradient(90deg,transparent,rgba(0,255,136,.75),transparent);box-shadow:0 0 30px rgba(0,255,136,.45)}
+    .store-cart{position:absolute;left:-160px;bottom:30%;font-size:4rem;color:var(--primary);filter:drop-shadow(0 0 24px rgba(0,255,136,.8));animation:cartToTruck 1.55s cubic-bezier(.62,.02,.18,1) forwards}
+    .store-truck{position:absolute;right:8vw;bottom:28%;width:170px;height:92px;border-radius:18px 10px 12px 12px;background:linear-gradient(180deg,#141b18,#07100b);border:2px solid rgba(0,255,136,.65);box-shadow:0 0 45px rgba(0,255,136,.28)}
+    .store-truck::before{content:"";position:absolute;left:-54px;bottom:0;width:62px;height:62px;border-radius:12px 0 0 12px;background:#0a130f;border:2px solid rgba(0,255,136,.65);border-right:0}
+    .store-truck::after{content:"";position:absolute;left:18px;top:14px;width:82px;height:62px;border:2px solid rgba(255,255,255,.32);border-right:0;border-radius:10px 0 0 10px;transform-origin:right center;animation:truckDoor .6s ease .18s forwards}
+    .store-wheel{position:absolute;bottom:-18px;width:34px;height:34px;border-radius:50%;background:#020403;border:6px solid var(--primary);box-shadow:0 0 18px rgba(0,255,136,.55)}
+    .store-wheel.one{left:-34px}.store-wheel.two{right:18px}
+    .page-transition.store-drive>span{top:22%;position:absolute;font-size:clamp(1rem,4vw,1.7rem)}
+    .page-transition.store-drive .store-scene{display:flex}
+    @keyframes cartToTruck{0%{left:-160px;transform:rotate(-6deg) scale(.92)}70%{left:calc(92vw - 300px);transform:rotate(0) scale(1)}86%{left:calc(92vw - 266px);transform:scale(.86)}100%{left:calc(92vw - 256px);transform:scale(.2);opacity:0}}
+    @keyframes truckDoor{to{transform:perspective(300px) rotateY(-58deg)}}
     @keyframes glitchPulse{from{transform:skewX(-2deg);opacity:.78}to{transform:skewX(2deg);opacity:1}}
-    @media(prefers-reduced-motion:reduce){.matrix-rain{display:none}.page-transition span{animation:none}}
+    @media(max-width:600px){.store-truck{right:4vw;width:132px;height:76px}.store-truck::before{left:-42px;width:48px;height:52px}.store-cart{font-size:3.2rem}.store-track{left:5vw;right:5vw}.page-transition.store-drive>span{top:18%}@keyframes cartToTruck{0%{left:-120px}74%{left:calc(96vw - 230px)}100%{left:calc(96vw - 205px);transform:scale(.18);opacity:0}}}
+    @media(prefers-reduced-motion:reduce){.matrix-rain{display:none}.page-transition span{animation:none}.store-cart,.store-truck::after{animation:none}}
+
+    .store-badges{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+    .store-badge{padding:14px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.10);font-weight:900;color:#eafff4;display:flex;align-items:center;gap:10px}.store-badge i{color:var(--orange)}
+    .promo-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:26px}.promo-card{padding:18px;border-radius:24px;background:linear-gradient(180deg,rgba(255,122,0,.10),rgba(255,255,255,.045));border:1px solid rgba(255,122,0,.18)}.promo-card strong{display:block;font-size:1.05rem}.promo-card span{color:#aebbb4;font-size:.92rem}
+    .product::before{content:"";position:absolute;inset:-1px;background:radial-gradient(circle at 50% 0%,rgba(0,255,136,.20),transparent 42%);opacity:0;transition:.25s;pointer-events:none}.product:hover::before{opacity:1}.product>*{position:relative}
+    @media(max-width:760px){.store-badges,.promo-row{grid-template-columns:1fr}.hero h1{font-size:clamp(2.05rem,9vw,3.15rem)!important;line-height:1.06!important}}
+
     footer{padding:34px 0;color:#728078;border-top:1px solid rgba(255,255,255,.08);text-align:center}
     @media(max-width:980px){.hero-grid{grid-template-columns:1fr}.grid{grid-template-columns:repeat(3,1fr)}}
     @media(max-width:760px){.hero h1{font-size:clamp(2.2rem,12vw,3.6rem);line-height:1.04;letter-spacing:-.035em}.nav{height:68px}.hamb{display:block}.navlinks{position:fixed;top:74px;left:16px;right:16px;padding:14px;border-radius:22px;background:rgba(2,5,5,.95);border:1px solid rgba(255,255,255,.12);display:none;flex-direction:column;align-items:stretch}.navlinks.open{display:flex}.navlinks a{text-align:center}.toolbar{top:68px}.toolbar-row{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.section-head{display:block}.section-head p{margin-top:10px}.hero-actions .btn{width:100%}.product-img{height:132px}.product-info{padding:14px}.product{min-height:350px}}
@@ -45,7 +65,7 @@
 </head>
 <body>
   <canvas class="matrix-rain" id="matrixRain" aria-hidden="true"></canvas>
-  <div class="page-transition" id="pageTransition"><span>Carregando loja</span></div>
+  <div class="page-transition" id="pageTransition"><span id="transitionText">Carregando loja</span><div class="store-scene" aria-hidden="true"><div class="store-track"></div><i class="fa-solid fa-cart-shopping store-cart"></i><div class="store-truck"><i class="store-wheel one"></i><i class="store-wheel two"></i></div></div></div>
   <header class="topbar">
     <nav class="nav shell">
       <a class="brand" href="index.html"><span class="brand-mark"><i class="fa-solid fa-microchip"></i></span><span>OPTIMUS <b>TECH</b></span></a>
@@ -62,9 +82,9 @@
       <div class="shell hero-grid">
         <div>
           <span class="eyebrow"><i class="fa-solid fa-cart-shopping"></i> Loja Optimus</span>
-          <h1>Produtos para deixar seu setup <span>absurdo.</span></h1>
-          <p>Peças, acessórios e produtos de tecnologia para manutenção, upgrade e uso no dia a dia. Monte seu pedido e finalize pelo WhatsApp.</p>
-          <div class="hero-actions"><a class="btn btn-primary" href="#produtos">Ver produtos</a><a class="btn btn-secondary" href="index.html#agendar">Solicitar instalação</a></div>
+          <h1>Peças e acessórios <span>sem enrolação.</span></h1>
+          <p>Escolha o produto, monte o carrinho e finalize pelo WhatsApp. Se precisar, você também pode pedir instalação ou orientação antes da compra.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#produtos">Ver produtos</a><a class="btn btn-secondary" href="index.html#agendar">Solicitar instalação</a></div><div class="store-badges"><div class="store-badge"><i class="fa-solid fa-cart-shopping"></i> Pedido via WhatsApp</div><div class="store-badge"><i class="fa-solid fa-screwdriver-wrench"></i> Instalação opcional</div><div class="store-badge"><i class="fa-solid fa-circle-check"></i> Confirmação de estoque</div></div>
         </div>
         <article class="deal-card">
           <div class="deal-icon"><i class="fa-solid fa-hard-drive"></i></div>
@@ -88,10 +108,10 @@
 
     <section class="section shell" id="produtos">
       <div class="section-head">
-        <div><span class="kicker">Catálogo</span><h2>Vitrine premium.</h2></div>
-        <p>Filtre, pesquise e monte seu pedido. A finalização abre o WhatsApp com tudo organizado.</p>
+        <div><span class="kicker">Catálogo</span><h2>Catálogo direto ao ponto.</h2></div>
+        <p>Pesquise, filtre, adicione ao carrinho e envie tudo organizado para atendimento.</p>
       </div>
-      <div class="grid" id="grid"></div>
+      <div class="promo-row"><div class="promo-card"><strong>Upgrade recomendado</strong><span>SSD e RAM para PC lento.</span></div><div class="promo-card"><strong>Assistência junto</strong><span>Compre e solicite instalação.</span></div><div class="promo-card"><strong>Pedido organizado</strong><span>Carrinho enviado pelo WhatsApp.</span></div></div><div class="grid" id="grid"></div>
     </section>
   </main>
 
@@ -236,7 +256,9 @@
     }
     function initPageTransitions(){
       const overlay = document.getElementById("pageTransition"); if(!overlay) return;
-      const hideOverlay = () => overlay.classList.remove("active");
+      const label = document.getElementById("transitionText");
+      const hideOverlay = () => { overlay.classList.remove("active","store-drive"); if(label) label.textContent = overlay.dataset.defaultText || "Carregando"; };
+      overlay.dataset.defaultText = label ? label.textContent : "Carregando";
       window.addEventListener("pageshow", hideOverlay);
       window.addEventListener("popstate", hideOverlay);
       document.addEventListener("visibilitychange", () => { if(!document.hidden) hideOverlay(); });
@@ -244,9 +266,13 @@
         link.addEventListener("click", e=>{
           const href = link.getAttribute("href");
           if(!href || link.target === "_blank" || href.startsWith("#")) return;
-          e.preventDefault(); overlay.classList.add("active");
-          setTimeout(()=>{ window.location.href = href; }, 360);
-          setTimeout(hideOverlay, 1400);
+          e.preventDefault();
+          const goingStore = href.includes("loja.html");
+          if(label) label.textContent = goingStore ? "Enviando carrinho para a loja" : "Voltando para a Optimus";
+          overlay.classList.toggle("store-drive", goingStore);
+          overlay.classList.add("active");
+          setTimeout(()=>{ window.location.href = href; }, goingStore ? 1650 : 420);
+          setTimeout(hideOverlay, goingStore ? 2600 : 1400);
         });
       });
     }
