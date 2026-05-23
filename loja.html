@@ -236,11 +236,17 @@
     }
     function initPageTransitions(){
       const overlay = document.getElementById("pageTransition"); if(!overlay) return;
-      document.querySelectorAll('a[href$=".html"], a[href="loja.html"], a[href="index.html"]').forEach(link=>{
+      const hideOverlay = () => overlay.classList.remove("active");
+      window.addEventListener("pageshow", hideOverlay);
+      window.addEventListener("popstate", hideOverlay);
+      document.addEventListener("visibilitychange", () => { if(!document.hidden) hideOverlay(); });
+      document.querySelectorAll('a[href$=".html"], a[href="loja.html"], a[href="index.html"], a[href^="index.html#"]').forEach(link=>{
         link.addEventListener("click", e=>{
           const href = link.getAttribute("href");
           if(!href || link.target === "_blank" || href.startsWith("#")) return;
-          e.preventDefault(); overlay.classList.add("active"); setTimeout(()=>{location.href = href;}, 420);
+          e.preventDefault(); overlay.classList.add("active");
+          setTimeout(()=>{ window.location.href = href; }, 360);
+          setTimeout(hideOverlay, 1400);
         });
       });
     }
