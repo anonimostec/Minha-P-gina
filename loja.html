@@ -20,7 +20,7 @@
     .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.04em}.brand-mark{width:42px;height:42px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(0,255,136,.28),rgba(255,122,0,.14));border:1px solid rgba(0,255,136,.34)}.brand b{color:var(--primary)}
     .navlinks{display:flex;align-items:center;gap:8px}.navlinks a{color:#b8c4be;font-size:.82rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:10px 12px;border-radius:99px;transition:.25s}.navlinks a:hover{background:rgba(0,255,136,.10);color:var(--primary)}.iconlink{border:1px solid rgba(255,255,255,.12)!important}.hamb{display:none;background:transparent;color:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 12px}
     .hero{min-height:74vh;display:grid;align-items:center;padding:126px 0 52px;position:relative;overflow:hidden}.hero::after{content:"";position:absolute;width:520px;height:520px;right:-190px;top:70px;border-radius:50%;background:radial-gradient(circle,rgba(255,122,0,.22),transparent 62%);filter:blur(4px);animation:pulse 6s ease-in-out infinite}@keyframes pulse{50%{transform:scale(1.13);opacity:.65}}
-    .hero-grid{display:grid;grid-template-columns:1fr .9fr;gap:34px;align-items:center}.eyebrow{display:inline-flex;gap:9px;align-items:center;padding:9px 13px;border-radius:99px;border:1px solid rgba(255,122,0,.28);background:rgba(255,122,0,.09);color:#ffe0c7;font:800 .78rem "JetBrains Mono";text-transform:uppercase;letter-spacing:.1em}.hero h1{font-size:clamp(2.6rem,7vw,6.2rem);line-height:.92;letter-spacing:-.07em;margin-top:20px;font-weight:900}.hero h1 span{color:var(--orange);text-shadow:0 0 40px rgba(255,122,0,.35)}.hero p{margin-top:20px;color:#bfd0c7;max-width:650px;font-size:1.12rem}
+    .hero-grid{display:grid;grid-template-columns:1fr .9fr;gap:34px;align-items:center}.eyebrow{display:inline-flex;gap:9px;align-items:center;padding:9px 13px;border-radius:99px;border:1px solid rgba(255,122,0,.28);background:rgba(255,122,0,.09);color:#ffe0c7;font:800 .78rem "JetBrains Mono";text-transform:uppercase;letter-spacing:.1em}.hero h1{font-size:clamp(2.3rem,6vw,5.1rem);line-height:1.02;letter-spacing:-.045em;margin-top:20px;font-weight:900;max-width:820px}.hero h1 span{color:var(--orange);text-shadow:0 0 40px rgba(255,122,0,.35)}.hero p{margin-top:20px;color:#bfd0c7;max-width:650px;font-size:1.12rem}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;padding:14px 18px;border-radius:17px;font-weight:900;text-transform:uppercase;letter-spacing:.035em;transition:.25s}.btn:hover{transform:translateY(-4px)}.btn-primary{background:linear-gradient(135deg,var(--orange),#ffb000);color:#160800;box-shadow:0 18px 50px rgba(255,122,0,.25)}.btn-secondary{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#fff}.hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
     .deal-card{position:relative;z-index:1;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.045));border-radius:30px;padding:24px;box-shadow:var(--shadow);overflow:hidden}.deal-card::before{content:"";position:absolute;inset:-1px;background:radial-gradient(circle at 20% 10%,rgba(0,255,136,.22),transparent 38%);pointer-events:none}.deal-card>*{position:relative}.deal-icon{height:150px;border-radius:24px;display:grid;place-items:center;font-size:4rem;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.08);color:var(--primary)}.deal-card h3{font-size:1.6rem;margin-top:18px}.deal-price{font-size:2rem;font-weight:900;color:var(--primary)}.deal-price small{font-size:.9rem;text-decoration:line-through;color:#718078;margin-right:8px}
     .toolbar{position:sticky;top:76px;z-index:800;background:rgba(3,5,7,.72);backdrop-filter:blur(18px);border-block:1px solid rgba(255,255,255,.08);padding:14px 0}.toolbar-row{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center}.search{position:relative}.search i{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted)}.search input{width:100%;padding:14px 16px 14px 44px;border-radius:17px;border:1px solid var(--line);background:rgba(0,0,0,.30);color:#fff;outline:none}.cart-mini{background:linear-gradient(135deg,var(--orange),#ffb000);color:#160800;border:0;border-radius:17px;padding:14px 18px;font-weight:900;cursor:pointer}
@@ -30,20 +30,28 @@
     .product-info{padding:18px;display:flex;flex-direction:column;flex:1}.product h3{font-size:1rem;line-height:1.25;margin-bottom:8px}.desc{color:#9eaaa4;font-size:.86rem;margin-bottom:12px}.rating{font-size:.8rem;color:#ffc857;margin-top:auto}.price{font-size:1.35rem;font-weight:900;color:var(--primary);margin:8px 0 14px}.price small{font-size:.75rem;text-decoration:line-through;color:#65746c;margin-right:6px}.buy{width:100%;background:linear-gradient(135deg,var(--orange),#ffb000);color:#190b00;border:0;border-radius:15px;padding:12px;font-weight:900;cursor:pointer;transition:.25s}.buy:hover{transform:scale(1.02)}
     .drawer-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:2000;display:none}.drawer-backdrop.open{display:block}.drawer{position:absolute;right:0;top:0;width:min(440px,94vw);height:100%;background:#06100b;border-left:1px solid rgba(0,255,136,.25);box-shadow:var(--shadow);display:flex;flex-direction:column}.drawer-head{padding:20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.10)}.drawer-head button{background:transparent;border:0;color:#fff;font-size:1.5rem;cursor:pointer}.cart-items{padding:16px;overflow:auto;flex:1}.cart-item{display:flex;gap:12px;align-items:center;padding:13px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09);margin-bottom:12px}.cart-ico{width:48px;height:48px;border-radius:14px;background:rgba(0,255,136,.12);display:grid;place-items:center;color:var(--primary)}.cart-item h4{font-size:.9rem}.cart-item p{color:var(--primary);font-weight:900}.qty{display:flex;align-items:center;gap:7px;margin-left:auto}.qty button{width:28px;height:28px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;cursor:pointer}.drawer-foot{padding:18px;border-top:1px solid rgba(255,255,255,.10)}.total{display:flex;justify-content:space-between;font-size:1.35rem;font-weight:900;margin-bottom:14px}.empty{text-align:center;color:#839189;padding:48px 12px}.empty i{font-size:3rem;display:block;margin-bottom:12px}
     .float{position:fixed;right:18px;bottom:18px;z-index:900;display:flex;flex-direction:column;gap:10px}.float a,.float button{width:56px;height:56px;border-radius:18px;border:1px solid rgba(255,255,255,.15);display:grid;place-items:center;background:rgba(4,8,7,.85);backdrop-filter:blur(16px);color:var(--primary);font-size:1.25rem;cursor:pointer}.float a{background:linear-gradient(135deg,#00ff88,#00cc6e);color:#00160b}
+
+    .matrix-rain{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.22;mix-blend-mode:screen}
+    .page-transition{position:fixed;inset:0;z-index:9998;pointer-events:none;background:radial-gradient(circle at center,rgba(0,255,136,.24),rgba(0,0,0,.96) 58%);display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease}
+    .page-transition.active{opacity:1;visibility:visible}
+    .page-transition span{font-family:"JetBrains Mono",monospace;color:var(--primary);font-size:clamp(1rem,4vw,2rem);font-weight:900;text-transform:uppercase;letter-spacing:.18em;text-shadow:0 0 28px rgba(0,255,136,.8);animation:glitchPulse .55s infinite alternate}
+    @keyframes glitchPulse{from{transform:skewX(-2deg);opacity:.78}to{transform:skewX(2deg);opacity:1}}
+    @media(prefers-reduced-motion:reduce){.matrix-rain{display:none}.page-transition span{animation:none}}
     footer{padding:34px 0;color:#728078;border-top:1px solid rgba(255,255,255,.08);text-align:center}
     @media(max-width:980px){.hero-grid{grid-template-columns:1fr}.grid{grid-template-columns:repeat(3,1fr)}}
-    @media(max-width:760px){.nav{height:68px}.hamb{display:block}.navlinks{position:fixed;top:74px;left:16px;right:16px;padding:14px;border-radius:22px;background:rgba(2,5,5,.95);border:1px solid rgba(255,255,255,.12);display:none;flex-direction:column;align-items:stretch}.navlinks.open{display:flex}.navlinks a{text-align:center}.toolbar{top:68px}.toolbar-row{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.section-head{display:block}.section-head p{margin-top:10px}.hero-actions .btn{width:100%}.product-img{height:132px}.product-info{padding:14px}.product{min-height:350px}}
+    @media(max-width:760px){.hero h1{font-size:clamp(2.2rem,12vw,3.6rem);line-height:1.04;letter-spacing:-.035em}.nav{height:68px}.hamb{display:block}.navlinks{position:fixed;top:74px;left:16px;right:16px;padding:14px;border-radius:22px;background:rgba(2,5,5,.95);border:1px solid rgba(255,255,255,.12);display:none;flex-direction:column;align-items:stretch}.navlinks.open{display:flex}.navlinks a{text-align:center}.toolbar{top:68px}.toolbar-row{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.section-head{display:block}.section-head p{margin-top:10px}.hero-actions .btn{width:100%}.product-img{height:132px}.product-info{padding:14px}.product{min-height:350px}}
     @media(max-width:430px){.grid{grid-template-columns:1fr}.hero{min-height:80vh}.cart-mini{width:100%}}
   </style>
 </head>
 <body>
+  <canvas class="matrix-rain" id="matrixRain" aria-hidden="true"></canvas>
+  <div class="page-transition" id="pageTransition"><span>Carregando loja</span></div>
   <header class="topbar">
     <nav class="nav shell">
       <a class="brand" href="index.html"><span class="brand-mark"><i class="fa-solid fa-microchip"></i></span><span>OPTIMUS <b>TECH</b></span></a>
       <button class="hamb" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
       <div class="navlinks" id="navLinks">
         <a href="index.html">Home</a><a href="index.html#servicos">Serviços</a><a href="#produtos">Produtos</a><a href="index.html#agendar">Agendar</a>
-        <a class="iconlink" href="mailto:optimustech.support@gmail.com"><i class="fa-regular fa-envelope"></i></a>
         <a class="iconlink" href="https://wa.me/5542999112756" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
       </div>
     </nav>
@@ -100,10 +108,10 @@
 
   <div class="float">
     <a href="https://wa.me/5542999112756?text=Olá! Vim pela loja da Optimus Tech." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
-    <button onclick="scrollTo({top:0,behavior:'smooth'})"><i class="fa-solid fa-arrow-up"></i></button>
+    <button type="button" id="toTop" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
   </div>
 
-  <footer><div class="shell">© 2026 OPTIMUS TECH — Loja, peças e upgrades com atendimento direto.</div></footer>
+  <footer><div class="shell">© 2026 OPTIMUS TECH</div></footer>
 
   <script>
     const WHATSAPP = "5542999112756";
@@ -211,8 +219,36 @@
       window.open(`https://wa.me/${WHATSAPP}?text=${msg}`,"_blank");
     }
 
+
+    function initMatrixRain(){
+      const canvas = document.getElementById("matrixRain"); if(!canvas) return;
+      const ctx = canvas.getContext("2d");
+      const chars = "01<>[]{}#$%&/\\OPTIMUSTECH";
+      let cols, drops;
+      function resize(){canvas.width = innerWidth; canvas.height = innerHeight; cols = Math.floor(canvas.width/18); drops = Array(cols).fill(1).map(()=>Math.random()*canvas.height/18);}
+      function draw(){
+        ctx.fillStyle = "rgba(3,5,7,.085)"; ctx.fillRect(0,0,canvas.width,canvas.height);
+        ctx.fillStyle = "rgba(0,255,136,.78)"; ctx.font = "14px JetBrains Mono, monospace";
+        for(let i=0;i<drops.length;i++){const text = chars[Math.floor(Math.random()*chars.length)]; ctx.fillText(text, i*18, drops[i]*18); if(drops[i]*18 > canvas.height && Math.random() > .975) drops[i]=0; drops[i]+=0.65;}
+        requestAnimationFrame(draw);
+      }
+      resize(); addEventListener("resize", resize); draw();
+    }
+    function initPageTransitions(){
+      const overlay = document.getElementById("pageTransition"); if(!overlay) return;
+      document.querySelectorAll('a[href$=".html"], a[href="loja.html"], a[href="index.html"]').forEach(link=>{
+        link.addEventListener("click", e=>{
+          const href = link.getAttribute("href");
+          if(!href || link.target === "_blank" || href.startsWith("#")) return;
+          e.preventDefault(); overlay.classList.add("active"); setTimeout(()=>{location.href = href;}, 420);
+        });
+      });
+    }
+    initMatrixRain(); initPageTransitions();
+
     document.getElementById("searchInput").addEventListener("input", renderProducts);
     document.getElementById("menuBtn").addEventListener("click",()=>document.getElementById("navLinks").classList.toggle("open"));
+    document.getElementById("toTop")?.addEventListener("click", function(e){ e.preventDefault(); window.scrollTo({top:0,left:0,behavior:"smooth"}); document.documentElement.scrollTop = 0; document.body.scrollTop = 0; });
     document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("cartBackdrop").classList.remove("open")});
     renderFilters(); renderProducts(); renderCart();
   </script>
