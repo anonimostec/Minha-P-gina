@@ -1,384 +1,220 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Loja Optimus Tech | Produtos Premium</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <style>
-        :root { --primary: #00ff88; --bg: #050505; --card-bg: #0f0f0f; --text: #fff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
-        html { font-size: 16px; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; }
-        
-        header { position: fixed; width: 100%; top: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(15px); border-bottom: 1px solid #1f1f1f; z-index: 1000; }
-        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; padding: 12px 15px; width: 100%; }
-        .logo { color: var(--primary); font-weight: 900; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
-        .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-        .nav-links a { color: #888; text-decoration: none; font-size: 0.75rem; font-weight: bold; transition: 0.3s; text-transform: uppercase; }
-        .nav-links a:hover { color: var(--primary); }
-        .nav-contact { color: #888 !important; border: 1px solid rgba(128,128,128,0.3); padding: 6px 8px; border-radius: 5px; font-size: 0 !important; display: inline-flex; align-items: center; gap: 4px; }
-        .nav-contact:hover { color: var(--primary) !important; border-color: rgba(0,255,136,0.2) !important; }
-        .nav-contact i { font-size: 1rem !important; }
-
-        .hero-loja { height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, #0a1f14 0%, #000 100%); padding: 20px; margin-top: 60px; }
-        .hero-loja h1 { font-size: 3rem; color: var(--primary); margin-bottom: 15px; letter-spacing: 2px; }
-        .hero-loja p { color: #666; font-size: 1rem; }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 30px 15px; }
-        .produtos-header { display: flex; justify-content: center; align-items: center; margin-bottom: 20px; }
-        .section-title { font-size: 1.8rem; color: var(--primary); margin: 0; text-align: center; }
-        
-        .filtros { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
-        .filtro-btn { background: #1a1a1a; color: #888; border: 1px solid #333; padding: 10px 16px; border-radius: 25px; cursor: pointer; transition: 0.3s; font-weight: bold; font-size: 0.8rem; white-space: nowrap; }
-        .filtro-btn:hover, .filtro-btn.active { background: var(--primary); color: #000; border-color: var(--primary); }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 18px; padding: 0; margin-bottom: 40px; }
-        
-        .produto-card { background: var(--card-bg); border-radius: 15px; overflow: hidden; border: 1px solid #1a1a1a; transition: 0.4s; display: flex; flex-direction: column; height: 100%; }
-        .produto-card:hover { transform: translateY(-8px); border-color: var(--primary); }
-        
-        .produto-img { width: 100%; height: 160px; background: linear-gradient(135deg, #1a1a1a, #2a2a2a); display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--primary); }
-        .produto-info { padding: 15px; display: flex; flex-direction: column; flex: 1; }
-        .produto-nome { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; text-align: center; line-height: 1.3; word-break: break-word; }
-        .produto-desc { color: #aaa; font-size: 0.75rem; line-height: 1.35; margin-bottom: 10px; text-align: center; }
-        .produto-preco { font-size: 1.2rem; color: var(--primary); font-weight: 900; margin-bottom: 12px; text-align: center; }
-        .produto-preco-old { text-decoration: line-through; color: #555; font-size: 0.7rem; margin-right: 4px; }
-
-        .avaliacao { display: flex; align-items: center; gap: 3px; margin-bottom: 10px; flex-wrap: wrap; justify-content: center; }
-        .estrela { color: #ffc107; font-size: 0.8rem; }
-        .nota { color: #aaa; font-size: 0.7rem; }
-
-        .btn-comprar { background: linear-gradient(135deg, #ff6b00, #ff8c00); color: #fff; border: none; padding: 10px 15px; border-radius: 8px; font-weight: 900; cursor: pointer; transition: 0.3s; text-transform: uppercase; width: 100%; font-size: 0.75rem; }
-        .btn-comprar:hover { background: linear-gradient(135deg, #ff8c00, #ffa500); transform: scale(1.02); }
-
-        #btnTopo { display: none; position: fixed; bottom: 100px; left: 20px; z-index: 99998; border: 2px solid var(--primary); background: rgba(0,0,0,0.9); color: var(--primary); cursor: pointer; width: 55px; height: 55px; border-radius: 50%; font-size: 24px; transition: 0.3s; align-items: center; justify-content: center; flex-direction: column; padding: 0; }
-        #btnTopo:hover { background: var(--primary); color: #000; }
-
-        #carrinho-flutuante { position: fixed; bottom: 100px; right: 20px; background: linear-gradient(135deg, #ff6b00, #ff8c00); width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 15px 40px rgba(255, 107, 0, 0.6); cursor: pointer; transition: 0.3s; font-size: 24px; color: #fff; border: none; padding: 0; }
-        #carrinho-flutuante:hover { transform: scale(1.1); }
-        .carrinho-badge { position: absolute; top: -5px; right: -5px; background: #ff0000; color: #fff; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.75rem; }
-
-        #modal-carrinho { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; z-index: 2000; justify-content: flex-end; align-items: flex-start; }
-        .carrinho-modal { width: 100%; max-width: 420px; height: 100%; max-height: 100vh; background: #0a0a0a; display: flex; flex-direction: column; border-left: 2px solid var(--primary); overflow: hidden; }
-        .carrinho-header { background: linear-gradient(135deg, #ff6b00, #ff8c00); padding: 18px; color: #fff; font-weight: bold; font-size: 1.2rem; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
-        .carrinho-header button { background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; padding: 4px; }
-        .carrinho-items { flex: 1; overflow-y: auto; padding: 15px; -webkit-overflow-scrolling: touch; }
-        .carrinho-item { background: #1a1a1a; padding: 12px; border-radius: 10px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #333; gap: 8px; }
-        .item-info { flex: 1; min-width: 0; }
-        .item-nome { font-weight: bold; margin-bottom: 4px; font-size: 0.9rem; word-break: break-word; }
-        .item-preco { color: var(--primary); font-weight: bold; font-size: 0.85rem; }
-        .item-remove { background: #ff4444; color: #fff; border: none; padding: 5px 8px; border-radius: 5px; cursor: pointer; font-size: 0.75rem; white-space: nowrap; flex-shrink: 0; }
-        .carrinho-footer { padding: 15px; border-top: 1px solid #333; flex-shrink: 0; }
-        .carrinho-total { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 1.2rem; font-weight: bold; }
-        .btn-finalizar { background: linear-gradient(135deg, #00ff88, #00cc6e); color: #000; border: none; padding: 12px; border-radius: 10px; font-weight: 900; cursor: pointer; text-transform: uppercase; width: 100%; font-size: 0.9rem; }
-        .btn-finalizar:hover { background: linear-gradient(135deg, #00cc6e, #00aa55); }
-        .carrinho-vazio { text-align: center; padding: 30px 15px; color: #666; }
-        .carrinho-vazio i { font-size: 2.5rem; margin-bottom: 15px; display: block; }
-
-        footer { text-align: center; padding: 30px 15px; color: #444; font-size: 0.8rem; border-top: 1px solid #111; }
-
-        @media (max-width: 768px) {
-            .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
-        }
-
-        @media (max-width: 480px) {
-            html { font-size: 14px; }
-            nav { padding: 10px 12px; }
-            .logo { font-size: 1rem; }
-            .nav-links { gap: 6px; }
-            .nav-links a { font-size: 0.65rem; }
-            
-            .hero-loja { height: 40vh; padding: 15px; margin-top: 50px; }
-            .hero-loja h1 { font-size: 2rem; margin-bottom: 10px; }
-            .hero-loja p { font-size: 0.9rem; }
-            
-            .container { padding: 20px 12px; }
-            .section-title { font-size: 1.5rem; margin: 20px 0; }
-            
-            .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-            .produto-img { height: 120px; font-size: 2.2rem; }
-            .produto-card { border-radius: 14px; }
-            .produto-info { padding: 16px; }
-            .produto-nome { font-size: 1.05rem; margin-bottom: 10px; font-weight: 800; }
-            .produto-desc { font-size: 0.9rem; margin-bottom: 12px; }
-            .produto-preco { font-size: 1.25rem; margin-bottom: 14px; font-weight: 900; }
-            .produto-preco-old { font-size: 0.8rem; }
-            .avaliacao { margin-bottom: 14px; }
-            .estrela { font-size: 1rem; }
-            .nota { font-size: 0.85rem; }
-            .btn-comprar { font-size: 0.85rem; padding: 12px; }
-            .filtros { gap: 10px; margin-bottom: 35px; }
-            .filtro-btn { padding: 10px 14px; font-size: 0.75rem; }
-            .carrinho-modal { width: 98%; max-height: 80vh; border-top: 2px solid var(--primary); border-left: none; }
-            .carrinho-header { padding: 18px; font-size: 1.2rem; }
-            .carrinho-item { padding: 14px; margin-bottom: 14px; }
-            .item-nome { font-size: 1rem; margin-bottom: 6px; }
-            .item-preco { font-size: 0.95rem; }
-            .item-remove { padding: 8px 12px; font-size: 0.8rem; }
-            .carrinho-total { font-size: 1.2rem; margin-bottom: 16px; }
-            .btn-finalizar { padding: 14px; font-size: 1rem; }
-            .carrinho-vazio i { font-size: 2.5rem; margin-bottom: 18px; }
-            .carrinho-vazio p { font-size: 1.05rem; }
-            
-            #btnTopo { bottom: 60px; left: 10px; width: 48px; height: 48px; font-size: 20px; }
-            #carrinho-flutuante { bottom: 60px; right: 10px; width: 48px; height: 48px; font-size: 20px; }
-            .carrinho-badge { width: 22px; height: 22px; font-size: 0.7rem; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loja Optimus Tech | Produtos e Upgrades</title>
+  <meta name="description" content="Loja Optimus Tech: celulares, SSDs, memórias RAM, periféricos, monitores e acessórios." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    :root{--bg:#030507;--text:#f5fff9;--muted:#9aa7a0;--primary:#00ff88;--blue:#00d5ff;--orange:#ff7a00;--line:rgba(255,255,255,.12);--glass:rgba(255,255,255,.065);--radius:26px;--shadow:0 24px 80px rgba(0,0,0,.48)}
+    *{box-sizing:border-box;margin:0;padding:0} html{scroll-behavior:smooth} body{font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at 15% 5%,rgba(0,255,136,.17),transparent 28rem),radial-gradient(circle at 85% 20%,rgba(255,122,0,.15),transparent 28rem),linear-gradient(180deg,#020303,#06100b 55%,#030507);color:var(--text);overflow-x:hidden;line-height:1.6}
+    body::before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:50px 50px;mask-image:linear-gradient(to bottom,#000,transparent 82%);z-index:-2;pointer-events:none}
+    a{color:inherit;text-decoration:none} button,input{font:inherit}
+    .shell{width:min(1180px,calc(100% - 32px));margin:auto}
+    .topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(2,5,5,.72);backdrop-filter:blur(22px);border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.04em}.brand-mark{width:42px;height:42px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(0,255,136,.28),rgba(255,122,0,.14));border:1px solid rgba(0,255,136,.34)}.brand b{color:var(--primary)}
+    .navlinks{display:flex;align-items:center;gap:8px}.navlinks a{color:#b8c4be;font-size:.82rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:10px 12px;border-radius:99px;transition:.25s}.navlinks a:hover{background:rgba(0,255,136,.10);color:var(--primary)}.iconlink{border:1px solid rgba(255,255,255,.12)!important}.hamb{display:none;background:transparent;color:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 12px}
+    .hero{min-height:74vh;display:grid;align-items:center;padding:126px 0 52px;position:relative;overflow:hidden}.hero::after{content:"";position:absolute;width:520px;height:520px;right:-190px;top:70px;border-radius:50%;background:radial-gradient(circle,rgba(255,122,0,.22),transparent 62%);filter:blur(4px);animation:pulse 6s ease-in-out infinite}@keyframes pulse{50%{transform:scale(1.13);opacity:.65}}
+    .hero-grid{display:grid;grid-template-columns:1fr .9fr;gap:34px;align-items:center}.eyebrow{display:inline-flex;gap:9px;align-items:center;padding:9px 13px;border-radius:99px;border:1px solid rgba(255,122,0,.28);background:rgba(255,122,0,.09);color:#ffe0c7;font:800 .78rem "JetBrains Mono";text-transform:uppercase;letter-spacing:.1em}.hero h1{font-size:clamp(2.6rem,7vw,6.2rem);line-height:.92;letter-spacing:-.07em;margin-top:20px;font-weight:900}.hero h1 span{color:var(--orange);text-shadow:0 0 40px rgba(255,122,0,.35)}.hero p{margin-top:20px;color:#bfd0c7;max-width:650px;font-size:1.12rem}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;padding:14px 18px;border-radius:17px;font-weight:900;text-transform:uppercase;letter-spacing:.035em;transition:.25s}.btn:hover{transform:translateY(-4px)}.btn-primary{background:linear-gradient(135deg,var(--orange),#ffb000);color:#160800;box-shadow:0 18px 50px rgba(255,122,0,.25)}.btn-secondary{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#fff}.hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
+    .deal-card{position:relative;z-index:1;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.045));border-radius:30px;padding:24px;box-shadow:var(--shadow);overflow:hidden}.deal-card::before{content:"";position:absolute;inset:-1px;background:radial-gradient(circle at 20% 10%,rgba(0,255,136,.22),transparent 38%);pointer-events:none}.deal-card>*{position:relative}.deal-icon{height:150px;border-radius:24px;display:grid;place-items:center;font-size:4rem;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.08);color:var(--primary)}.deal-card h3{font-size:1.6rem;margin-top:18px}.deal-price{font-size:2rem;font-weight:900;color:var(--primary)}.deal-price small{font-size:.9rem;text-decoration:line-through;color:#718078;margin-right:8px}
+    .toolbar{position:sticky;top:76px;z-index:800;background:rgba(3,5,7,.72);backdrop-filter:blur(18px);border-block:1px solid rgba(255,255,255,.08);padding:14px 0}.toolbar-row{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center}.search{position:relative}.search i{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted)}.search input{width:100%;padding:14px 16px 14px 44px;border-radius:17px;border:1px solid var(--line);background:rgba(0,0,0,.30);color:#fff;outline:none}.cart-mini{background:linear-gradient(135deg,var(--orange),#ffb000);color:#160800;border:0;border-radius:17px;padding:14px 18px;font-weight:900;cursor:pointer}
+    .filters{display:flex;gap:10px;overflow:auto;padding:16px 0 4px}.filter{flex:0 0 auto;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.10);color:#c9d6cf;padding:10px 14px;border-radius:99px;cursor:pointer;font-weight:800;font-size:.82rem}.filter.active,.filter:hover{background:linear-gradient(135deg,var(--primary),#b6ffda);color:#00160b;border-color:transparent}
+    .section{padding:58px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:24px}.kicker{font:800 .78rem "JetBrains Mono";color:var(--primary);text-transform:uppercase;letter-spacing:.12em}h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.03;letter-spacing:-.05em}.section-head p{max-width:480px;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.product{position:relative;border-radius:25px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.10);overflow:hidden;transition:.28s;min-height:390px;display:flex;flex-direction:column}.product:hover{transform:translateY(-8px);border-color:rgba(0,255,136,.4);box-shadow:0 22px 60px rgba(0,0,0,.34)}.product-img{height:162px;display:grid;place-items:center;font-size:3.5rem;background:radial-gradient(circle at 50% 45%,rgba(0,255,136,.18),rgba(255,255,255,.04));color:var(--primary);position:relative}.tag{position:absolute;top:12px;left:12px;border-radius:99px;padding:6px 9px;font-size:.68rem;font-weight:900;color:#150900;background:linear-gradient(135deg,#ffb000,var(--orange))}
+    .product-info{padding:18px;display:flex;flex-direction:column;flex:1}.product h3{font-size:1rem;line-height:1.25;margin-bottom:8px}.desc{color:#9eaaa4;font-size:.86rem;margin-bottom:12px}.rating{font-size:.8rem;color:#ffc857;margin-top:auto}.price{font-size:1.35rem;font-weight:900;color:var(--primary);margin:8px 0 14px}.price small{font-size:.75rem;text-decoration:line-through;color:#65746c;margin-right:6px}.buy{width:100%;background:linear-gradient(135deg,var(--orange),#ffb000);color:#190b00;border:0;border-radius:15px;padding:12px;font-weight:900;cursor:pointer;transition:.25s}.buy:hover{transform:scale(1.02)}
+    .drawer-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:2000;display:none}.drawer-backdrop.open{display:block}.drawer{position:absolute;right:0;top:0;width:min(440px,94vw);height:100%;background:#06100b;border-left:1px solid rgba(0,255,136,.25);box-shadow:var(--shadow);display:flex;flex-direction:column}.drawer-head{padding:20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.10)}.drawer-head button{background:transparent;border:0;color:#fff;font-size:1.5rem;cursor:pointer}.cart-items{padding:16px;overflow:auto;flex:1}.cart-item{display:flex;gap:12px;align-items:center;padding:13px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09);margin-bottom:12px}.cart-ico{width:48px;height:48px;border-radius:14px;background:rgba(0,255,136,.12);display:grid;place-items:center;color:var(--primary)}.cart-item h4{font-size:.9rem}.cart-item p{color:var(--primary);font-weight:900}.qty{display:flex;align-items:center;gap:7px;margin-left:auto}.qty button{width:28px;height:28px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;cursor:pointer}.drawer-foot{padding:18px;border-top:1px solid rgba(255,255,255,.10)}.total{display:flex;justify-content:space-between;font-size:1.35rem;font-weight:900;margin-bottom:14px}.empty{text-align:center;color:#839189;padding:48px 12px}.empty i{font-size:3rem;display:block;margin-bottom:12px}
+    .float{position:fixed;right:18px;bottom:18px;z-index:900;display:flex;flex-direction:column;gap:10px}.float a,.float button{width:56px;height:56px;border-radius:18px;border:1px solid rgba(255,255,255,.15);display:grid;place-items:center;background:rgba(4,8,7,.85);backdrop-filter:blur(16px);color:var(--primary);font-size:1.25rem;cursor:pointer}.float a{background:linear-gradient(135deg,#00ff88,#00cc6e);color:#00160b}
+    footer{padding:34px 0;color:#728078;border-top:1px solid rgba(255,255,255,.08);text-align:center}
+    @media(max-width:980px){.hero-grid{grid-template-columns:1fr}.grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:760px){.nav{height:68px}.hamb{display:block}.navlinks{position:fixed;top:74px;left:16px;right:16px;padding:14px;border-radius:22px;background:rgba(2,5,5,.95);border:1px solid rgba(255,255,255,.12);display:none;flex-direction:column;align-items:stretch}.navlinks.open{display:flex}.navlinks a{text-align:center}.toolbar{top:68px}.toolbar-row{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.section-head{display:block}.section-head p{margin-top:10px}.hero-actions .btn{width:100%}.product-img{height:132px}.product-info{padding:14px}.product{min-height:350px}}
+    @media(max-width:430px){.grid{grid-template-columns:1fr}.hero{min-height:80vh}.cart-mini{width:100%}}
+  </style>
 </head>
 <body>
-
-<button onclick="topo()" id="btnTopo"><i class="fas fa-arrow-up"></i></button>
-<button onclick="abrirCarrinho()" id="carrinho-flutuante">
-    <i class="fas fa-shopping-cart"></i>
-    <div class="carrinho-badge" id="carrinho-count">0</div>
-</button>
-
-<header>
-    <nav>
-        <div class="logo" onclick="window.location.href='index.html'">OPTIMUS TECH</div>
-        <div class="nav-links">
-            <a href="index.html">HOME</a>
-            <a href="index.html#mobile">SERVIÇOS</a>
-            <a href="index.html#agendar">AGENDAR</a>
-            <a href="index.html#faq">SUPORTE</a>
-            <a href="mailto:optimustech.support@gmail.com" class="nav-contact"><i class="far fa-envelope"></i></a>
-            <a href="https://wa.me/5542999112756" class="nav-contact" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        </div>
+  <header class="topbar">
+    <nav class="nav shell">
+      <a class="brand" href="index.html"><span class="brand-mark"><i class="fa-solid fa-microchip"></i></span><span>OPTIMUS <b>TECH</b></span></a>
+      <button class="hamb" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
+      <div class="navlinks" id="navLinks">
+        <a href="index.html">Home</a><a href="index.html#servicos">Serviços</a><a href="#produtos">Produtos</a><a href="index.html#agendar">Agendar</a>
+        <a class="iconlink" href="mailto:optimustech.support@gmail.com"><i class="fa-regular fa-envelope"></i></a>
+        <a class="iconlink" href="https://wa.me/5542999112756" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
     </nav>
-</header>
+  </header>
 
-<section class="hero-loja">
-    <h1>🛒 LOJA OPTIMUS</h1>
-    <p>Os melhores produtos para seu computador e celular</p>
-</section>
-
-<div class="container">
-    <div class="produtos-header">
-        <h2 class="section-title">Produtos</h2>
-    </div>
-    
-    <div class="filtros">
-        <button class="filtro-btn active" onclick="filtrar('todos')">Todos</button>
-        <button class="filtro-btn" onclick="filtrar('celulares')">Celulares</button>
-        <button class="filtro-btn" onclick="filtrar('acessorios-celular')">Acessórios Celular</button>
-        <button class="filtro-btn" onclick="filtrar('ssd')">SSD</button>
-        <button class="filtro-btn" onclick="filtrar('ram')">Memória RAM</button>
-        <button class="filtro-btn" onclick="filtrar('perifericos')">Periféricos</button>
-        <button class="filtro-btn" onclick="filtrar('monitores')">Monitores</button>
-        <button class="filtro-btn" onclick="filtrar('notebooks')">Notebooks</button>
-        <button class="filtro-btn" onclick="filtrar('acessorios')">Acessórios PC</button>
-    </div>
-
-    <div class="grid" id="produtos-grid"></div>
-</div>
-
-<div id="modal-carrinho" onclick="fecharCarrinho(event)">
-    <div class="carrinho-modal" onclick="event.stopPropagation()">
-        <div class="carrinho-header">
-            Meu Carrinho
-            <button onclick="fecharCarrinho()">✕</button>
+  <main>
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <span class="eyebrow"><i class="fa-solid fa-cart-shopping"></i> Loja Optimus</span>
+          <h1>Produtos para deixar seu setup <span>absurdo.</span></h1>
+          <p>Celulares, SSDs, memórias, periféricos e acessórios em uma vitrine moderna com carrinho direto para o WhatsApp.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#produtos">Ver produtos</a><a class="btn btn-secondary" href="index.html#agendar">Solicitar instalação</a></div>
         </div>
-        <div class="carrinho-items" id="carrinho-items">
-            <div class="carrinho-vazio">
-                <i class="fas fa-shopping-cart"></i>
-                <p>Seu carrinho está vazio</p>
-            </div>
+        <article class="deal-card">
+          <div class="deal-icon"><i class="fa-solid fa-hard-drive"></i></div>
+          <h3>Upgrade mais procurado</h3>
+          <p style="color:#aebbb4;margin:8px 0 10px">SSD + instalação para transformar PC lento em máquina responsiva.</p>
+          <div class="deal-price"><small>R$ 329</small>R$ 249</div>
+          <button class="btn btn-primary" onclick="addToCart(26)">Adicionar SSD 480GB</button>
+        </article>
+      </div>
+    </section>
+
+    <div class="toolbar">
+      <div class="shell">
+        <div class="toolbar-row">
+          <label class="search"><i class="fa-solid fa-magnifying-glass"></i><input id="searchInput" type="search" placeholder="Buscar produto, categoria ou upgrade..."></label>
+          <button class="cart-mini" onclick="openCart()"><i class="fa-solid fa-cart-shopping"></i> Carrinho <span id="cartCount">0</span></button>
         </div>
-        <div class="carrinho-footer">
-            <div class="carrinho-total">
-                <span>Total:</span>
-                <span id="carrinho-total">R$ 0,00</span>
-            </div>
-            <button class="btn-finalizar" onclick="finalizarCompra()">Finalizar</button>
-        </div>
+        <div class="filters" id="filters"></div>
+      </div>
     </div>
-</div>
 
-<footer>© 2026 OPTIMUS TECH - TODOS OS DIREITOS RESERVADOS</footer>
+    <section class="section shell" id="produtos">
+      <div class="section-head">
+        <div><span class="kicker">Catálogo</span><h2>Vitrine premium.</h2></div>
+        <p>Filtre, pesquise e monte seu pedido. A finalização abre o WhatsApp com tudo organizado.</p>
+      </div>
+      <div class="grid" id="grid"></div>
+    </section>
+  </main>
 
-<script>
-const produtos = [
-    {id: 1, nome: 'Samsung Galaxy A13 64GB Azul', categoria: 'celulares', preco: 799.00, precoAntigo: 999.00, descricao: 'Galaxy A13 64GB', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.6, reviews: 156},
-    {id: 2, nome: 'Samsung Galaxy A23 128GB Preto', categoria: 'celulares', preco: 1099.00, precoAntigo: 1399.00, descricao: 'Galaxy A23 128GB', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.7, reviews: 189},
-    {id: 3, nome: 'Samsung Galaxy A53 128GB Azul', categoria: 'celulares', preco: 1799.00, precoAntigo: 2199.00, descricao: 'Galaxy A53 128GB', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.8, reviews: 234},
-    {id: 4, nome: 'iPhone 13 128GB Branco', categoria: 'celulares', preco: 2799.00, precoAntigo: 3499.00, descricao: 'iPhone 13 128GB', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.9, reviews: 312},
-    {id: 5, nome: 'iPhone 14 128GB Preto', categoria: 'celulares', preco: 3499.00, precoAntigo: 4299.00, descricao: 'iPhone 14 128GB', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.9, reviews: 267},
-    {id: 6, nome: 'iPhone 15 128GB Azul', categoria: 'celulares', preco: 4299.00, precoAntigo: 5299.00, descricao: 'iPhone 15 128GB', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.9, reviews: 178},
-    {id: 7, nome: 'Xiaomi Redmi Note 11 128GB Cinza', categoria: 'celulares', preco: 999.00, precoAntigo: 1299.00, descricao: 'Redmi Note 11', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.7, reviews: 145},
-    {id: 8, nome: 'Motorola Moto G32 128GB Cinza', categoria: 'celulares', preco: 899.00, precoAntigo: 1199.00, descricao: 'Moto G32 128GB', icon: '<i class="fas fa-mobile-alt"></i>', avaliacao: 4.6, reviews: 123},
-    {id: 9, nome: 'Bateria Original Samsung A50', categoria: 'acessorios-celular', preco: 89.00, precoAntigo: 139.00, descricao: 'Bateria A50', icon: '<i class="fas fa-battery-half"></i>', avaliacao: 4.8, reviews: 234},
-    {id: 10, nome: 'Bateria Original iPhone 12', categoria: 'acessorios-celular', preco: 129.00, precoAntigo: 189.00, descricao: 'Bateria iPhone 12', icon: '<i class="fas fa-battery-half"></i>', avaliacao: 4.9, reviews: 178},
-    {id: 11, nome: 'Tela LCD Samsung A30 Display', categoria: 'acessorios-celular', preco: 149.00, precoAntigo: 229.00, descricao: 'Tela LCD A30', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.7, reviews: 156},
-    {id: 12, nome: 'Tela OLED iPhone 13', categoria: 'acessorios-celular', preco: 199.00, precoAntigo: 299.00, descricao: 'Tela OLED iPhone 13', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.9, reviews: 145},
-    {id: 13, nome: 'Carregador Rápido 65W USB-C', categoria: 'acessorios-celular', preco: 49.00, precoAntigo: 89.00, descricao: 'Carregador 65W', icon: '<i class="fas fa-plug"></i>', avaliacao: 4.8, reviews: 267},
-    {id: 14, nome: 'Carregador Wireless 15W Preto', categoria: 'acessorios-celular', preco: 39.00, precoAntigo: 79.00, descricao: 'Carregador Wireless', icon: '<i class="fas fa-plug"></i>', avaliacao: 4.7, reviews: 189},
-    {id: 15, nome: 'Fone Bluetooth Estéreo Preto', categoria: 'acessorios-celular', preco: 79.00, precoAntigo: 149.00, descricao: 'Fone Bluetooth', icon: '<i class="fas fa-headphones"></i>', avaliacao: 4.6, reviews: 198},
-    {id: 16, nome: 'Fone Bluetooth com Cancelamento Ruído', categoria: 'acessorios-celular', preco: 199.00, precoAntigo: 349.00, descricao: 'Fone ANC', icon: '<i class="fas fa-headphones"></i>', avaliacao: 4.9, reviews: 234},
-    {id: 17, nome: 'Cabo USB-C 2m Nylon Trançado', categoria: 'acessorios-celular', preco: 24.00, precoAntigo: 44.00, descricao: 'Cabo USB-C', icon: '<i class="fas fa-code-branch"></i>', avaliacao: 4.7, reviews: 312},
-    {id: 18, nome: 'Cabo Lightning 2m Certificado', categoria: 'acessorios-celular', preco: 34.00, precoAntigo: 64.00, descricao: 'Cabo Lightning', icon: '<i class="fas fa-code-branch"></i>', avaliacao: 4.8, reviews: 267},
-    {id: 19, nome: 'Capa de Silicone Transparente Celular', categoria: 'acessorios-celular', preco: 19.00, precoAntigo: 39.00, descricao: 'Capa Silicone', icon: '<i class="fas fa-shield-alt"></i>', avaliacao: 4.5, reviews: 178},
-    {id: 20, nome: 'Película de Vidro Temperado 9H', categoria: 'acessorios-celular', preco: 14.00, precoAntigo: 29.00, descricao: 'Película 9H', icon: '<i class="fas fa-square"></i>', avaliacao: 4.8, reviews: 289},
-    {id: 21, nome: 'Memória RAM 8GB DDR5 5600MHz', categoria: 'ram', preco: 189.00, precoAntigo: 249.00, descricao: 'DDR5 8GB 5600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.9, reviews: 187},
-    {id: 22, nome: 'Memória RAM 16GB DDR5 5600MHz', categoria: 'ram', preco: 349.00, precoAntigo: 449.00, descricao: 'DDR5 16GB 5600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.9, reviews: 156},
-    {id: 23, nome: 'Memória RAM 32GB DDR5 5600MHz', categoria: 'ram', preco: 689.00, precoAntigo: 899.00, descricao: 'DDR5 32GB 5600MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.8, reviews: 89},
-    {id: 24, nome: 'Memória RAM 8GB DDR4 3200MHz', categoria: 'ram', preco: 149.00, precoAntigo: 199.00, descricao: 'DDR4 8GB 3200MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.8, reviews: 312},
-    {id: 25, nome: 'Memória RAM 16GB DDR4 3200MHz', categoria: 'ram', preco: 269.00, precoAntigo: 369.00, descricao: 'DDR4 16GB 3200MHz', icon: '<i class="fas fa-memory"></i>', avaliacao: 4.8, reviews: 267},
-    {id: 26, nome: 'Unidade SSD 480GB SATA III', categoria: 'ssd', preco: 249.00, precoAntigo: 329.00, descricao: 'SSD 480GB SATA', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.8, reviews: 312},
-    {id: 27, nome: 'Unidade SSD 1TB SATA III', categoria: 'ssd', preco: 499.00, precoAntigo: 699.00, descricao: 'SSD 1TB SATA', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 267},
-    {id: 28, nome: 'Unidade SSD 500GB NVMe PCIe 3.0', categoria: 'ssd', preco: 299.00, precoAntigo: 399.00, descricao: 'NVMe 500GB', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 234},
-    {id: 29, nome: 'Unidade SSD 1TB NVMe PCIe 4.0', categoria: 'ssd', preco: 699.00, precoAntigo: 949.00, descricao: 'NVMe 1TB PCIe 4.0', icon: '<i class="fas fa-hdd"></i>', avaliacao: 4.9, reviews: 267},
-    {id: 30, nome: 'Teclado Mecânico RGB Switches Azuis', categoria: 'perifericos', preco: 199.00, precoAntigo: 299.00, descricao: 'Teclado Mecânico', icon: '<i class="fas fa-keyboard"></i>', avaliacao: 4.8, reviews: 267},
-    {id: 31, nome: 'Mouse Gamer RGB 12000 DPI', categoria: 'perifericos', preco: 149.00, precoAntigo: 229.00, descricao: 'Mouse Gamer 12K', icon: '<i class="fas fa-mouse"></i>', avaliacao: 4.9, reviews: 312},
-    {id: 32, nome: 'Mouse Sem Fio Wireless', categoria: 'perifericos', preco: 69.00, precoAntigo: 119.00, descricao: 'Mouse Wireless', icon: '<i class="fas fa-mouse"></i>', avaliacao: 4.7, reviews: 234},
-    {id: 33, nome: 'Monitor LED 24 Full HD', categoria: 'monitores', preco: 599.00, precoAntigo: 799.00, descricao: 'Monitor 24" Full HD', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.7, reviews: 289},
-    {id: 34, nome: 'Monitor LED 27 2K', categoria: 'monitores', preco: 899.00, precoAntigo: 1199.00, descricao: 'Monitor 27" 2K', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.8, reviews: 178},
-    {id: 35, nome: 'Monitor Gamer 27 165Hz', categoria: 'monitores', preco: 1199.00, precoAntigo: 1599.00, descricao: 'Monitor Gaming', icon: '<i class="fas fa-tv"></i>', avaliacao: 4.9, reviews: 189},
-    {id: 36, nome: 'Notebook Intel Core i5 8GB RAM', categoria: 'notebooks', preco: 2499.00, precoAntigo: 3299.00, descricao: 'Notebook i5', icon: '<i class="fas fa-laptop"></i>', avaliacao: 4.7, reviews: 178},
-    {id: 37, nome: 'Notebook Intel Core i7 16GB RAM', categoria: 'notebooks', preco: 3799.00, precoAntigo: 4999.00, descricao: 'Notebook i7', icon: '<i class="fas fa-laptop"></i>', avaliacao: 4.8, reviews: 145},
-    {id: 38, nome: 'Notebook Gamer RTX 3050', categoria: 'notebooks', preco: 4999.00, precoAntigo: 6499.00, descricao: 'Notebook Gamer', icon: '<i class="fas fa-laptop"></i>', avaliacao: 4.9, reviews: 198},
-    {id: 39, nome: 'Pasta Térmica Arctic MX-6 2g', categoria: 'acessorios', preco: 49.00, precoAntigo: 69.00, descricao: 'Pasta Arctic', icon: '<i class="fas fa-droplet"></i>', avaliacao: 4.8, reviews: 345},
-    {id: 40, nome: 'Cooler Processador LED RGB', categoria: 'acessorios', preco: 99.00, precoAntigo: 149.00, descricao: 'Cooler RGB', icon: '<i class="fas fa-fan"></i>', avaliacao: 4.7, reviews: 145},
-    {id: 41, nome: 'Mousepad RGB Grande 80cm', categoria: 'acessorios', preco: 149.00, precoAntigo: 229.00, descricao: 'Mousepad RGB', icon: '<i class="fas fa-square"></i>', avaliacao: 4.8, reviews: 267},
-    {id: 42, nome: 'Hub USB 3.0 com 7 Portas', categoria: 'acessorios', preco: 99.00, precoAntigo: 159.00, descricao: 'Hub USB 7P', icon: '<i class="fas fa-plug"></i>', avaliacao: 4.7, reviews: 178},
-    {id: 43, nome: 'Cabo HDMI 2.0 4K Premium 2m', categoria: 'acessorios', preco: 49.00, precoAntigo: 79.00, descricao: 'Cabo HDMI', icon: '<i class="fas fa-arrow-right"></i>', avaliacao: 4.7, reviews: 189},
-    {id: 44, nome: 'Kit Limpeza Profissional Completo', categoria: 'acessorios', preco: 89.00, precoAntigo: 139.00, descricao: 'Kit Limpeza', icon: '<i class="fas fa-broom"></i>', avaliacao: 4.7, reviews: 289},
-];
+  <div class="drawer-backdrop" id="cartBackdrop" onclick="closeCart(event)">
+    <aside class="drawer" onclick="event.stopPropagation()">
+      <div class="drawer-head"><h3>Meu carrinho</h3><button onclick="closeCart()">×</button></div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="drawer-foot">
+        <div class="total"><span>Total</span><span id="cartTotal">R$ 0,00</span></div>
+        <button class="btn btn-primary" style="width:100%" onclick="checkout()"><i class="fa-brands fa-whatsapp"></i> Finalizar pelo WhatsApp</button>
+      </div>
+    </aside>
+  </div>
 
-let carrinho = [];
-let lastScrollTop = 0;
+  <div class="float">
+    <a href="https://wa.me/5542999112756?text=Olá! Vim pela loja da Optimus Tech." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
+    <button onclick="scrollTo({top:0,behavior:'smooth'})"><i class="fa-solid fa-arrow-up"></i></button>
+  </div>
 
-window.addEventListener('scroll', () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const btnTopo = document.getElementById('btnTopo');
-    
-    if (scrollTop > 200) {
-        btnTopo.style.display = 'flex';
-    } else {
-        btnTopo.style.display = 'none';
+  <footer><div class="shell">© 2026 OPTIMUS TECH — Loja, peças e upgrades com atendimento direto.</div></footer>
+
+  <script>
+    const WHATSAPP = "5542999112756";
+    const categories = [
+      ["todos","Todos"],["celulares","Celulares"],["acessorios-celular","Acessórios Mobile"],["ssd","SSD"],["ram","Memória RAM"],["perifericos","Periféricos"],["monitores","Monitores"],["notebooks","Notebooks"],["acessorios","Acessórios PC"]
+    ];
+    const products = [
+      {id:1,nome:"Samsung Galaxy A13 64GB Azul",cat:"celulares",preco:799,old:999,desc:"Galaxy A13 64GB",icon:"fa-mobile-screen-button",rate:4.6,reviews:156},
+      {id:2,nome:"Samsung Galaxy A23 128GB Preto",cat:"celulares",preco:1099,old:1399,desc:"Galaxy A23 128GB",icon:"fa-mobile-screen-button",rate:4.7,reviews:189},
+      {id:3,nome:"Samsung Galaxy A53 128GB Azul",cat:"celulares",preco:1799,old:2199,desc:"Galaxy A53 128GB",icon:"fa-mobile-screen-button",rate:4.8,reviews:234},
+      {id:4,nome:"iPhone 13 128GB Branco",cat:"celulares",preco:2799,old:3499,desc:"iPhone 13 128GB",icon:"fa-mobile-screen-button",rate:4.9,reviews:312},
+      {id:5,nome:"iPhone 14 128GB Preto",cat:"celulares",preco:3499,old:4299,desc:"iPhone 14 128GB",icon:"fa-mobile-screen-button",rate:4.9,reviews:267},
+      {id:6,nome:"iPhone 15 128GB Azul",cat:"celulares",preco:4299,old:5299,desc:"iPhone 15 128GB",icon:"fa-mobile-screen-button",rate:4.9,reviews:178},
+      {id:7,nome:"Xiaomi Redmi Note 11 128GB",cat:"celulares",preco:999,old:1299,desc:"Redmi Note 11",icon:"fa-mobile-screen-button",rate:4.7,reviews:145},
+      {id:8,nome:"Motorola Moto G32 128GB",cat:"celulares",preco:899,old:1199,desc:"Moto G32 128GB",icon:"fa-mobile-screen-button",rate:4.6,reviews:123},
+      {id:9,nome:"Bateria Original Samsung A50",cat:"acessorios-celular",preco:89,old:139,desc:"Bateria A50",icon:"fa-battery-half",rate:4.8,reviews:234},
+      {id:10,nome:"Bateria Original iPhone 12",cat:"acessorios-celular",preco:129,old:189,desc:"Bateria iPhone 12",icon:"fa-battery-half",rate:4.9,reviews:178},
+      {id:11,nome:"Tela LCD Samsung A30 Display",cat:"acessorios-celular",preco:149,old:229,desc:"Tela LCD A30",icon:"fa-tv",rate:4.7,reviews:156},
+      {id:12,nome:"Tela OLED iPhone 13",cat:"acessorios-celular",preco:199,old:299,desc:"Tela OLED",icon:"fa-tv",rate:4.9,reviews:145},
+      {id:13,nome:"Carregador Rápido 65W USB-C",cat:"acessorios-celular",preco:49,old:89,desc:"Carregador 65W",icon:"fa-plug",rate:4.8,reviews:267},
+      {id:14,nome:"Carregador Wireless 15W",cat:"acessorios-celular",preco:39,old:79,desc:"Wireless 15W",icon:"fa-plug-circle-bolt",rate:4.7,reviews:189},
+      {id:15,nome:"Fone Bluetooth Estéreo Preto",cat:"acessorios-celular",preco:79,old:149,desc:"Fone Bluetooth",icon:"fa-headphones",rate:4.6,reviews:198},
+      {id:16,nome:"Fone Bluetooth com Cancelamento",cat:"acessorios-celular",preco:199,old:349,desc:"Fone ANC",icon:"fa-headphones",rate:4.9,reviews:234},
+      {id:17,nome:"Cabo USB-C 2m Nylon Trançado",cat:"acessorios-celular",preco:24,old:44,desc:"Cabo reforçado",icon:"fa-code-branch",rate:4.7,reviews:312},
+      {id:18,nome:"Cabo Lightning 2m Certificado",cat:"acessorios-celular",preco:34,old:64,desc:"Cabo Lightning",icon:"fa-code-branch",rate:4.8,reviews:267},
+      {id:19,nome:"Capa de Silicone Transparente",cat:"acessorios-celular",preco:19,old:39,desc:"Capa silicone",icon:"fa-shield-halved",rate:4.5,reviews:178},
+      {id:20,nome:"Película de Vidro Temperado 9H",cat:"acessorios-celular",preco:14,old:29,desc:"Película 9H",icon:"fa-square",rate:4.8,reviews:289},
+      {id:21,nome:"Memória RAM 8GB DDR5 5600MHz",cat:"ram",preco:189,old:249,desc:"DDR5 8GB",icon:"fa-memory",rate:4.9,reviews:187},
+      {id:22,nome:"Memória RAM 16GB DDR5 5600MHz",cat:"ram",preco:349,old:449,desc:"DDR5 16GB",icon:"fa-memory",rate:4.9,reviews:156},
+      {id:23,nome:"Memória RAM 32GB DDR5 5600MHz",cat:"ram",preco:689,old:899,desc:"DDR5 32GB",icon:"fa-memory",rate:4.8,reviews:89},
+      {id:24,nome:"Memória RAM 8GB DDR4 3200MHz",cat:"ram",preco:149,old:199,desc:"DDR4 8GB",icon:"fa-memory",rate:4.8,reviews:312},
+      {id:25,nome:"Memória RAM 16GB DDR4 3200MHz",cat:"ram",preco:269,old:369,desc:"DDR4 16GB",icon:"fa-memory",rate:4.8,reviews:267},
+      {id:26,nome:"Unidade SSD 480GB SATA III",cat:"ssd",preco:249,old:329,desc:"SSD 480GB SATA",icon:"fa-hard-drive",rate:4.8,reviews:312},
+      {id:27,nome:"Unidade SSD 1TB SATA III",cat:"ssd",preco:499,old:699,desc:"SSD 1TB SATA",icon:"fa-hard-drive",rate:4.9,reviews:267},
+      {id:28,nome:"Unidade SSD 500GB NVMe PCIe 3.0",cat:"ssd",preco:299,old:399,desc:"NVMe 500GB",icon:"fa-hard-drive",rate:4.9,reviews:234},
+      {id:29,nome:"Unidade SSD 1TB NVMe PCIe 4.0",cat:"ssd",preco:699,old:949,desc:"NVMe 1TB",icon:"fa-hard-drive",rate:4.9,reviews:267},
+      {id:30,nome:"Teclado Mecânico RGB Switch Azul",cat:"perifericos",preco:199,old:299,desc:"Teclado mecânico",icon:"fa-keyboard",rate:4.8,reviews:267},
+      {id:31,nome:"Mouse Gamer RGB 12000 DPI",cat:"perifericos",preco:149,old:229,desc:"Mouse gamer",icon:"fa-computer-mouse",rate:4.9,reviews:312},
+      {id:32,nome:"Mouse Sem Fio Wireless",cat:"perifericos",preco:69,old:119,desc:"Mouse wireless",icon:"fa-computer-mouse",rate:4.7,reviews:234},
+      {id:33,nome:"Monitor LED 24 Full HD",cat:"monitores",preco:599,old:799,desc:"Monitor 24”",icon:"fa-display",rate:4.7,reviews:289},
+      {id:34,nome:"Monitor LED 27 2K",cat:"monitores",preco:899,old:1199,desc:"Monitor 27” 2K",icon:"fa-display",rate:4.8,reviews:178},
+      {id:35,nome:"Monitor Gamer 27 165Hz",cat:"monitores",preco:1199,old:1599,desc:"165Hz gamer",icon:"fa-display",rate:4.9,reviews:189},
+      {id:36,nome:"Notebook Intel Core i5 8GB RAM",cat:"notebooks",preco:2499,old:3299,desc:"Notebook i5",icon:"fa-laptop",rate:4.7,reviews:178},
+      {id:37,nome:"Notebook Intel Core i7 16GB RAM",cat:"notebooks",preco:3799,old:4999,desc:"Notebook i7",icon:"fa-laptop",rate:4.8,reviews:145},
+      {id:38,nome:"Notebook Gamer RTX 3050",cat:"notebooks",preco:4999,old:6499,desc:"Gamer RTX",icon:"fa-laptop",rate:4.9,reviews:198},
+      {id:39,nome:"Pasta Térmica Arctic MX-6 2g",cat:"acessorios",preco:49,old:69,desc:"Pasta térmica",icon:"fa-droplet",rate:4.8,reviews:345},
+      {id:40,nome:"Cooler Processador LED RGB",cat:"acessorios",preco:99,old:149,desc:"Cooler RGB",icon:"fa-fan",rate:4.7,reviews:145},
+      {id:41,nome:"Mousepad RGB Grande 80cm",cat:"acessorios",preco:149,old:229,desc:"Mousepad RGB",icon:"fa-square",rate:4.8,reviews:267},
+      {id:42,nome:"Hub USB 3.0 com 7 Portas",cat:"acessorios",preco:99,old:159,desc:"Hub USB",icon:"fa-plug",rate:4.7,reviews:178},
+      {id:43,nome:"Cabo HDMI 2.0 4K Premium 2m",cat:"acessorios",preco:49,old:79,desc:"HDMI 4K",icon:"fa-right-left",rate:4.7,reviews:189},
+      {id:44,nome:"Kit Limpeza Profissional Completo",cat:"acessorios",preco:89,old:139,desc:"Kit limpeza",icon:"fa-broom",rate:4.7,reviews:289}
+    ];
+
+    let activeCat = "todos";
+    let cart = JSON.parse(localStorage.getItem("optimusCart") || "[]");
+    const fmt = v => v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+
+    function renderFilters(){
+      const wrap = document.getElementById("filters");
+      wrap.innerHTML = categories.map(([id,label])=>`<button class="filter ${activeCat===id?'active':''}" onclick="setCat('${id}')">${label}</button>`).join("");
     }
-    
-    lastScrollTop = scrollTop;
-});
-
-function renderProdutos(categoria = 'todos') {
-    const grid = document.getElementById('produtos-grid');
-    grid.innerHTML = '';
-    
-    const produtosFiltrados = categoria === 'todos' ? produtos : produtos.filter(p => p.categoria === categoria);
-    
-    produtosFiltrados.forEach(produto => {
-        const stars = '⭐'.repeat(Math.floor(produto.avaliacao));
-        grid.innerHTML += `<div class="produto-card"><div class="produto-img">${produto.icon}</div><div class="produto-info"><div class="produto-nome">${produto.nome}</div><div class="produto-desc">${produto.descricao}</div><div class="produto-preco"><span class="produto-preco-old">R$ ${produto.precoAntigo.toFixed(2)}</span>R$ ${produto.preco.toFixed(2)}</div><div class="avaliacao"><span class="estrela">${stars}</span><span class="nota">(${produto.reviews})</span></div><button class="btn-comprar" onclick="adicionarAoCarrinho(${produto.id})">Comprar</button></div></div>`;
-    });
-}
-
-function filtrar(categoria) {
-    document.querySelectorAll('.filtro-btn').forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-    renderProdutos(categoria);
-}
-
-function adicionarAoCarrinho(produtoId) {
-    const produto = produtos.find(p => p.id === produtoId);
-    const itemExistente = carrinho.find(c => c.id === produtoId);
-    
-    if (itemExistente) {
-        itemExistente.quantidade++;
-    } else {
-        carrinho.push({...produto, quantidade: 1});
+    function renderProducts(){
+      const q = document.getElementById("searchInput").value.toLowerCase().trim();
+      const list = products.filter(p => (activeCat==="todos" || p.cat===activeCat) && (`${p.nome} ${p.desc} ${p.cat}`.toLowerCase().includes(q)));
+      document.getElementById("grid").innerHTML = list.map(p=>`
+        <article class="product">
+          <div class="product-img"><span class="tag">-${Math.max(1,Math.round((1-p.preco/p.old)*100))}%</span><i class="fa-solid ${p.icon}"></i></div>
+          <div class="product-info">
+            <h3>${p.nome}</h3><p class="desc">${p.desc}</p>
+            <div class="rating">${"★".repeat(Math.round(p.rate))} <span style="color:#91a098">(${p.reviews})</span></div>
+            <div class="price"><small>${fmt(p.old)}</small>${fmt(p.preco)}</div>
+            <button class="buy" onclick="addToCart(${p.id}, this)">Comprar</button>
+          </div>
+        </article>`).join("") || `<div class="empty" style="grid-column:1/-1"><i class="fa-solid fa-magnifying-glass"></i><p>Nenhum produto encontrado.</p></div>`;
     }
-    
-    atualizarCarrinho();
-    
-    const btn = event.target;
-    const originalText = btn.textContent;
-    btn.textContent = '✓ Adicionado!';
-    btn.style.background = 'linear-gradient(135deg, #00ff88, #00cc6e)';
-    setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.background = 'linear-gradient(135deg, #ff6b00, #ff8c00)';
-    }, 1500);
-}
-
-function removerDoCarrinho(produtoId) {
-    carrinho = carrinho.filter(c => c.id !== produtoId);
-    atualizarCarrinho();
-}
-
-function atualizarCarrinho() {
-    const total = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
-    document.getElementById('carrinho-count').textContent = total;
-    renderCarrinho();
-}
-
-function renderCarrinho() {
-    const container = document.getElementById('carrinho-items');
-    const total = carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0);
-    
-    if (carrinho.length === 0) {
-        container.innerHTML = `<div class="carrinho-vazio"><i class="fas fa-shopping-cart"></i><p>Seu carrinho está vazio</p></div>`;
-        document.getElementById('carrinho-total').textContent = 'R$ 0,00';
-        return;
+    function setCat(id){activeCat=id;renderFilters();renderProducts();}
+    function addToCart(id, btn){
+      const p = products.find(x=>x.id===id); const item = cart.find(x=>x.id===id);
+      item ? item.qty++ : cart.push({...p, qty:1});
+      saveCart();
+      if(btn){const old=btn.textContent;btn.textContent="✓ Adicionado";setTimeout(()=>btn.textContent=old,900);}
     }
-    
-    container.innerHTML = carrinho.map(item => `<div class="carrinho-item"><div class="item-info"><div class="item-nome">${item.nome}</div><div class="item-preco">R$ ${item.preco.toFixed(2)} x${item.quantidade}</div></div><button class="item-remove" onclick="removerDoCarrinho(${item.id})">✕</button></div>`).join('');
-    
-    document.getElementById('carrinho-total').textContent = `R$ ${total.toFixed(2)}`;
-}
-
-function abrirCarrinho() {
-    document.getElementById('modal-carrinho').style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
-
-function fecharCarrinho(e) {
-    if (e && e.target.id !== 'modal-carrinho') return;
-    document.getElementById('modal-carrinho').style.display = 'none';
-    document.body.style.overflow = 'auto';
-}
-
-function finalizarCompra() {
-    if (carrinho.length === 0) {
-        alert('Carrinho vazio!');
-        return;
+    function changeQty(id, delta){
+      const item = cart.find(x=>x.id===id); if(!item) return;
+      item.qty += delta; if(item.qty<=0) cart = cart.filter(x=>x.id!==id);
+      saveCart();
     }
-    
-    const total = carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0);
-    const itens = carrinho.map(c => `${c.nome} (${c.quantidade}x) - R$ ${(c.preco * c.quantidade).toFixed(2)}`).join('\n');
-    const mensagem = `Olá! Gostaria de comprar:\n\n${itens}\n\n*TOTAL: R$ ${total.toFixed(2)}*\n\nPor favor, confirme a disponibilidade e o prazo de entrega.`;
-    
-    window.open(`https://wa.me/5542999112756?text=${encodeURIComponent(mensagem)}`, '_blank');
-    
-    carrinho = [];
-    atualizarCarrinho();
-    fecharCarrinho();
-}
-
-function topo() { 
-    window.scrollTo({top: 0, behavior: 'smooth'}); 
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    renderProdutos();
-});
-
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        fecharCarrinho();
+    function saveCart(){localStorage.setItem("optimusCart",JSON.stringify(cart));renderCart();}
+    function renderCart(){
+      const count = cart.reduce((a,b)=>a+b.qty,0); document.getElementById("cartCount").textContent = count;
+      const total = cart.reduce((a,b)=>a+b.preco*b.qty,0); document.getElementById("cartTotal").textContent = fmt(total);
+      document.getElementById("cartItems").innerHTML = cart.length ? cart.map(i=>`
+        <div class="cart-item"><div class="cart-ico"><i class="fa-solid ${i.icon}"></i></div>
+          <div><h4>${i.nome}</h4><p>${fmt(i.preco)} · ${i.qty} un.</p></div>
+          <div class="qty"><button onclick="changeQty(${i.id},-1)">−</button><b>${i.qty}</b><button onclick="changeQty(${i.id},1)">+</button></div>
+        </div>`).join("") : `<div class="empty"><i class="fa-solid fa-cart-shopping"></i><p>Seu carrinho está vazio.</p></div>`;
     }
-});
-
-document.addEventListener('click', (e) => {
-    const modal = document.getElementById('modal-carrinho');
-    if (!modal.contains(e.target) && e.target.id !== 'carrinho-flutuante') {
-        modal.style.display = 'none';
+    function openCart(){document.getElementById("cartBackdrop").classList.add("open")}
+    function closeCart(e){if(e && e.target.id!=="cartBackdrop") return;document.getElementById("cartBackdrop").classList.remove("open")}
+    function checkout(){
+      if(!cart.length) return alert("Seu carrinho está vazio.");
+      const total = cart.reduce((a,b)=>a+b.preco*b.qty,0);
+      const itens = cart.map(i=>`• ${i.qty}x ${i.nome} — ${fmt(i.preco*i.qty)}`).join("%0A");
+      const msg = `Olá! Vim pela loja da Optimus Tech e gostaria de comprar:%0A%0A${itens}%0A%0ATotal: ${fmt(total)}%0A%0APode confirmar disponibilidade e entrega?`;
+      window.open(`https://wa.me/${WHATSAPP}?text=${msg}`,"_blank");
     }
-});
-</script>
 
+    document.getElementById("searchInput").addEventListener("input", renderProducts);
+    document.getElementById("menuBtn").addEventListener("click",()=>document.getElementById("navLinks").classList.toggle("open"));
+    document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("cartBackdrop").classList.remove("open")});
+    renderFilters(); renderProducts(); renderCart();
+  </script>
 </body>
 </html>
