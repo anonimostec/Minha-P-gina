@@ -2,8 +2,9 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
+  <meta name="theme-color" content="#05030d" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Optimus Tech | Assistência Técnica Premium</title>
+  <title>NEXOR | Engenharia de Software & Sistemas</title>
   <meta name="description" content="Assistência técnica, consultoria, manutenção, upgrades e aulas de tecnologia em Guarapuava e online." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,26 +74,6 @@
       z-index:-1;pointer-events:none;
     }
     @keyframes drift{to{transform:translate3d(80px,70px,0)}}
-    .preloader{
-      position:fixed;inset:0;background:radial-gradient(circle at center, #062014 0%, #020303 48%, #000 100%);z-index:9999;
-      display:grid;place-items:center;overflow:hidden;
-      animation:hideLoader .75s ease 2.65s forwards;
-    }
-    .unlock-stage{position:relative;width:min(420px,88vw);height:520px;display:grid;place-items:center;font-family:"JetBrains Mono",monospace}
-    .unlock-stage::before{content:"ACESSO OPTIMUS";position:absolute;top:42px;left:0;right:0;text-align:center;color:rgba(166,255,210,.72);font-weight:900;letter-spacing:.22em;font-size:.82rem;text-transform:uppercase;animation:accessBlink 1.1s steps(2,end) infinite}
-    .unlock-key{position:absolute;top:34px;left:50%;transform:translateX(-50%);font-size:4.4rem;color:var(--primary);filter:drop-shadow(0 0 28px rgba(0,255,136,.75));animation:keyDrop 2.05s cubic-bezier(.7,.02,.18,1) forwards}
-    .unlock-lock{position:absolute;bottom:82px;left:50%;transform:translateX(-50%);width:148px;height:116px;border-radius:24px;background:linear-gradient(180deg,rgba(0,255,136,.92),rgba(0,150,80,.92));box-shadow:0 0 55px rgba(0,255,136,.42),inset 0 0 20px rgba(255,255,255,.16);animation:lockOpen .65s ease 2.03s forwards}
-    .unlock-lock::before{content:"";position:absolute;left:27px;top:-82px;width:94px;height:90px;border:16px solid rgba(0,255,136,.94);border-bottom:0;border-radius:58px 58px 0 0;filter:drop-shadow(0 0 24px rgba(0,255,136,.55));transform-origin:18px 78px;animation:shackleOpen .68s ease 2.05s forwards}
-    .unlock-lock::after{content:"";position:absolute;left:50%;top:45%;width:22px;height:22px;border-radius:50%;background:#04100a;transform:translate(-50%,-50%);box-shadow:0 25px 0 -6px #04100a}
-    .unlock-text{position:absolute;bottom:22px;left:0;right:0;text-align:center;color:#dfffee;font-weight:900;letter-spacing:.12em;text-transform:uppercase;text-shadow:0 0 24px rgba(0,255,136,.75);animation:textUnlock 2.65s ease forwards}
-    .unlock-flash{position:absolute;inset:-20%;background:radial-gradient(circle,rgba(0,255,136,.34),transparent 42%);opacity:0;animation:unlockFlash .55s ease 2.08s forwards}
-    @keyframes accessBlink{50%{opacity:.35}}
-    @keyframes keyDrop{0%{top:-130px;transform:translateX(-50%) rotate(-18deg) scale(.9);opacity:0}24%{opacity:1}72%{top:206px;transform:translateX(-50%) rotate(0) scale(1)}82%{top:190px}100%{top:206px;transform:translateX(-50%) rotate(0) scale(.92)}}
-    @keyframes shackleOpen{to{transform:rotate(-42deg) translate(-9px,-8px)}}
-    @keyframes lockOpen{55%{transform:translateX(-50%) scale(1.08)}100%{transform:translateX(-50%) scale(.94);opacity:.72}}
-    @keyframes unlockFlash{0%{opacity:0}45%{opacity:1}100%{opacity:0}}
-    @keyframes textUnlock{0%,74%{content:"VALIDANDO CHAVE";opacity:.75}100%{opacity:1}}
-    @keyframes hideLoader{to{opacity:0;visibility:hidden;pointer-events:none}}
     .topbar{
       position:fixed;top:0;left:0;right:0;z-index:1000;
       background:rgba(2,5,5,.72);backdrop-filter:blur(22px);
@@ -275,53 +256,66 @@
       .hero{padding-top:106px}.hero-actions .btn{width:100%}
       .terminal-body{font-size:.78rem;padding:16px}
     }
-  
 
-    /* === V9: abertura CPU/labirinto === */
-    .cpu-loader{animation:hideLoader .8s ease 5.85s forwards;background:radial-gradient(circle at 50% 45%,rgba(0,255,136,.16),#010403 58%,#000 100%)}
-    .cpu-boot{position:relative;width:min(1080px,94vw);height:min(640px,82vh);border:1px solid rgba(0,255,136,.18);border-radius:34px;background:linear-gradient(180deg,rgba(0,255,136,.08),rgba(0,0,0,.72));box-shadow:0 0 90px rgba(0,255,136,.18), inset 0 0 60px rgba(0,255,136,.06);overflow:hidden;font-family:"JetBrains Mono",monospace}
-    .cpu-boot::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,255,136,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,136,.055) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(circle at center,#000 30%,transparent 82%)}
-    .cpu-boot::after{content:"";position:absolute;inset:-20%;background:conic-gradient(from 90deg,transparent,rgba(0,255,136,.16),transparent 34%);animation:radarSweep 3.8s linear infinite;opacity:.65}
-    .boot-topline{position:absolute;top:24px;left:26px;right:26px;z-index:3;color:#baffdd;font-size:clamp(.72rem,2.2vw,.95rem);font-weight:900;letter-spacing:.22em;text-align:center;text-shadow:0 0 20px rgba(0,255,136,.8)}
-    .circuit-board{position:absolute;inset:40px 18px 96px;z-index:2;filter:drop-shadow(0 0 16px rgba(0,255,136,.22))}
-    .trace{fill:none;stroke-linecap:round;stroke-linejoin:round}.trace-base{stroke:rgba(0,255,136,.15);stroke-width:16}.trace-live{stroke:url(#traceGrad);stroke-width:8;stroke-dasharray:1450;stroke-dashoffset:1450;filter:url(#glow);animation:drawCircuit 4.8s cubic-bezier(.6,.02,.1,1) .3s forwards}.pulse-dot{fill:#9dffd0;filter:url(#glow);opacity:0;animation:dotOn .25s ease .4s forwards, dotOff .35s ease 5.3s forwards}
-    .chip rect{fill:rgba(0,18,10,.92);stroke:rgba(0,255,136,.6);stroke-width:3;filter:url(#glow);animation:chipBoot .45s ease forwards;opacity:.35}.chip text{fill:#dffff0;font-size:26px;font-weight:900;text-anchor:middle;dominant-baseline:middle;letter-spacing:.08em;opacity:.75}.chip-cpu rect{animation-delay:.9s}.chip-gpu rect{animation-delay:1.55s}.chip-ram rect{animation-delay:2.2s}.chip-vram rect{animation-delay:2.9s}.chip-wifi rect{animation-delay:3.55s}.chip-display rect{animation-delay:4.25s}
-    .boot-laptop{position:absolute;right:28px;bottom:66px;width:150px;height:100px;z-index:4;opacity:.35;animation:laptopPower 1s ease 4.85s forwards}.laptop-screen{height:76px;border:3px solid rgba(0,255,136,.55);border-radius:12px 12px 5px 5px;background:#020806;display:grid;place-items:center;box-shadow:0 0 26px rgba(0,255,136,.18)}.laptop-screen span{font-size:.7rem;font-weight:900;color:transparent;letter-spacing:.18em}.laptop-base{height:12px;margin:0 auto;width:178px;transform:translateX(-14px);background:linear-gradient(90deg,rgba(0,255,136,.15),rgba(157,255,208,.55),rgba(0,255,136,.15));border-radius:0 0 18px 18px}.boot-console{position:absolute;left:24px;right:210px;bottom:24px;z-index:5;display:grid;gap:7px;color:rgba(215,255,235,.8);font-size:clamp(.68rem,1.8vw,.9rem)}.boot-console span{opacity:0;transform:translateY(8px);animation:lineIn .35s ease forwards}.boot-console span:nth-child(1){animation-delay:1s}.boot-console span:nth-child(2){animation-delay:2.55s}.boot-console span:nth-child(3){animation-delay:4.55s}
-    @keyframes drawCircuit{to{stroke-dashoffset:0}}@keyframes dotOn{to{opacity:1}}@keyframes dotOff{to{opacity:0}}@keyframes chipBoot{to{opacity:1;fill:rgba(0,55,28,.96);stroke:rgba(157,255,208,.95)}}@keyframes laptopPower{0%{opacity:.35;transform:scale(.95)}55%{opacity:1;transform:scale(1.05);filter:brightness(1.8)}100%{opacity:1;transform:scale(1);filter:drop-shadow(0 0 36px rgba(0,255,136,.75))}}@keyframes lineIn{to{opacity:1;transform:translateY(0)}}@keyframes radarSweep{to{transform:rotate(360deg)}}
-    .boot-laptop .laptop-screen span{animation:laptopText .5s ease 5.05s forwards}@keyframes laptopText{to{color:#7dffbd;text-shadow:0 0 18px rgba(0,255,136,.9)}}
-    @media(max-width:640px){.cpu-boot{height:76vh;border-radius:24px}.circuit-board{inset:70px -170px 122px;transform:scale(.92)}.boot-laptop{right:24px;bottom:86px;width:118px}.laptop-screen{height:62px}.laptop-base{width:138px;transform:translateX(-10px)}.boot-console{right:22px;bottom:22px}.chip text{font-size:23px}.trace-base{stroke-width:14}.trace-live{stroke-width:7}}
+   .brand-svg{width:25px;height:25px;display:block;filter:drop-shadow(0 0 7px rgba(83,80,255,.55))}.brand-mark{display:inline-flex;align-items:center;justify-content:center}
 
-  </style>
+/* NEXOR: energia nasce violeta no canto inferior esquerdo e azul no X; depois as cores se fundem */
+.nexor-symbol{filter:drop-shadow(0 0 8px rgba(108,35,255,.25));}
+.nexor-symbol .logo-n{fill:url(#nexorNGrad);animation:nexorNGlow 2.15s ease-out both;}
+.nexor-symbol .logo-x{fill:url(#nexorXGrad);animation:nexorXGlow 2.15s ease-out both;}
+.nexor-symbol #nexorNGrad stop:first-child{animation:nexorPurpleBlend 2.2s ease-in-out .35s forwards}
+.nexor-symbol #nexorNGrad stop:last-child{animation:nexorPurpleBlend2 2.2s ease-in-out .35s forwards}
+.nexor-symbol #nexorXGrad stop:first-child{animation:nexorBlueBlend 2.2s ease-in-out .35s forwards}
+.nexor-symbol #nexorXGrad stop:last-child{animation:nexorBlueBlend2 2.2s ease-in-out .35s forwards}
+@keyframes nexorPurpleBlend{0%{stop-color:#ed00ff}100%{stop-color:#542bff}}
+@keyframes nexorPurpleBlend2{0%{stop-color:#8b22ff}100%{stop-color:#087dff}}
+@keyframes nexorBlueBlend{0%{stop-color:#00eaff}100%{stop-color:#087dff}}
+@keyframes nexorBlueBlend2{0%{stop-color:#087dff}100%{stop-color:#b000ff}}
+@keyframes nexorNGlow{0%{filter:drop-shadow(-12px 12px 18px #a000ff);opacity:.35}45%{opacity:1}100%{filter:drop-shadow(0 0 16px rgba(119,54,255,.7));opacity:1}}
+@keyframes nexorXGlow{0%{filter:drop-shadow(12px -8px 18px #008cff);opacity:.25}45%{opacity:1}100%{filter:drop-shadow(0 0 15px rgba(0,140,255,.65));opacity:1}}
+</style>
+
+<style id="nexor-identity">
+:root{--primary:#8b2cff!important;--primary-rgb:139,44,255;--secondary:#087cff!important;--accent:#00a8ff!important;--orange:#8b2cff!important;--line:rgba(125,75,255,.28)!important;--shadow:0 24px 70px rgba(35,0,100,.32)!important}
+html{scroll-behavior:smooth}body{background-color:#03030a!important;background-image:radial-gradient(ellipse at 12% 0%,rgba(99,24,200,.13),transparent 38%),radial-gradient(ellipse at 88% 18%,rgba(0,92,255,.10),transparent 34%)!important}
+.topbar,.toolbar{background:rgba(3,3,10,.82)!important;border-color:rgba(115,64,255,.25)!important}.brand-mark,.iconlink,.service-icon,.cart-ico,.eyebrow i{color:#a34bff!important}
+.brand-mark{background:linear-gradient(135deg,rgba(133,39,255,.2),rgba(0,119,255,.18))!important;border-color:rgba(126,67,255,.5)!important;box-shadow:0 0 24px rgba(108,35,255,.18)!important}
+.brand b,.section-kicker,.eyebrow,.hero h1 span,.hero h1 .accent{color:#9d55ff!important}.btn-primary,.cart-mini{color:#fff!important;background:linear-gradient(115deg,#7c24ef,#075dff)!important;border:1px solid rgba(174,126,255,.42)!important;box-shadow:0 10px 30px rgba(83,25,255,.24)!important}.btn-primary:hover,.cart-mini:hover{filter:brightness(1.14);transform:translateY(-2px)}
+.btn-secondary{border-color:rgba(57,126,255,.4)!important;background:rgba(16,20,43,.62)!important}a:hover,.iconlink:hover{color:#40b8ff!important}.card,.service-card,.diagnostic-card,.product-card,.step-card,.faq-item,.store-badge,.trust-item,.section-band{border-color:rgba(108,71,255,.2)!important}
+.card:hover,.service-card:hover,.diagnostic-card:hover,.product-card:hover{border-color:rgba(0,142,255,.55)!important;box-shadow:0 18px 55px rgba(49,0,140,.2)!important}input:focus,select:focus,textarea:focus{border-color:#8742ff!important;box-shadow:0 0 0 3px rgba(124,36,239,.14)!important}
+.page-transition{background:radial-gradient(ellipse at center,rgba(59,14,132,.38),#03030a 68%)!important}.page-transition span{color:#a85aff!important}.store-cart{color:#8b2cff!important;filter:drop-shadow(0 0 24px rgba(139,44,255,.7))!important}footer{border-color:rgba(108,71,255,.24)!important}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+<style>
+/* NEXOR cinematic brand intro */
+.nexor-intro{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;overflow:hidden;background:#03020a;color:#fff;animation:nexorIntroOut .8s cubic-bezier(.76,0,.24,1) 3.55s forwards}
+.nexor-intro::before{content:"";position:absolute;inset:-30%;background:conic-gradient(from 0deg,transparent 0 27%,rgba(124,35,255,.18) 34%,transparent 42% 62%,rgba(0,116,255,.2) 70%,transparent 78%);animation:nexorOrbit 5s linear infinite}
+.nexor-intro::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 49.8%,rgba(121,70,255,.12) 50%,transparent 50.3%);background-size:100% 7px;opacity:.28;pointer-events:none}
+.nexor-intro-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(129,75,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(0,126,255,.08) 1px,transparent 1px);background-size:54px 54px;mask-image:radial-gradient(ellipse at center,#000 0%,transparent 72%);transform:perspective(700px) rotateX(12deg) scale(1.2);animation:nexorGrid 3.5s ease-in-out infinite alternate}
+.nexor-intro-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center;padding:24px}
+.nexor-symbol{width:clamp(90px,16vw,142px);height:clamp(90px,16vw,142px);filter:drop-shadow(0 0 22px rgba(126,44,255,.55));animation:nexorSymbolIn 1.1s cubic-bezier(.16,1,.3,1) both}
+.nexor-symbol path{stroke-dasharray:520;stroke-dashoffset:520;animation:nexorDraw 1.15s cubic-bezier(.65,0,.35,1) .15s forwards}
+.nexor-wordmark{font-family:Inter,system-ui,sans-serif;font-size:clamp(2.7rem,9vw,5.8rem);font-weight:950;letter-spacing:.16em;line-height:1;margin-right:-.16em;background:linear-gradient(100deg,#f6f3ff 5%,#b6a4ff 35%,#8c2cff 55%,#168cff 78%,#f8f7ff);background-size:220% auto;color:transparent;background-clip:text;-webkit-background-clip:text;opacity:0;transform:translateY(15px);animation:nexorWordIn .9s ease .55s forwards,nexorShine 2.3s linear 1.2s infinite}
+.nexor-tagline{font:700 clamp(.62rem,2vw,.85rem)/1.6 "JetBrains Mono",monospace;letter-spacing:.22em;color:#c9c1e8;text-transform:uppercase;opacity:0;animation:nexorFadeUp .7s ease 1.05s forwards}
+.nexor-status{display:flex;align-items:center;gap:10px;margin-top:8px;font:600 .68rem "JetBrains Mono",monospace;letter-spacing:.14em;color:#8d8aa5;opacity:0;animation:nexorFadeUp .5s ease 1.45s forwards}
+.nexor-status i{width:6px;height:6px;border-radius:50%;background:#4ca8ff;box-shadow:0 0 14px #5b8cff;animation:nexorBlink .8s ease-in-out infinite}
+.nexor-progress{width:min(260px,65vw);height:2px;margin-top:5px;background:rgba(145,110,255,.17);overflow:hidden;opacity:0;animation:nexorFadeUp .5s ease 1.3s forwards}
+.nexor-progress span{display:block;width:100%;height:100%;transform:translateX(-101%);background:linear-gradient(90deg,#7b2cff,#168cff);box-shadow:0 0 15px #7c2cff;animation:nexorProgress 2.05s cubic-bezier(.55,.05,.25,1) 1.35s forwards}
+@keyframes nexorOrbit{to{transform:rotate(360deg)}}@keyframes nexorGrid{to{opacity:.45;transform:perspective(700px) rotateX(5deg) scale(1.05)}}@keyframes nexorSymbolIn{from{opacity:0;transform:scale(.65) rotate(-14deg)}to{opacity:1;transform:scale(1) rotate(0)}}@keyframes nexorDraw{to{stroke-dashoffset:0}}@keyframes nexorWordIn{to{opacity:1;transform:translateY(0)}}@keyframes nexorShine{to{background-position:220% center}}@keyframes nexorFadeUp{to{opacity:1;transform:translateY(0)}}@keyframes nexorBlink{50%{opacity:.3}}@keyframes nexorProgress{to{transform:translateX(0)}}@keyframes nexorIntroOut{0%{opacity:1;visibility:visible;transform:scale(1)}65%{opacity:1}100%{opacity:0;visibility:hidden;transform:scale(1.035);pointer-events:none}}
+@media(prefers-reduced-motion:reduce){.nexor-intro{animation:nexorIntroOut .25s ease 1.1s forwards}.nexor-intro *{animation-duration:.01ms!important;animation-delay:0ms!important}}
+</style>
 </head>
 <body>
+<div class="nexor-intro" id="nexorIntro" aria-label="NEXOR — inicializando"><div class="nexor-intro-grid"></div><div class="nexor-intro-content"><svg class="nexor-symbol" viewBox="0 0 120 100" role="img" aria-label="Símbolo NEXOR"><defs><linearGradient id="nexorNGrad" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#ed00ff"/><stop offset="1" stop-color="#8b22ff"/></linearGradient><linearGradient id="nexorXGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00eaff"/><stop offset="1" stop-color="#087dff"/></linearGradient></defs><path d="M8 5 L23 20 L23 70 L8 85 Z" fill="url(#nexorNGrad)"/><path d="M8 5 L23 20 L80 85 L64 85 L23 43 L23 70 L8 85 Z" fill="url(#nexorNGrad)"/><path d="M35 8 L52 8 L68 26 L57 37 Z" fill="url(#nexorNGrad)"/><path d="M48 53 L66 35 L100 8 L117 8 L73 52 L60 65 Z" fill="url(#nexorXGrad)"/><path d="M67 48 L80 36 L116 85 L98 85 Z" fill="url(#nexorXGrad)"/><path d="M18 85 L43 60 L55 72 L42 85 Z" fill="url(#nexorNGrad)"/></svg><div class="nexor-wordmark">NEXOR</div><div class="nexor-tagline">Software Engineering &amp; Digital Systems</div><div class="nexor-progress"><span></span></div><div class="nexor-status"><i></i><span>INITIALIZING NEXOR SYSTEMS</span></div></div></div>
   <canvas class="matrix-rain" id="matrixRain" aria-hidden="true"></canvas>
   <div class="page-transition" id="pageTransition"><span id="transitionText">Carregando interface</span><div class="store-scene" aria-hidden="true"><div class="store-track"></div><i class="fa-solid fa-cart-shopping store-cart"></i><div class="store-truck"><i class="store-wheel one"></i><i class="store-wheel two"></i></div></div></div>
   <div class="noise"></div>
-  <div class="preloader cpu-loader" aria-hidden="true">
-    <div class="cpu-boot">
-      <div class="boot-topline">OPTIMUS TECH • SYSTEM START</div>
-      <svg class="circuit-board" viewBox="0 0 1000 560" preserveAspectRatio="xMidYMid meet">
-        <defs><filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><linearGradient id="traceGrad" x1="0" x2="1"><stop offset="0" stop-color="#00ff88"/><stop offset="1" stop-color="#9dffd0"/></linearGradient></defs>
-        <path class="trace trace-base" d="M70 280 H180 V110 H315 V215 H450 V90 H610 V250 H735 V145 H860 V280 H930" />
-        <path class="trace trace-live" d="M70 280 H180 V110 H315 V215 H450 V90 H610 V250 H735 V145 H860 V280 H930" />
-        <circle class="pulse-dot" r="11"><animateMotion dur="5.1s" begin=".35s" fill="freeze" path="M70 280 H180 V110 H315 V215 H450 V90 H610 V250 H735 V145 H860 V280 H930" /></circle>
-        <g class="chip chip-cpu"><rect x="120" y="70" width="120" height="80" rx="16"/><text x="180" y="118">CPU</text></g>
-        <g class="chip chip-gpu"><rect x="270" y="178" width="130" height="76" rx="16"/><text x="335" y="224">GPU</text></g>
-        <g class="chip chip-ram"><rect x="408" y="50" width="92" height="78" rx="14"/><text x="454" y="96">RAM</text></g>
-        <g class="chip chip-vram"><rect x="555" y="212" width="115" height="76" rx="14"/><text x="612" y="258">VRAM</text></g>
-        <g class="chip chip-wifi"><rect x="682" y="104" width="108" height="76" rx="14"/><text x="736" y="150">WI-FI</text></g>
-        <g class="chip chip-display"><rect x="820" y="238" width="96" height="84" rx="14"/><text x="868" y="286">TELA</text></g>
-      </svg>
-      <div class="boot-laptop"><div class="laptop-screen"><span>OPTIMUS</span></div><div class="laptop-base"></div></div>
-      <div class="boot-console"><span>&gt; Rota técnica iniciada...</span><span>&gt; CPU, GPU, RAM, VRAM e rede sincronizadas...</span><span>&gt; Sistema pronto. Ligando interface...</span></div>
-    </div>
-  </div>
 
   <header class="topbar">
     <nav class="nav shell">
-      <a class="brand" href="#top" aria-label="Optimus Tech">
-        <span class="brand-mark"><i class="fa-solid fa-microchip"></i></span>
-        <span>OPTIMUS <b>TECH</b></span>
+      <a class="brand" href="#top" aria-label="NEXOR">
+        <span class="brand-mark"><svg class="brand-svg" viewBox="0 0 120 100" aria-hidden="true"><defs><linearGradient id="brandLogoGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00eaff"/><stop offset=".35" stop-color="#087dff"/><stop offset=".7" stop-color="#7624ff"/><stop offset="1" stop-color="#ed00ff"/></linearGradient></defs><path d="M8 5 L23 20 L23 70 L8 85 Z M8 5 L23 20 L80 85 L64 85 L23 43 L23 70 L8 85 Z M35 8 L52 8 L68 26 L57 37 Z M48 53 L66 35 L100 8 L117 8 L73 52 L60 65 Z M67 48 L80 36 L116 85 L98 85 Z M18 85 L43 60 L55 72 L42 85 Z" fill="url(#brandLogoGrad)"/></svg></span>
+        <span>NE<b>XOR</b></span>
       </a>
       <button class="hamb" id="menuBtn" aria-label="Abrir menu"><i class="fa-solid fa-bars"></i></button>
       <div class="navlinks" id="navLinks">
@@ -330,7 +324,7 @@
         <a href="#agendar">Agendar</a>
         <a href="#faq">FAQ</a>
         <a href="loja.html">Loja</a>
-        <a class="iconlink" href="https://wa.me/5542999112756" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
+        <a class="iconlink" href="https://wa.me/554299594180" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
       </div>
     </nav>
   </header>
@@ -395,7 +389,7 @@
           <h2>Atendimento técnico sem mistério.</h2>
           <p style="color:#adbbb3;margin-top:16px">Você entende o que será feito, quanto custa, o que é recomendado e qual é o próximo passo. Serviço explicado com clareza: problema, solução, custo e prazo combinados antes da execução.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="https://wa.me/5542999112756?text=Olá! Quero fazer um diagnóstico com a Optimus Tech." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+            <a class="btn btn-primary" href="https://wa.me/554299594180?text=Olá! Quero fazer um diagnóstico com a NEXOR." target="_blank" rel="noopener">Chamar no WhatsApp</a>
           </div>
         </div>
         <div class="glass steps">
@@ -427,7 +421,7 @@
     </section>
 
     <section class="section shell reveal">
-      <div class="section-band"><div><strong>Não sabe qual serviço escolher?</strong><p>Explique o defeito no WhatsApp. A Optimus Tech indica o caminho mais seguro antes de qualquer manutenção.</p></div><a class="btn btn-primary" href="https://wa.me/5542999112756?text=Olá! Não sei qual serviço escolher. Pode me ajudar?" target="_blank" rel="noopener">Tirar dúvida</a></div>
+      <div class="section-band"><div><strong>Não sabe qual serviço escolher?</strong><p>Explique o defeito no WhatsApp. A NEXOR indica o caminho mais seguro antes de qualquer manutenção.</p></div><a class="btn btn-primary" href="https://wa.me/554299594180?text=Olá! Não sei qual serviço escolher. Pode me ajudar?" target="_blank" rel="noopener">Tirar dúvida</a></div>
     </section>
 
     <section class="section shell reveal" id="faq">
@@ -446,15 +440,15 @@
   </main>
 
   <div class="float">
-    <a href="https://wa.me/5542999112756?text=Olá! Vim pelo site da Optimus Tech e gostaria de atendimento." target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://wa.me/554299594180?text=Olá! Vim pelo site da NEXOR e gostaria de atendimento." target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
     <button id="toTop" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
   </div>
 <footer>
-    <div class="shell">© 2026 OPTIMUS TECH</div>
+    <div class="shell">© 2026 NEXOR</div>
   </footer>
 
   <script>
-    const WHATSAPP = "5542999112756";
+    const WHATSAPP = "554299594180";
     const services = [
       {icon:"fa-mobile-screen-button", title:"Formatação Mobile", old:"R$ 60", price:"R$ 50", tags:["Presencial","Guarapuava"], desc:"Limpeza de sistema, ajustes de desempenho, remoção de travamentos e preparação segura do aparelho."},
       {icon:"fa-screwdriver-wrench", title:"Troca de Peças Mobile", price:"R$ 80 + peça", tags:["Presencial","Diagnóstico"], desc:"Troca de tela, bateria, conector e componentes com teste completo após a manutenção."},
@@ -508,7 +502,7 @@
       const servico = document.getElementById("cliServico").value;
       const data = document.getElementById("cliData").value;
       if(!nome || !servico || !data) return alert("Preencha nome, serviço e horário.");
-      const texto = `Olá! Sou ${nome}. Vim pelo site da Optimus Tech e gostaria de agendar: ${servico}. Data/horário desejado: ${data}.`;
+      const texto = `Olá! Sou ${nome}. Vim pelo site da NEXOR e gostaria de agendar: ${servico}. Data/horário desejado: ${data}.`;
       window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`, "_blank");
     });
 
@@ -522,7 +516,7 @@
     function initMatrixRain(){
       const canvas = document.getElementById("matrixRain"); if(!canvas) return;
       const ctx = canvas.getContext("2d");
-      const chars = "01<>[]{}#$%&/\\OPTIMUSTECH";
+      const chars = "01<>[]{}#$%&/\\NEXORTECH";
       let cols, drops;
       function resize(){canvas.width = innerWidth; canvas.height = innerHeight; cols = Math.floor(canvas.width/18); drops = Array(cols).fill(1).map(()=>Math.random()*canvas.height/18);}
       function draw(){
@@ -547,7 +541,7 @@
           if(!href || link.target === "_blank" || href.startsWith("#")) return;
           e.preventDefault();
           const goingStore = href.includes("loja.html");
-          if(label) label.textContent = goingStore ? "Enviando carrinho para a loja" : "Voltando para a Optimus";
+          if(label) label.textContent = goingStore ? "Enviando carrinho para a loja" : "Voltando para a NEXOR";
           overlay.classList.toggle("store-drive", goingStore);
           overlay.classList.add("active");
           setTimeout(()=>{ window.location.href = href; }, goingStore ? 1650 : 420);
